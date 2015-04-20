@@ -1,0 +1,873 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		005FB13B4690DC06ED47B4C7 /* UITextView+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2604CD9554E3C662777CD5 /* UITextView+TCCustomFont.m */; };
+		0286E4ABC3AC353CA392C7CD /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED7C760ABB42E7BC9BACD99 /* DesignableTextField.swift */; };
+		0744DF1291940D51EA47002B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADF335E2DE4C3F39A3F0A6 /* AsyncImageView.swift */; };
+		0844105256BE985B9A96C63D /* CSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F29D1E3342A525B8A5A5E08 /* CSAnimationView.m */; };
+		0E1B731BF2276D3047AD8C89 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E73D6D22099B18F0AB6891 /* ImageLoader.swift */; };
+		10161961B8FB4E2AB9DE66ED /* Pods-Meemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C882E9A0503911455DF5D179 /* Pods-Meemo-dummy.m */; };
+		1967B883B42E524AA67364BA /* CSAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 21BC4DCF79781C195DA48414 /* CSAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CC325446443A20145F60D01 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F6BDC845636E99D2F610E3C /* LoadingView.xib */; };
+		1CC5F97D7BBCDBD813D41F69 /* CSAnimationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DCBE53C99F07C573897C5EE /* CSAnimationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26A41AD5487405271B784879 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6C98CE4EC09C5DFA90519 /* SpringTextField.swift */; };
+		287213AFED1DC920AE452059 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22254D2FA47B8691D3CE69B0 /* SpringView.swift */; };
+		2AE7B8F75720F7C3C4D094F3 /* Pods-Meemo-Canvas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E7EAACBA11F7B4B42389141C /* Pods-Meemo-Canvas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CFC8AD10DF6F3EA13F00DA3 /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 76563FBBA14F703C3998CD3D /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		359A2FB5305ACE7A4C1A720B /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6222A702B99577673EAF3060 /* SpringButton.swift */; };
+		3BA21AE717C4C075132060FD /* UILabel+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34F4903729060E92F90AF2 /* UILabel+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DAB185954E9A55F61E61495 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346188AB4B508FBA1D9EFB3 /* KeyboardLayoutConstraint.swift */; };
+		511A9B18071317B6A8BB956B /* UITextField+PlaceholderColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3389E714640FB85A01D128B /* UITextField+PlaceholderColor.m */; };
+		55302306EF55CB17053B9615 /* UILabel+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E92CD28B4E999FA3DBF92B /* UILabel+TCCustomFont.m */; };
+		62A19483C5D722E08B933EDC /* Pods-Meemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE949463A20475A63D4A8844 /* Pods-Meemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		643B8FA732C50DBB74AE4779 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1A8DA3B01C831E0FB7B0F /* Foundation.framework */; };
+		758BBDF61434E543632318C0 /* Pods-Meemo-Canvas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 983F9DA7C33FD0ED80AC836F /* Pods-Meemo-Canvas-dummy.m */; };
+		75DB22515F650002D9AE2DC3 /* Pods-Meemo-Spring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E97526B88992987924663420 /* Pods-Meemo-Spring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7665AF1C357B3AF905AADAD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1A8DA3B01C831E0FB7B0F /* Foundation.framework */; };
+		7706DA82590306E5CF4213C2 /* CSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030BD7C07117EFFB9C30850 /* CSNavigationController.m */; };
+		7716633772F0683071BF667A /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA06266B21CDA8351DAC429 /* AutoTextView.swift */; };
+		802442C22BD55F459018F994 /* UIButton+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A95EEDC34EF39769B174E1 /* UIButton+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		842D656DD249BEE649A0933F /* UINavigationBar+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA7246117B96F2B7F767CAC /* UINavigationBar+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87B6AB55C2D78BA04A4159DC /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908A0B78C0CA68207D4FD971 /* Misc.swift */; };
+		8A579AB8E9C6C95FB8129F33 /* CSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DFCE4AAFC460995C940B50 /* CSBlurView.m */; };
+		8D28D96B4A723FB5E4AA7E85 /* UITextField+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 2575A844E7F996AEAF564D72 /* UITextField+TCCustomFont.m */; };
+		8F2850FEFB9D6B60ED9A9912 /* UITextField+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = B8801CBD76A680CE589F6A51 /* UITextField+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F5FC69B0A46C0F863617373 /* Pods-Meemo-Spring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8543CAB4CD1DB14BB52874D6 /* Pods-Meemo-Spring-dummy.m */; };
+		90379FC6F52D897DD070C14A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D7AF444E5FFEA71DFD803 /* LoadingView.swift */; };
+		954E17080A224370FE777212 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B2AE7E6C0573AB86870E93 /* DesignableLabel.swift */; };
+		9F422D667238B6CB0FADD450 /* UITextView+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 584F67BA94B2F8275F15134F /* UITextView+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1AB5DDD91B39F8C7EE523C1 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE19301AC62615EE92B904D /* SpringImageView.swift */; };
+		A3D53142CC73C2A5C1E7AF86 /* CSBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 88F6B20C6FC99FB81E5CB425 /* CSBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D21285AA2C4DAA7BDF2C9E /* CSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0819765C8EE160DF20E2D9 /* CSNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AECD99929EA994C7E41C0783 /* UINavigationBar+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 783268262F22D9C5E637BF6A /* UINavigationBar+TCCustomFont.m */; };
+		B1CA193CAAC429D713B32D0A /* UIButton+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A64F593DB74E2E844EFF0 /* UIButton+TCCustomFont.m */; };
+		B771EC4787C94CEAE307DA76 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14AD989D5D9B514A64F0B0D /* BlurView.swift */; };
+		B96AE2186B76BC859A4B1F41 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B60218CCC2DDAAA672D7F5 /* TransitionZoom.swift */; };
+		BAF4D9B1905A3C25A54DABF5 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB176B753BD9CF9FA078D28 /* DesignableButton.swift */; };
+		BF84F76FFAD7D85037473222 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160658847ECFCD1A6535C48 /* SpringTextView.swift */; };
+		C4CD194B98FD90D514F710EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7CC2278A3EEDC722B63B7A /* Images.xcassets */; };
+		C5E1987B651080222F9F4D1E /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1361367DEC7BB21090B496A3 /* Spring.swift */; };
+		C7CD5466E569F4CDCDCAC257 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263C67E480809651B3B3C19E /* AsyncButton.swift */; };
+		CDA7572743236BA6E887A330 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE79C24BDD774AAFEA543A02 /* DesignableTextView.swift */; };
+		CEB823997036C7A121E48483 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D88D650C453380513854FC /* TransitionManager.swift */; };
+		D229248F425A74651A1B1CDC /* CSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B386074143D4FADFF230C6BB /* CSAnimation.m */; };
+		D599949593AC6BF1093FEFD3 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA3D7442B0D169A4606E54D /* DesignableView.swift */; };
+		DBF137434DC1BC450B3CBF98 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F567517A8896C8B751A78 /* SpringLabel.swift */; };
+		E095AC8E3D7438E7565358F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1A8DA3B01C831E0FB7B0F /* Foundation.framework */; };
+		E7F4B5149CA194CA817CEA83 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83AA8FA3996BEF8AAF36009 /* DesignableImageView.swift */; };
+		F2E1F71BCA0544964B050234 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FA93B9756A860E15422FA /* SpringAnimation.swift */; };
+		F467E979F95159999146BDCA /* UITextField+PlaceholderColor.h in Headers */ = {isa = PBXBuildFile; fileRef = B924C756C3CC80828C126A0C /* UITextField+PlaceholderColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F69E4EF02E18AF372B3933D4 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F18905DB93948E04C048AF /* SoundPlayer.swift */; };
+		F6ADB625A3632EEB60D04B17 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6CFAE15551FE4B1A6561F8 /* UnwindSegue.swift */; };
+		FA8D7E1054D7CFAD613EE1FA /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C3CF5EBBEC7EF1DDF1838 /* DesignableTabBarController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3ECE76DA077806CCF18543F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10163C2C2B6E9A2A8C07ECB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50F3A3ECBD1232A96EF49AEA;
+			remoteInfo = "Pods-Meemo-Spring";
+		};
+		B920B04F647DE57BE3FFB262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10163C2C2B6E9A2A8C07ECB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1D68B1182AB8F4EB03E8ACC;
+			remoteInfo = "Pods-Meemo-Canvas";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04933FD1E383CE3678025736 /* Pods-Meemo-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-environment.h"; sourceTree = "<group>"; };
+		0A2604CD9554E3C662777CD5 /* UITextView+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+TCCustomFont.m"; path = "CanvasLibrary/UITextView+TCCustomFont.m"; sourceTree = "<group>"; };
+		0CA3D7442B0D169A4606E54D /* DesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Spring/DesignableView.swift; sourceTree = "<group>"; };
+		1346188AB4B508FBA1D9EFB3 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutConstraint.swift; path = Spring/KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		1361367DEC7BB21090B496A3 /* Spring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = Spring/Spring.swift; sourceTree = "<group>"; };
+		15B60218CCC2DDAAA672D7F5 /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
+		17D9542C9BAFA2B41A7BD1F5 /* Pods-Meemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Meemo.modulemap"; sourceTree = "<group>"; };
+		18B7D75A0FA884F4ECB98672 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A1EDC1A33686D8CE2ED8578 /* Pods-Meemo-Canvas-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-Canvas-prefix.pch"; sourceTree = "<group>"; };
+		1B4CF1E5E059D8A79F4F97E5 /* Pods-Meemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Meemo-resources.sh"; sourceTree = "<group>"; };
+		1F0819765C8EE160DF20E2D9 /* CSNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNavigationController.h; path = CanvasLibrary/CSNavigationController.h; sourceTree = "<group>"; };
+		2030BD7C07117EFFB9C30850 /* CSNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNavigationController.m; path = CanvasLibrary/CSNavigationController.m; sourceTree = "<group>"; };
+		21BC4DCF79781C195DA48414 /* CSAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSAnimation.h; path = CanvasLibrary/CSAnimation.h; sourceTree = "<group>"; };
+		22254D2FA47B8691D3CE69B0 /* SpringView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringView.swift; path = Spring/SpringView.swift; sourceTree = "<group>"; };
+		2575A844E7F996AEAF564D72 /* UITextField+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+TCCustomFont.m"; path = "CanvasLibrary/UITextField+TCCustomFont.m"; sourceTree = "<group>"; };
+		263C67E480809651B3B3C19E /* AsyncButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncButton.swift; path = Spring/AsyncButton.swift; sourceTree = "<group>"; };
+		28DFCE4AAFC460995C940B50 /* CSBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSBlurView.m; path = CanvasLibrary/CSBlurView.m; sourceTree = "<group>"; };
+		2BF02DC093FC4DC3B5F3AC21 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCBE53C99F07C573897C5EE /* CSAnimationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSAnimationView.h; path = CanvasLibrary/CSAnimationView.h; sourceTree = "<group>"; };
+		2EE19301AC62615EE92B904D /* SpringImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringImageView.swift; path = Spring/SpringImageView.swift; sourceTree = "<group>"; };
+		367F567517A8896C8B751A78 /* SpringLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringLabel.swift; path = Spring/SpringLabel.swift; sourceTree = "<group>"; };
+		36E29BD28FFDEB6FB359044D /* Pods-Meemo-Canvas-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo-Canvas-Private.xcconfig"; sourceTree = "<group>"; };
+		3780111233B530A9E2162B33 /* Pods-Meemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Meemo-frameworks.sh"; sourceTree = "<group>"; };
+		407A225E510C5B928E7398DB /* Pods-Meemo-Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo-Spring.xcconfig"; sourceTree = "<group>"; };
+		4362A08A733A2108BDC3E7B3 /* Pods_Meemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1D7AF444E5FFEA71DFD803 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Spring/LoadingView.swift; sourceTree = "<group>"; };
+		5299DC050CB75E92D40250FE /* Pods-Meemo-Canvas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo-Canvas.xcconfig"; sourceTree = "<group>"; };
+		584F67BA94B2F8275F15134F /* UITextView+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+TCCustomFont.h"; path = "CanvasLibrary/UITextView+TCCustomFont.h"; sourceTree = "<group>"; };
+		59D1F575E7E865116A4D4677 /* Pods-Meemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo.debug.xcconfig"; sourceTree = "<group>"; };
+		611A64F593DB74E2E844EFF0 /* UIButton+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+TCCustomFont.m"; path = "CanvasLibrary/UIButton+TCCustomFont.m"; sourceTree = "<group>"; };
+		6222A702B99577673EAF3060 /* SpringButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringButton.swift; path = Spring/SpringButton.swift; sourceTree = "<group>"; };
+		694C306360A50A3CE5634549 /* Pods-Meemo-Canvas.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Meemo-Canvas.modulemap"; sourceTree = "<group>"; };
+		6D7CC2278A3EEDC722B63B7A /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpringApp/Images.xcassets; sourceTree = "<group>"; };
+		6F33C5AC1D31D6996EF14E4A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		70E73D6D22099B18F0AB6891 /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Spring/ImageLoader.swift; sourceTree = "<group>"; };
+		739785A3C3A10412AF662B2C /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A95EEDC34EF39769B174E1 /* UIButton+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+TCCustomFont.h"; path = "CanvasLibrary/UIButton+TCCustomFont.h"; sourceTree = "<group>"; };
+		76563FBBA14F703C3998CD3D /* Canvas.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Canvas.h; path = CanvasLibrary/Canvas.h; sourceTree = "<group>"; };
+		77E6C98CE4EC09C5DFA90519 /* SpringTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextField.swift; path = Spring/SpringTextField.swift; sourceTree = "<group>"; };
+		783268262F22D9C5E637BF6A /* UINavigationBar+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+TCCustomFont.m"; path = "CanvasLibrary/UINavigationBar+TCCustomFont.m"; sourceTree = "<group>"; };
+		79572A8C27E348C3865A9096 /* Pods-Meemo-Spring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Meemo-Spring.modulemap"; sourceTree = "<group>"; };
+		7BA06266B21CDA8351DAC429 /* AutoTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoTextView.swift; path = Spring/AutoTextView.swift; sourceTree = "<group>"; };
+		8543CAB4CD1DB14BB52874D6 /* Pods-Meemo-Spring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Meemo-Spring-dummy.m"; sourceTree = "<group>"; };
+		88F6B20C6FC99FB81E5CB425 /* CSBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSBlurView.h; path = CanvasLibrary/CSBlurView.h; sourceTree = "<group>"; };
+		8F29D1E3342A525B8A5A5E08 /* CSAnimationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimationView.m; path = CanvasLibrary/CSAnimationView.m; sourceTree = "<group>"; };
+		908A0B78C0CA68207D4FD971 /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
+		9160658847ECFCD1A6535C48 /* SpringTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextView.swift; path = Spring/SpringTextView.swift; sourceTree = "<group>"; };
+		983F9DA7C33FD0ED80AC836F /* Pods-Meemo-Canvas-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Meemo-Canvas-dummy.m"; sourceTree = "<group>"; };
+		98B2AE7E6C0573AB86870E93 /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
+		9F6BDC845636E99D2F610E3C /* LoadingView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = LoadingView.xib; path = Spring/LoadingView.xib; sourceTree = "<group>"; };
+		A66FA93B9756A860E15422FA /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
+		AE34F4903729060E92F90AF2 /* UILabel+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+TCCustomFont.h"; path = "CanvasLibrary/UILabel+TCCustomFont.h"; sourceTree = "<group>"; };
+		AF5E7326C04F5862AE3450E4 /* Pods-Meemo-Spring-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-Spring-prefix.pch"; sourceTree = "<group>"; };
+		B1F18905DB93948E04C048AF /* SoundPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = Spring/SoundPlayer.swift; sourceTree = "<group>"; };
+		B386074143D4FADFF230C6BB /* CSAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimation.m; path = CanvasLibrary/CSAnimation.m; sourceTree = "<group>"; };
+		B8801CBD76A680CE589F6A51 /* UITextField+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+TCCustomFont.h"; path = "CanvasLibrary/UITextField+TCCustomFont.h"; sourceTree = "<group>"; };
+		B8E92CD28B4E999FA3DBF92B /* UILabel+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+TCCustomFont.m"; path = "CanvasLibrary/UILabel+TCCustomFont.m"; sourceTree = "<group>"; };
+		B924C756C3CC80828C126A0C /* UITextField+PlaceholderColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+PlaceholderColor.h"; path = "CanvasLibrary/UITextField+PlaceholderColor.h"; sourceTree = "<group>"; };
+		BE79C24BDD774AAFEA543A02 /* DesignableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextView.swift; path = Spring/DesignableTextView.swift; sourceTree = "<group>"; };
+		C3389E714640FB85A01D128B /* UITextField+PlaceholderColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+PlaceholderColor.m"; path = "CanvasLibrary/UITextField+PlaceholderColor.m"; sourceTree = "<group>"; };
+		C882E9A0503911455DF5D179 /* Pods-Meemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Meemo-dummy.m"; sourceTree = "<group>"; };
+		CAB1A8DA3B01C831E0FB7B0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CBAE25DDBFE1D8F8DFC9A852 /* Pods-Meemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Meemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CE7779B69167CAD3173EE277 /* Pods-Meemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Meemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		CE949463A20475A63D4A8844 /* Pods-Meemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-umbrella.h"; sourceTree = "<group>"; };
+		D189C4D80AC21C49CFC64C15 /* Pods-Meemo-Spring-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo-Spring-Private.xcconfig"; sourceTree = "<group>"; };
+		D2AD2CD9813B848928CF500E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D83AA8FA3996BEF8AAF36009 /* DesignableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableImageView.swift; path = Spring/DesignableImageView.swift; sourceTree = "<group>"; };
+		DAB176B753BD9CF9FA078D28 /* DesignableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableButton.swift; path = Spring/DesignableButton.swift; sourceTree = "<group>"; };
+		DF6CFAE15551FE4B1A6561F8 /* UnwindSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnwindSegue.swift; path = Spring/UnwindSegue.swift; sourceTree = "<group>"; };
+		DFA7246117B96F2B7F767CAC /* UINavigationBar+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+TCCustomFont.h"; path = "CanvasLibrary/UINavigationBar+TCCustomFont.h"; sourceTree = "<group>"; };
+		DFCAE121941DBFF8AFE763E8 /* Pods-Meemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meemo.release.xcconfig"; sourceTree = "<group>"; };
+		E0D88D650C453380513854FC /* TransitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Spring/TransitionManager.swift; sourceTree = "<group>"; };
+		E1ADF335E2DE4C3F39A3F0A6 /* AsyncImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Spring/AsyncImageView.swift; sourceTree = "<group>"; };
+		E24C3CF5EBBEC7EF1DDF1838 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTabBarController.swift; path = Spring/DesignableTabBarController.swift; sourceTree = "<group>"; };
+		E7EAACBA11F7B4B42389141C /* Pods-Meemo-Canvas-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-Canvas-umbrella.h"; sourceTree = "<group>"; };
+		E97526B88992987924663420 /* Pods-Meemo-Spring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meemo-Spring-umbrella.h"; sourceTree = "<group>"; };
+		F14AD989D5D9B514A64F0B0D /* BlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
+		FEC7E433626D3372E879B181 /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FED7C760ABB42E7BC9BACD99 /* DesignableTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = Spring/DesignableTextField.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		328ACB254EE46415C5D5D7A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				643B8FA732C50DBB74AE4779 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85E000009606582F65114E95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E095AC8E3D7438E7565358F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D21B972E94EC3CD610FCAAB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7665AF1C357B3AF905AADAD1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A77B7FBFD357BFB738C667D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E34513693203C3D896216D1 /* Canvas */,
+				CB7344B5A8A0CB74566A6B1F /* Spring */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		0F1725F6039164EF89DC4157 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6D7CC2278A3EEDC722B63B7A /* Images.xcassets */,
+				9F6BDC845636E99D2F610E3C /* LoadingView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1E34513693203C3D896216D1 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				21BC4DCF79781C195DA48414 /* CSAnimation.h */,
+				B386074143D4FADFF230C6BB /* CSAnimation.m */,
+				2DCBE53C99F07C573897C5EE /* CSAnimationView.h */,
+				8F29D1E3342A525B8A5A5E08 /* CSAnimationView.m */,
+				88F6B20C6FC99FB81E5CB425 /* CSBlurView.h */,
+				28DFCE4AAFC460995C940B50 /* CSBlurView.m */,
+				1F0819765C8EE160DF20E2D9 /* CSNavigationController.h */,
+				2030BD7C07117EFFB9C30850 /* CSNavigationController.m */,
+				76563FBBA14F703C3998CD3D /* Canvas.h */,
+				73A95EEDC34EF39769B174E1 /* UIButton+TCCustomFont.h */,
+				611A64F593DB74E2E844EFF0 /* UIButton+TCCustomFont.m */,
+				AE34F4903729060E92F90AF2 /* UILabel+TCCustomFont.h */,
+				B8E92CD28B4E999FA3DBF92B /* UILabel+TCCustomFont.m */,
+				DFA7246117B96F2B7F767CAC /* UINavigationBar+TCCustomFont.h */,
+				783268262F22D9C5E637BF6A /* UINavigationBar+TCCustomFont.m */,
+				B924C756C3CC80828C126A0C /* UITextField+PlaceholderColor.h */,
+				C3389E714640FB85A01D128B /* UITextField+PlaceholderColor.m */,
+				B8801CBD76A680CE589F6A51 /* UITextField+TCCustomFont.h */,
+				2575A844E7F996AEAF564D72 /* UITextField+TCCustomFont.m */,
+				584F67BA94B2F8275F15134F /* UITextView+TCCustomFont.h */,
+				0A2604CD9554E3C662777CD5 /* UITextView+TCCustomFont.m */,
+				1E6E0731A46958CDB11CE723 /* Support Files */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		1E6E0731A46958CDB11CE723 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				18B7D75A0FA884F4ECB98672 /* Info.plist */,
+				694C306360A50A3CE5634549 /* Pods-Meemo-Canvas.modulemap */,
+				5299DC050CB75E92D40250FE /* Pods-Meemo-Canvas.xcconfig */,
+				36E29BD28FFDEB6FB359044D /* Pods-Meemo-Canvas-Private.xcconfig */,
+				983F9DA7C33FD0ED80AC836F /* Pods-Meemo-Canvas-dummy.m */,
+				1A1EDC1A33686D8CE2ED8578 /* Pods-Meemo-Canvas-prefix.pch */,
+				E7EAACBA11F7B4B42389141C /* Pods-Meemo-Canvas-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Meemo-Canvas";
+			sourceTree = "<group>";
+		};
+		26CA555FD5E6B2AF53EDA0C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEC7E433626D3372E879B181 /* Canvas.framework */,
+				4362A08A733A2108BDC3E7B3 /* Pods_Meemo.framework */,
+				739785A3C3A10412AF662B2C /* Spring.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		344A329561F33FDECFEB4CFC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CAB1A8DA3B01C831E0FB7B0F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		671B84911BABCD298E7FC24F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				91A8FB5D5264D55A6566AB5F /* Pods-Meemo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		87940FD00473B6901ECB461F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2AD2CD9813B848928CF500E /* Info.plist */,
+				79572A8C27E348C3865A9096 /* Pods-Meemo-Spring.modulemap */,
+				407A225E510C5B928E7398DB /* Pods-Meemo-Spring.xcconfig */,
+				D189C4D80AC21C49CFC64C15 /* Pods-Meemo-Spring-Private.xcconfig */,
+				8543CAB4CD1DB14BB52874D6 /* Pods-Meemo-Spring-dummy.m */,
+				AF5E7326C04F5862AE3450E4 /* Pods-Meemo-Spring-prefix.pch */,
+				E97526B88992987924663420 /* Pods-Meemo-Spring-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Meemo-Spring";
+			sourceTree = "<group>";
+		};
+		91A8FB5D5264D55A6566AB5F /* Pods-Meemo */ = {
+			isa = PBXGroup;
+			children = (
+				2BF02DC093FC4DC3B5F3AC21 /* Info.plist */,
+				17D9542C9BAFA2B41A7BD1F5 /* Pods-Meemo.modulemap */,
+				CBAE25DDBFE1D8F8DFC9A852 /* Pods-Meemo-acknowledgements.markdown */,
+				CE7779B69167CAD3173EE277 /* Pods-Meemo-acknowledgements.plist */,
+				C882E9A0503911455DF5D179 /* Pods-Meemo-dummy.m */,
+				04933FD1E383CE3678025736 /* Pods-Meemo-environment.h */,
+				3780111233B530A9E2162B33 /* Pods-Meemo-frameworks.sh */,
+				1B4CF1E5E059D8A79F4F97E5 /* Pods-Meemo-resources.sh */,
+				CE949463A20475A63D4A8844 /* Pods-Meemo-umbrella.h */,
+				59D1F575E7E865116A4D4677 /* Pods-Meemo.debug.xcconfig */,
+				DFCAE121941DBFF8AFE763E8 /* Pods-Meemo.release.xcconfig */,
+			);
+			name = "Pods-Meemo";
+			path = "Target Support Files/Pods-Meemo";
+			sourceTree = "<group>";
+		};
+		98C474D764521D1FCC1ED86F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				344A329561F33FDECFEB4CFC /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB7344B5A8A0CB74566A6B1F /* Spring */ = {
+			isa = PBXGroup;
+			children = (
+				263C67E480809651B3B3C19E /* AsyncButton.swift */,
+				E1ADF335E2DE4C3F39A3F0A6 /* AsyncImageView.swift */,
+				7BA06266B21CDA8351DAC429 /* AutoTextView.swift */,
+				F14AD989D5D9B514A64F0B0D /* BlurView.swift */,
+				DAB176B753BD9CF9FA078D28 /* DesignableButton.swift */,
+				D83AA8FA3996BEF8AAF36009 /* DesignableImageView.swift */,
+				98B2AE7E6C0573AB86870E93 /* DesignableLabel.swift */,
+				E24C3CF5EBBEC7EF1DDF1838 /* DesignableTabBarController.swift */,
+				FED7C760ABB42E7BC9BACD99 /* DesignableTextField.swift */,
+				BE79C24BDD774AAFEA543A02 /* DesignableTextView.swift */,
+				0CA3D7442B0D169A4606E54D /* DesignableView.swift */,
+				70E73D6D22099B18F0AB6891 /* ImageLoader.swift */,
+				1346188AB4B508FBA1D9EFB3 /* KeyboardLayoutConstraint.swift */,
+				4F1D7AF444E5FFEA71DFD803 /* LoadingView.swift */,
+				908A0B78C0CA68207D4FD971 /* Misc.swift */,
+				B1F18905DB93948E04C048AF /* SoundPlayer.swift */,
+				1361367DEC7BB21090B496A3 /* Spring.swift */,
+				A66FA93B9756A860E15422FA /* SpringAnimation.swift */,
+				6222A702B99577673EAF3060 /* SpringButton.swift */,
+				2EE19301AC62615EE92B904D /* SpringImageView.swift */,
+				367F567517A8896C8B751A78 /* SpringLabel.swift */,
+				77E6C98CE4EC09C5DFA90519 /* SpringTextField.swift */,
+				9160658847ECFCD1A6535C48 /* SpringTextView.swift */,
+				22254D2FA47B8691D3CE69B0 /* SpringView.swift */,
+				E0D88D650C453380513854FC /* TransitionManager.swift */,
+				15B60218CCC2DDAAA672D7F5 /* TransitionZoom.swift */,
+				DF6CFAE15551FE4B1A6561F8 /* UnwindSegue.swift */,
+				0F1725F6039164EF89DC4157 /* Resources */,
+				87940FD00473B6901ECB461F /* Support Files */,
+			);
+			path = Spring;
+			sourceTree = "<group>";
+		};
+		E76FDBE74D2772B142986A81 = {
+			isa = PBXGroup;
+			children = (
+				6F33C5AC1D31D6996EF14E4A /* Podfile */,
+				98C474D764521D1FCC1ED86F /* Frameworks */,
+				0A77B7FBFD357BFB738C667D /* Pods */,
+				26CA555FD5E6B2AF53EDA0C1 /* Products */,
+				671B84911BABCD298E7FC24F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		582677795E5FA54573585E64 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75DB22515F650002D9AE2DC3 /* Pods-Meemo-Spring-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73CA5C3F929F74A188D54CE4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1967B883B42E524AA67364BA /* CSAnimation.h in Headers */,
+				1CC5F97D7BBCDBD813D41F69 /* CSAnimationView.h in Headers */,
+				A3D53142CC73C2A5C1E7AF86 /* CSBlurView.h in Headers */,
+				A6D21285AA2C4DAA7BDF2C9E /* CSNavigationController.h in Headers */,
+				2CFC8AD10DF6F3EA13F00DA3 /* Canvas.h in Headers */,
+				2AE7B8F75720F7C3C4D094F3 /* Pods-Meemo-Canvas-umbrella.h in Headers */,
+				802442C22BD55F459018F994 /* UIButton+TCCustomFont.h in Headers */,
+				3BA21AE717C4C075132060FD /* UILabel+TCCustomFont.h in Headers */,
+				842D656DD249BEE649A0933F /* UINavigationBar+TCCustomFont.h in Headers */,
+				F467E979F95159999146BDCA /* UITextField+PlaceholderColor.h in Headers */,
+				8F2850FEFB9D6B60ED9A9912 /* UITextField+TCCustomFont.h in Headers */,
+				9F422D667238B6CB0FADD450 /* UITextView+TCCustomFont.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8706297127B03ED8B5C2FBE1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62A19483C5D722E08B933EDC /* Pods-Meemo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		50F3A3ECBD1232A96EF49AEA /* Pods-Meemo-Spring */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1979EF2427FC79B1FF21D695 /* Build configuration list for PBXNativeTarget "Pods-Meemo-Spring" */;
+			buildPhases = (
+				9D69AB4C037A7187E811F05B /* Sources */,
+				328ACB254EE46415C5D5D7A7 /* Frameworks */,
+				BACCD8B76DD4FB2B2377A604 /* Resources */,
+				582677795E5FA54573585E64 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Meemo-Spring";
+			productName = "Pods-Meemo-Spring";
+			productReference = 739785A3C3A10412AF662B2C /* Spring.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A9596B76EF4934B7C1DCD98F /* Pods-Meemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44E908F88232C182622F0A84 /* Build configuration list for PBXNativeTarget "Pods-Meemo" */;
+			buildPhases = (
+				62A350CA507A44DFF421B603 /* Sources */,
+				D21B972E94EC3CD610FCAAB4 /* Frameworks */,
+				8706297127B03ED8B5C2FBE1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B47D33EDD35C8B1D4667E752 /* PBXTargetDependency */,
+				F5C2CEE1C3B6E6183D47465B /* PBXTargetDependency */,
+			);
+			name = "Pods-Meemo";
+			productName = "Pods-Meemo";
+			productReference = 4362A08A733A2108BDC3E7B3 /* Pods_Meemo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D1D68B1182AB8F4EB03E8ACC /* Pods-Meemo-Canvas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC964F9D61AC0295A069AB08 /* Build configuration list for PBXNativeTarget "Pods-Meemo-Canvas" */;
+			buildPhases = (
+				31B03F76F07F6A2484975198 /* Sources */,
+				85E000009606582F65114E95 /* Frameworks */,
+				73CA5C3F929F74A188D54CE4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Meemo-Canvas";
+			productName = "Pods-Meemo-Canvas";
+			productReference = FEC7E433626D3372E879B181 /* Canvas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10163C2C2B6E9A2A8C07ECB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = 63BB45B9269ECAF669004069 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E76FDBE74D2772B142986A81;
+			productRefGroup = 26CA555FD5E6B2AF53EDA0C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9596B76EF4934B7C1DCD98F /* Pods-Meemo */,
+				D1D68B1182AB8F4EB03E8ACC /* Pods-Meemo-Canvas */,
+				50F3A3ECBD1232A96EF49AEA /* Pods-Meemo-Spring */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BACCD8B76DD4FB2B2377A604 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4CD194B98FD90D514F710EA /* Images.xcassets in Resources */,
+				1CC325446443A20145F60D01 /* LoadingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31B03F76F07F6A2484975198 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D229248F425A74651A1B1CDC /* CSAnimation.m in Sources */,
+				0844105256BE985B9A96C63D /* CSAnimationView.m in Sources */,
+				8A579AB8E9C6C95FB8129F33 /* CSBlurView.m in Sources */,
+				7706DA82590306E5CF4213C2 /* CSNavigationController.m in Sources */,
+				758BBDF61434E543632318C0 /* Pods-Meemo-Canvas-dummy.m in Sources */,
+				B1CA193CAAC429D713B32D0A /* UIButton+TCCustomFont.m in Sources */,
+				55302306EF55CB17053B9615 /* UILabel+TCCustomFont.m in Sources */,
+				AECD99929EA994C7E41C0783 /* UINavigationBar+TCCustomFont.m in Sources */,
+				511A9B18071317B6A8BB956B /* UITextField+PlaceholderColor.m in Sources */,
+				8D28D96B4A723FB5E4AA7E85 /* UITextField+TCCustomFont.m in Sources */,
+				005FB13B4690DC06ED47B4C7 /* UITextView+TCCustomFont.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62A350CA507A44DFF421B603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10161961B8FB4E2AB9DE66ED /* Pods-Meemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D69AB4C037A7187E811F05B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7CD5466E569F4CDCDCAC257 /* AsyncButton.swift in Sources */,
+				0744DF1291940D51EA47002B /* AsyncImageView.swift in Sources */,
+				7716633772F0683071BF667A /* AutoTextView.swift in Sources */,
+				B771EC4787C94CEAE307DA76 /* BlurView.swift in Sources */,
+				BAF4D9B1905A3C25A54DABF5 /* DesignableButton.swift in Sources */,
+				E7F4B5149CA194CA817CEA83 /* DesignableImageView.swift in Sources */,
+				954E17080A224370FE777212 /* DesignableLabel.swift in Sources */,
+				FA8D7E1054D7CFAD613EE1FA /* DesignableTabBarController.swift in Sources */,
+				0286E4ABC3AC353CA392C7CD /* DesignableTextField.swift in Sources */,
+				CDA7572743236BA6E887A330 /* DesignableTextView.swift in Sources */,
+				D599949593AC6BF1093FEFD3 /* DesignableView.swift in Sources */,
+				0E1B731BF2276D3047AD8C89 /* ImageLoader.swift in Sources */,
+				4DAB185954E9A55F61E61495 /* KeyboardLayoutConstraint.swift in Sources */,
+				90379FC6F52D897DD070C14A /* LoadingView.swift in Sources */,
+				87B6AB55C2D78BA04A4159DC /* Misc.swift in Sources */,
+				8F5FC69B0A46C0F863617373 /* Pods-Meemo-Spring-dummy.m in Sources */,
+				F69E4EF02E18AF372B3933D4 /* SoundPlayer.swift in Sources */,
+				C5E1987B651080222F9F4D1E /* Spring.swift in Sources */,
+				F2E1F71BCA0544964B050234 /* SpringAnimation.swift in Sources */,
+				359A2FB5305ACE7A4C1A720B /* SpringButton.swift in Sources */,
+				A1AB5DDD91B39F8C7EE523C1 /* SpringImageView.swift in Sources */,
+				DBF137434DC1BC450B3CBF98 /* SpringLabel.swift in Sources */,
+				26A41AD5487405271B784879 /* SpringTextField.swift in Sources */,
+				BF84F76FFAD7D85037473222 /* SpringTextView.swift in Sources */,
+				287213AFED1DC920AE452059 /* SpringView.swift in Sources */,
+				CEB823997036C7A121E48483 /* TransitionManager.swift in Sources */,
+				B96AE2186B76BC859A4B1F41 /* TransitionZoom.swift in Sources */,
+				F6ADB625A3632EEB60D04B17 /* UnwindSegue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B47D33EDD35C8B1D4667E752 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Meemo-Canvas";
+			target = D1D68B1182AB8F4EB03E8ACC /* Pods-Meemo-Canvas */;
+			targetProxy = B920B04F647DE57BE3FFB262 /* PBXContainerItemProxy */;
+		};
+		F5C2CEE1C3B6E6183D47465B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Meemo-Spring";
+			target = 50F3A3ECBD1232A96EF49AEA /* Pods-Meemo-Spring */;
+			targetProxy = B3ECE76DA077806CCF18543F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0000EB6E310EC18E36D645E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59D1F575E7E865116A4D4677 /* Pods-Meemo.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo/Pods-Meemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Meemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0F498FD635E72D806D137648 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D189C4D80AC21C49CFC64C15 /* Pods-Meemo-Spring-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Meemo-Spring/Pods-Meemo-Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo-Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo-Spring/Pods-Meemo-Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		18359D5800CB9EC9EF9B003E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		317CEFF0E376F167BAF207DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		33F48E4F3F9C09353373CB26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCAE121941DBFF8AFE763E8 /* Pods-Meemo.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo/Pods-Meemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Meemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9CFEBDE46E0CE5F1B96D1C8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E29BD28FFDEB6FB359044D /* Pods-Meemo-Canvas-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Meemo-Canvas/Pods-Meemo-Canvas-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo-Canvas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo-Canvas/Pods-Meemo-Canvas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Canvas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D7A3E5E947F1178445CB5085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D189C4D80AC21C49CFC64C15 /* Pods-Meemo-Spring-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Meemo-Spring/Pods-Meemo-Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo-Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo-Spring/Pods-Meemo-Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EE0FCC614D9CDC949A2D2231 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E29BD28FFDEB6FB359044D /* Pods-Meemo-Canvas-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Meemo-Canvas/Pods-Meemo-Canvas-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Meemo-Canvas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Meemo-Canvas/Pods-Meemo-Canvas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Canvas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1979EF2427FC79B1FF21D695 /* Build configuration list for PBXNativeTarget "Pods-Meemo-Spring" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7A3E5E947F1178445CB5085 /* Debug */,
+				0F498FD635E72D806D137648 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44E908F88232C182622F0A84 /* Build configuration list for PBXNativeTarget "Pods-Meemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0000EB6E310EC18E36D645E2 /* Debug */,
+				33F48E4F3F9C09353373CB26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63BB45B9269ECAF669004069 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				317CEFF0E376F167BAF207DE /* Debug */,
+				18359D5800CB9EC9EF9B003E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC964F9D61AC0295A069AB08 /* Build configuration list for PBXNativeTarget "Pods-Meemo-Canvas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0FCC614D9CDC949A2D2231 /* Debug */,
+				9CFEBDE46E0CE5F1B96D1C8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10163C2C2B6E9A2A8C07ECB2 /* Project object */;
+}

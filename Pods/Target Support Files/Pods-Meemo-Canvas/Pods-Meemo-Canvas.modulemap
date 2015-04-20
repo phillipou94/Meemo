@@ -1,0 +1,6 @@
+framework module Canvas {
+  umbrella header "Pods-Meemo-Canvas-umbrella.h"
+
+  export *
+  module * { export * }
+}

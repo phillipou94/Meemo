@@ -1,0 +1,13 @@
+PODS:
+  - Canvas (0.1.2)
+  - Spring (1.0.3)
+
+DEPENDENCIES:
+  - Canvas
+  - Spring (~> 1.0.3)
+
+SPEC CHECKSUMS:
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+
+COCOAPODS: 0.36.4
