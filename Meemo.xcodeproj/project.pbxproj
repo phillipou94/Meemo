@@ -41,6 +41,10 @@
 		4DD9198D1AE6CA4800C9E5DE /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD918A01AE6CA4700C9E5DE /* FBSDKShareKit.framework */; };
 		4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4DD918A11AE6CA4700C9E5DE /* LICENSE */; };
 		4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DD918A21AE6CA4700C9E5DE /* README.txt */; };
+		4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2A1AE6D99000C9E5DE /* UserCredentials.swift */; };
+		4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */; };
+		4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2E1AE6F22C00C9E5DE /* User.swift */; };
+		4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */; };
 		770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64D225448F2C4988480B31 /* Pods_Meemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -97,6 +101,10 @@
 		4DD918A11AE6CA4700C9E5DE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4DD918A21AE6CA4700C9E5DE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4DD91A251AE6CB0200C9E5DE /* Meemo-Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Meemo-Bridge.h"; sourceTree = "<group>"; };
+		4DD91A2A1AE6D99000C9E5DE /* UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRequest.swift; sourceTree = "<group>"; };
+		4DD91A2E1AE6F22C00C9E5DE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		9690D006BA3FE3BD4EBD2D4E /* Pods-Meemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA64D225448F2C4988480B31 /* Pods_Meemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F221653AD77ECF31C456AC93 /* libPods-Meemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,9 +175,11 @@
 			isa = PBXGroup;
 			children = (
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
-				4DB14C481AE6095100804656 /* ServerRequest.swift */,
+				4DD91A311AE6FB8500C9E5DE /* User */,
+				4DD91A301AE6FB7400C9E5DE /* Backend */,
 				4DB14C471AE6064300804656 /* Login & Registration */,
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
+				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
 				4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */,
@@ -244,6 +254,24 @@
 			);
 			name = Bridge;
 			path = Meemo;
+			sourceTree = "<group>";
+		};
+		4DD91A301AE6FB7400C9E5DE /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				4DB14C481AE6095100804656 /* ServerRequest.swift */,
+				4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
+		4DD91A311AE6FB8500C9E5DE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4DD91A2A1AE6D99000C9E5DE /* UserCredentials.swift */,
+				4DD91A2E1AE6F22C00C9E5DE /* User.swift */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		5243BA9495E065A7A2AEF959 /* Pods */ = {
@@ -441,7 +469,11 @@
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
+				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
+				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
+				4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */,
+				4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

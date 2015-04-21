@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -235,6 +235,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="209" y="327"/>
+        </scene>
+        <!--Groups View Controller-->
+        <scene sceneID="4oB-4o-ciP">
+            <objects>
+                <viewController id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rYL-Xl-jSM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZX2-YE-AIE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fre-Za-tsO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfB-jp-Aei">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meemo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOB-vI-gKy">
+                                        <rect key="frame" x="256" y="15" width="88" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="PQ0-JH-lxL"/>
+                                            <constraint firstAttribute="height" constant="21" id="Tce-nk-hIR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ASF-J4-Rg4"/>
+                                    <constraint firstAttribute="centerX" secondItem="eOB-vI-gKy" secondAttribute="centerX" id="UEJ-xs-LxZ"/>
+                                    <constraint firstAttribute="centerY" secondItem="eOB-vI-gKy" secondAttribute="centerY" id="hNi-Mv-q0w"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1J-wI-cnS" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="534" y="530" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="M6n-0M-ZIq"/>
+                                    <constraint firstAttribute="height" constant="50" id="Wkb-R6-Hgl"/>
+                                </constraints>
+                                <state key="normal" image="plus_L">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="6uc-iC-llA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="H1J-wI-cnS" secondAttribute="trailing" constant="16" id="4va-5h-kQR"/>
+                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="H1J-wI-cnS" secondAttribute="bottom" constant="20" id="8a7-pu-HYu"/>
+                            <constraint firstItem="MfB-jp-Aei" firstAttribute="top" secondItem="rYL-Xl-jSM" secondAttribute="bottom" id="Fev-Mn-eEl"/>
+                            <constraint firstItem="MfB-jp-Aei" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="S2V-ds-LvX"/>
+                            <constraint firstAttribute="trailing" secondItem="MfB-jp-Aei" secondAttribute="trailing" id="fzJ-2Y-OS5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fno-Ky-h0u"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="H1J-wI-cnS" id="Kda-zE-0w3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="203" y="994"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="huY-q6-mYr">
@@ -496,6 +570,7 @@
                             <constraint firstItem="eJq-HT-ibi" firstAttribute="top" secondItem="itu-pT-9fy" secondAttribute="top" id="emp-iG-HGu"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="0lW-NT-xFD" id="Yv9-DM-5dF"/>
                         <outlet property="emailTextField" destination="JRa-fp-jMG" id="ADG-Xf-R0G"/>
@@ -518,5 +593,6 @@
         <image name="X-Button@1x" width="52" height="42"/>
         <image name="cafe" width="1271" height="1920"/>
         <image name="city" width="1280" height="851"/>
+        <image name="plus_L" width="77" height="77"/>
     </resources>
 </document>

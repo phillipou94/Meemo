@@ -62,28 +62,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpPressed(sender: AnyObject) {
         if(self.passwordTextField.text != self.confirmPasswordTextField.text) {
-           self.errorMessage.text = "Passwords Do Not Match"
+            animateWarningWithMessage("Passwords Do Not Match")
             
         } else if self.passwordTextField.text.length == 0 || self.nameTextField.text.length == 0 || self.emailTextField.text.length == 0 {
-            self.errorMessage.text = "Not All Fields Have been Filled Out"
+            animateWarningWithMessage("Not All Fields Have Been Filled Out")
         } else if (self.passwordTextField.text.length < 6) {
-            self.errorMessage.text = "Your Password Must Be Atleast 6 Characters Long"
+            animateWarningWithMessage("Password Must Be At Least 6 Characters Long")
         }
         else {
             ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
                 if wasSuccessful {
                     
+    
                 } else {
-                    
+                    self.animateWarningWithMessage("This Email Has Already Been Taken")
                 }
             })
         }
+
         
+    }
+    
+    func animateWarningWithMessage(message:String) {
+        self.errorMessage.text = message
         self.errorBanner.hidden = false
         self.errorBanner.animation = "slideDown"
         self.errorBanner.animate()
-
-        
     }
     
     func dismissKeyboard() {

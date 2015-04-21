@@ -19,29 +19,73 @@ class ServerRequest: NSObject {
         return _sharedInstance
     }
     
-    func post(path:String, parameters: [String:AnyObject]?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
+    // MARK: - Helpers
+    
+    func post(path:String, parameters: [String:AnyObject]?, token:String?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
         
-        Alamofire.request(.POST, baseURLString+path, parameters: parameters)
-            .responseJSON { (request, response, data, error) in
-                let json = JSON(data!)
-                let status = json["status"]
-                if(status == 200) {
-                    success(json: json)
-                    
-                }
-                else {
-                    failure(error: json)
-                    //this is a comment
-                }
+        var manager = Manager.sharedInstance
+        
+        if let api_token = token {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json", "API-TOKEN": api_token]
+
+        } else {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json"]
+        }
+        
+        Alamofire.request(.POST, baseURLString+path, parameters: parameters) .responseJSON { (request, response, data, error) in
+            let json = JSON(data!)
+            let status = json["status"]
+            if(status == 200) {
+                success(json: json)
+            } else {
+                failure(error: json)
+            }
         }
     }
     
+    func get(path:String, parameters: [String:AnyObject]?, token:String?, completion:(json:JSON) -> Void) {
+        
+        var manager = Manager.sharedInstance
+        
+        if let api_token = token {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json", "API-TOKEN": api_token]
+            
+        } else {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json"]
+        }
+        
+        Alamofire.request(.GET, baseURLString+path, parameters: parameters) .responseJSON { (request, response, data, error) in
+            let json = JSON(data!)
+            let status = json["status"]
+            if (status == 200) {
+                completion(json: json)
+            } else {
+                println("Error: \(json)")
+            }
+            
+        }
+    }
+    
+    // MARK: - User Authentication
     
     func loginUser(email:String, password:String, success:(wasSuccessful:Bool) -> Void) {
         let parameter = ["session":["email":email, "password":password]]
         
-        post("login", parameters: parameter, success: { (json) -> Void in
+        post("login", parameters: parameter, token:nil, success: { (json) -> Void in
             println(json)
+            var user = User()
+            user.email = json["response"]["email"].string
+            user.name = json["response"]["name"].string!
+            user.api_token = json["response"]["authentication_token"].string!
+            if let object_id = json["response"]["id"].number {
+                user.object_id = object_id
+                CoreDataRequest.sharedManager.updateUserCredentials(user)
+            }
+            
             success(wasSuccessful:true)
             
         }, failure: { (error) -> Void in
@@ -54,14 +98,38 @@ class ServerRequest: NSObject {
     func signupUser(name:String , email:String, password:String,success:(wasSuccessful:Bool) -> Void) {
         let parameter = ["user":["name":name, "email":email, "password":password]]
         
-        post("login", parameters: parameter, success: { (json) -> Void in
+        post("users", parameters: parameter, token:nil, success: { (json) -> Void in
             println(json)
+            
+            var user = User()
+            user.email = json["response"]["email"].string
+            if let name = json["response"]["name"].string {
+                user.name = name
+            }
+            if let api_token = json["response"]["authentication_token"].string {
+                user.api_token = api_token
+            }
+            if let facebook_id = json["response"]["facebook_id"].string {
+                user.facebook_id = facebook_id
+            }
+            if let object_id = json["response"]["id"].number {
+                user.object_id = object_id
+                CoreDataRequest.sharedManager.updateUserCredentials(user)
+            }
+            
             success(wasSuccessful:true)
             }, failure: { (error) -> Void in
                 println("Error: \(error)")
                 success(wasSuccessful:false)
         })
     
+    }
+    
+    //MARK: - Groups
+    
+    func getGroups() {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        
     }
    
 }

@@ -23,8 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         setUpTextFields()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
-
-        
         // Do any additional setup after loading the view.
     }
 
