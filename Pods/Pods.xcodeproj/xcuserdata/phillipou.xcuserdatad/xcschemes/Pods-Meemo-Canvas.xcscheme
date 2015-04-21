@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1D68B1182AB8F4EB03E8ACC"
+               BlueprintIdentifier = "1128E0F69A032654F1509425"
                BuildableName = "Canvas.framework"
                BlueprintName = "Pods-Meemo-Canvas"
                ReferencedContainer = "container:Pods.xcodeproj">
