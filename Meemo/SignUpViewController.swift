@@ -64,10 +64,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if(self.passwordTextField.text != self.confirmPasswordTextField.text) {
            self.errorMessage.text = "Passwords Do Not Match"
             
+        } else if self.passwordTextField.text.length == 0 || self.nameTextField.text.length == 0 || self.emailTextField.text.length == 0 {
+            self.errorMessage.text = "Not All Fields Have been Filled Out"
         } else if (self.passwordTextField.text.length < 6) {
             self.errorMessage.text = "Your Password Must Be Atleast 6 Characters Long"
         }
-        
         else {
             ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
                 if wasSuccessful {
