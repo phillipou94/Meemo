@@ -42,11 +42,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 
     
     @IBAction func signInPressed(sender: AnyObject) {
-        if(true) {
-            self.errorMessage.hidden = false
-            self.errorMessage.animation = "slideDown"
-            self.errorMessage.animate()
-            ServerRequest.sharedManager.loginUser(self.emailTextField.text, password: self.passwordTextField.text)
+        ServerRequest.sharedManager.loginUser(self.emailTextField.text, password: self.passwordTextField.text) { (wasSuccessful) -> Void in
+            if wasSuccessful {
+                
+            } else {
+                self.errorMessage.hidden = false
+                self.errorMessage.animation = "slideDown"
+                self.errorMessage.animate()
+            }
         }
         
     }

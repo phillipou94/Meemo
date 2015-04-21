@@ -69,8 +69,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         
         else {
-            ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text)
-            return
+            ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
+                if wasSuccessful {
+                    
+                } else {
+                    
+                }
+            })
         }
         
         self.errorBanner.hidden = false

@@ -19,7 +19,7 @@ class ServerRequest: NSObject {
         return _sharedInstance
     }
     
-    func post(path:String, parameters: [String:AnyObject]?, completionHandler:(json:JSON) -> Void) {
+    func post(path:String, parameters: [String:AnyObject]?, success:(json:JSON) -> Void, failure:(error:NSError?) -> Void) {
         
         Alamofire.request(.POST, baseURLString+path, parameters: parameters)
             .responseJSON { (request, response, data, error) in
@@ -27,29 +27,42 @@ class ServerRequest: NSObject {
                     NSLog("Error: \(error)")
                     println(request)
                     println(response)
+                    failure(error: error)
                 }
                 else {
                     let json = JSON(data!)
-                    completionHandler(json: json)
+                    success(json: json)
                     //this is a comment
                 }
         }
     }
     
     
-    func loginUser(email:String, password:String) {
+    func loginUser(email:String, password:String, success:(wasSuccessful:Bool) -> Void) {
         let parameter = ["session":["email":email, "password":password]]
-        post("login", parameters: parameter) { (json) -> Void in
+        
+        post("login", parameters: parameter, success: { (json) -> Void in
             println(json)
-        }
+            success(wasSuccessful:true)
+            
+        }, failure: { (error) -> Void in
+            success(wasSuccessful:false)
+        })
+        
         
     }
     
-    func signupUser(name:String , email:String, password:String) {
+    func signupUser(name:String , email:String, password:String,success:(wasSuccessful:Bool) -> Void) {
         let parameter = ["user":["name":name, "email":email, "password":password]]
-        post("users", parameters: parameter) { (json) -> Void in
+        
+        post("login", parameters: parameter, success: { (json) -> Void in
             println(json)
-        }
+            success(wasSuccessful:true)
+            }, failure: { (error) -> Void in
+                println("Error: \(error)")
+                success(wasSuccessful:false)
+        })
+    
     }
    
 }
