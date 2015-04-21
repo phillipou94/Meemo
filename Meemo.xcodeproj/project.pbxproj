@@ -17,7 +17,6 @@
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64D225448F2C4988480B31 /* Pods_Meemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A372772B24F4F0ABF9757031 /* libPods-Meemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F221653AD77ECF31C456AC93 /* libPods-Meemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +57,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */,
-				A372772B24F4F0ABF9757031 /* libPods-Meemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
