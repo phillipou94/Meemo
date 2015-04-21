@@ -8,6 +8,7 @@
 
 import UIKit
 import Spring
+import Parse
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
 
@@ -22,6 +23,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         setUpTextFields()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
+
+        
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +57,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
     }
    
+    @IBAction func facebookLoginPressed(sender: AnyObject) {
+        
+        let permissions = [ "public_profile", "email" , "user_friends"]
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
+            if let user = user {
+                if user.isNew {
+                    println("User signed up and logged in through Facebook!")
+                } else {
+                    println("User logged in through Facebook!")
+                }
+            } else {
+                println("Uh oh. The user cancelled the Facebook login.")
+            }
+
+        })
+    
+        
+    }
+    
     @IBAction func signUpPressed(sender: AnyObject) {
         
         
