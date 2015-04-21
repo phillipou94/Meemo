@@ -46,6 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.errorMessage.hidden = false
             self.errorMessage.animation = "slideDown"
             self.errorMessage.animate()
+            ServerRequest.sharedManager.loginUser(self.emailTextField.text, password: self.passwordTextField.text)
         }
         
     }

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F5F0CA625EC4A84C497535B"
-               BuildableName = "Spring.framework"
-               BlueprintName = "Pods-Meemo-Spring"
+               BlueprintIdentifier = "116E4DABB1D56045FF72D56C"
+               BuildableName = "SwiftyJSON.framework"
+               BlueprintName = "Pods-Meemo-SwiftyJSON"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

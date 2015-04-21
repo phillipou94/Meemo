@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Meemo-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Meemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,37 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1128E0F69A032654F1509425</key>
+		<key>116E4DABB1D56045FF72D56C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A5FA27BCA86D5D1845A133B</key>
+		<key>1C0F22F26C0338EABD24C089</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92E1C8C1B66B0108BD8BC095</key>
+		<key>6224011E289B5551DB9A1BD5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94878E5D9B2EAB4B978A636D</key>
+		<key>8F5F0CA625EC4A84C497535B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97B00F4B25D2F51B29EC452A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D47FC6A6A50534C1AB48ABCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DFD4577AF31D886B32EA1FD2</key>
+		<key>F5EEBE3C7529BC85AF7B3C0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

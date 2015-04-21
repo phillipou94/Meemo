@@ -2,15 +2,18 @@ PODS:
   - Alamofire (1.2.0)
   - Canvas (0.1.2)
   - Spring (1.0.3)
+  - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 1.2)
   - Canvas
   - Spring (~> 1.0.3)
+  - SwiftyJSON (>= 2.2)
 
 SPEC CHECKSUMS:
   Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
 
 COCOAPODS: 0.36.4

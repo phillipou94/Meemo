@@ -61,11 +61,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
-        if(true) {
-            self.errorBanner.hidden = false
-            self.errorBanner.animation = "slideDown"
-            self.errorBanner.animate()
+        if(self.passwordTextField.text != self.confirmPasswordTextField.text) {
+           self.errorMessage.text = "Passwords Do Not Match"
+            
+        } else if (self.passwordTextField.text.length < 6) {
+            self.errorMessage.text = "Your Password Must Be Atleast 6 Characters Long"
         }
+        
+        else {
+            ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text)
+            return
+        }
+        
+        self.errorBanner.hidden = false
+        self.errorBanner.animation = "slideDown"
+        self.errorBanner.animate()
 
         
     }
