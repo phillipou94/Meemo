@@ -19,19 +19,18 @@ class ServerRequest: NSObject {
         return _sharedInstance
     }
     
-    func post(path:String, parameters: [String:AnyObject]?, success:(json:JSON) -> Void, failure:(error:NSError?) -> Void) {
+    func post(path:String, parameters: [String:AnyObject]?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
         
         Alamofire.request(.POST, baseURLString+path, parameters: parameters)
             .responseJSON { (request, response, data, error) in
-                if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(request)
-                    println(response)
-                    failure(error: error)
+                let json = JSON(data!)
+                let status = json["status"]
+                if(status == 200) {
+                    success(json: json)
+                    
                 }
                 else {
-                    let json = JSON(data!)
-                    success(json: json)
+                    failure(error: json)
                     //this is a comment
                 }
         }
