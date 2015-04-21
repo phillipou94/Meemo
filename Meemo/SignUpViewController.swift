@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  Meemo
 //
 //  Created by Phillip Ou on 4/20/15.
@@ -9,19 +9,22 @@
 import UIKit
 import Spring
 
-class LoginViewController: UIViewController, UITextFieldDelegate{
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var meemoLabel: SpringLabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var errorMessage: SpringView!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var confirmPasswordTextField: UITextField!
+    
+    @IBOutlet var errorBanner: SpringView!
+    @IBOutlet var errorMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTitleLabel()
         setUpTextFields()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
+
         // Do any additional setup after loading the view.
     }
 
@@ -30,54 +33,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func setUpTitleLabel() {
-        var attributedString: NSMutableAttributedString = self.meemoLabel.attributedText as! NSMutableAttributedString
-        let spacing = 9.0
-        
-        attributedString.addAttribute(NSKernAttributeName, value: spacing, range: NSMakeRange(0, attributedString.length))
-        self.meemoLabel.attributedText = attributedString
-
-    }
-    
-
-    
-    @IBAction func signInPressed(sender: AnyObject) {
-        if(true) {
-            self.errorMessage.hidden = false
-            self.errorMessage.animation = "slideDown"
-            self.errorMessage.animate()
-        }
-        
-    }
-   
-    @IBAction func signUpPressed(sender: AnyObject) {
-        
-        
-    }
-    
-    // MARK: - TextField
-    
     func setUpTextFields() {
         let color = UIColor.whiteColor().colorWithAlphaComponent(0.6)
         self.emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName:color])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName:color])
+        self.nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName:color])
+        self.confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName:color])
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        self.nameTextField.delegate = self
+        self.confirmPasswordTextField.delegate = self
         
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.emailTextField {
+        if textField == self.nameTextField {
+            self.emailTextField.becomeFirstResponder()
+        } else if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
+        } else if textField == self.passwordTextField{
+            self.confirmPasswordTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
         return true
     }
     
+    @IBAction func signUpPressed(sender: AnyObject) {
+        if(true) {
+            self.errorBanner.hidden = false
+            self.errorBanner.animation = "slideDown"
+            self.errorBanner.animate()
+        }
+
+        
+    }
+    
     func dismissKeyboard() {
         self.view.endEditing(true)
+    }
+
+    @IBAction func dismissPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 

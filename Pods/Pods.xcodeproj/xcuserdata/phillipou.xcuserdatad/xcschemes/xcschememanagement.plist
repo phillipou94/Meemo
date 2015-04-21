@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Meemo-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Meemo-Canvas.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1128E0F69A032654F1509425</key>
+		<key>92E1C8C1B66B0108BD8BC095</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A5FA27BCA86D5D1845A133B</key>
+		<key>94878E5D9B2EAB4B978A636D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97B00F4B25D2F51B29EC452A</key>
+		<key>D47FC6A6A50534C1AB48ABCF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DFD4577AF31D886B32EA1FD2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -48,10 +48,12 @@ code_sign() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework 'Alamofire.framework'
   install_framework 'Canvas.framework'
   install_framework 'Spring.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework 'Alamofire.framework'
   install_framework 'Canvas.framework'
   install_framework 'Spring.framework'
 fi

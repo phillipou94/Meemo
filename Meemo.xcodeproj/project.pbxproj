@@ -14,7 +14,10 @@
 		4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */; };
 		4D85958F1AE5A1CC008F96E7 /* MeemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */; };
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
+		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
+		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64D225448F2C4988480B31 /* Pods_Meemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A372772B24F4F0ABF9757031 /* libPods-Meemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F221653AD77ECF31C456AC93 /* libPods-Meemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +45,11 @@
 		4D85958D1AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemoTests.swift; sourceTree = "<group>"; };
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
 		9690D006BA3FE3BD4EBD2D4E /* Pods-Meemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA64D225448F2C4988480B31 /* Pods_Meemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F221653AD77ECF31C456AC93 /* libPods-Meemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */,
+				A372772B24F4F0ABF9757031 /* libPods-Meemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
-				4D8595981AE5AB47008F96E7 /* LoginViewController.swift */,
+				4DB14C481AE6095100804656 /* ServerRequest.swift */,
+				4DB14C471AE6064300804656 /* Login & Registration */,
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
@@ -124,6 +132,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4DB14C471AE6064300804656 /* Login & Registration */ = {
+			isa = PBXGroup;
+			children = (
+				4D8595981AE5AB47008F96E7 /* LoginViewController.swift */,
+				4DB14C451AE6002E00804656 /* SignUpViewController.swift */,
+			);
+			name = "Login & Registration";
+			sourceTree = "<group>";
+		};
 		5243BA9495E065A7A2AEF959 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +156,7 @@
 				4D694AE11AE5C42C005BA3D4 /* Bolts.framework */,
 				4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */,
 				AA64D225448F2C4988480B31 /* Pods_Meemo.framework */,
+				F221653AD77ECF31C456AC93 /* libPods-Meemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,6 +314,8 @@
 			files = (
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
+				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
+				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,10 +447,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Meemo/FacebookSDK",
 					"$(PROJECT_DIR)",
-					/Users/phillipou/Documents/FacebookSDK,
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Meemo",
 				);
 				INFOPLIST_FILE = Meemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,10 +465,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Meemo/FacebookSDK",
 					"$(PROJECT_DIR)",
-					/Users/phillipou/Documents/FacebookSDK,
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Meemo",
 				);
 				INFOPLIST_FILE = Meemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
