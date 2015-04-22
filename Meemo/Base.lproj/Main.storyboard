@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -289,14 +289,33 @@
                                     <action selector="addButtonPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="6uc-iC-llA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSc-lZ-ksp" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="275" y="275" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="51Q-kF-GrG"/>
+                                    <constraint firstAttribute="width" constant="50" id="dFk-o8-eWt"/>
+                                </constraints>
+                                <state key="normal" image="plus_L">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H1J-wI-cnS" secondAttribute="trailing" constant="16" id="4va-5h-kQR"/>
                             <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="H1J-wI-cnS" secondAttribute="bottom" constant="20" id="8a7-pu-HYu"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="top" secondItem="rYL-Xl-jSM" secondAttribute="bottom" id="Fev-Mn-eEl"/>
+                            <constraint firstItem="vSc-lZ-ksp" firstAttribute="centerY" secondItem="fre-Za-tsO" secondAttribute="centerY" id="GMI-Ay-wRS"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="S2V-ds-LvX"/>
                             <constraint firstAttribute="trailing" secondItem="MfB-jp-Aei" secondAttribute="trailing" id="fzJ-2Y-OS5"/>
+                            <constraint firstItem="vSc-lZ-ksp" firstAttribute="centerX" secondItem="MfB-jp-Aei" secondAttribute="centerX" id="vUD-iL-XFX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fno-Ky-h0u"/>
@@ -304,6 +323,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="H1J-wI-cnS" id="Kda-zE-0w3"/>
+                        <outlet property="addGroupButton" destination="vSc-lZ-ksp" id="rvJ-No-msM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
