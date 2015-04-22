@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Parse
 import SwiftyJSON
 
 private let _sharedInstance = ServerRequest()
@@ -92,6 +93,10 @@ class ServerRequest: NSObject {
             success(wasSuccessful:false)
         })
         
+        
+    }
+    
+    func signInWithFacebook(user:PFUser) {
         
     }
     

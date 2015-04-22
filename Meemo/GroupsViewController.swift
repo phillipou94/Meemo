@@ -12,7 +12,15 @@ class GroupsViewController: UIViewController {
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
+    
+    @IBOutlet var addGroupButtonContainer: SpringView!
     @IBOutlet var addGroupButton: SpringButton!
+    
+    @IBOutlet var writeMemoryButton: SpringButton!
+    @IBOutlet var writeMemoryContainer: SpringView!
+    
+    @IBOutlet var captureMemoryButton: SpringButton!
+    @IBOutlet var captureMemoryContainer: SpringView!
     
     
     override func viewDidLoad() {
@@ -21,7 +29,7 @@ class GroupsViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
-        let duration = 1.0
+        let duration = 0.6
         var angle = 0.0
         if self.addButton.selected {
             animateOutShadeView()
@@ -58,36 +66,43 @@ class GroupsViewController: UIViewController {
         self.view.addSubview(self.shadeView)
         self.view.bringSubviewToFront(self.addButton)
         
-        UIView.animateWithDuration(1.0, delay: 0, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.6, delay: 0, options: nil, animations: { () -> Void in
             self.shadeView.frame = inframe
         }) { (completed) -> Void in
-            self.animateInButtons()
+            self.animateInButton(self.addGroupButton, container: self.addGroupButtonContainer)
+            self.animateInButton(self.writeMemoryButton, container: self.writeMemoryContainer)
+            self.animateInButton(self.captureMemoryButton, container: self.captureMemoryContainer)
         }
         
         
     }
     
     func animateOutShadeView() {
-        animateOutButtons()
+        self.animateOutButton(self.addGroupButton, container: self.addGroupButtonContainer)
+        self.animateOutButton(self.writeMemoryButton, container: self.writeMemoryContainer)
+        self.animateOutButton(self.captureMemoryButton, container: self.captureMemoryContainer)
         let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
-        UIView.animateWithDuration(1.0, delay: 0, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.6, delay: 0, options: nil, animations: { () -> Void in
              self.shadeView.frame = outframe
         }) { (finished) -> Void in
             self.shadeView.removeFromSuperview()
         }
     }
     
-    func animateInButtons() {
-        self.view.bringSubviewToFront(self.addGroupButton)
-        self.addGroupButton.hidden = false
-        self.addGroupButton.animation = "fadeInLeft"
-        self.addGroupButton.animate()
+    func animateInButton(button:SpringButton, container:SpringView) {
+        container.hidden = false
+        self.view.bringSubviewToFront(container)
+        button.layer.cornerRadius = button.frame.size.width/4
+        container.animation = "fadeInLeft"
+        container.animate()
     }
     
-    func animateOutButtons() {
-        self.addGroupButton.hidden = true
-        self.addGroupButton.animate()
+    func animateOutButton(button:SpringButton, container:SpringView) {
+        container.hidden = true
+        container.animate()
         
     }
+    
+    
 
 }

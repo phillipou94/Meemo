@@ -22,23 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "RpLYK77Zvz4jSpzCpRUGh0jqZ0tdu1imhuDZOmtE")
             
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        
-        if (true) {
-            
-        }
 
         
         return true
     }
     
-    func application(application: UIApplication,
-        openURL url: NSURL,
-        sourceApplication: String?,
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?,
         annotation: AnyObject?) -> Bool {
-            return FBSDKApplicationDelegate.sharedInstance().application(application,
-                openURL: url,
-                sourceApplication: sourceApplication,
-                annotation: annotation)
+            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {
