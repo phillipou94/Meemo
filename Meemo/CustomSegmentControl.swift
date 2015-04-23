@@ -42,8 +42,11 @@ import UIKit
         let newWidth = CGRectGetWidth(selectedFrame) / CGFloat(items.count)
         selectedFrame.size.width = newWidth
         
-       displayNewSelectedIndex()
-       self.thumbView.backgroundColor = UIColor(red: 48/255.0, green: 45/255.0, blue: 64/255.0, alpha: 1.0)
+        var label = labels[selectedIndex]
+        let thumbViewHeight = CGFloat(3)
+        self.thumbView.frame = CGRectMake(label.frame.origin.x, label.frame.size.height - thumbViewHeight,label.frame.size.width,thumbViewHeight)
+        self.thumbView.backgroundColor = UIColor(red: 48/255.0, green: 45/255.0, blue: 64/255.0, alpha: 1.0)
+        
         let labelHeight = self.bounds.height
         let labelWidth = self.bounds.width / CGFloat(labels.count)
         for index in 0..<labels.count {
@@ -51,6 +54,11 @@ import UIKit
             let xPosition = CGFloat(index)*labelWidth
             label.frame = CGRectMake(xPosition,0,labelWidth,labelHeight)
         }
+        
+        layer.borderColor = UIColor.lightGrayColor().CGColor
+        layer.borderWidth = CGFloat(1)
+        
+        
         
     }
     
@@ -99,7 +107,10 @@ import UIKit
     func displayNewSelectedIndex() {
         var label = labels[selectedIndex]
         let thumbViewHeight = CGFloat(3)
-        self.thumbView.frame = CGRectMake(label.frame.origin.x, label.frame.size.height - thumbViewHeight,label.frame.size.width,thumbViewHeight)
+        UIView.animateWithDuration(0.5, delay: 0, options: nil, animations: { () -> Void in
+            self.thumbView.frame = CGRectMake(label.frame.origin.x, label.frame.size.height - thumbViewHeight,label.frame.size.width,thumbViewHeight)
+        }, completion: nil)
+        
     }
     
 }
