@@ -16,6 +16,7 @@
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
+		4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */; };
 		4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */; };
 		4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */; };
 		4DD918761AE6C82B00C9E5DE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD918701AE6C82B00C9E5DE /* Bolts.framework */; };
@@ -77,6 +78,7 @@
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
+		4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupsViewController.swift; sourceTree = "<group>"; };
 		4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeView.swift; sourceTree = "<group>"; };
 		4DD918701AE6C82B00C9E5DE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4DBBC71D1AE94B7200DB03B4 /* Custom Views */,
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
+				4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
 				4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */,
@@ -487,6 +490,7 @@
 				4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */,
 				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
 				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
+				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
 				4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */,
 				4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */,

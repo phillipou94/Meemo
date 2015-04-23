@@ -23,41 +23,17 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
     
     @IBOutlet var segmentControl: CustomSegmentControl!
     
+    //MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
         self.segmentControl.delegate = self
     }
     
-    @IBAction func addButtonPressed(sender: AnyObject) {
-        let duration = 0.6
-        var angle = 0.0
-        if self.addButton.selected {
-            animateOutShadeView()
-            angle = M_PI/2
-            
-        } else {
-             angle = -M_PI/4.0
-            animateInShadeView()
-        }
-        self.addButton.selected = !self.addButton.selected
-        
-        var rotation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotation.toValue = angle
-        rotation.duration = duration
-        self.addButton.layer.addAnimation(rotation, forKey: "rotationAnimation")
-        
-        NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "setRotation", userInfo: nil, repeats: false)
-    }
+
     
-    func setRotation() {
-        if self.addButton.selected {
-            self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI/4))
-        } else {
-            self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(0))
-        }
-        
-    }
+    // MARK: - ShadeView
     
     func animateInShadeView() {
         let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
@@ -90,6 +66,49 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
         }
     }
     
+    //MARK: - Buttons
+    
+    @IBAction func addButtonPressed(sender: AnyObject) {
+        let duration = 0.6
+        var angle = 0.0
+        if self.addButton.selected {
+            animateOutShadeView()
+            angle = M_PI/2
+            
+        } else {
+            angle = -M_PI/4.0
+            animateInShadeView()
+        }
+        self.addButton.selected = !self.addButton.selected
+        
+        var rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = angle
+        rotation.duration = duration
+        self.addButton.layer.addAnimation(rotation, forKey: "rotationAnimation")
+        
+        NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "setRotation", userInfo: nil, repeats: false)
+    }
+    
+    @IBAction func createGroupPressed(sender: AnyObject) {
+        //self.performSegueWithIdentifier("createGroup", sender: self)
+        let vc: CreateGroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreateGroupsViewController") as! CreateGroupsViewController
+        let transition = CATransition()
+        transition.duration = 0.8
+        transition.timingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        self.view.window!.layer.addAnimation(transition, forKey: nil)
+        self.presentViewController(vc, animated: false, completion: nil)
+        
+        
+    }
+    
+    @IBAction func writeMemoryPressed(sender: AnyObject) {
+    }
+
+    @IBAction func captureMemoryPressed(sender: AnyObject) {
+    }
+    
     func animateInButton(button:SpringButton, container:SpringView) {
         container.hidden = false
         self.view.bringSubviewToFront(container)
@@ -101,6 +120,16 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
     func animateOutButton(button:SpringButton, container:SpringView) {
         container.hidden = true
         container.animate()
+        
+    }
+    
+    
+    func setRotation() {
+        if self.addButton.selected {
+            self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI/4))
+        } else {
+            self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(0))
+        }
         
     }
     
