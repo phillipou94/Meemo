@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBAction func signInPressed(sender: AnyObject) {
         ServerRequest.sharedManager.loginUser(self.emailTextField.text, password: self.passwordTextField.text) { (wasSuccessful) -> Void in
             if wasSuccessful {
-                
+                self.launchApplication()
             } else {
                 self.errorMessage.hidden = false
                 self.errorMessage.animation = "slideDown"
@@ -69,6 +69,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         })
     
         
+    }
+    
+    func launchApplication() {
+        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {

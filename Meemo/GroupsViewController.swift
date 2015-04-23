@@ -12,7 +12,6 @@ class GroupsViewController: UIViewController {
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
-    
     @IBOutlet var addGroupButtonContainer: SpringView!
     @IBOutlet var addGroupButton: SpringButton!
     

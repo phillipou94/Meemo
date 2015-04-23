@@ -42,12 +42,12 @@
                                         <color key="highlightedColor" red="0.76664992050979519" green="0.74368196538943565" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="animation" value="fadeIn"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="0.80000000000000004"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
@@ -241,7 +241,7 @@
         <!--Groups View Controller-->
         <scene sceneID="4oB-4o-ciP">
             <objects>
-                <viewController id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupsViewController" id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rYL-Xl-jSM"/>
                         <viewControllerLayoutGuide type="bottom" id="ZX2-YE-AIE"/>
@@ -294,7 +294,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNY-Fh-uzV" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="255" y="200" width="90" height="78"/>
+                                <rect key="frame" x="255" y="144" width="90" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYV-S3-EtJ">
                                         <rect key="frame" x="-7" y="57" width="104" height="21"/>
@@ -336,7 +336,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0i-3f-zAr" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="206" y="291" width="90" height="78"/>
+                                <rect key="frame" x="206" y="235" width="90" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5b-Lt-DCs">
                                         <rect key="frame" x="-7" y="57" width="104" height="21"/>
@@ -378,7 +378,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bar-EZ-T2q" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="304" y="291" width="90" height="78"/>
+                                <rect key="frame" x="304" y="235" width="90" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqB-gI-QQL">
                                         <rect key="frame" x="-7" y="57" width="104" height="21"/>
@@ -419,24 +419,32 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-bn-eFR" customClass="CustomSegmentControl" customModule="Meemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="600" height="35"/>
+                                <color key="backgroundColor" red="0.2666666667" green="0.49803921569999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="S0i-3f-zAr" secondAttribute="centerX" constant="49" id="0XN-hw-WAv"/>
+                            <constraint firstItem="MfB-jp-Aei" firstAttribute="height" secondItem="WGs-bn-eFR" secondAttribute="height" constant="15" id="0lQ-ee-D1y"/>
                             <constraint firstAttribute="width" secondItem="MfB-jp-Aei" secondAttribute="width" id="7P0-me-A7o"/>
                             <constraint firstItem="bar-EZ-T2q" firstAttribute="top" secondItem="aNY-Fh-uzV" secondAttribute="bottom" constant="13" id="BpZ-Rb-gmR"/>
                             <constraint firstItem="H1J-wI-cnS" firstAttribute="trailing" secondItem="fre-Za-tsO" secondAttribute="trailingMargin" id="DUE-Sn-zFz"/>
                             <constraint firstAttribute="centerX" secondItem="MfB-jp-Aei" secondAttribute="centerX" id="E8U-jN-NOx"/>
-                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="aNY-Fh-uzV" secondAttribute="bottom" constant="322" id="F7L-cf-kmv"/>
+                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="aNY-Fh-uzV" secondAttribute="bottom" constant="378" id="F7L-cf-kmv"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="top" secondItem="rYL-Xl-jSM" secondAttribute="bottom" id="Fra-Ft-LPs"/>
-                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="S0i-3f-zAr" secondAttribute="bottom" constant="231" id="L0U-1Y-vEj"/>
+                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="S0i-3f-zAr" secondAttribute="bottom" constant="287" id="L0U-1Y-vEj"/>
+                            <constraint firstItem="WGs-bn-eFR" firstAttribute="top" secondItem="MfB-jp-Aei" secondAttribute="bottom" id="NaM-Ib-x7q"/>
                             <constraint firstAttribute="bottom" secondItem="H1J-wI-cnS" secondAttribute="bottom" constant="20" symbolic="YES" id="WmP-oB-Jwa"/>
                             <constraint firstAttribute="trailing" secondItem="MfB-jp-Aei" secondAttribute="trailing" id="YHE-xv-hk9"/>
                             <constraint firstItem="rqM-1h-24g" firstAttribute="leading" secondItem="ZBy-ol-pOx" secondAttribute="trailing" constant="58" id="ZSU-GL-ujg"/>
                             <constraint firstItem="bar-EZ-T2q" firstAttribute="leading" secondItem="ZBy-ol-pOx" secondAttribute="trailing" constant="23" id="aQV-nV-6lV"/>
                             <constraint firstItem="ZBy-ol-pOx" firstAttribute="top" secondItem="vSc-lZ-ksp" secondAttribute="bottom" constant="31" id="bGf-nn-8Ss"/>
+                            <constraint firstAttribute="width" secondItem="WGs-bn-eFR" secondAttribute="width" id="cEC-Nc-f5n"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="centerX" secondItem="aNY-Fh-uzV" secondAttribute="centerX" id="w3Y-Pz-lBR"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="wMN-Kq-pnA"/>
+                            <constraint firstAttribute="centerX" secondItem="WGs-bn-eFR" secondAttribute="centerX" id="yhT-pO-Yue"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
