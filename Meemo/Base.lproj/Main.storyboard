@@ -461,6 +461,7 @@
                         <outlet property="addGroupButtonContainer" destination="aNY-Fh-uzV" id="Q98-UN-lLb"/>
                         <outlet property="captureMemoryButton" destination="rqM-1h-24g" id="cj0-iC-KfV"/>
                         <outlet property="captureMemoryContainer" destination="bar-EZ-T2q" id="OyQ-pa-N1t"/>
+                        <outlet property="segmentControl" destination="WGs-bn-eFR" id="kRw-iP-ceY"/>
                         <outlet property="writeMemoryButton" destination="ZBy-ol-pOx" id="mJw-3D-fBX"/>
                         <outlet property="writeMemoryContainer" destination="S0i-3f-zAr" id="kSK-YX-p7c"/>
                     </connections>

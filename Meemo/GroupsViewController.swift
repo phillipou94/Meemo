@@ -8,7 +8,7 @@
 
 import Foundation
 import Spring
-class GroupsViewController: UIViewController {
+class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
@@ -21,10 +21,12 @@ class GroupsViewController: UIViewController {
     @IBOutlet var captureMemoryButton: SpringButton!
     @IBOutlet var captureMemoryContainer: SpringView!
     
+    @IBOutlet var segmentControl: CustomSegmentControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
+        self.segmentControl.delegate = self
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
@@ -100,6 +102,12 @@ class GroupsViewController: UIViewController {
         container.hidden = true
         container.animate()
         
+    }
+    
+    //MARK: - SegmentControl Delegate
+    
+    func segmentControlDidChange() {
+       
     }
     
     

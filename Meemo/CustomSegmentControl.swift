@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol CustomSegmentControlDelegate{
+    func segmentControlDidChange()
+}
+
 @IBDesignable class CustomSegmentControl: UIControl {
+    
+    var delegate:CustomSegmentControlDelegate! = nil
     
     private var labels = [UILabel]()
     var thumbView = UIView()
     
+    //didSet is triggered once the property has changed
     var selectedIndex : Int = 0 {
         didSet {
             displayNewSelectedIndex()
@@ -99,6 +106,7 @@ import UIKit
             label.text = items[index]
             label.textAlignment = .Center
             label.textColor = UIColor(red: 48/255.0, green: 45/255.0, blue: 64/255.0, alpha: 1.0)
+            label.font = UIFont(name: "STHeitiSC-Medium", size: 14)
             self.addSubview(label)
             labels.append(label)
         }
@@ -110,6 +118,7 @@ import UIKit
         UIView.animateWithDuration(0.5, delay: 0, options: nil, animations: { () -> Void in
             self.thumbView.frame = CGRectMake(label.frame.origin.x, label.frame.size.height - thumbViewHeight,label.frame.size.width,thumbViewHeight)
         }, completion: nil)
+        self.delegate.segmentControlDidChange()
         
     }
     
