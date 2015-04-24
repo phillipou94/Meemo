@@ -17,6 +17,8 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
     
+     var images:PHFetchResult = PHFetchResult()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -52,17 +54,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    var images:NSMutableArray! // <-- Array to hold the fetched images
-    
     func fetchPhotos () {
-        images = NSMutableArray()
-        self.fetchPhotoAtIndexFromEnd(0)
-    }
-    
-    // Repeatedly call the following method while incrementing
-    // the index until all the photos are fetched
-    func fetchPhotoAtIndexFromEnd(index:Int) {
-        
         let imgManager = PHImageManager.defaultManager()
         
         // Note that if the request is not set to synchronous
@@ -77,17 +69,12 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
         
         if let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
-            let asset = fetchResult.objectAtIndex(1) as! PHAsset
-            loadImageFrom(asset, completionHandler: { (image) -> Void in
-                let a = image
-                
-                let em = 5.0
-           
-            })
+            self.images = fetchResult
             
-
         }
+
     }
+    
     
     func loadImageFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
         let imgManager = PHImageManager.defaultManager()
