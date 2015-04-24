@@ -640,17 +640,45 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OJJ-ZV-dx2">
+                                <rect key="frame" x="0.0" y="289" width="600" height="311"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n8u-A3-hao">
+                                    <size key="itemSize" width="150" height="151"/>
+                                    <size key="headerReferenceSize" width="50" height="23"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="ATp-r5-dI2" customClass="PhotoCell" customModule="Meemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="151"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="STp-OM-rwN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yts-UI-Dm9" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="2ya-Et-OYN"/>
+                            <constraint firstAttribute="bottom" secondItem="OJJ-ZV-dx2" secondAttribute="bottom" id="5Pb-U8-54t"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="width" secondItem="ElI-XB-4Xt" secondAttribute="width" id="A8r-gn-OYh"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="D2h-6a-PwO"/>
                             <constraint firstAttribute="width" secondItem="ElI-XB-4Xt" secondAttribute="width" id="F9K-SB-0DN"/>
                             <constraint firstItem="yts-UI-Dm9" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="GLG-wh-47n"/>
+                            <constraint firstItem="OJJ-ZV-dx2" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="bottom" constant="-2" id="K9p-sf-eBc"/>
+                            <constraint firstItem="OJJ-ZV-dx2" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="O8u-0g-fCp"/>
                             <constraint firstItem="ElI-XB-4Xt" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="R4Y-20-kDs"/>
                             <constraint firstAttribute="trailing" secondItem="yts-UI-Dm9" secondAttribute="trailing" id="STp-bQ-x3s"/>
                             <constraint firstItem="q9W-DL-uKy" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="541" id="c4g-Wh-s6E"/>
+                            <constraint firstAttribute="trailing" secondItem="OJJ-ZV-dx2" secondAttribute="trailing" id="kdy-a2-WcE"/>
                             <constraint firstItem="ElI-XB-4Xt" firstAttribute="top" secondItem="qmb-dq-Ksg" secondAttribute="bottom" id="nQo-vN-rQA"/>
                             <constraint firstItem="q9W-DL-uKy" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="bottom" constant="300" id="pX4-Mb-ulg"/>
                             <constraint firstAttribute="centerX" secondItem="ElI-XB-4Xt" secondAttribute="centerX" id="uBR-VE-bmg"/>
@@ -668,6 +696,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="collectionView" destination="OJJ-ZV-dx2" id="EeU-L2-zru"/>
                         <outlet property="groupNameLabel" destination="i4n-ds-i3c" id="4Au-Sx-23F"/>
                         <outlet property="groupTextField" destination="05e-fj-fRW" id="lqD-f6-8vM"/>
                         <outlet property="headerView" destination="ElI-XB-4Xt" id="fzv-IT-Ape"/>

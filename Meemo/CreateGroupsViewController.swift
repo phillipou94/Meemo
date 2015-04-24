@@ -9,14 +9,16 @@
 import Foundation
 import Spring
 import Photos
+import UIKit
 
-class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
+class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet var headerView: UIView!
     @IBOutlet var groupTextField: UITextField!
     @IBOutlet var photoContainer: SpringView!
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
     
+    @IBOutlet var collectionView: UICollectionView!
      var images:PHFetchResult = PHFetchResult()
     
     override func viewDidLoad() {
@@ -27,6 +29,10 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         
         let shadeView = ShadeView(frame: self.view.frame)
         self.view.insertSubview(shadeView, belowSubview: headerView)
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
         
         setUpTextField()
         fetchPhotos()
@@ -43,6 +49,8 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         self.groupTextField.delegate = self
         
     }
+    
+    //MARK: - Buttons
     @IBAction func checkPressed(sender: AnyObject) {
         
         if (self.groupTextField.text.length > 0) {
@@ -53,6 +61,8 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    //MARK: - ALAssets
     
     func fetchPhotos () {
         let imgManager = PHImageManager.defaultManager()
@@ -87,7 +97,28 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    //MARK:  - CollectionView
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.images.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
+        let asset = self.images[indexPath.row] as! PHAsset
+        loadImageFrom(asset, completionHandler: { (image) -> Void in
+            let thumbnail: UIImage = image as UIImage
+            cell.imageView.image = thumbnail
+        })
+    
+        return cell
+    }
+    
+    
+    //MARK: - Animations
     
 
     
