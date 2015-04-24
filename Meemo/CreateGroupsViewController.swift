@@ -29,17 +29,27 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         let shadeView = ShadeView(frame: self.view.frame)
         self.view.insertSubview(shadeView, belowSubview: headerView)
+
+        setUpCollectionView()
+        setUpTextField()
+        fetchPhotos()
+    }
+
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    func setUpCollectionView() {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        self.collectionView.collectionViewLayout = layout
+        self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,50,50)
         
-        setUpTextField()
-        fetchPhotos()
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
     }
     
     func setUpTextField() {
@@ -76,7 +86,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         // Sort the images by creation date
         var fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: false)]
         
         if let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
             self.images = fetchResult
@@ -91,7 +101,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         var requestOptions = PHImageRequestOptions()
         requestOptions.synchronous = true
         
-        imgManager.requestImageForAsset(asset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
+        imgManager.requestImageForAsset(asset, targetSize: CGSizeMake(200,200), contentMode: PHImageContentMode.AspectFit, options: requestOptions, resultHandler: { (image, _) in
             
             completionHandler(image:image)
         })
@@ -104,6 +114,18 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            let width = self.view.frame.size.width/3 - 8
+            return CGSize(width: width, height: width)
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return UIEdgeInsetsMake(0,0,0,0)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
