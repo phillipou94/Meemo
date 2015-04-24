@@ -609,17 +609,17 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yts-UI-Dm9" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="0.0" y="49" width="600" height="242"/>
+                                <rect key="frame" x="0.0" y="49" width="600" height="267"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-c7-GGF">
-                                        <rect key="frame" x="203" y="8" width="195" height="195"/>
+                                        <rect key="frame" x="203" y="22" width="195" height="195"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="195" id="iWk-kl-GHz"/>
                                             <constraint firstAttribute="width" constant="195" id="xWM-B3-a9K"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4n-ds-i3c">
-                                        <rect key="frame" x="167" y="211" width="266" height="21"/>
+                                        <rect key="frame" x="167" y="225" width="266" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="266" id="lgm-tR-fGv"/>
                                             <constraint firstAttribute="height" constant="21" id="tzC-22-ZFL"/>
@@ -633,16 +633,16 @@
                                 <constraints>
                                     <constraint firstItem="bUk-c7-GGF" firstAttribute="centerX" secondItem="yts-UI-Dm9" secondAttribute="centerX" id="Ngg-UP-Jte"/>
                                     <constraint firstItem="i4n-ds-i3c" firstAttribute="top" secondItem="bUk-c7-GGF" secondAttribute="bottom" constant="8" symbolic="YES" id="UA2-cN-Xev"/>
-                                    <constraint firstAttribute="bottom" secondItem="i4n-ds-i3c" secondAttribute="bottom" constant="10" id="Y3T-kv-eWV"/>
+                                    <constraint firstAttribute="bottom" secondItem="i4n-ds-i3c" secondAttribute="bottom" constant="21" id="Y3T-kv-eWV"/>
                                     <constraint firstItem="bUk-c7-GGF" firstAttribute="centerX" secondItem="i4n-ds-i3c" secondAttribute="centerX" id="pZc-X7-Z6X"/>
-                                    <constraint firstItem="bUk-c7-GGF" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="topMargin" id="rve-la-i1U"/>
+                                    <constraint firstItem="bUk-c7-GGF" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="topMargin" constant="14" id="rve-la-i1U"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OJJ-ZV-dx2">
-                                <rect key="frame" x="0.0" y="289" width="600" height="311"/>
+                                <rect key="frame" x="0.0" y="317" width="600" height="311"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="311" id="nYr-n7-bpi"/>
                                 </constraints>
@@ -672,7 +672,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yts-UI-Dm9" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="2ya-Et-OYN"/>
-                            <constraint firstAttribute="bottom" secondItem="OJJ-ZV-dx2" secondAttribute="bottom" id="5Pb-U8-54t"/>
+                            <constraint firstAttribute="bottom" secondItem="OJJ-ZV-dx2" secondAttribute="bottom" constant="-28" id="5Pb-U8-54t"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="width" secondItem="ElI-XB-4Xt" secondAttribute="width" id="A8r-gn-OYh"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="D2h-6a-PwO"/>
                             <constraint firstItem="yts-UI-Dm9" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="GLG-wh-47n"/>

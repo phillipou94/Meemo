@@ -24,6 +24,8 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     var topState:CGFloat = CGFloat()
     var currentState:CGFloat = CGFloat()
     
+    var selectedIndex:Int = -1
+    
     
     @IBOutlet var collectionView: UICollectionView!
     var initialX:CGFloat? = 0.0
@@ -137,14 +139,24 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
         if (indexPath.row == 0) {
             let camera = UIImage(named: "camera_L")
-            cell.imageView.contentMode = .Center
+            cell.imageView.hidden = true
+            cell.accessoryView.image = camera
+            cell.accessoryView.hidden = false
             cell.imageView.backgroundColor = UIColor.redColor()
-        } else {
+        } else{
             let asset = self.images[indexPath.row-1] as! PHAsset
             loadImageFrom(asset, completionHandler: { (image) -> Void in
                 let thumbnail: UIImage = image as UIImage
                 cell.imageView.image = thumbnail
+                cell.imageView.hidden = false
             })
+            let checkmark = UIImage(named:"Checkmark")
+            cell.accessoryView.image = checkmark
+            if indexPath.row != selectedIndex {
+                cell.accessoryView.hidden = true
+            } else {
+                cell.accessoryView.hidden = false
+            }
         }
 
     
@@ -153,8 +165,16 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row != 0 {
+            selectedIndex = indexPath.row
             let cell:PhotoCell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCell
             self.groupImageView.image = cell.imageView.image
+            let checkmark = UIImage(named:"Checkmark")
+            cell.accessoryView.image = checkmark
+            cell.accessoryView.hidden = false
+            cell.imageView.backgroundColor = UIColor.blackColor()
+            cell.imageView.hidden = false
+            self.collectionView.reloadData()
+
         }
         
         
@@ -228,7 +248,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             self.collectionView.frame = CGRectMake(0,state,self.view.frame.size.width, self.view.frame.size.height)
         }) { (completed) -> Void in
             if (self.shadeView.superview != nil) {
-                self.view.backgroundColor = UIColor(red: 165/255.0, green: 47/255.0, blue: 64/255.0, alpha: 1.0)
+                self.view.backgroundColor = self.photoContainer.backgroundColor
                 self.shadeView.removeFromSuperview()
 
             }
