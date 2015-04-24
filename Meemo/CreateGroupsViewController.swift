@@ -40,17 +40,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         return true
     }
     
-    func setUpCollectionView() {
-        
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        self.collectionView.collectionViewLayout = layout
-        self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,50,50)
-        
-    }
+
     
     func setUpTextField() {
         let color = UIColor.whiteColor().colorWithAlphaComponent(0.6)
@@ -68,6 +58,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             self.groupTextField.text = "Choose a Photo"
             self.groupTextField.userInteractionEnabled = false
             animatePhotoContainerTransition()
+            animateCollectionView()
         }
         
     }
@@ -108,33 +99,67 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     }
     
     //MARK:  - CollectionView
+    func setUpCollectionView() {
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 25); //create header in layout
+        self.collectionView.collectionViewLayout = layout
+        self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(true)
+        self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
+        self.collectionView.alwaysBounceVertical = true
+        
+        self.view.addSubview(self.collectionView)
+        
+    }
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count
+        return self.images.count+1;
     }
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let width = self.view.frame.size.width/3 - 8
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            let width = self.view.frame.size.width/3 - 12
             return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            
+            var header: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! UICollectionReusableView
+            header.backgroundColor = UIColor.grayColor()
+            return header as UICollectionReusableView
+            
+        }
+        return UICollectionReusableView()
     }
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return UIEdgeInsetsMake(0,0,0,0)
+            return UIEdgeInsetsMake(6, 6, 3, 3)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
-        let asset = self.images[indexPath.row] as! PHAsset
-        loadImageFrom(asset, completionHandler: { (image) -> Void in
-            let thumbnail: UIImage = image as UIImage
-            cell.imageView.image = thumbnail
-        })
+        if (indexPath.row == 0) {
+            let camera = UIImage(named: "camera_L")
+            cell.imageView.contentMode = .Center
+            cell.imageView.backgroundColor = UIColor.redColor()
+        } else {
+            let asset = self.images[indexPath.row-1] as! PHAsset
+            loadImageFrom(asset, completionHandler: { (image) -> Void in
+                let thumbnail: UIImage = image as UIImage
+                cell.imageView.image = thumbnail
+            })
+        }
+
     
         return cell
     }
@@ -142,7 +167,13 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     //MARK: - Animations
     
+    func animateCollectionView() {
+        UIView.animateWithDuration(0.6, delay: 0.4, options: nil, animations: { () -> Void in
+            self.collectionView.frame = CGRectMake(0,self.view.frame.size.height/2,self.view.frame.size.width, self.view.frame.size.height*0.75)
+            }, completion: nil)
+        
 
+    }
     
     func animatePhotoContainerTransition() {
         self.messageView.animation = "slideRight"
