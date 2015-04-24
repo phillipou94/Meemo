@@ -502,12 +502,14 @@
                                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLl-jA-9O2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLl-jA-9O2" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="8" y="12" width="30" height="30"/>
+                                        <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="9E3-NV-ZAR"/>
                                             <constraint firstAttribute="width" constant="30" id="FVH-6o-RWy"/>
                                         </constraints>
+                                        <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
                                         <state key="normal" image="X-Button@1x">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -515,9 +517,24 @@
                                             <segue destination="arq-Oe-0C9" kind="unwind" unwindAction="unwindToViewController:" id="yWF-Kc-6z2"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dxu-s4-poK" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="562" y="10" width="30" height="30"/>
+                                        <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="3Gg-Ui-JJE"/>
+                                            <constraint firstAttribute="height" constant="30" id="OIX-LP-QC8"/>
+                                            <constraint firstAttribute="width" constant="30" id="SEJ-vR-87X"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ibj-gJ-PHa"/>
+                                        </constraints>
+                                        <state key="normal" image="Checkmark"/>
+                                        <connections>
+                                            <action selector="checkPressed:" destination="ipb-df-dus" eventType="touchUpInside" id="nMq-8Y-vqX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79215686269999996" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Dxu-s4-poK" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="top" constant="10" id="5T8-rX-5Id"/>
                                     <constraint firstAttribute="height" constant="50" id="6b5-Rx-CcB"/>
                                     <constraint firstAttribute="centerX" secondItem="05e-fj-fRW" secondAttribute="centerX" constant="17" id="CFm-ih-K4F"/>
                                     <constraint firstAttribute="centerX" secondItem="05e-fj-fRW" secondAttribute="centerX" id="I5f-nr-k7n"/>
@@ -529,7 +546,9 @@
                                     <constraint firstAttribute="trailing" secondItem="05e-fj-fRW" secondAttribute="trailing" constant="96" id="jpc-yc-1GB"/>
                                     <constraint firstItem="mLl-jA-9O2" firstAttribute="leading" secondItem="ElI-XB-4Xt" secondAttribute="leading" constant="8" id="kcs-4r-AVh"/>
                                     <constraint firstItem="mLl-jA-9O2" firstAttribute="leading" secondItem="ElI-XB-4Xt" secondAttribute="leadingMargin" id="kfb-ga-yYi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dxu-s4-poK" secondAttribute="trailing" constant="8" id="opR-t1-dMQ"/>
                                     <constraint firstItem="05e-fj-fRW" firstAttribute="leading" secondItem="mLl-jA-9O2" secondAttribute="trailing" constant="19" id="ot5-FW-UXm"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dxu-s4-poK" secondAttribute="bottom" constant="10" id="wFc-NF-G5k"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -541,7 +560,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-01-Wia">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-01-Wia" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="0.0" y="49" width="600" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give it a proper name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u37-2Z-Dd0">
@@ -588,15 +607,52 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yts-UI-Dm9" customClass="SpringView" customModule="Spring">
+                                <rect key="frame" x="0.0" y="49" width="600" height="242"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-c7-GGF">
+                                        <rect key="frame" x="203" y="8" width="195" height="195"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="195" id="iWk-kl-GHz"/>
+                                            <constraint firstAttribute="width" constant="195" id="xWM-B3-a9K"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4n-ds-i3c">
+                                        <rect key="frame" x="167" y="211" width="266" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="266" id="lgm-tR-fGv"/>
+                                            <constraint firstAttribute="height" constant="21" id="tzC-22-ZFL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.64705882349999999" green="0.1843137255" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bUk-c7-GGF" firstAttribute="centerX" secondItem="yts-UI-Dm9" secondAttribute="centerX" id="Ngg-UP-Jte"/>
+                                    <constraint firstItem="i4n-ds-i3c" firstAttribute="top" secondItem="bUk-c7-GGF" secondAttribute="bottom" constant="8" symbolic="YES" id="UA2-cN-Xev"/>
+                                    <constraint firstAttribute="bottom" secondItem="i4n-ds-i3c" secondAttribute="bottom" constant="10" id="Y3T-kv-eWV"/>
+                                    <constraint firstItem="bUk-c7-GGF" firstAttribute="centerX" secondItem="i4n-ds-i3c" secondAttribute="centerX" id="pZc-X7-Z6X"/>
+                                    <constraint firstItem="bUk-c7-GGF" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="topMargin" id="rve-la-i1U"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yts-UI-Dm9" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="2ya-Et-OYN"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="width" secondItem="ElI-XB-4Xt" secondAttribute="width" id="A8r-gn-OYh"/>
                             <constraint firstItem="1TR-01-Wia" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="D2h-6a-PwO"/>
                             <constraint firstAttribute="width" secondItem="ElI-XB-4Xt" secondAttribute="width" id="F9K-SB-0DN"/>
+                            <constraint firstItem="yts-UI-Dm9" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="-1" id="GLG-wh-47n"/>
                             <constraint firstItem="ElI-XB-4Xt" firstAttribute="leading" secondItem="bgJ-yy-HKu" secondAttribute="leading" id="R4Y-20-kDs"/>
+                            <constraint firstAttribute="trailing" secondItem="yts-UI-Dm9" secondAttribute="trailing" id="STp-bQ-x3s"/>
                             <constraint firstItem="q9W-DL-uKy" firstAttribute="top" secondItem="ElI-XB-4Xt" secondAttribute="bottom" constant="541" id="c4g-Wh-s6E"/>
                             <constraint firstItem="ElI-XB-4Xt" firstAttribute="top" secondItem="qmb-dq-Ksg" secondAttribute="bottom" id="nQo-vN-rQA"/>
+                            <constraint firstItem="q9W-DL-uKy" firstAttribute="top" secondItem="yts-UI-Dm9" secondAttribute="bottom" constant="300" id="pX4-Mb-ulg"/>
                             <constraint firstAttribute="centerX" secondItem="ElI-XB-4Xt" secondAttribute="centerX" id="uBR-VE-bmg"/>
                             <constraint firstAttribute="centerX" secondItem="1TR-01-Wia" secondAttribute="centerX" id="w1e-7v-QDa"/>
                         </constraints>
@@ -604,6 +660,7 @@
                             <mask key="constraints">
                                 <exclude reference="F9K-SB-0DN"/>
                                 <exclude reference="c4g-Wh-s6E"/>
+                                <exclude reference="pX4-Mb-ulg"/>
                             </mask>
                         </variation>
                     </view>
@@ -611,8 +668,11 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="groupNameLabel" destination="i4n-ds-i3c" id="4Au-Sx-23F"/>
                         <outlet property="groupTextField" destination="05e-fj-fRW" id="lqD-f6-8vM"/>
                         <outlet property="headerView" destination="ElI-XB-4Xt" id="fzv-IT-Ape"/>
+                        <outlet property="messageView" destination="1TR-01-Wia" id="cS2-c7-4pl"/>
+                        <outlet property="photoContainer" destination="yts-UI-Dm9" id="eVy-bg-Rk1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL4-Y4-l0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -896,6 +956,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Checkmark" width="54" height="64"/>
         <image name="Lock" width="20" height="32"/>
         <image name="Mail" width="32" height="24"/>
         <image name="Person" width="30" height="46"/>
