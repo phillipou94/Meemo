@@ -19,6 +19,9 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var messageView: SpringView!
     
     @IBOutlet var collectionView: UICollectionView!
+    var initialX:CGFloat? = 0.0
+    var initialY:CGFloat? = 0.0
+    
      var images:PHFetchResult = PHFetchResult()
     
     override func viewDidLoad() {
@@ -63,40 +66,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
     }
     
-    //MARK: - ALAssets
-    
-    func fetchPhotos () {
-        let imgManager = PHImageManager.defaultManager()
-        
-        // Note that if the request is not set to synchronous
-        // the requestImageForAsset will return both the image
-        // and thumbnail; by setting synchronous to true it
-        // will return just the thumbnail
-        var requestOptions = PHImageRequestOptions()
-        requestOptions.synchronous = true
-        
-        // Sort the images by creation date
-        var fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: false)]
-        
-        if let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
-            self.images = fetchResult
-            
-        }
-
-    }
-    
-    
-    func loadImageFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
-        let imgManager = PHImageManager.defaultManager()
-        var requestOptions = PHImageRequestOptions()
-        requestOptions.synchronous = true
-        
-        imgManager.requestImageForAsset(asset, targetSize: CGSizeMake(200,200), contentMode: PHImageContentMode.AspectFit, options: requestOptions, resultHandler: { (image, _) in
-            
-            completionHandler(image:image)
-        })
-    }
     
     //MARK:  - CollectionView
     func setUpCollectionView() {
@@ -111,6 +80,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(true)
         self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
         self.collectionView.alwaysBounceVertical = true
+    
         
         self.view.addSubview(self.collectionView)
         
@@ -135,6 +105,9 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             
             var header: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! UICollectionReusableView
             header.backgroundColor = UIColor.grayColor()
+            
+            let pan = UIPanGestureRecognizer(target: self, action: "draggedCollectionView:")
+            header.addGestureRecognizer(pan)
             return header as UICollectionReusableView
             
         }
@@ -162,6 +135,50 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
 
     
         return cell
+    }
+    
+    func draggedCollectionView(recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translationInView(self.view)
+        if let view = self.collectionView {
+            view.center = CGPoint(x:view.center.x,
+                y:view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPointZero, inView: self.view)
+    }
+    
+    //MARK: - ALAssets
+    
+    func fetchPhotos () {
+        let imgManager = PHImageManager.defaultManager()
+        
+        // Note that if the request is not set to synchronous
+        // the requestImageForAsset will return both the image
+        // and thumbnail; by setting synchronous to true it
+        // will return just the thumbnail
+        var requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        
+        // Sort the images by creation date
+        var fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: false)]
+        
+        if let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
+            self.images = fetchResult
+            
+        }
+        
+    }
+    
+    
+    func loadImageFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
+        let imgManager = PHImageManager.defaultManager()
+        var requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        
+        imgManager.requestImageForAsset(asset, targetSize: CGSizeMake(200,200), contentMode: PHImageContentMode.AspectFit, options: requestOptions, resultHandler: { (image, _) in
+            
+            completionHandler(image:image)
+        })
     }
     
     

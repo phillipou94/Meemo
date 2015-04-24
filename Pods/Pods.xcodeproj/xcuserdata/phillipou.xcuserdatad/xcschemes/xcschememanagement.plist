@@ -8,61 +8,51 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-Meemo-Canvas.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-Meemo-Spring.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-Meemo-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-Meemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1934D46590F9F33FC8991B91</key>
+		<key>131C710863ECD87987FD8076</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>335A672252BD46E33A004FC8</key>
+		<key>3E53E1C206F3A495464B23C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81B487211AB011EC3492B0A1</key>
+		<key>62F330D72EE283A6281EEE6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85926BF482BE24095E9000B3</key>
+		<key>8EA1D55D9E7E1D25C9A2AA56</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEE9416343905903627F4973</key>
+		<key>BACDF2AD4E79B7EC41E6D608</key>
 		<dict>
 			<key>primary</key>
 			<true/>
