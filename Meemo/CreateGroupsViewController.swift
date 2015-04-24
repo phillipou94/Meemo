@@ -15,8 +15,15 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var headerView: UIView!
     @IBOutlet var groupTextField: UITextField!
     @IBOutlet var photoContainer: SpringView!
+    @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
+    var shadeView:ShadeView = ShadeView()
+    var bottomState:CGFloat = CGFloat()
+    var middleState:CGFloat = CGFloat()
+    var topState:CGFloat = CGFloat()
+    var currentState:CGFloat = CGFloat()
+    
     
     @IBOutlet var collectionView: UICollectionView!
     var initialX:CGFloat? = 0.0
@@ -30,12 +37,13 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
         
-        let shadeView = ShadeView(frame: self.view.frame)
-        self.view.insertSubview(shadeView, belowSubview: headerView)
+        self.shadeView = ShadeView(frame: self.view.frame)
+        self.view.insertSubview(self.shadeView, belowSubview: headerView)
 
         setUpCollectionView()
         setUpTextField()
         fetchPhotos()
+
     }
 
     
@@ -61,7 +69,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             self.groupTextField.text = "Choose a Photo"
             self.groupTextField.userInteractionEnabled = false
             animatePhotoContainerTransition()
-            animateCollectionView()
+            animateCollectionView(middleState,delay:0.2)
         }
         
     }
@@ -80,9 +88,15 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(true)
         self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
         self.collectionView.alwaysBounceVertical = true
-    
         
         self.view.addSubview(self.collectionView)
+        self.view.bringSubviewToFront(self.collectionView)
+        
+        
+        bottomState = self.view.frame.height - 10
+        topState = self.headerView.frame.height
+        middleState = CGRectGetMaxY(self.photoContainer.frame)
+        currentState = middleState
         
     }
     
@@ -137,6 +151,15 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row != 0 {
+            let cell:PhotoCell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCell
+            self.groupImageView.image = cell.imageView.image
+        }
+        
+        
+    }
+    
     func draggedCollectionView(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
         if let view = self.collectionView {
@@ -144,6 +167,17 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
                 y:view.center.y + translation.y)
         }
         recognizer.setTranslation(CGPointZero, inView: self.view)
+        
+        if recognizer.state == UIGestureRecognizerState.Ended {
+            let closestPosition = roundToNearestState(self.collectionView.frame.origin.y)
+            animateCollectionView(closestPosition, delay: 0.0)
+        }
+        
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        println(scrollView.decelerationRate)
+        //animateCollectionView(topState, delay: 0)
     }
     
     //MARK: - ALAssets
@@ -175,19 +209,31 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         var requestOptions = PHImageRequestOptions()
         requestOptions.synchronous = true
         
-        imgManager.requestImageForAsset(asset, targetSize: CGSizeMake(200,200), contentMode: PHImageContentMode.AspectFit, options: requestOptions, resultHandler: { (image, _) in
+        imgManager.requestImageForAsset(asset,
+            targetSize: CGSizeMake(200,200),
+            contentMode: PHImageContentMode.AspectFit,
+            options: requestOptions,
+            resultHandler: { (image, _) in
             
-            completionHandler(image:image)
+                completionHandler(image:image)
         })
     }
     
     
     //MARK: - Animations
     
-    func animateCollectionView() {
-        UIView.animateWithDuration(0.6, delay: 0.4, options: nil, animations: { () -> Void in
-            self.collectionView.frame = CGRectMake(0,self.view.frame.size.height/2,self.view.frame.size.width, self.view.frame.size.height*0.75)
-            }, completion: nil)
+    func animateCollectionView(state:CGFloat, delay: NSTimeInterval) {
+        
+        UIView.animateWithDuration(0.6, delay: delay, options: nil, animations: { () -> Void in
+            self.collectionView.frame = CGRectMake(0,state,self.view.frame.size.width, self.view.frame.size.height)
+        }) { (completed) -> Void in
+            if (self.shadeView.superview != nil) {
+                self.view.backgroundColor = UIColor(red: 165/255.0, green: 47/255.0, blue: 64/255.0, alpha: 1.0)
+                self.shadeView.removeFromSuperview()
+
+            }
+            
+        }
         
 
     }
@@ -201,6 +247,11 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.photoContainer.animation = "slideLeft"
         self.photoContainer.animate()
         
+    }
+    
+    func roundToNearestState(y:CGFloat) -> CGFloat {
+        
+        return currentState
     }
 
 
