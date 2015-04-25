@@ -26,6 +26,9 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     var selectedIndex:Int = -1
     
+    var lastOffset = CGPoint()
+    var lastOffsetCapture = NSTimeInterval()
+    var isScrollingFast = false
     
     @IBOutlet var collectionView: UICollectionView!
     var initialX:CGFloat? = 0.0
@@ -85,7 +88,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 25); //create header in layout
+        layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 40); //create header in layout
         self.collectionView.collectionViewLayout = layout
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(true)
         self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
@@ -95,7 +98,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.view.bringSubviewToFront(self.collectionView)
         
         
-        bottomState = self.view.frame.height - 25
+        bottomState = self.view.frame.height - 40
         topState = self.headerView.frame.height
         middleState = CGRectGetMaxY(self.photoContainer.frame)
         currentState = middleState
@@ -111,17 +114,18 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let width = self.view.frame.size.width/3 - 12
+            let width = self.view.frame.size.width/4 - 8
             return CGSize(width: width, height: width)
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    
+        var headerVisible = false
         
         if (kind == UICollectionElementKindSectionHeader) {
             
             var header: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! UICollectionReusableView
             header.backgroundColor = UIColor.grayColor()
-            
             let pan = UIPanGestureRecognizer(target: self, action: "draggedCollectionView:")
             header.addGestureRecognizer(pan)
             return header as UICollectionReusableView
@@ -132,7 +136,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return UIEdgeInsetsMake(6, 6, 3, 3)
+            return UIEdgeInsetsMake(1, 1, 1, 1)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -196,8 +200,21 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println(scrollView.decelerationRate)
-        //animateCollectionView(topState, delay: 0)
+        
+        var currentOffset = scrollView.contentOffset
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var timeDiff = currentTime - lastOffsetCapture
+        if timeDiff > 0.1 {
+            let scrollSpeed = currentOffset.y - lastOffset.y
+            if scrollSpeed > 5.0 {
+                animateCollectionView(topState, delay: 0)
+            }
+            println("\(scrollSpeed)")
+        }
+        
+        lastOffset = currentOffset
+        lastOffsetCapture = currentTime
+
     }
     
     //MARK: - ALAssets
@@ -271,29 +288,15 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     func roundToNearestState(y:CGFloat) -> CGFloat {
         
-                
-        if currentState == bottomState {
-            if y < middleState {
-                currentState = topState
-            } else {
-                currentState = middleState
-            }
-        } else if currentState == topState {
-            if y > middleState {
-                currentState = bottomState
-            } else {
-                currentState = middleState
-            }
+        if y > self.view.frame.size.height*0.6 {
+            currentState = bottomState
+        } else if y < self.view.frame.size.height*0.25 {
+            currentState = topState
         } else {
-            if y < middleState {
-                currentState = topState
-            } else {
-                currentState = bottomState
-            }
+            currentState = middleState
         }
-        println("\(currentState), \(y)")
+        
         return currentState
     }
-
 
 }
