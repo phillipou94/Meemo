@@ -95,7 +95,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.view.bringSubviewToFront(self.collectionView)
         
         
-        bottomState = self.view.frame.height - 10
+        bottomState = self.view.frame.height - 25
         topState = self.headerView.frame.height
         middleState = CGRectGetMaxY(self.photoContainer.frame)
         currentState = middleState
@@ -271,6 +271,27 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     func roundToNearestState(y:CGFloat) -> CGFloat {
         
+                
+        if currentState == bottomState {
+            if y < middleState {
+                currentState = topState
+            } else {
+                currentState = middleState
+            }
+        } else if currentState == topState {
+            if y > middleState {
+                currentState = bottomState
+            } else {
+                currentState = middleState
+            }
+        } else {
+            if y < middleState {
+                currentState = topState
+            } else {
+                currentState = bottomState
+            }
+        }
+        println("\(currentState), \(y)")
         return currentState
     }
 
