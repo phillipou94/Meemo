@@ -19,6 +19,10 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
     var shadeView:ShadeView = ShadeView()
+    
+    @IBOutlet var collectionViewContainer: UIView!
+    
+    
     var bottomState:CGFloat = CGFloat()
     var middleState:CGFloat = CGFloat()
     var topState:CGFloat = CGFloat()
@@ -88,18 +92,22 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 40); //create header in layout
         self.collectionView.collectionViewLayout = layout
-        self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(true)
-        self.collectionView.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
+        self.collectionViewContainer.setTranslatesAutoresizingMaskIntoConstraints(true)
+        
+        self.collectionViewContainer.frame = CGRectMake(0,self.view.frame.size.height+self.collectionView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height)
+        self.collectionViewContainer.addSubview(self.collectionView)
+        self.collectionView.frame = CGRectMake(0, 40, self.collectionView.frame.size.width, self.collectionView.frame.size.height - 40)
+        self.collectionViewContainer.addSubview(self.collectionView)
+        let pan = UIPanGestureRecognizer(target: self, action: "draggedCollectionView:")
+        self.collectionViewContainer.addGestureRecognizer(pan)
         self.collectionView.alwaysBounceVertical = true
         
-        self.view.addSubview(self.collectionView)
-        self.view.bringSubviewToFront(self.collectionView)
-        
+        self.view.addSubview(self.collectionViewContainer)
+        self.collectionViewContainer.bringSubviewToFront(self.collectionView)
         
         bottomState = self.view.frame.height - 40
-        topState = self.headerView.frame.height
+        topState = self.headerView.frame.height + 50
         middleState = CGRectGetMaxY(self.photoContainer.frame)
         currentState = middleState
         
@@ -116,22 +124,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             let width = self.view.frame.size.width/4 - 8
             return CGSize(width: width, height: width)
-    }
-    
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    
-        var headerVisible = false
-        
-        if (kind == UICollectionElementKindSectionHeader) {
-            
-            var header: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! UICollectionReusableView
-            header.backgroundColor = UIColor.grayColor()
-            let pan = UIPanGestureRecognizer(target: self, action: "draggedCollectionView:")
-            header.addGestureRecognizer(pan)
-            return header as UICollectionReusableView
-            
-        }
-        return UICollectionReusableView()
     }
     
     
@@ -186,14 +178,14 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     
     func draggedCollectionView(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
-        if let view = self.collectionView {
+        if let view = self.collectionViewContainer {
             view.center = CGPoint(x:view.center.x,
                 y:view.center.y + translation.y)
         }
         recognizer.setTranslation(CGPointZero, inView: self.view)
         
         if recognizer.state == UIGestureRecognizerState.Ended {
-            let closestPosition = roundToNearestState(self.collectionView.frame.origin.y)
+            let closestPosition = roundToNearestState(self.collectionViewContainer.frame.origin.y)
             animateCollectionView(closestPosition, delay: 0.0)
         }
         
@@ -262,9 +254,10 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func animateCollectionView(state:CGFloat, delay: NSTimeInterval) {
         
         UIView.animateWithDuration(0.6, delay: delay, options: nil, animations: { () -> Void in
-            self.collectionView.frame = CGRectMake(0,state,self.view.frame.size.width, self.view.frame.size.height)
+            self.collectionViewContainer.frame = CGRectMake(0,state,self.view.frame.size.width, self.view.frame.size.height)
         }) { (completed) -> Void in
             if (self.shadeView.superview != nil) {
+                self.messageView.hidden = true
                 self.view.backgroundColor = self.photoContainer.backgroundColor
                 self.shadeView.removeFromSuperview()
 

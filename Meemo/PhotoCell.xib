@@ -17,7 +17,7 @@
                         <color key="backgroundColor" red="0.72944843650000002" green="0.25770910489999999" blue="0.318761342" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_L" translatesAutoresizingMaskIntoConstraints="NO" id="Rz7-Ur-1oT">
-                        <rect key="frame" x="32" y="37" width="61" height="51"/>
+                        <rect key="frame" x="27" y="28" width="70" height="70"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -27,11 +27,11 @@
                 <constraint firstItem="Zht-mu-6fs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="01b-pa-Oj7"/>
                 <constraint firstItem="Rz7-Ur-1oT" firstAttribute="centerX" secondItem="Zht-mu-6fs" secondAttribute="centerX" id="4nA-R1-c5l"/>
                 <constraint firstAttribute="trailing" secondItem="Zht-mu-6fs" secondAttribute="trailing" id="Ifk-Jt-qj4"/>
-                <constraint firstItem="Rz7-Ur-1oT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="37" id="V2B-RM-eNt"/>
+                <constraint firstItem="Rz7-Ur-1oT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="28" id="V2B-RM-eNt"/>
                 <constraint firstItem="Zht-mu-6fs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="n6n-qB-os3"/>
-                <constraint firstAttribute="bottom" secondItem="Rz7-Ur-1oT" secondAttribute="bottom" constant="37" id="p7Z-HT-4A9"/>
+                <constraint firstAttribute="bottom" secondItem="Rz7-Ur-1oT" secondAttribute="bottom" constant="27" id="p7Z-HT-4A9"/>
                 <constraint firstAttribute="bottom" secondItem="Zht-mu-6fs" secondAttribute="bottom" id="vWH-34-Zxw"/>
-                <constraint firstItem="Rz7-Ur-1oT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="wEP-ur-PMU"/>
+                <constraint firstItem="Rz7-Ur-1oT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="27" id="wEP-ur-PMU"/>
             </constraints>
             <size key="customSize" width="125" height="125"/>
             <connections>
