@@ -171,6 +171,8 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             cell.imageView.hidden = false
             self.collectionView.reloadData()
 
+        } else {
+            showCamera()
         }
         
         
@@ -246,6 +248,15 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             
                 completionHandler(image:image)
         })
+    }
+    
+    //MARK: - Camera
+    
+    func showCamera() {
+        let vc: CameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     
