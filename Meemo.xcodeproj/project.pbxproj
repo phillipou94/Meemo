@@ -14,8 +14,6 @@
 		4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */; };
 		4D85958F1AE5A1CC008F96E7 /* MeemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */; };
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
-		4DA487611AEC47CD0056A640 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA4875F1AEC47CD0056A640 /* CameraViewController.swift */; };
-		4DA487621AEC47CD0056A640 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA487601AEC47CD0056A640 /* CameraViewController.xib */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */; };
@@ -52,6 +50,7 @@
 		4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */; };
 		4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2E1AE6F22C00C9E5DE /* User.swift */; };
 		4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */; };
+		4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE279DF1AEF49E600340D0F /* CameraViewController.swift */; };
 		770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64D225448F2C4988480B31 /* Pods_Meemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -80,8 +79,6 @@
 		4D85958D1AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemoTests.swift; sourceTree = "<group>"; };
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4DA4875F1AEC47CD0056A640 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		4DA487601AEC47CD0056A640 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
 		4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +116,7 @@
 		4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRequest.swift; sourceTree = "<group>"; };
 		4DD91A2E1AE6F22C00C9E5DE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		4DE279DF1AEF49E600340D0F /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9690D006BA3FE3BD4EBD2D4E /* Pods-Meemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA64D225448F2C4988480B31 /* Pods_Meemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F221653AD77ECF31C456AC93 /* libPods-Meemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,13 +186,12 @@
 		4D8595721AE5A1CC008F96E7 /* Meemo */ = {
 			isa = PBXGroup;
 			children = (
+				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
 				4DD91A311AE6FB8500C9E5DE /* User */,
 				4DD91A301AE6FB7400C9E5DE /* Backend */,
 				4DB14C471AE6064300804656 /* Login & Registration */,
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
-				4DA4875F1AEC47CD0056A640 /* CameraViewController.swift */,
-				4DA487601AEC47CD0056A640 /* CameraViewController.xib */,
 				4DBBC71D1AE94B7200DB03B4 /* Custom Views */,
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
 				4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */,
@@ -422,7 +419,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DA487621AEC47CD0056A640 /* CameraViewController.xib in Resources */,
 				4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */,
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
 				4D85957E1AE5A1CC008F96E7 /* Main.storyboard in Resources */,
@@ -507,7 +503,7 @@
 				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
-				4DA487611AEC47CD0056A640 /* CameraViewController.swift in Sources */,
+				4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */,
 				4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */,
 				4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */,
 			);

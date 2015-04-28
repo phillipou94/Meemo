@@ -11,7 +11,7 @@ import Spring
 import Photos
 import UIKit
 
-class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var headerView: UIView!
     @IBOutlet var groupTextField: UITextField!
     @IBOutlet var photoContainer: SpringView!
@@ -19,6 +19,9 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
     var shadeView:ShadeView = ShadeView()
+    
+    var imagePickerController = UIImagePickerController()
+    var capturedImages:NSArray = []
     
     @IBOutlet var collectionViewContainer: UIView!
     
@@ -250,15 +253,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         })
     }
     
-    //MARK: - Camera
-    
-    func showCamera() {
-        let vc: CameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
-        self.modalPresentationStyle = .Custom
-        self.modalTransitionStyle = .CrossDissolve
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
-    
     
     //MARK: - Animations
     
@@ -302,5 +296,16 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         return currentState
     }
+    
+    //MARK: - CAMERA
+    
+    func showCamera() {
+        var cameraViewController = CameraViewController()
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(cameraViewController, animated: true, completion: nil)
+        
+    }
+
 
 }
