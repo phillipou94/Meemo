@@ -312,7 +312,10 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         cameraViewController.dismissViewControllerAnimated(true, completion: nil)
-        let frame = CGRectMake(0,100,image.size.width,image.size.width)
+        
+        let width = min(image.size.width,image.size.height)
+        
+        let frame = CGRectMake(0,100,width,width)
         
         let imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
         let selectedImage = UIImage(CGImage: imageRef, scale: 1, orientation: image.imageOrientation)
