@@ -9,6 +9,10 @@
 import UIKit
 
 class CameraViewController: UIImagePickerController {
+    
+    var menuBar = UIView()
+    var bottomView = UIView()
+    var topBar = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,40 +21,50 @@ class CameraViewController: UIImagePickerController {
         self.sourceType = .Camera
         self.showsCameraControls = false
         self.navigationBarHidden = true
-        self.allowsEditing = true
         self.cameraCaptureMode = .Photo
         
-        let topBar = UIView(frame: CGRectMake(0,0,self.view.frame.size.width,40))
-        topBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
-        let bottomView = UIView(frame:CGRectMake(0,self.view.frame.size.width+40,self.view.frame.size.width,self.view.frame.size.width-40))
+        topBar = UIView(frame: CGRectMake(0,0,self.view.frame.size.width,40))
+        topBar.backgroundColor=UIColor.clearColor()
+        bottomView = UIView(frame:CGRectMake(0,self.view.frame.size.width,self.view.frame.size.width,self.view.frame.size.width))
         bottomView.backgroundColor = UIColor.blackColor()
         
-        let menuBar = UIView(frame:CGRectMake(0,40,self.view.frame.size.width,40))
+        menuBar = UIView(frame:CGRectMake(0,40,self.view.frame.size.width,40))
         menuBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         
         self.cameraOverlayView?.addSubview(topBar)
         self.cameraOverlayView?.addSubview(bottomView)
         bottomView.addSubview(menuBar)
         
-        let pictureFrame = CGRectMake(0,40,self.view.frame.size.width,self.view.frame.size.width)
+        configureButtons()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureButtons() {
+        let exitButton = UIButton(frame: CGRectMake(5,5,20,20))
+        exitButton.setBackgroundImage(UIImage(named: "X-Button@1x"), forState: .Normal)
+        exitButton.addTarget(self, action: "exitPressed", forControlEvents: .TouchUpInside)
+        
+        
+        let cameraButton = UIButton(frame:CGRectMake(bottomView.frame.size.width/2-50,self.view.frame.size.height-150,100,100))
+        cameraButton.backgroundColor = UIColor.blackColor()
+        cameraButton.setBackgroundImage(UIImage(named: "CameraButton"), forState: .Normal)
+        cameraButton.addTarget(self, action: "takePhoto", forControlEvents: .TouchUpInside)
+        
+        topBar.addSubview(exitButton)
+        self.cameraOverlayView!.addSubview(cameraButton)
+        self.cameraOverlayView!.bringSubviewToFront(cameraButton)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func takePhoto() {
+        self.takePicture()
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
-    */
-
+    
+    
+    func exitPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

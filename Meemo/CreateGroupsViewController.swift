@@ -20,7 +20,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var messageView: SpringView!
     var shadeView:ShadeView = ShadeView()
     
-    var imagePickerController = UIImagePickerController()
+    var cameraViewController = CameraViewController()
     var capturedImages:NSArray = []
     
     @IBOutlet var collectionViewContainer: UIView!
@@ -300,10 +300,24 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     //MARK: - CAMERA
     
     func showCamera() {
-        var cameraViewController = CameraViewController()
+        
+        cameraViewController.delegate = self
         self.modalPresentationStyle = .Custom
         self.modalTransitionStyle = .CrossDissolve
         self.presentViewController(cameraViewController, animated: true, completion: nil)
+        
+    }
+
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        cameraViewController.dismissViewControllerAnimated(true, completion: nil)
+        let frame = CGRectMake(0,100,image.size.width,image.size.width)
+        
+        let imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
+        let selectedImage = UIImage(CGImage: imageRef, scale: 1, orientation: image.imageOrientation)
+        groupImageView.image = selectedImage
+        
         
     }
 
