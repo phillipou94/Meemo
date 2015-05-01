@@ -16,11 +16,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.phoneTextField.delegate = self;
-        
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRectMake(0,self.phoneTextField.frame.size.height+30, self.phoneTextField.frame.size.width,2.0)
-        bottomBorder.backgroundColor = UIColor(red: 63/255.0, green: 61/255.0, blue: 82/255.0, alpha: 1.0).CGColor
-        self.phoneTextField.layer.addSublayer(bottomBorder)
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -33,11 +28,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func backSpacePressed(sender: AnyObject) {
@@ -107,8 +97,14 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func skipPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
+    @IBAction func donePressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

@@ -22,9 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "RpLYK77Zvz4jSpzCpRUGh0jqZ0tdu1imhuDZOmtE")
             
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-
         
+        if !userLoggedIn() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        }
         return true
+    }
+    
+    func userLoggedIn() -> Bool {
+        return CoreDataRequest.sharedManager.getAPIToken() != nil
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?,

@@ -50,11 +50,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/LoginViewController.swift"
-            timestampString = "452184914.119136"
+            timestampString = "452206237.059447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "signUpPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,22 +72,6 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "getAPIToken()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Meemo/LoginViewController.swift"
-            timestampString = "452184819.139276"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "facebookLoginPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

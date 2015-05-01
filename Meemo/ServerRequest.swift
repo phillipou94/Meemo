@@ -96,8 +96,39 @@ class ServerRequest: NSObject {
         
     }
     
-    func signInWithFacebook(user:PFUser) {
-        let name = user.username
+    func signInWithFacebook(user:PFUser,success:(wasSuccessful:Bool) -> Void) {
+        
+        let name = user.username! as String
+        let facebook_id = user.objectId! as String
+        let parameter = ["user":["name":name, "facebook_id":facebook_id]]
+        
+        post("users", parameters: parameter, token:nil, success: { (json) -> Void in
+            println(json)
+            
+            var user = User()
+            user.email = json["response"]["email"].string
+            if let name = json["response"]["name"].string {
+                user.name = name
+            }
+            if let api_token = json["response"]["authentication_token"].string {
+                user.api_token = api_token
+            }
+            if let facebook_id = json["response"]["facebook_id"].string {
+                user.facebook_id = facebook_id
+            }
+            if let object_id = json["response"]["id"].number {
+                user.object_id = object_id
+                CoreDataRequest.sharedManager.updateUserCredentials(user)
+            }
+                success(wasSuccessful:true)
+            }, failure: { (error) -> Void in
+                println("Error: \(error)")
+                success(wasSuccessful:false)
+                
+        })
+
+
+        
     }
     
     func signupUser(name:String , email:String, password:String,success:(wasSuccessful:Bool) -> Void) {
