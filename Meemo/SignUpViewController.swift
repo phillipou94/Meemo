@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
-        if(self.passwordTextField.text != self.confirmPasswordTextField.text) {
+        /*if(self.passwordTextField.text != self.confirmPasswordTextField.text) {
             animateWarningWithMessage("Passwords Do Not Match")
             
         } else if self.passwordTextField.text.length == 0 || self.nameTextField.text.length == 0 || self.emailTextField.text.length == 0 {
@@ -78,7 +78,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.animateWarningWithMessage("This Email Has Already Been Taken")
                 }
             })
-        }
+        }*/
+        
+        let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as! PhoneSearchViewController
+        self.presentViewController(phoneSearchController, animated: true, completion: nil)
+        
+        
+        /*UINib *entryImageNib = [UINib nibWithNibName:@"entryImageView" bundle:nil];
+        self.entryImageView = [[entryImageNib instantiateWithOwner:self options:nil] firstObject];*/
 
         
     }

@@ -14,6 +14,8 @@
 		4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */; };
 		4D85958F1AE5A1CC008F96E7 /* MeemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */; };
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
+		4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */; };
+		4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */; };
@@ -79,6 +81,8 @@
 		4D85958D1AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemoTests.swift; sourceTree = "<group>"; };
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSearchViewController.swift; sourceTree = "<group>"; };
+		4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneSearchViewController.xib; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
 		4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupsViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */,
+				4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */,
+				4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */,
 				4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */,
 				4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */,
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
@@ -427,6 +433,7 @@
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
 				4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */,
 				4DD919871AE6CA4800C9E5DE /* FacebookSDK.strings in Resources */,
+				4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +501,7 @@
 			files = (
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
+				4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
 				4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */,
