@@ -4,11 +4,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhoneSearchViewController" customModule="Meemo" customModuleProvider="target">
             <connections>
+                <outlet property="phoneTextField" destination="Ag9-wN-3Uo" id="YZS-Jd-KKq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,21 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUp-VI-nXb">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="259"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7D-pg-qyu">
-                            <rect key="frame" x="0.0" y="0.0" width="602" height="50"/>
-                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="N7D-pg-qyu" secondAttribute="trailing" constant="-2" id="3gf-wr-3A1"/>
-                        <constraint firstItem="N7D-pg-qyu" firstAttribute="leading" secondItem="AUp-VI-nXb" secondAttribute="leading" id="EiM-2T-K44"/>
-                        <constraint firstItem="N7D-pg-qyu" firstAttribute="top" secondItem="AUp-VI-nXb" secondAttribute="top" id="Su9-FP-2bi"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-hr-dYf">
                     <rect key="frame" x="0.0" y="267" width="600" height="341"/>
                     <subviews>
@@ -55,6 +42,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="threePressed:" destination="-1" eventType="touchUpInside" id="FXE-Y5-xEc"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oey-xm-HtQ">
                             <rect key="frame" x="0.0" y="0.0" width="210" height="75"/>
@@ -64,6 +54,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="onePressed:" destination="-1" eventType="touchUpInside" id="Zed-EW-5Ra"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8g-ue-XfV">
                             <rect key="frame" x="200" y="0.0" width="200" height="75"/>
@@ -73,6 +66,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="twoPressed:" destination="-1" eventType="touchUpInside" id="CNM-vT-2vx"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-ea-9xZ">
                             <rect key="frame" x="400" y="73" width="200" height="75"/>
@@ -82,6 +78,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="sixPressed:" destination="-1" eventType="touchUpInside" id="hFx-Y5-Y4O"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mD-SV-vXm">
                             <rect key="frame" x="0.0" y="73" width="210" height="75"/>
@@ -91,6 +90,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="fourPressed:" destination="-1" eventType="touchUpInside" id="2lE-PQ-vec"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwr-M7-oeg">
                             <rect key="frame" x="200" y="73" width="200" height="75"/>
@@ -100,6 +102,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="fivePressed:" destination="-1" eventType="touchUpInside" id="5NF-3e-Jd6"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsr-OZ-PzF">
                             <rect key="frame" x="400" y="148" width="200" height="75"/>
@@ -109,6 +114,21 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="ninePressed:" destination="-1" eventType="touchUpInside" id="Xax-kn-ICn"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jJ-7g-KYK">
+                            <rect key="frame" x="0.0" y="148" width="210" height="75"/>
+                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="21"/>
+                            <state key="normal" title="7">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="sevenPressed:" destination="-1" eventType="touchUpInside" id="lRE-fw-GA6"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-hp-i4t">
                             <rect key="frame" x="200" y="148" width="200" height="75"/>
@@ -118,15 +138,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-nt-oH8">
-                            <rect key="frame" x="400" y="217" width="200" height="75"/>
-                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="21"/>
-                            <state key="normal" title=".">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <connections>
+                                <action selector="eightPressed:" destination="-1" eventType="touchUpInside" id="Rse-6F-fkr"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyc-gq-K2E">
                             <rect key="frame" x="0.0" y="217" width="210" height="75"/>
@@ -145,15 +159,21 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="zeroPressed:" destination="-1" eventType="touchUpInside" id="FhX-NS-NwG"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jJ-7g-KYK">
-                            <rect key="frame" x="0.0" y="148" width="210" height="75"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-nt-oH8">
+                            <rect key="frame" x="400" y="217" width="200" height="75"/>
                             <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="21"/>
-                            <state key="normal" title="7">
+                            <state key="normal" title="del">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="backSpacePressed:" destination="-1" eventType="touchUpInside" id="FZ5-JF-cbQ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,11 +285,88 @@
                         </mask>
                     </variation>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUp-VI-nXb">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="259"/>
+                    <subviews>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7D-pg-qyu">
+                            <rect key="frame" x="60" y="178" width="480" height="3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="3" id="4hC-68-Pyf"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number to find" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP2-7N-rcz">
+                            <rect key="frame" x="144" y="189" width="313" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="313" id="0c7-cc-VGz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groups you're already invited to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18p-Sy-uax">
+                            <rect key="frame" x="168" y="218" width="270" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="270" id="P60-IP-HRK"/>
+                                <constraint firstAttribute="height" constant="21" id="XPP-r1-fNI"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnI-Xg-Cva">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dO3-rk-R08">
+                                    <rect key="frame" x="545" y="15" width="47" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="47" id="DLo-Ae-Nlb"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
+                                    <state key="normal" title="skip">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="dO3-rk-R08" firstAttribute="trailing" secondItem="OnI-Xg-Cva" secondAttribute="trailingMargin" id="Dp9-Hc-Ed8"/>
+                                <constraint firstAttribute="height" constant="60" id="I4n-SN-E06"/>
+                                <constraint firstItem="dO3-rk-R08" firstAttribute="centerY" secondItem="OnI-Xg-Cva" secondAttribute="centerY" id="eZB-fe-4lf"/>
+                                <constraint firstItem="dO3-rk-R08" firstAttribute="top" secondItem="OnI-Xg-Cva" secondAttribute="top" constant="15" id="gS5-O3-DRY"/>
+                            </constraints>
+                        </view>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ag9-wN-3Uo">
+                            <rect key="frame" x="55" y="118" width="480" height="47"/>
+                            <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="29"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Ag9-wN-3Uo" firstAttribute="top" secondItem="AUp-VI-nXb" secondAttribute="top" constant="118" id="1kL-X7-y9L"/>
+                        <constraint firstItem="OnI-Xg-Cva" firstAttribute="centerX" secondItem="iP2-7N-rcz" secondAttribute="centerX" id="2wN-Uf-PY7"/>
+                        <constraint firstAttribute="bottom" secondItem="OnI-Xg-Cva" secondAttribute="bottom" constant="199" id="3BT-Bo-NWe"/>
+                        <constraint firstAttribute="centerX" secondItem="Ag9-wN-3Uo" secondAttribute="centerX" constant="5" id="5ez-dc-Ucd"/>
+                        <constraint firstItem="18p-Sy-uax" firstAttribute="centerX" secondItem="N7D-pg-qyu" secondAttribute="centerX" constant="3" id="5nY-ie-0wB"/>
+                        <constraint firstItem="iP2-7N-rcz" firstAttribute="top" secondItem="OnI-Xg-Cva" secondAttribute="bottom" constant="129" id="7qb-kY-OsW"/>
+                        <constraint firstItem="OnI-Xg-Cva" firstAttribute="leading" secondItem="AUp-VI-nXb" secondAttribute="leading" id="9dQ-zn-ctQ"/>
+                        <constraint firstItem="Ag9-wN-3Uo" firstAttribute="leading" secondItem="AUp-VI-nXb" secondAttribute="leading" constant="55" id="BOM-Jg-v9H"/>
+                        <constraint firstAttribute="trailing" secondItem="Ag9-wN-3Uo" secondAttribute="trailing" constant="65" id="ail-PP-B3B"/>
+                        <constraint firstItem="N7D-pg-qyu" firstAttribute="top" secondItem="Ag9-wN-3Uo" secondAttribute="bottom" constant="13" id="b3M-hJ-YR6"/>
+                        <constraint firstItem="iP2-7N-rcz" firstAttribute="centerX" secondItem="18p-Sy-uax" secondAttribute="centerX" constant="-2.5" id="b59-FW-p6L"/>
+                        <constraint firstAttribute="bottom" secondItem="N7D-pg-qyu" secondAttribute="bottom" constant="78" id="fGn-Eg-6vO"/>
+                        <constraint firstItem="N7D-pg-qyu" firstAttribute="leading" secondItem="Ag9-wN-3Uo" secondAttribute="leading" constant="5" id="jfX-cg-mer"/>
+                        <constraint firstItem="N7D-pg-qyu" firstAttribute="width" secondItem="Ag9-wN-3Uo" secondAttribute="width" id="oNo-Un-1Cx"/>
+                        <constraint firstItem="18p-Sy-uax" firstAttribute="top" secondItem="iP2-7N-rcz" secondAttribute="bottom" constant="8" symbolic="YES" id="pRV-rk-8J3"/>
+                        <constraint firstItem="iP2-7N-rcz" firstAttribute="top" secondItem="AUp-VI-nXb" secondAttribute="top" constant="189" id="u0l-B3-dZH"/>
+                        <constraint firstItem="Ag9-wN-3Uo" firstAttribute="top" secondItem="18p-Sy-uax" secondAttribute="bottom" constant="-121" id="yq5-3Y-KYb"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="N7D-pg-qyu" firstAttribute="width" secondItem="0qK-Nu-BgW" secondAttribute="width" constant="2" id="Ak8-aC-fqX"/>
-                <constraint firstItem="N7D-pg-qyu" firstAttribute="height" secondItem="0qK-Nu-BgW" secondAttribute="height" id="LE1-cx-9Ko"/>
                 <constraint firstItem="AUp-VI-nXb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tt6-3V-jwj"/>
                 <constraint firstAttribute="bottom" secondItem="AUp-VI-nXb" secondAttribute="bottom" constant="341" id="XGB-tB-yDV"/>
                 <constraint firstAttribute="centerX" secondItem="AUp-VI-nXb" secondAttribute="centerX" id="bWc-gm-JYq"/>
@@ -279,7 +376,12 @@
                 <constraint firstItem="AUp-VI-nXb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wga-0j-dHH"/>
                 <constraint firstItem="LJc-hr-dYf" firstAttribute="trailing" secondItem="AUp-VI-nXb" secondAttribute="trailing" id="xT9-2w-oEp"/>
             </constraints>
-            <point key="canvasLocation" x="230" y="351"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="XGB-tB-yDV"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="230" y="374"/>
         </view>
     </objects>
 </document>
