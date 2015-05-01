@@ -61,7 +61,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let permissions = [ "public_profile", "email" , "user_friends"]
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
             if let user = user {
+                
                 ServerRequest.sharedManager.signInWithFacebook(user)
+                self.launchApplication()
             } else {
                 println("Uh oh. The user cancelled the Facebook login.")
             }

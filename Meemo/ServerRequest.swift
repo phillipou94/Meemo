@@ -97,7 +97,7 @@ class ServerRequest: NSObject {
     }
     
     func signInWithFacebook(user:PFUser) {
-        
+        let name = user.username
     }
     
     func signupUser(name:String , email:String, password:String,success:(wasSuccessful:Bool) -> Void) {
