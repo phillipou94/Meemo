@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>62F61295-DDEE-4F6A-B807-37F64DEE5451</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Meemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3E797670F7A34EF8CAF5911433A9461EE60A7641</key>
+		<string>https://github.com/phillipou94/Meemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Meemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3E797670F7A34EF8CAF5911433A9461EE60A7641</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/phillipou94/Meemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3E797670F7A34EF8CAF5911433A9461EE60A7641</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3E797670F7A34EF8CAF5911433A9461EE60A7641</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Meemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

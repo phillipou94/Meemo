@@ -46,7 +46,7 @@ class ServerRequest: NSObject {
         }
     }
     
-    func get(path:String, parameters: [String:AnyObject]?, token:String?, completion:(json:JSON) -> Void) {
+    func get(path:String, parameters: [String:AnyObject]?, token:String?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
         
         var manager = Manager.sharedInstance
         
@@ -63,9 +63,10 @@ class ServerRequest: NSObject {
             let json = JSON(data!)
             let status = json["status"]
             if (status == 200) {
-                completion(json: json)
+                success(json: json)
             } else {
                 println("Error: \(json)")
+                failure(error:json)
             }
             
         }
@@ -102,7 +103,7 @@ class ServerRequest: NSObject {
         let facebook_id = user.objectId! as String
         let parameter = ["user":["name":name, "facebook_id":facebook_id]]
         
-        post("users", parameters: parameter, token:nil, success: { (json) -> Void in
+        post("login/fb", parameters: parameter, token:nil, success: { (json) -> Void in
             println(json)
             
             var user = User()
@@ -167,5 +168,20 @@ class ServerRequest: NSObject {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         
     }
+    
+    func getGroupsWithPhoneNumber(number:String, success:(wasSuccessful:Bool) -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        
+        self.get("groups?phone=\(number)", parameters: nil, token: token, success: { (json) -> Void in
+            
+            success(wasSuccessful: true)
+            
+            
+            }, failure: { (json) -> Void in
+                success(wasSuccessful:false)
+        
+        })
+    }
+
    
 }

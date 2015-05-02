@@ -80,13 +80,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
-        
- 
-        
-        
 
         
     }
+    
+    @IBAction func facebookLoginPressed(sender: AnyObject) {
+        
+        let permissions = [ "public_profile", "email" , "user_friends"]
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
+            if let user = user {
+                let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
+                self.presentViewController(phoneSearchController, animated: true, completion: nil)
+                ServerRequest.sharedManager.signInWithFacebook(user, success: { (successful) -> Void in
+                    if successful {
+                        
+                    }
+                })
+                
+            } else {
+                println("Uh oh. The user cancelled the Facebook login.")
+            }
+            
+        })
+        
+        
+    }
+
     
     func animateWarningWithMessage(message:String) {
         self.errorMessage.text = message

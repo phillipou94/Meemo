@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -242,7 +242,7 @@
         <!--Groups View Controller-->
         <scene sceneID="4oB-4o-ciP">
             <objects>
-                <viewController storyboardIdentifier="GroupsViewController" id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rYL-Xl-jSM"/>
                         <viewControllerLayoutGuide type="bottom" id="ZX2-YE-AIE"/>
@@ -611,7 +611,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yts-UI-Dm9" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="0.0" y="49" width="600" height="267"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-c7-GGF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-c7-GGF">
                                         <rect key="frame" x="203" y="22" width="195" height="195"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="195" id="iWk-kl-GHz"/>
@@ -800,6 +800,9 @@
                                                 <exclude reference="fPZ-vO-xIS"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="facebookLoginPressed:" destination="T0V-wh-VDd" eventType="touchUpInside" id="Snm-VQ-y9W"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZE-9D-kgE">
                                         <rect key="frame" x="168" y="194" width="264" height="1"/>

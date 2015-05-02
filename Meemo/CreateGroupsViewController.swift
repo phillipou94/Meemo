@@ -125,7 +125,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let width = self.view.frame.size.width/4 - 8
+            let width = self.view.frame.size.width/3 - 8
             return CGSize(width: width, height: width)
     }
     

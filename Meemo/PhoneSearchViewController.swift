@@ -98,14 +98,33 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func skipPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        launchApplication()
     }
     
     
     @IBAction func donePressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        var number = self.phoneTextField.text
+        number = number.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil)
+        number = number.stringByReplacingOccurrencesOfString("-", withString: "", options: nil)
+        number = number.stringByReplacingOccurrencesOfString("(", withString: "", options: nil)
+        number = number.stringByReplacingOccurrencesOfString(")", withString: "", options: nil)
+        
+        ServerRequest.sharedManager.getGroupsWithPhoneNumber(number, success: { (wasSuccessful) -> Void in
+            //
+        })
+        
+        launchApplication()
     }
     
+    
+    func launchApplication() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: GroupsViewController = storyboard.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion:nil)
+    }
     /*
     // MARK: - Navigation
 
