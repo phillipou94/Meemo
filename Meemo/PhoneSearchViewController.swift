@@ -59,7 +59,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
                 let button = UIButton(frame: frame)
                 button.setTitle("\(number)", forState: UIControlState.Normal)
                
-                button.titleLabel!.font =  UIFont(name:"STHeitiSC-Medium", size: 30)
+                button.titleLabel!.font =  UIFont(name:"STHeitiSC-Medium", size: 28)
                 switch number {
                     case 1:
                         button.addTarget(self, action: "onePressed:", forControlEvents: .TouchUpInside)
@@ -90,8 +90,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
                         button.setTitle("del", forState: UIControlState.Normal)
                         button.addTarget(self, action: "backSpacePressed:", forControlEvents: .TouchUpInside)
                 }
-                
-                
                 
                 number += 1
                 self.numberContainer.addSubview(button)
