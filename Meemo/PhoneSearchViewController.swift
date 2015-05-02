@@ -94,9 +94,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
                 number += 1
                 self.numberContainer.addSubview(button)
                 
-                let float = CGFloat(x)
-                println("\(float*buttonWidth)")
-                
             }
         }
         

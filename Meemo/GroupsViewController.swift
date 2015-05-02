@@ -31,8 +31,6 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
         self.segmentControl.delegate = self
        
         PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts) -> Void in
-            let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
-            self.presentViewController(phoneSearchController, animated: true, completion: nil)
             
         }
 
