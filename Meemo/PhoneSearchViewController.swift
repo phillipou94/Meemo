@@ -10,18 +10,11 @@ import UIKit
 
 class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var numberContainer: UIView!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var backSpaceButton: UIButton!
     var phoneNumber = ""
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.phoneTextField.delegate = self;
-    }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return false
-    }
-    
+
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nil)
     }
@@ -35,6 +28,78 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
             let lastIndex = phoneNumber.length - 1
             phoneNumber = phoneNumber.substringToIndex(advance(phoneNumber.startIndex, lastIndex))
             phoneTextField.text = phoneNumber
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.phoneTextField.delegate = self;
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpButtons()
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return false
+    }
+    
+    
+    func setUpButtons() {
+        let screenRect = UIScreen.mainScreen().bounds
+        let buttonWidth = screenRect.size.width/3
+        let buttonHeight = self.numberContainer.bounds.size.height/4
+        var number = 1
+        for (var y = 0; y < 4; y++) {
+            for (var x = 0; x < 3; x++) {
+                let frame = CGRectMake(CGFloat(x)*buttonWidth,CGFloat(y)*buttonHeight,buttonWidth,buttonHeight)
+                let button = UIButton(frame: frame)
+                button.setTitle("\(number)", forState: UIControlState.Normal)
+               
+                button.titleLabel!.font =  UIFont(name:"STHeitiSC-Medium", size: 30)
+                switch number {
+                    case 1:
+                        button.addTarget(self, action: "onePressed:", forControlEvents: .TouchUpInside)
+                    case 2:
+                        button.addTarget(self, action: "twoPressed:", forControlEvents: .TouchUpInside)
+                    case 2:
+                        button.addTarget(self, action: "twoPressed:", forControlEvents: .TouchUpInside)
+                    case 3:
+                        button.addTarget(self, action: "threePressed:", forControlEvents: .TouchUpInside)
+                    case 4:
+                        button.addTarget(self, action: "fourPressed:", forControlEvents: .TouchUpInside)
+                    case 5:
+                        button.addTarget(self, action: "fivePressed:", forControlEvents: .TouchUpInside)
+                    case 6:
+                        button.addTarget(self, action: "sixPressed:", forControlEvents: .TouchUpInside)
+                    case 7:
+                        button.addTarget(self, action: "sevenPressed:", forControlEvents: .TouchUpInside)
+                    case 8:
+                        button.addTarget(self, action: "eightPressed:", forControlEvents: .TouchUpInside)
+                    case 9:
+                        button.addTarget(self, action: "ninePressed:", forControlEvents: .TouchUpInside)
+                    case 10:
+                        button.setTitle("#", forState: UIControlState.Normal)
+                    case 11:
+                        button.setTitle("0", forState: UIControlState.Normal)
+                        button.addTarget(self, action: "zeroPressed:", forControlEvents: .TouchUpInside)
+                    default:
+                        button.setTitle("del", forState: UIControlState.Normal)
+                        button.addTarget(self, action: "backSpacePressed:", forControlEvents: .TouchUpInside)
+                }
+                
+                
+                
+                number += 1
+                self.numberContainer.addSubview(button)
+                
+                let float = CGFloat(x)
+                println("\(float*buttonWidth)")
+                
+            }
         }
         
     }

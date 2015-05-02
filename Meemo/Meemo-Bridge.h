@@ -10,6 +10,7 @@
     #import <FBSDKCoreKit/FBSDKCoreKit.h>
     #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
+    #import <FBSDKCoreKit/FBSDKGraphRequest.h>
 #define Meemo_Meemo_Bridge_h
 
 
