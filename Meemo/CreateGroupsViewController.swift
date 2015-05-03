@@ -18,6 +18,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var messageView: SpringView!
+    @IBOutlet var checkButton: SpringButton!
     var shadeView:ShadeView = ShadeView()
     
     var cameraViewController = CameraViewController()
@@ -76,12 +77,23 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     //MARK: - Buttons
     @IBAction func checkPressed(sender: AnyObject) {
         
-        if (self.groupTextField.text.length > 0) {
+        if self.checkButton.selected {
+            let transition = CATransition()
+            let vc: PickFriendsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PickFriendsViewController") as! PickFriendsViewController
+            transition.duration = 0.8
+            transition.timingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromRight
+            self.view.window!.layer.addAnimation(transition, forKey: nil)
+            self.presentViewController(vc, animated: false, completion: nil)
+            //self.performSegueWithIdentifier("showFriends", sender: self)
+        } else if (self.groupTextField.text.length > 0) {
             self.groupNameLabel.text = self.groupTextField.text
             self.groupTextField.text = "Choose a Photo"
             self.groupTextField.userInteractionEnabled = false
             animatePhotoContainerTransition()
             animateCollectionView(middleState,delay:0.2)
+            self.checkButton.selected = true
         }
         
     }

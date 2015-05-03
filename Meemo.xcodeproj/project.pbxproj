@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */; };
+		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
+		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
+		4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */; };
 		4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */; };
 		4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */; };
 		4D85957E1AE5A1CC008F96E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D85957C1AE5A1CC008F96E7 /* Main.storyboard */; };
@@ -23,7 +27,6 @@
 		4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */; };
 		4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */; };
 		4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */; };
-		4DC2F9F01AF56FC70001683B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2F9EF1AF56FC70001683B /* Contact.swift */; };
 		4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */; };
 		4DD918761AE6C82B00C9E5DE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD918701AE6C82B00C9E5DE /* Bolts.framework */; };
 		4DD918771AE6C82B00C9E5DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD918711AE6C82B00C9E5DE /* Parse.framework */; };
@@ -72,6 +75,10 @@
 		228D95CCABE7B024B3BD98EC /* Pods-Meemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.debug.xcconfig"; sourceTree = "<group>"; };
 		4D694AE11AE5C42C005BA3D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Bolts.framework"; sourceTree = "<group>"; };
 		4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Facebook_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Facebook_iOS_SDK.framework"; sourceTree = "<group>"; };
+		4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
+		4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCell.xib; sourceTree = "<group>"; };
+		4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Asynchronous.swift"; sourceTree = "<group>"; };
 		4D8595701AE5A1CC008F96E7 /* Meemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8595741AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactsManager.swift; sourceTree = "<group>"; };
-		4DC2F9EF1AF56FC70001683B /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeView.swift; sourceTree = "<group>"; };
 		4DD918701AE6C82B00C9E5DE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4DD918711AE6C82B00C9E5DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -203,6 +209,10 @@
 				4DBBC71D1AE94B7200DB03B4 /* Custom Views */,
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
 				4DB603DD1AE9A10A003BBC1B /* CreateGroupsViewController.swift */,
+				4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */,
+				4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */,
+				4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */,
+				4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
 				4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */,
@@ -249,9 +259,9 @@
 			isa = PBXGroup;
 			children = (
 				4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */,
+				4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */,
 				4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */,
 				4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */,
-				4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */,
 				4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */,
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
 			);
@@ -295,9 +305,8 @@
 		4DD91A301AE6FB7400C9E5DE /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				4DC2F9EF1AF56FC70001683B /* Contact.swift */,
-				4DB14C481AE6095100804656 /* ServerRequest.swift */,
 				4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */,
+				4DB14C481AE6095100804656 /* ServerRequest.swift */,
 				4DD91A2C1AE6D9B700C9E5DE /* CoreDataRequest.swift */,
 			);
 			name = Backend;
@@ -434,6 +443,7 @@
 				4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */,
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
 				4D85957E1AE5A1CC008F96E7 /* Main.storyboard in Resources */,
+				4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */,
 				4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */,
 				4D8595801AE5A1CC008F96E7 /* Images.xcassets in Resources */,
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
@@ -506,8 +516,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
+				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
+				4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
-				4DC2F9F01AF56FC70001683B /* Contact.swift in Sources */,
 				4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
@@ -516,6 +527,7 @@
 				4DB9BD581AEA9EBF00555793 /* PhotoCell.swift in Sources */,
 				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
 				4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */,
+				4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */,
 				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,

@@ -11,8 +11,28 @@ import Foundation
 class User: NSObject {
     var name: String? = nil
     var email: String? = nil
+    var phoneNumber: String? = nil
     var facebook_id: String? = nil
     var api_token: String? = nil
     var object_id: NSNumber? = -1
+    var isUsingApp: Bool = true
+
+    
+    func getInitials() -> String {
+        var initials = ""
+        if let array = self.name?.componentsSeparatedByString(" ") {
+            for string in array {
+                 let str = string as NSString
+                    if str.length > 0 {
+                        initials += str.substringWithRange(NSMakeRange(0,1))
+                    }
+                    
+                
+                
+            }
+        }
+        
+        return initials
+    }
 
 }

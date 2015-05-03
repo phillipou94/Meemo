@@ -127,6 +127,48 @@ class ServerRequest: NSObject {
     
     }
     
+    func getAllFriends(completion:(friendsDict:[String:[User]]) -> Void) {
+        PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts:[String:[User]]) -> Void in
+            var userArray: [User] = []
+            for key in contacts.keys {
+                userArray += contacts[key]!
+            }
+            var friends = contacts as [String:[User]]
+            self.getFacebookFriends({ (friends) -> Void in
+                userArray += friends
+                
+                userArray.sort({ $0.name < $1.name })
+                
+                let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+                var dictionary: [ String:[User] ]  = [:]
+                for person in userArray {
+                    if let name = person.name where count(name)>0{
+                        var letter = String(name[name.startIndex]).uppercaseString
+                        if !contains(alphabet, letter) {
+                            letter = "#"
+                        }
+                        if dictionary[letter] != nil{
+                            var array = dictionary[letter]! as [User]
+                            array.append(person)
+                            dictionary[String(letter).uppercaseString] = array
+                            
+                        } else {
+                            dictionary[letter] = [person]
+                        }
+                        
+                    }
+                    
+                }
+                
+                completion(friendsDict:dictionary)
+            })
+            
+            
+            
+        }
+        
+    }
+    
     //MARK: - Groups
     
     func getGroups() {
@@ -183,23 +225,34 @@ class ServerRequest: NSObject {
         
     }
     
-    func getFacebookFriends(completion:(friends:NSArray) -> Void) {
+    func getFacebookFriends(completion:(friends:[User]) -> Void) {
         
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends",     parameters: nil)
-        graphRequest.startWithCompletionHandler { (connection, result, error) -> Void in
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                //get Facebook ID
-                let friendsList = result.objectForKey("data") as! NSArray
-                completion(friends:friendsList)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends",parameters: nil)
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            graphRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+                
+                if ((error) != nil) {
+                    // Process error
+                    println("Error: \(error)")
+                }
+                else {
+                    //get Facebook ID
+                    var users: [User] = []
+                    let friendsList = result.objectForKey("data") as! NSArray
+                    for object in friendsList {
+                        let friend = object as! NSDictionary
+                        var user = User()
+                        user.name = friend.objectForKey("name") as? String
+                        user.facebook_id = friend.objectForKey("id") as? String
+                        users.append(user)
+                    }
+                    
+                    completion(friends:users)
+                    
+                }
                 
             }
-            
+
         }
     }
 

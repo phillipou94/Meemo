@@ -10,6 +10,7 @@ import UIKit
 
 class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var skipButton: UIButton!
     @IBOutlet var numberContainer: UIView!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var backSpaceButton: UIButton!
@@ -29,6 +30,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
             phoneNumber = phoneNumber.substringToIndex(advance(phoneNumber.startIndex, lastIndex))
             phoneTextField.text = phoneNumber
         }
+        self.skipButton.setTitle("skip", forState: .Normal)
         
     }
     
@@ -41,6 +43,9 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setUpButtons()
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
+        
+        /*[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];*/
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -150,8 +155,11 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
             if phoneNumber.length == 9 {
                 phoneNumber += "-"
             }
-            
             phoneTextField.text = phoneNumber
+
+            
+        } else {
+            self.skipButton.setTitle("done", forState: .Normal)
         }
         
         
@@ -159,20 +167,25 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func skipPressed(sender: AnyObject) {
         
+        if self.skipButton.titleLabel!.text == "done" {
+            
+            var number = self.phoneTextField.text
+            number = number.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil)
+            number = number.stringByReplacingOccurrencesOfString("-", withString: "", options: nil)
+            number = number.stringByReplacingOccurrencesOfString("(", withString: "", options: nil)
+            number = number.stringByReplacingOccurrencesOfString(")", withString: "", options: nil)
+            
+            ServerRequest.sharedManager.getGroupsWithPhoneNumber(number, success: { (wasSuccessful) -> Void in
+                //
+            })
+        }
+        
         launchApplication()
     }
     
     
     @IBAction func donePressed(sender: AnyObject) {
-        var number = self.phoneTextField.text
-        number = number.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil)
-        number = number.stringByReplacingOccurrencesOfString("-", withString: "", options: nil)
-        number = number.stringByReplacingOccurrencesOfString("(", withString: "", options: nil)
-        number = number.stringByReplacingOccurrencesOfString(")", withString: "", options: nil)
         
-        ServerRequest.sharedManager.getGroupsWithPhoneNumber(number, success: { (wasSuccessful) -> Void in
-            //
-        })
         
         launchApplication()
     }

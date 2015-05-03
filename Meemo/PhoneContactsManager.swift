@@ -19,7 +19,7 @@ class PhoneContactsManager: NSObject {
         return _sharedInstance
     }
     
-    func getPhoneContactsWithCompletion(completionHandler:(contacts:[String:[Contact]]) -> Void) {
+    func getPhoneContactsWithCompletion(completionHandler:(contacts:[String:[User]]) -> Void) {
         let status = ABAddressBookGetAuthorizationStatus()
         if status == .Denied || status == .Restricted {
             // user previously denied, to tell them to fix that in settings
@@ -43,7 +43,7 @@ class PhoneContactsManager: NSObject {
                 // also let them know that they have to fix this in settings
                 return
             }
-            var contacts:[Contact] = []
+            var contacts:[User] = []
             if let people = ABAddressBookCopyArrayOfAllPeople(addressBook)?.takeRetainedValue() as? [ABRecord] {
                 // now do something with the array of people
                 
@@ -82,12 +82,17 @@ class PhoneContactsManager: NSObject {
                     }
                     
                     
-                    let contact = Contact(name: name, email: email, phoneNumber: phoneNumber)
+                    var contact = User()
+                    contact.name = name
+                    contact.email = email
+                    contact.phoneNumber = phoneNumber
+                    contact.isUsingApp = false
+                    
                     contacts.append(contact)
                     
                 }
                 
-                var dictionary: [ String:[Contact] ]  = [:]
+                var dictionary: [ String:[User] ]  = [:]
                 for contact in contacts {
                     if let name = contact.name where count(name)>0{
                         var letter = String(name[name.startIndex]).uppercaseString
@@ -95,7 +100,7 @@ class PhoneContactsManager: NSObject {
                             letter = "#"
                         }
                         if dictionary[letter] != nil{
-                            var array = dictionary[letter]! as [Contact]
+                            var array = dictionary[letter]! as [User]
                             array.append(contact)
                             dictionary[String(letter).uppercaseString] = array
                             
