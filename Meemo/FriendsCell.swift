@@ -18,7 +18,6 @@ class FriendsCell: UITableViewCell {
     var user:User? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureCell()
         // Initialization code
     }
     

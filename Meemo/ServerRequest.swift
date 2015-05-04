@@ -190,6 +190,18 @@ class ServerRequest: NSObject {
         })
     }
     
+    func createGroup(group:Group) {
+       /* let parameters = ["group":["name":group.name, "user_ids":group.user_ids, "facebook_ids":group.facebook_ids]]
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        post("groups", parameters: parameters, token: token, success: { (json) -> Void in
+            //
+            
+            }, failure: { (error) -> Void in
+            //
+        })*/
+        
+    }
+    
     //MARK: - Facebook
     
     func signInWithFacebook(user:PFUser,success:(wasSuccessful:Bool) -> Void) {
@@ -255,6 +267,109 @@ class ServerRequest: NSObject {
 
         }
     }
+    
+    //MARK: - FILE UPLOADS
+    func generateRandomString() -> String {
+        let length = 12
+        let letters = Array("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        var result = ""
+        for (var i = 0; i < length; i++) {
+            let index = arc4random_uniform(UInt32(letters.count))
+            result += String(letters[Int(index)])
+        }
+        return result
+    }
+    
+    func uploadPhoto(image:UIImage, completion:(url:String) -> Void) {
+        let compressionScale = 0.75 as CGFloat
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        
+        var body = NSMutableData()
+        if let imageData = UIImageJPEGRepresentation(image, compressionScale) {
+           
+            let a = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+            let parameters = ["file":["encoded_string":a,"extension":"jpg", "content_type":"multipart/form-data"]]
+            post("upload_file", parameters: parameters, token: token, success: { (json) -> Void in
+                //let jsonObject = JSON(json)
+                
+                if let url = json["response"]["url"].string {
+                    let urlString = url.stringByReplacingOccurrencesOfString("\\", withString: "")
+                    
+                    completion(url:urlString)
+                }
+                
+            }, failure: { (error) -> Void in
+                println(error)
+            })
+            
+            
+        }
+    }
+    
 
-   
+    
+    /*
+
+
+
+- (void)uploadPhoto:(UIImage*)image withCompletionHandler:(void (^)(NSString *fileID))completion{
+
+float compressionScale = 0.75;
+
+NSString *boundary = [self generateRandomString];
+NSURL *requestURL = [NSURL URLWithString: @"https://rocky-spire-3961.herokuapp.com/files/"];
+NSString *FileParamConstant = @"photo";
+UserCredentials *credentials =[[CoreDataRequest sharedManager] getUserCredentials];
+// create request
+NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+[request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+[request setHTTPShouldHandleCookies:NO];
+[request setTimeoutInterval:30];
+[request setHTTPMethod:@"POST"];
+
+//set HTTP Headers
+[request addValue:@"application/json" forHTTPHeaderField:@"Application"];
+[request addValue:[NSString stringWithFormat:@"multipart/form-data;boundary=%@",boundary] forHTTPHeaderField:@"Content-Type"];
+[request addValue:[NSString stringWithFormat:@"Bearer %@",credentials.user_token] forHTTPHeaderField:@"Authorization"];
+
+// post body
+NSMutableData *body = [NSMutableData data];
+
+// add image data
+NSData *imageData = UIImageJPEGRepresentation(image, compressionScale);
+if (imageData) {
+[body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", FileParamConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+[body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+[body appendData:imageData];
+[body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+}
+
+[body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
+// setting the body of the post to the reqeust
+[request setHTTPBody:body];
+
+// set URL
+[request setURL:requestURL];
+
+[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+if ([httpResponse statusCode] == 200) {
+NSLog(@"success");
+NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: nil];
+NSString *pictureID = serializedData[@"id"];
+dispatch_async(dispatch_get_main_queue(), ^{
+completion(pictureID);
+});
+
+} else {
+NSLog(@"Error: %@", error);
+}
+
+}];
+}
+*/
+
 }

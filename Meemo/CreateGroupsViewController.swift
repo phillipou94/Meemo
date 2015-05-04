@@ -80,12 +80,25 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         if self.checkButton.selected {
             let transition = CATransition()
             let vc: PickFriendsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PickFriendsViewController") as! PickFriendsViewController
+            let group = Group()
+            if let user_credentials = CoreDataRequest.sharedManager.getUserCredentials() {
+                group.user_ids = [user_credentials.object_id]
+            }
+            group.name = self.groupNameLabel.text
+            group.image = self.groupImageView.image
+            ServerRequest.sharedManager.uploadPhoto(group.image!, completion: { (url) -> Void in
+               
+                println(url)
+            })
+            
+            vc.group = group
             transition.duration = 0.8
             transition.timingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
             transition.type = kCATransitionPush
             transition.subtype = kCATransitionFromRight
             self.view.window!.layer.addAnimation(transition, forKey: nil)
             self.presentViewController(vc, animated: false, completion: nil)
+            
             //self.performSegueWithIdentifier("showFriends", sender: self)
         } else if (self.groupTextField.text.length > 0) {
             self.groupNameLabel.text = self.groupTextField.text

@@ -741,15 +741,43 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3n-bb-Jrs" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="14" y="6" width="32" height="39"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="rcw-vD-Rif"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ner-zk-QZs" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="556" y="7" width="36" height="36"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                        <state key="normal" image="Checkmark">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="PAk-JE-che"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18823529411764706" green="0.17647058823529413" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="C3n-bb-Jrs" firstAttribute="leading" secondItem="KHH-BR-f3W" secondAttribute="leading" constant="14" id="1LD-1f-D6I"/>
+                                    <constraint firstItem="Ner-zk-QZs" firstAttribute="top" secondItem="KHH-BR-f3W" secondAttribute="top" constant="7" id="3x8-w0-bvV"/>
                                     <constraint firstAttribute="centerY" secondItem="vAm-oe-Gxf" secondAttribute="centerY" id="6fH-M7-iPo"/>
                                     <constraint firstAttribute="trailing" secondItem="vAm-oe-Gxf" secondAttribute="trailing" constant="80" id="9aS-Hx-oci"/>
+                                    <constraint firstItem="Ner-zk-QZs" firstAttribute="centerY" secondItem="vAm-oe-Gxf" secondAttribute="centerY" id="Cve-UU-vu0"/>
                                     <constraint firstAttribute="centerX" secondItem="vAm-oe-Gxf" secondAttribute="centerX" id="EfT-Uc-Caf"/>
+                                    <constraint firstItem="C3n-bb-Jrs" firstAttribute="centerY" secondItem="vAm-oe-Gxf" secondAttribute="centerY" id="J9b-Ix-DAj"/>
+                                    <constraint firstItem="C3n-bb-Jrs" firstAttribute="top" secondItem="KHH-BR-f3W" secondAttribute="top" constant="6" id="LED-7w-czI"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="R7d-Yp-Arc"/>
+                                    <constraint firstItem="Ner-zk-QZs" firstAttribute="leading" secondItem="vAm-oe-Gxf" secondAttribute="trailing" constant="36" id="ToI-SI-NsE"/>
                                     <constraint firstAttribute="height" constant="50" id="ZWX-uq-ZL0"/>
                                     <constraint firstItem="vAm-oe-Gxf" firstAttribute="leading" secondItem="KHH-BR-f3W" secondAttribute="leading" constant="81" id="iNQ-ZY-m49"/>
+                                    <constraint firstItem="Ner-zk-QZs" firstAttribute="trailing" secondItem="KHH-BR-f3W" secondAttribute="trailingMargin" id="ifo-DQ-48z"/>
+                                    <constraint firstItem="vAm-oe-Gxf" firstAttribute="leading" secondItem="C3n-bb-Jrs" secondAttribute="trailing" constant="35" id="pJq-ob-3dX"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6oa-lq-SqU">
@@ -1059,6 +1087,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back" width="27" height="39"/>
         <image name="Checkmark" width="54" height="64"/>
         <image name="Lock" width="20" height="32"/>
         <image name="Mail" width="32" height="24"/>

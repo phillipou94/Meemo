@@ -8,12 +8,15 @@
 
 import UIKit
 
-class PickFriendsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class PickFriendsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var tableView: UITableView!
+    var collectionView: UICollectionView? = nil
     var allFriends:[String:[User]] = [:]
     var selectedFriends: [User] = []
+    var group:Group? = nil
     let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "#"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -21,6 +24,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         let nib = UINib(nibName:"FriendsCell",bundle:nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "FriendsCell")
         loadFriends()
+        setUpCollectionView()
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +40,8 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.alphabet.count
@@ -93,10 +99,84 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         }
         
         self.tableView.reloadData()
+        self.collectionView!.reloadData()
+        if selectedFriends.count == 1 {
+            animateCollectionView(true)
+        } else if selectedFriends.count == 0 {
+            animateCollectionView(false)
+        }
         
     }
     
+    //MARK: - Collectionview
+    
+    func setUpCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Horizontal
+        layout.itemSize = CGSizeMake(50, 50)
+        layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        
+        self.collectionView = UICollectionView(frame: CGRectMake(0,self.view.frame.size.height,self.view.bounds.size.width,60), collectionViewLayout: layout)
+        if let collectionView = self.collectionView {
+            collectionView.backgroundColor = UIColor(red: 62/255.0, green: 61/255.0, blue: 83/255.0, alpha: 1.0)
+            self.view.addSubview(collectionView)
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            
+            let nib = UINib(nibName: "FriendsPreviewCell", bundle: nil)
+            collectionView.registerNib(nib, forCellWithReuseIdentifier: "FriendsPreviewCell")
+            collectionView.bounces = true
+            collectionView.alwaysBounceHorizontal = true
+        }
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.selectedFriends.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let user = self.selectedFriends[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsPreviewCell", forIndexPath: indexPath) as! FriendsPreviewCell
+        cell.user = user
+        cell.configureCell()
+        return cell
+        
+    }
+    
+    func animateCollectionView(show:Bool) {
+        if let collectionView = self.collectionView {
+            if show {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    collectionView.frame.origin = CGPointMake(0,self.view.frame.size.height - 60)
+                    
+                })
+            } else {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    collectionView.frame.origin = CGPointMake(0,self.view.frame.size.height)
+                })
+            }
 
+        }
+    }
+    
+
+    @IBAction func backPressed(sender: AnyObject) {
+    }
+    @IBAction func checkPressed(sender: AnyObject) {
+        let group = Group()
+        if  let currentUser = CoreDataRequest.sharedManager.getUserCredentials() {
+            group.user_ids = [currentUser.object_id]
+        }
+        
+        
+        
+        
+    }
     /*
     // MARK: - Navigation
 
