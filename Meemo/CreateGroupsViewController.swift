@@ -86,10 +86,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             }
             group.name = self.groupNameLabel.text
             group.image = self.groupImageView.image
-            ServerRequest.sharedManager.uploadPhoto(group.image!, completion: { (url) -> Void in
-               
-                println(url)
-            })
             
             vc.group = group
             transition.duration = 0.8

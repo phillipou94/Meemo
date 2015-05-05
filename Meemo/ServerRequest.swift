@@ -190,15 +190,43 @@ class ServerRequest: NSObject {
         })
     }
     
-    func createGroup(group:Group) {
-       /* let parameters = ["group":["name":group.name, "user_ids":group.user_ids, "facebook_ids":group.facebook_ids]]
-        let token = CoreDataRequest.sharedManager.getAPIToken()
-        post("groups", parameters: parameters, token: token, success: { (json) -> Void in
-            //
+    func createGroup(group:Group, completion:(success:Bool) -> Void) {
+        
+        if let image = group.image {
+           
+            uploadPhoto(image, completion: { (url) -> Void in
+                let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":group.facebook_ids, "file_url" : url]
+                let parameters = ["group":payload]
+
+                let token = CoreDataRequest.sharedManager.getAPIToken()
+                self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
+                    
+                    completion(success:true)
+                    
+                    }, failure: { (error) -> Void in
+                        println("Error:\(error)")
+                        completion(success:false)
+                })
+            })
+
+        } else {
+            let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":group.facebook_ids]
+            let parameters = ["group":payload]
             
-            }, failure: { (error) -> Void in
-            //
-        })*/
+            let token = CoreDataRequest.sharedManager.getAPIToken()
+            self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
+                
+                completion(success:true)
+                
+                }, failure: { (error) -> Void in
+                    println("Error:\(error)")
+                    completion(success:false)
+            })
+
+            
+        }
+        
+       
         
     }
     

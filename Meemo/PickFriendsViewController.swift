@@ -168,9 +168,17 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     @IBAction func backPressed(sender: AnyObject) {
     }
     @IBAction func checkPressed(sender: AnyObject) {
-        let group = Group()
-        if  let currentUser = CoreDataRequest.sharedManager.getUserCredentials() {
-            group.user_ids = [currentUser.object_id]
+        
+        if let group = self.group {
+            
+            if  let currentUser = CoreDataRequest.sharedManager.getUserCredentials() {
+                group.user_ids = [currentUser.object_id]
+                ServerRequest.sharedManager.createGroup(group, completion: { (success) -> Void in
+                    
+                })
+                
+            }
+
         }
         
         
