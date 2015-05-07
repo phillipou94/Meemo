@@ -58,8 +58,9 @@ class CameraViewController: UIImagePickerController {
     }
     
     func takePhoto() {
+        
         self.takePicture()
-        //self.dismissViewControllerAnimated(true, completion: nil)
+       // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

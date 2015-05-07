@@ -14,6 +14,7 @@
 		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
 		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
 		4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */; };
+		4D80BF8A1AFBCA34002C5541 /* CaptureMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */; };
 		4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */; };
 		4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */; };
 		4D85957E1AE5A1CC008F96E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D85957C1AE5A1CC008F96E7 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCell.xib; sourceTree = "<group>"; };
 		4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Asynchronous.swift"; sourceTree = "<group>"; };
+		4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureMemoryViewController.swift; sourceTree = "<group>"; };
 		4D8595701AE5A1CC008F96E7 /* Meemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8595741AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
+				4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */,
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
 				4DD91A311AE6FB8500C9E5DE /* User */,
 				4DD91A301AE6FB7400C9E5DE /* Backend */,
@@ -559,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D80BF8A1AFBCA34002C5541 /* CaptureMemoryViewController.swift in Sources */,
 				4DB4EF941AF6C0AD00BD909C /* Group.swift in Sources */,
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,

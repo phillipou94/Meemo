@@ -28,6 +28,8 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     
     @IBOutlet var tableView: UITableView!
     
+   
+    
     
     //MARK: - Initialization
     
@@ -155,6 +157,8 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
 
     @IBAction func captureMemoryPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("showCaptureMemory", sender: self)
+        
     }
     
     func animateInButton(button:SpringButton, container:SpringView) {
@@ -180,6 +184,8 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         }
         
     }
+    
+
     
     //MARK: - SegmentControl Delegate
     
