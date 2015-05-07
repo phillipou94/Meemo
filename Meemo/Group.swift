@@ -16,6 +16,8 @@ class Group: NSObject {
     var facebook_ids:[String] = []
     var members: [User] = []
     var object_id:NSNumber = -1
+    var lastPostType:String? = nil
+    var last_updated:String? = nil
     
    
 }

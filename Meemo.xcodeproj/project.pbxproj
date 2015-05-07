@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */; };
+		4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */; };
+		4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */; };
 		4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */; };
 		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
 		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
@@ -76,6 +79,9 @@
 
 /* Begin PBXFileReference section */
 		228D95CCABE7B024B3BD98EC /* Pods-Meemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
+		4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		4D694AE11AE5C42C005BA3D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Bolts.framework"; sourceTree = "<group>"; };
 		4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Facebook_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Facebook_iOS_SDK.framework"; sourceTree = "<group>"; };
 		4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +188,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D51AE911AFB1807007DBD13 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
+				4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */,
+				4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */,
+				4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */,
+				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
 		4D8595671AE5A1CC008F96E7 = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +224,6 @@
 		4D8595721AE5A1CC008F96E7 /* Meemo */ = {
 			isa = PBXGroup;
 			children = (
-				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
 				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
 				4DD91A311AE6FB8500C9E5DE /* User */,
@@ -214,8 +231,8 @@
 				4DB14C471AE6064300804656 /* Login & Registration */,
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4DBBC71D1AE94B7200DB03B4 /* Custom Views */,
-				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
 				4DFB6B6E1AF68E7800909860 /* Extensions */,
+				4D51AE911AFB1807007DBD13 /* Group */,
 				4DFB6B6D1AF68E5D00909860 /* Create Groups */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
@@ -472,6 +489,7 @@
 				4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */,
 				4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */,
 				4D8595801AE5A1CC008F96E7 /* Images.xcassets in Resources */,
+				4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */,
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
 				4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */,
 				4DD919871AE6CA4800C9E5DE /* FacebookSDK.strings in Resources */,
@@ -552,10 +570,12 @@
 				4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */,
 				4DFB6B711AF690EA00909860 /* FriendsPreviewCell.swift in Sources */,
 				4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */,
+				4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */,
 				4DB9BD581AEA9EBF00555793 /* PhotoCell.swift in Sources */,
 				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
 				4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */,
 				4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */,
+				4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */,
 				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,

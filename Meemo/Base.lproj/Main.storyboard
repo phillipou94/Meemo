@@ -251,6 +251,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tHv-aS-w2e">
+                                <rect key="frame" x="0.0" y="85" width="600" height="515"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1J-wI-cnS" customClass="SpringButton" customModule="Spring">
                                 <rect key="frame" x="534" y="530" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -438,6 +442,9 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="S0i-3f-zAr" secondAttribute="centerX" constant="49" id="0XN-hw-WAv"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="height" secondItem="WGs-bn-eFR" secondAttribute="height" constant="15" id="0lQ-ee-D1y"/>
+                            <constraint firstAttribute="trailing" secondItem="tHv-aS-w2e" secondAttribute="trailing" id="1Ql-OX-BAh"/>
+                            <constraint firstItem="tHv-aS-w2e" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="1s2-ru-u4q"/>
+                            <constraint firstItem="ZX2-YE-AIE" firstAttribute="top" secondItem="tHv-aS-w2e" secondAttribute="bottom" id="64m-Mq-MJd"/>
                             <constraint firstAttribute="width" secondItem="MfB-jp-Aei" secondAttribute="width" id="7P0-me-A7o"/>
                             <constraint firstItem="bar-EZ-T2q" firstAttribute="top" secondItem="aNY-Fh-uzV" secondAttribute="bottom" constant="13" id="BpZ-Rb-gmR"/>
                             <constraint firstItem="H1J-wI-cnS" firstAttribute="trailing" secondItem="fre-Za-tsO" secondAttribute="trailingMargin" id="DUE-Sn-zFz"/>
@@ -452,6 +459,7 @@
                             <constraint firstItem="bar-EZ-T2q" firstAttribute="leading" secondItem="ZBy-ol-pOx" secondAttribute="trailing" constant="23" id="aQV-nV-6lV"/>
                             <constraint firstItem="ZBy-ol-pOx" firstAttribute="top" secondItem="vSc-lZ-ksp" secondAttribute="bottom" constant="31" id="bGf-nn-8Ss"/>
                             <constraint firstAttribute="width" secondItem="WGs-bn-eFR" secondAttribute="width" id="cEC-Nc-f5n"/>
+                            <constraint firstItem="tHv-aS-w2e" firstAttribute="top" secondItem="WGs-bn-eFR" secondAttribute="bottom" id="ufe-wP-wUb"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="centerX" secondItem="aNY-Fh-uzV" secondAttribute="centerX" id="w3Y-Pz-lBR"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="wMN-Kq-pnA"/>
                             <constraint firstAttribute="centerX" secondItem="WGs-bn-eFR" secondAttribute="centerX" id="yhT-pO-Yue"/>
@@ -472,6 +480,7 @@
                         <outlet property="captureMemoryButton" destination="rqM-1h-24g" id="cj0-iC-KfV"/>
                         <outlet property="captureMemoryContainer" destination="bar-EZ-T2q" id="OyQ-pa-N1t"/>
                         <outlet property="segmentControl" destination="WGs-bn-eFR" id="kRw-iP-ceY"/>
+                        <outlet property="tableView" destination="tHv-aS-w2e" id="MUt-ZU-xH9"/>
                         <outlet property="writeMemoryButton" destination="ZBy-ol-pOx" id="mJw-3D-fBX"/>
                         <outlet property="writeMemoryContainer" destination="S0i-3f-zAr" id="kSK-YX-p7c"/>
                         <segue destination="ipb-df-dus" kind="show" identifier="createGroup" id="2B9-ir-H6Q"/>

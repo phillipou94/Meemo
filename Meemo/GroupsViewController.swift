@@ -8,7 +8,10 @@
 
 import Foundation
 import Spring
-class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
+class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    let viewModel = GroupsViewModel()
+    
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
@@ -23,18 +26,34 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
     
     @IBOutlet var segmentControl: CustomSegmentControl!
     
+    @IBOutlet var tableView: UITableView!
+    
+    
     //MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
         self.segmentControl.delegate = self
+        
+        let nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "GroupTableViewCell")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.viewModel.getGroups { () -> Void in
+            self.tableView.reloadData()
+            
+        }
+        
         PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts) -> Void in
             /*let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
             self.presentViewController(phoneSearchController, animated: true, completion: nil)*/
         }
 
     }
+    
+    
     
 
     
@@ -69,6 +88,30 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate {
         }) { (finished) -> Void in
             self.shadeView.removeFromSuperview()
         }
+    }
+    
+    //MARK: - TableView
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.groups.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let group = self.viewModel.groups[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
+        cell.group = group
+        cell.configureCell()
+        cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
+        return cell
     }
     
     //MARK: - Buttons

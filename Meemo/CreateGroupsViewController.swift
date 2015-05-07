@@ -47,7 +47,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+       
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
         
         self.shadeView = ShadeView(frame: self.view.frame)

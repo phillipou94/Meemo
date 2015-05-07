@@ -101,7 +101,6 @@ class ServerRequest: NSObject {
         let parameter = ["user":["name":name, "email":email, "password":password]]
         
         post("users", parameters: parameter, token:nil, success: { (json) -> Void in
-            println(json)
             
             var user = User()
             user.email = json["response"]["email"].string
@@ -171,15 +170,36 @@ class ServerRequest: NSObject {
     
     //MARK: - Groups
     
-    func getGroups() {
+    func getGroups(completion:(result:[Group]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
+        var result: [Group] = []
+        self.get("groups", parameters: nil, token: token, success: { (json) -> Void in
+            
+            for dict in json["response"].arrayValue {
+                var group = Group()
+                group.last_updated = dict["updated_at"].string
+                group.name =  dict["name"].string
+                group.object_id = dict["id"].number!
+                group.lastPostType = dict["last_post_type"].string
+                group.imageURL = self.removeBackSlashes(dict["file_url"].string)
+                result.append(group)
+                
+            }
+           
+            completion(result: result)
+            
+            
+        }, failure: { (error) -> Void in
+            println("Error:\(error)")
+            
+        })
         
     }
     
     func getGroupsWithPhoneNumber(number:String, success:(wasSuccessful:Bool) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         
-        self.get("groups?phone=\(number)", parameters: nil, token: token, success: { (json) -> Void in
+        self.get("phone?phone=\(number)", parameters: nil, token: token, success: { (json) -> Void in
             
             success(wasSuccessful: true)
             
@@ -334,70 +354,13 @@ class ServerRequest: NSObject {
         }
     }
     
-
     
-    /*
-
-
-
-- (void)uploadPhoto:(UIImage*)image withCompletionHandler:(void (^)(NSString *fileID))completion{
-
-float compressionScale = 0.75;
-
-NSString *boundary = [self generateRandomString];
-NSURL *requestURL = [NSURL URLWithString: @"https://rocky-spire-3961.herokuapp.com/files/"];
-NSString *FileParamConstant = @"photo";
-UserCredentials *credentials =[[CoreDataRequest sharedManager] getUserCredentials];
-// create request
-NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-[request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-[request setHTTPShouldHandleCookies:NO];
-[request setTimeoutInterval:30];
-[request setHTTPMethod:@"POST"];
-
-//set HTTP Headers
-[request addValue:@"application/json" forHTTPHeaderField:@"Application"];
-[request addValue:[NSString stringWithFormat:@"multipart/form-data;boundary=%@",boundary] forHTTPHeaderField:@"Content-Type"];
-[request addValue:[NSString stringWithFormat:@"Bearer %@",credentials.user_token] forHTTPHeaderField:@"Authorization"];
-
-// post body
-NSMutableData *body = [NSMutableData data];
-
-// add image data
-NSData *imageData = UIImageJPEGRepresentation(image, compressionScale);
-if (imageData) {
-[body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", FileParamConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-[body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-[body appendData:imageData];
-[body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-[body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-
-// setting the body of the post to the reqeust
-[request setHTTPBody:body];
-
-// set URL
-[request setURL:requestURL];
-
-[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-if ([httpResponse statusCode] == 200) {
-NSLog(@"success");
-NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: nil];
-NSString *pictureID = serializedData[@"id"];
-dispatch_async(dispatch_get_main_queue(), ^{
-completion(pictureID);
-});
-
-} else {
-NSLog(@"Error: %@", error);
-}
-
-}];
-}
-*/
-
+    //MARK: - HELPERS
+    
+    func removeBackSlashes(string:String?) -> String? {
+        if let stringTerm = string {
+            return stringTerm.stringByReplacingOccurrencesOfString("\\", withString: "")
+        }
+        return nil
+    }
 }
