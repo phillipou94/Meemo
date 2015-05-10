@@ -24,16 +24,15 @@ class CameraViewController: UIImagePickerController {
         self.cameraCaptureMode = .Photo
         
         topBar = UIView(frame: CGRectMake(0,0,self.view.frame.size.width,40))
-        topBar.backgroundColor=UIColor.clearColor()
-        bottomView = UIView(frame:CGRectMake(0,self.view.frame.size.width,self.view.frame.size.width,self.view.frame.size.width))
+        topBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
+        bottomView = UIView(frame:CGRectMake(0,self.view.frame.size.width+80,self.view.frame.size.width,self.view.frame.size.width-80))
         bottomView.backgroundColor = UIColor.blackColor()
         
-        menuBar = UIView(frame:CGRectMake(0,40,self.view.frame.size.width,40))
-        menuBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
-        
+        menuBar = UIView(frame:CGRectMake(0,40+self.view.frame.size.width,self.view.frame.size.width,40))
+        menuBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         self.cameraOverlayView?.addSubview(topBar)
         self.cameraOverlayView?.addSubview(bottomView)
-        bottomView.addSubview(menuBar)
+        self.cameraOverlayView?.addSubview(menuBar)
         
         configureButtons()
 

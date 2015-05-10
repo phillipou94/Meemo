@@ -336,14 +336,66 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         let width = min(image.size.width,image.size.height)
         
-        let frame = CGRectMake(0,100,width,width)
+        let translation = (40/self.view.frame.size.height) * image.size.height
+        
+        /*let frame = CGRectMake(0, 40, width, width)
         
         let imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
-        let selectedImage = UIImage(CGImage: imageRef, scale: 1, orientation: image.imageOrientation)
-        groupImageView.image = selectedImage
+        let selectedImage = UIImage(CGImage: imageRef, scale: 1, orientation: image.imageOrientation)*/
+        
+        let rect = CGRectMake(0, 40, width, width);
+        var newImage = cropImage(image, rect: rect)
+       /* let size = CGSizeMake(width,width)
+        let selectedImage = imageFromImage(newImage, newSize: size)*/
+
+        groupImageView.image = newImage
         
         
     }
+    
+    func cropImage(image:UIImage, rect:CGRect) -> UIImage {
+        var rectTransform = CGAffineTransform()
+        let translation = (40/self.view.frame.size.height) * image.size.height
+        switch (image.imageOrientation) {
+        case .Left:
+            
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0.5*M_PI)), 0.0, -image.size.height-translation)
+            println("1")
+            break
+        case .Right:
+            
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-0.5*M_PI)), -image.size.width, translation)
+            println("2")
+            break
+        case .Down:
+            
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-M_PI)), -image.size.width, -image.size.height-translation)
+            println("3")
+            break
+        default:
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0)),translation,0)
+            println("4")
+            
+            
+        }
+        rectTransform = CGAffineTransformScale(rectTransform, image.scale, image.scale)
+        var imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectApplyAffineTransform(rect, rectTransform))
+        let result = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        return result!
+        
+        
+    }
+    
+    func imageFromImage(image:UIImage, newSize:CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(newSize)
+        image.drawInRect(CGRectMake(0,0,newSize.width,newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    
+
 
 
 }
