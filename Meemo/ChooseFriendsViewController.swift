@@ -15,6 +15,9 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     var viewModel = GroupsViewModel()
     var allFriends : [String:[User]] = [:]
     var groups: [Group] = []
+    var selectedFriends: [User] = []
+    var selectedGroups: [Group] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.segmentController.items = ["Groups","Friends"]
@@ -97,6 +100,47 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             return cell
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+
+        if self.segmentController.selectedIndex == 0 {
+            let group = self.groups[indexPath.row]
+            if contains(selectedGroups, group) {
+                if let index = find(selectedGroups, group) {
+                    selectedGroups.removeAtIndex(index)
+                    cell?.accessoryType = .None
+                }
+                
+            } else {
+                selectedGroups.append(group)
+                cell?.accessoryType = .Checkmark
+            }
+
+            
+        } else {
+            let letter = self.viewModel.alphabet[indexPath.section]
+            let array = self.allFriends[letter]! as [User]
+            let  user = array[indexPath.row]
+            
+            
+            if contains(selectedFriends, user) {
+                if let index = find(selectedFriends, user) {
+                    selectedFriends.removeAtIndex(index)
+                    cell?.accessoryType = .None
+                }
+                
+            } else {
+                selectedFriends.append(user)
+                cell?.accessoryType = .Checkmark
+            }
+            
+            
+        }
+        self.tableView.reloadData()
+        
+    }
+
     
     //MARK: - SegmentControl Delegate
     

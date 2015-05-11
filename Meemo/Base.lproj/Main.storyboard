@@ -486,11 +486,12 @@
                         <outlet property="writeMemoryContainer" destination="S0i-3f-zAr" id="kSK-YX-p7c"/>
                         <segue destination="ipb-df-dus" kind="show" identifier="createGroup" id="2B9-ir-H6Q"/>
                         <segue destination="vmZ-Wt-67O" kind="show" identifier="showCaptureMemory" id="97p-C8-Pxy"/>
+                        <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="3qW-cx-UrU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31" y="2013"/>
+            <point key="canvasLocation" x="36" y="2395"/>
         </scene>
         <!--Capture Memory View Controller-->
         <scene sceneID="4e9-gQ-LAt">
@@ -560,7 +561,7 @@
                                 </constraints>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.23921568627450981" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mdE-Ky-Zdj" firstAttribute="leading" secondItem="nYn-Fj-mEa" secondAttribute="leading" id="E7V-g0-bAW"/>
                             <constraint firstItem="cuw-Eo-QXk" firstAttribute="leading" secondItem="nYn-Fj-mEa" secondAttribute="leading" id="HcP-pc-0Jt"/>
@@ -582,7 +583,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6k-xR-aHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="2013"/>
+            <point key="canvasLocation" x="812" y="1787"/>
+        </scene>
+        <!--Write Memory View Controller-->
+        <scene sceneID="rgo-ox-lei">
+            <objects>
+                <viewController id="pFR-ky-Zug" customClass="WriteMemoryViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Kj-pv-qNf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eqr-tx-Rjj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AgF-We-LIi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write Something" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-nD-Nue">
+                                <rect key="frame" x="0.0" y="96" width="600" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="258" id="CMC-tD-DzM"/>
+                                    <constraint firstAttribute="height" constant="250" id="gLB-Xy-j8x"/>
+                                </constraints>
+                                <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CMC-tD-DzM"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loJ-ME-CYC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-9b-4o0" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="556" y="7" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="r1K-BS-RiE"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                        <state key="normal" image="Checkmark">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="VHZ-qc-JYW"/>
+                                            <action selector="checkPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="Zcm-e2-jIR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSV-5X-iel" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="4" width="45" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="xF8-6J-lAo"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="20" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="U1g-bG-rfb"/>
+                                            <segue destination="ji4-gK-nUd" kind="unwind" unwindAction="unwindToViewController:" id="n2n-ue-ebx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="7pb-9b-4o0" firstAttribute="top" secondItem="loJ-ME-CYC" secondAttribute="top" constant="7" id="5Cg-t2-ckK"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="loJ-ME-CYC" secondAttribute="centerY" id="Fhp-hm-0KE"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="leading" secondItem="loJ-ME-CYC" secondAttribute="leading" id="RTy-vM-BBW"/>
+                                    <constraint firstItem="7pb-9b-4o0" firstAttribute="trailing" secondItem="loJ-ME-CYC" secondAttribute="trailingMargin" id="pdU-jT-Q5A"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="7pb-9b-4o0" secondAttribute="centerY" id="rb6-VL-MBT"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="top" secondItem="loJ-ME-CYC" secondAttribute="top" constant="4" id="w0i-wi-WVS"/>
+                                    <constraint firstAttribute="height" constant="50" id="wDa-eH-13z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.23921568627450981" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="loJ-ME-CYC" firstAttribute="leading" secondItem="AgF-We-LIi" secondAttribute="leading" id="GMk-hH-AEB"/>
+                            <constraint firstAttribute="trailing" secondItem="loJ-ME-CYC" secondAttribute="trailing" id="Wj7-pK-eeQ"/>
+                            <constraint firstAttribute="trailing" secondItem="fBd-nD-Nue" secondAttribute="trailing" id="cR5-uP-20r"/>
+                            <constraint firstItem="fBd-nD-Nue" firstAttribute="top" secondItem="2Kj-pv-qNf" secondAttribute="bottom" constant="96" id="n5F-Um-9EA"/>
+                            <constraint firstItem="loJ-ME-CYC" firstAttribute="top" secondItem="2Kj-pv-qNf" secondAttribute="bottom" id="uck-zI-7FS"/>
+                            <constraint firstItem="fBd-nD-Nue" firstAttribute="leading" secondItem="AgF-We-LIi" secondAttribute="leading" id="uwr-wQ-GLO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="fBd-nD-Nue" id="mVR-Tq-Ve6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2i-Ak-mlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ji4-gK-nUd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="808" y="2447"/>
         </scene>
         <!--Create Groups View Controller-->
         <scene sceneID="NUW-Jl-kFU">

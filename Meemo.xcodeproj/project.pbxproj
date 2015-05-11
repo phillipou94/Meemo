@@ -12,6 +12,8 @@
 		4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */; };
 		4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */; };
 		4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */; };
+		4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */; };
+		4D586D201B0110B900B72CCD /* WriteMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */; };
 		4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */; };
 		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
 		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
@@ -87,6 +89,8 @@
 		4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
+		4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+CenterAlign.swift"; sourceTree = "<group>"; };
+		4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMemoryViewController.swift; sourceTree = "<group>"; };
 		4D694AE11AE5C42C005BA3D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Bolts.framework"; sourceTree = "<group>"; };
 		4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Facebook_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Facebook_iOS_SDK.framework"; sourceTree = "<group>"; };
 		4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 		4D1166121B0063EA001A0847 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */,
 				4D1166131B006418001A0847 /* Post.swift */,
 				4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */,
 				4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */,
@@ -376,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */,
+				4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				4D80BF8A1AFBCA34002C5541 /* CaptureMemoryViewController.swift in Sources */,
 				4DB4EF941AF6C0AD00BD909C /* Group.swift in Sources */,
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
+				4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */,
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
 				4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
@@ -600,6 +607,7 @@
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
 				4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */,
+				4D586D201B0110B900B72CCD /* WriteMemoryViewController.swift in Sources */,
 				4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */,
 				4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */,
 			);

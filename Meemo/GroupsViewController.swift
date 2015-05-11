@@ -154,6 +154,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
     
     @IBAction func writeMemoryPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("writeMemory", sender: self)
     }
 
     @IBAction func captureMemoryPressed(sender: AnyObject) {
