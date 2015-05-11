@@ -12,7 +12,7 @@ import Parse
 import SwiftyJSON
 
 private let _sharedInstance = ServerRequest()
-private let baseURLString = "https://shrouded-tor-7022.herokuapp.com/api/"
+private let baseURLString = "http://localhost:3000/api/" /*"https://shrouded-tor-7022.herokuapp.com/api/"*/
 
 class ServerRequest: NSObject {
 
@@ -35,13 +35,15 @@ class ServerRequest: NSObject {
                 "Accept":"application/json"]
         }
         
-        Alamofire.request(.POST, baseURLString+path, parameters: parameters) .responseJSON { (request, response, data, error) in
-            let json = JSON(data!)
-            let status = json["status"]
-            if(status == 200) {
-                success(json: json)
-            } else {
-                failure(error: json)
+        Alamofire.request(.POST, baseURLString+path, parameters: parameters) .responseJSON { (request, response, dataObject, error) in
+            if let data: AnyObject = dataObject {
+                let json = JSON(data)
+                let status = json["status"]
+                if(status == 200) {
+                    success(json: json)
+                } else {
+                    failure(error: json)
+                }
             }
         }
     }
@@ -162,8 +164,6 @@ class ServerRequest: NSObject {
                 completion(friendsDict:dictionary)
             })
             
-            
-            
         }
         
     }
@@ -210,37 +210,47 @@ class ServerRequest: NSObject {
         })
     }
     
-    func createGroup(group:Group, completion:(success:Bool) -> Void) {
+    func createGroup(group:Group, completion:(json:JSON) -> Void) {
+        var facebook_ids:[String] = []
+        var invited_users: [User] = []
+        
+        for user:User in group.members {
+            if let facebook_id = user.facebook_id{
+                facebook_ids.append(facebook_id)
+            } else if user.phoneNumber != nil {
+                invited_users.append(user)
+            }
+        }
         
         if let image = group.image {
            
             uploadPhoto(image, completion: { (url) -> Void in
-                let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":group.facebook_ids, "file_url" : url]
+                let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":facebook_ids, "file_url" : url]
                 let parameters = ["group":payload]
 
                 let token = CoreDataRequest.sharedManager.getAPIToken()
                 self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
-                    
-                    completion(success:true)
+                    let groupID = json["response"]["id"].number!
+                    self.inviteWithPhoneNumbers(groupID, invited_users: invited_users)
+                    completion(json: json)
                     
                     }, failure: { (error) -> Void in
                         println("Error:\(error)")
-                        completion(success:false)
                 })
             })
 
         } else {
-            let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":group.facebook_ids]
+            let payload :NSDictionary = ["name":group.name!,"user_ids":group.user_ids, "facebook_ids":facebook_ids]
             let parameters = ["group":payload]
             
             let token = CoreDataRequest.sharedManager.getAPIToken()
             self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
-                
-                completion(success:true)
+                let groupID = json["response"]["id"].number!
+                 self.inviteWithPhoneNumbers(groupID, invited_users: invited_users)
+                completion(json:json)
                 
                 }, failure: { (error) -> Void in
                     println("Error:\(error)")
-                    completion(success:false)
             })
 
             
@@ -250,20 +260,45 @@ class ServerRequest: NSObject {
         
     }
     
+    func inviteWithPhoneNumbers(group_id:NSNumber,invited_users:[User]) {
+        var people:[ [String: String] ] = []
+        for user:User in invited_users {
+            var dict:[String:String] = [:]
+            dict["name"] = user.name!
+            dict["phone"] = user.phoneNumber!
+            people.append(dict)
+        }
+        let payload:NSDictionary = ["group_id":group_id, "people":people]
+        let parameters = ["invite":payload]
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.post("phone_invite", parameters: parameters, token: token, success: { (json) -> Void in
+            
+        }, failure: { (error) -> Void in
+            
+        })
+    }
+    
     //MARK: - Posts
     
     func createPost(post:Post) {
+        var payload:NSMutableDictionary = [:]
         if post.post_type == "text" {
-            let payload :NSDictionary = ["post_type":"text", "content":post.content!]
-            let parameter = ["post":payload]
-            let token = CoreDataRequest.sharedManager.getAPIToken()
-            self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
-                
-            }, failure: { (error) -> Void in
-                println("Error:\(error)")
-            })
+            payload = ["post_type":"text", "content":post.content!]
+            
+        } else {
             
         }
+        if let group_id = post.group_id {
+            payload.setValue(group_id, forKey: "group_id")
+        }
+        let parameter = ["post":payload]
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
+            
+            }, failure: { (error) -> Void in
+                println("Error:\(error)")
+        })
+
     }
     
     //MARK: - Facebook

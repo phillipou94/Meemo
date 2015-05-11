@@ -18,6 +18,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     var selectedFriends: [User] = []
     var selectedGroups: [Group] = []
     var post:Post? = nil
+    var alertViewTextField:UITextField? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,12 +146,45 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     @IBAction func finishPressed(sender: AnyObject) {
         if let post = self.post {
             
-            ServerRequest.sharedManager.createPost(post)
+            if selectedGroups.count == 0 {
+                if selectedFriends.count != 0 {
+                    postToNewGroup()
+                } else {
+                    ServerRequest.sharedManager.createPost(post)
+                }
+               
+            } else {
+                for group:Group in selectedGroups {
+                    post.group_id = group.object_id
+                    ServerRequest.sharedManager.createPost(post)
+                }
+                
+            }
+            
         }
-        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        /*let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
         self.modalPresentationStyle = .Custom
         self.modalTransitionStyle = .CrossDissolve
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)*/
+    }
+    
+    func showAlertView() {
+        
+        
+    }
+    
+    func postToNewGroup() {
+        let group = Group()
+        group.name = "test post with new group"
+        group.members = selectedFriends
+        
+        ServerRequest.sharedManager.createGroup(group, completion: { (json) -> Void in
+            if let post = self.post {
+                post.group_id = json["response"]["id"].number!
+                ServerRequest.sharedManager.createPost(post)
+            }
+            
+        })
     }
     
     //MARK: - SegmentControl Delegate

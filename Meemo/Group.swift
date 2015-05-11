@@ -13,7 +13,6 @@ class Group: NSObject {
     var image:UIImage? = nil
     var imageURL:String? = nil
     var user_ids:[NSNumber] = []
-    var facebook_ids:[String] = []
     var members: [User] = []
     var object_id:NSNumber = -1
     var lastPostType:String? = nil
