@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol CameraViewControllerDelegate {
+    func exitCamera()
+}
+
 class CameraViewController: UIImagePickerController {
     
     var menuBar = UIView()
     var bottomView = UIView()
     var topBar = UIView()
+    var sourceViewController: UIViewController? = nil
+    var viewDelegate:CameraViewControllerDelegate? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +70,9 @@ class CameraViewController: UIImagePickerController {
     
     
     func exitPressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.viewDelegate?.exitCamera()
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

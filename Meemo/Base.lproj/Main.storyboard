@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -502,8 +503,64 @@
                     <view key="view" contentMode="scaleToFill" id="nYn-Fj-mEa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdE-Ky-Zdj">
+                                <rect key="frame" x="0.0" y="49" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mdE-Ky-Zdj" secondAttribute="height" multiplier="1:1" id="Ijm-2M-Yvd"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuw-Eo-QXk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsn-BO-zKF" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="4" width="45" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="Pde-JI-aBc"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="20" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="MHc-1s-riN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dsn-BO-zKF" firstAttribute="leading" secondItem="cuw-Eo-QXk" secondAttribute="leading" id="47m-ZX-x8K"/>
+                                    <constraint firstItem="dsn-BO-zKF" firstAttribute="top" secondItem="cuw-Eo-QXk" secondAttribute="top" constant="4" id="AWX-T6-zA5"/>
+                                    <constraint firstAttribute="height" constant="50" id="KuM-9r-EHA"/>
+                                    <constraint firstItem="dsn-BO-zKF" firstAttribute="centerY" secondItem="cuw-Eo-QXk" secondAttribute="centerY" id="lzy-Oa-pBv"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lfc-RU-QVr">
+                                <rect key="frame" x="259" y="346" width="82" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="7x4-8u-uFc"/>
+                                    <constraint firstAttribute="height" constant="37" id="yVT-iC-Knq"/>
+                                </constraints>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mdE-Ky-Zdj" firstAttribute="leading" secondItem="nYn-Fj-mEa" secondAttribute="leading" id="E7V-g0-bAW"/>
+                            <constraint firstItem="cuw-Eo-QXk" firstAttribute="leading" secondItem="nYn-Fj-mEa" secondAttribute="leading" id="HcP-pc-0Jt"/>
+                            <constraint firstItem="mdE-Ky-Zdj" firstAttribute="width" secondItem="nYn-Fj-mEa" secondAttribute="width" id="U7l-wt-I1E"/>
+                            <constraint firstAttribute="trailing" secondItem="cuw-Eo-QXk" secondAttribute="trailing" id="Vm7-uU-keH"/>
+                            <constraint firstItem="mdE-Ky-Zdj" firstAttribute="top" secondItem="cuw-Eo-QXk" secondAttribute="bottom" constant="-1" id="b3L-qh-QyB"/>
+                            <constraint firstAttribute="trailing" secondItem="mdE-Ky-Zdj" secondAttribute="trailing" id="gOn-lj-fwt"/>
+                            <constraint firstItem="cuw-Eo-QXk" firstAttribute="top" secondItem="UjR-lf-NTp" secondAttribute="bottom" id="l5b-aC-TrQ"/>
+                            <constraint firstAttribute="centerX" secondItem="lfc-RU-QVr" secondAttribute="centerX" id="tQW-g7-RPQ"/>
+                            <constraint firstItem="lfc-RU-QVr" firstAttribute="top" secondItem="mdE-Ky-Zdj" secondAttribute="bottom" id="wbL-Tt-am8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="mdE-Ky-Zdj" id="vYm-hG-D64"/>
+                        <outlet property="navBar" destination="cuw-Eo-QXk" id="8q1-fy-rv0"/>
+                        <outlet property="pageControl" destination="lfc-RU-QVr" id="nf4-YF-flC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6k-xR-aHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -336,12 +336,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
         let width = min(image.size.width,image.size.height)
         
-        let translation = (40/self.view.frame.size.height) * image.size.height
-        
-        /*let frame = CGRectMake(0, 40, width, width)
-        
-        let imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
-        let selectedImage = UIImage(CGImage: imageRef, scale: 1, orientation: image.imageOrientation)*/
+        let translation = (40/self.view.frame.size.height) * image.size.height  //40 = height of top menu in camera
         
         let rect = CGRectMake(0, 40, width, width);
         var newImage = cropImage(image, rect: rect)
@@ -356,27 +351,19 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func cropImage(image:UIImage, rect:CGRect) -> UIImage {
         var rectTransform = CGAffineTransform()
         let translation = (40/self.view.frame.size.height) * image.size.height
+        
         switch (image.imageOrientation) {
         case .Left:
-            
             rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0.5*M_PI)), 0.0, -image.size.height-translation)
-            println("1")
             break
         case .Right:
-            
             rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-0.5*M_PI)), -image.size.width, translation)
-            println("2")
             break
         case .Down:
-            
             rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-M_PI)), -image.size.width, -image.size.height-translation)
-            println("3")
             break
         default:
             rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0)),translation,0)
-            println("4")
-            
-            
         }
         rectTransform = CGAffineTransformScale(rectTransform, image.scale, image.scale)
         var imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectApplyAffineTransform(rect, rectTransform))
