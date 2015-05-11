@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1166141B006418001A0847 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166131B006418001A0847 /* Post.swift */; };
+		4D1166161B0078CF001A0847 /* ChooseFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */; };
 		4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */; };
 		4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */; };
 		4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		228D95CCABE7B024B3BD98EC /* Pods-Meemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4D1166131B006418001A0847 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFriendsViewController.swift; sourceTree = "<group>"; };
 		4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
@@ -190,6 +194,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D1166121B0063EA001A0847 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				4D1166131B006418001A0847 /* Post.swift */,
+				4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */,
+				4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
 		4D51AE911AFB1807007DBD13 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +212,7 @@
 				4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */,
 				4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */,
 				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
+				4DFB6B6D1AF68E5D00909860 /* Create Groups */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -226,17 +241,15 @@
 		4D8595721AE5A1CC008F96E7 /* Meemo */ = {
 			isa = PBXGroup;
 			children = (
-				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
-				4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */,
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
+				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4DD91A311AE6FB8500C9E5DE /* User */,
 				4DD91A301AE6FB7400C9E5DE /* Backend */,
 				4DB14C471AE6064300804656 /* Login & Registration */,
-				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4DBBC71D1AE94B7200DB03B4 /* Custom Views */,
+				4D1166121B0063EA001A0847 /* Post */,
 				4DFB6B6E1AF68E7800909860 /* Extensions */,
 				4D51AE911AFB1807007DBD13 /* Group */,
-				4DFB6B6D1AF68E5D00909860 /* Create Groups */,
 				4D85957F1AE5A1CC008F96E7 /* Images.xcassets */,
 				4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */,
 				4D8595771AE5A1CC008F96E7 /* Meemo.xcdatamodeld */,
@@ -288,6 +301,7 @@
 				4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */,
 				4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */,
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
+				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -571,11 +585,13 @@
 				4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
+				4D1166141B006418001A0847 /* Post.swift in Sources */,
 				4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */,
 				4DFB6B711AF690EA00909860 /* FriendsPreviewCell.swift in Sources */,
 				4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */,
 				4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */,
 				4DB9BD581AEA9EBF00555793 /* PhotoCell.swift in Sources */,
+				4D1166161B0078CF001A0847 /* ChooseFriendsViewController.swift in Sources */,
 				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
 				4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */,
 				4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */,

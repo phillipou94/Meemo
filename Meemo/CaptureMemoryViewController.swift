@@ -22,6 +22,8 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     
     var titleTextField = UITextField()
     var storyTextView = UITextView()
+    
+    var post:Post? = nil
 
     @IBOutlet var pageControl: UIPageControl!
     override func viewDidLoad() {
@@ -102,6 +104,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         if textView.text == "Write Your Story" {
             textView.text = ""
             textView.textColor = UIColor.whiteColor()
+            
         }
         textView.becomeFirstResponder()
     }
@@ -109,7 +112,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     func textViewDidEndEditing(textView: UITextView) {
         if textView.text == "" {
             textView.text == "Write Your Story"
-            textView.textColor = UIColor(white: 1.0, alpha: 0.6)
+            textView.textColor = UIColor.whiteColor()
         }
         textView.resignFirstResponder()
     }
@@ -225,17 +228,24 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     
     // MARK: - Buttons
 
+    @IBAction func checkPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("showFriends", sender: self)
+    }
     @IBAction func backPressed(sender: AnyObject) {
         showCamera()
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showFriends") {
+            post = Post()
+            post?.image = self.imageView.image
+            post?.title = self.titleTextField.text
+            post?.content = self.storyTextView.text
+        }
     }
-    */
+
 
 }

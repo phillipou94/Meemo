@@ -11,7 +11,7 @@ import Spring
 class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let viewModel = GroupsViewModel()
-    
+    var groups:[Group] = []
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
@@ -43,9 +43,9 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.viewModel.getGroups { () -> Void in
+        self.viewModel.getGroups { (groups) -> Void in
+            self.groups = groups
             self.tableView.reloadData()
-            
         }
         
         PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts) -> Void in
@@ -99,7 +99,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.groups.count
+        return self.groups.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -107,7 +107,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let group = self.viewModel.groups[indexPath.row]
+        let group = self.groups[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
         cell.group = group

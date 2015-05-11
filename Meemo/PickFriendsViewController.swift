@@ -16,6 +16,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     var selectedFriends: [User] = []
     var group:Group? = nil
     let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "#"]
+    var viewModel = GroupsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     }
     
     func loadFriends() {
-        ServerRequest.sharedManager.getAllFriends { (friendsDict) -> Void in
-            self.allFriends = friendsDict
+        self.viewModel.getAllFriends { (friends) -> Void in
+            self.allFriends = friends
             self.tableView.reloadData()
         }
     }

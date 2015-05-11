@@ -9,13 +9,19 @@
 import UIKit
 
 class GroupsViewModel: NSObject {
-    var groups: [Group] = []
+    let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "#"]
     
-    func getGroups(completion:() -> Void) {
+    func getGroups(completion:(groups:[Group]) -> Void) {
         ServerRequest.sharedManager.getGroups { (result) -> Void in
-            self.groups = result
-            completion()
+            completion(groups:result)
         }
+    }
+    
+    func getAllFriends(completion:(friends:[String:[User]]) -> Void) {
+        ServerRequest.sharedManager.getAllFriends { (friendsDict) -> Void in
+            completion(friends:friendsDict)
+        }
+
     }
     
     func formatDate(dateString:String?) -> String? {
