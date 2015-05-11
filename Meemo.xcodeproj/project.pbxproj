@@ -28,6 +28,7 @@
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
 		4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */; };
 		4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */; };
+		4DA848CB1B01618100995031 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA848CA1B01618100995031 /* AlertView.xib */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		4DB4EF941AF6C0AD00BD909C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4EF931AF6C0AD00BD909C /* Group.swift */; };
@@ -111,6 +112,7 @@
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSearchViewController.swift; sourceTree = "<group>"; };
 		4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneSearchViewController.xib; sourceTree = "<group>"; };
+		4DA848CA1B01618100995031 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
 		4DB4EF931AF6C0AD00BD909C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */,
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
 				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
+				4DA848CA1B01618100995031 /* AlertView.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				4D8595801AE5A1CC008F96E7 /* Images.xcassets in Resources */,
 				4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */,
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
+				4DA848CB1B01618100995031 /* AlertView.xib in Resources */,
 				4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */,
 				4DD919871AE6CA4800C9E5DE /* FacebookSDK.strings in Resources */,
 				4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */,

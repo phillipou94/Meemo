@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseFriendsViewController" customModule="Meemo" customModuleProvider="target">
+            <connections>
+                <outlet property="alertView" destination="iN0-l3-epB" id="Grs-V3-Gj7"/>
+                <outlet property="alertViewTextField" destination="V4u-Za-Mj3" id="ibz-91-lMc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IR7-tu-kr1">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V4u-Za-Mj3">
+                            <rect key="frame" x="8" y="0.0" width="292" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="51" id="BVx-rU-RdO"/>
+                            </constraints>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="94B-pL-Lid"/>
+                        <constraint firstAttribute="trailing" secondItem="V4u-Za-Mj3" secondAttribute="trailing" id="akS-rE-RE7"/>
+                        <constraint firstItem="V4u-Za-Mj3" firstAttribute="leading" secondItem="IR7-tu-kr1" secondAttribute="leading" constant="8" id="csZ-bG-x68"/>
+                        <constraint firstItem="V4u-Za-Mj3" firstAttribute="top" secondItem="IR7-tu-kr1" secondAttribute="top" id="hLG-Yb-fV7"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKP-Fb-BVn" customClass="SpringButton" customModule="Spring">
+                    <rect key="frame" x="0.0" y="258" width="150" height="42"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="JWH-BE-Mie"/>
+                        <constraint firstAttribute="width" constant="150" id="Snb-1M-DOW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="alertViewCancelled:" destination="-1" eventType="touchUpInside" id="uGo-oe-9Zz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWI-r1-y3M" customClass="SpringButton" customModule="Spring">
+                    <rect key="frame" x="150" y="258" width="150" height="42"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                    <state key="normal" title="OK">
+                        <color key="titleColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="alertViewApproved:" destination="-1" eventType="touchUpInside" id="EtU-qS-Mlq"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new group " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3r-Jw-ECZ">
+                    <rect key="frame" x="20" y="78" width="260" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="1pn-Nc-KbU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
+                    <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with the people you tagged" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PY6-Kc-V3V">
+                    <rect key="frame" x="20" y="107" width="260" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="M01-oQ-OdJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
+                    <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="NKP-Fb-BVn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5SQ-Ej-Zsz"/>
+                <constraint firstItem="IR7-tu-kr1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5hR-l8-ycb"/>
+                <constraint firstItem="PY6-Kc-V3V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="61c-f0-NhI"/>
+                <constraint firstAttribute="bottom" secondItem="WWI-r1-y3M" secondAttribute="bottom" id="7om-Vc-7SM"/>
+                <constraint firstItem="NKP-Fb-BVn" firstAttribute="width" secondItem="WWI-r1-y3M" secondAttribute="width" id="E0N-25-mgr"/>
+                <constraint firstAttribute="trailing" secondItem="l3r-Jw-ECZ" secondAttribute="trailing" constant="20" id="FNY-sc-Wdc"/>
+                <constraint firstItem="NKP-Fb-BVn" firstAttribute="height" secondItem="WWI-r1-y3M" secondAttribute="height" id="GMC-hn-c2m"/>
+                <constraint firstItem="IR7-tu-kr1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K8Z-06-HqE"/>
+                <constraint firstItem="l3r-Jw-ECZ" firstAttribute="top" secondItem="V4u-Za-Mj3" secondAttribute="bottom" constant="27" id="SgM-qm-rkP"/>
+                <constraint firstItem="PY6-Kc-V3V" firstAttribute="top" secondItem="l3r-Jw-ECZ" secondAttribute="bottom" constant="8" id="d4q-G5-fQ6"/>
+                <constraint firstAttribute="trailing" secondItem="PY6-Kc-V3V" secondAttribute="trailing" constant="20" id="gwX-uq-cZR"/>
+                <constraint firstItem="WWI-r1-y3M" firstAttribute="leading" secondItem="NKP-Fb-BVn" secondAttribute="trailing" id="loA-Ne-KWT"/>
+                <constraint firstAttribute="bottom" secondItem="NKP-Fb-BVn" secondAttribute="bottom" id="nrV-tS-dlP"/>
+                <constraint firstItem="l3r-Jw-ECZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qGp-SP-xmt"/>
+                <constraint firstAttribute="trailing" secondItem="WWI-r1-y3M" secondAttribute="trailing" id="vrb-ag-APT"/>
+                <constraint firstAttribute="trailing" secondItem="IR7-tu-kr1" secondAttribute="trailing" id="vzc-tg-mgU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="292" y="176"/>
+        </view>
+    </objects>
+</document>

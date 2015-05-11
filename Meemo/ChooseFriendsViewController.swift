@@ -10,15 +10,17 @@ import UIKit
 
 class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CustomSegmentControlDelegate {
     
+    @IBOutlet var alertView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentController: CustomSegmentControl!
+    @IBOutlet weak var alertViewTextField: UITextField!
+    var shadeView = ShadeView()
     var viewModel = GroupsViewModel()
     var allFriends : [String:[User]] = [:]
     var groups: [Group] = []
     var selectedFriends: [User] = []
     var selectedGroups: [Group] = []
     var post:Post? = nil
-    var alertViewTextField:UITextField? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,13 +144,62 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         self.tableView.reloadData()
         
     }
+    
+    //MARK: - Alert View
+    
+    func showAlertView() {
+        let width = self.view.frame.size.width * 0.75
+        let marginX = self.view.frame.size.width * 0.125
+        let marginY = self.view.frame.size.height * 0.1
+        self.alertView = NSBundle.mainBundle().loadNibNamed("AlertView", owner: self, options: nil).first as! UIView
+        self.alertView.frame = CGRectMake(self.view.frame.size.width+50, marginY, width,width)
+        self.alertView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.alertView.layer.shadowOpacity = 0.8
+        self.alertView.layer.shadowOffset = CGSizeMake(4.0, 4.0);
+        self.alertView.layer.borderColor = UIColor.blackColor().CGColor
+        self.alertView.layer.borderWidth = CGFloat(1.0)
+        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
+        let inframe = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
+        self.alertViewTextField.attributedPlaceholder = NSAttributedString(string: "Enter New Group Name", attributes: [NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.6)])
+        
+        self.shadeView = ShadeView(frame: outframe)
+        self.view.addSubview(self.shadeView)
+        self.view.addSubview(self.alertView)
+        
+        UIView .animateWithDuration(0.4, animations: { () -> Void in
+            self.shadeView.frame = inframe
+            self.alertView.frame = CGRectMake(marginX,marginY,width,width)
+        })
+    }
+    
+    func dismissAlertView() {
+        let width = self.view.frame.size.width * 0.75
+        let marginX = self.view.frame.size.width * 0.125
+        let marginY = self.view.frame.size.height * 0.1
+        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
+        UIView.animateWithDuration(0.4, animations: { () -> Void in
+            self.alertView.frame = CGRectMake(self.view.frame.size.width+50,marginY,width,width)
+            self.shadeView.frame = outframe
+            },completion: { (completed) -> Void in
+                self.alertView.removeFromSuperview()
+                self.shadeView.removeFromSuperview()
+        })
+    }
+    @IBAction func alertViewCancelled(sender: AnyObject) {
+        dismissAlertView()
+    }
+    
+    @IBAction func alertViewApproved(sender: AnyObject) {
+        postToNewGroup()
+    }
 
+    // MARK: - Creating Post
     @IBAction func finishPressed(sender: AnyObject) {
         if let post = self.post {
             
             if selectedGroups.count == 0 {
                 if selectedFriends.count != 0 {
-                    postToNewGroup()
+                    showAlertView()
                 } else {
                     ServerRequest.sharedManager.createPost(post)
                 }
@@ -162,20 +213,13 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             }
             
         }
-        /*let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
-        self.modalPresentationStyle = .Custom
-        self.modalTransitionStyle = .CrossDissolve
-        self.presentViewController(vc, animated: true, completion: nil)*/
     }
     
-    func showAlertView() {
-        
-        
-    }
+    
     
     func postToNewGroup() {
         let group = Group()
-        group.name = "test post with new group"
+        group.name = self.alertViewTextField.text
         group.members = selectedFriends
         
         ServerRequest.sharedManager.createGroup(group, completion: { (json) -> Void in
@@ -183,6 +227,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                 post.group_id = json["response"]["id"].number!
                 ServerRequest.sharedManager.createPost(post)
             }
+            self.dismissBackToRoot()
             
         })
     }
@@ -195,14 +240,21 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     }
     
 
-    /*
+    
     // MARK: - Navigation
+    func dismissBackToRoot() {
+        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
