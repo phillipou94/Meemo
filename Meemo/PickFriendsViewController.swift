@@ -114,7 +114,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     func setUpCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .Horizontal
-        layout.itemSize = CGSizeMake(50, 50)
+        layout.itemSize = CGSizeMake(40, 40)
         layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
         
         self.collectionView = UICollectionView(frame: CGRectMake(0,self.view.frame.size.height,self.view.bounds.size.width,60), collectionViewLayout: layout)

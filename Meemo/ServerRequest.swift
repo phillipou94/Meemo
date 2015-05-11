@@ -250,6 +250,22 @@ class ServerRequest: NSObject {
         
     }
     
+    //MARK: - Posts
+    
+    func createPost(post:Post) {
+        if post.post_type == "text" {
+            let payload :NSDictionary = ["post_type":"text", "content":post.content!]
+            let parameter = ["post":payload]
+            let token = CoreDataRequest.sharedManager.getAPIToken()
+            self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
+                
+            }, failure: { (error) -> Void in
+                println("Error:\(error)")
+            })
+            
+        }
+    }
+    
     //MARK: - Facebook
     
     func signInWithFacebook(user:PFUser,success:(wasSuccessful:Bool) -> Void) {

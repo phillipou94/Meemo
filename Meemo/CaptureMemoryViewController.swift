@@ -244,6 +244,8 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
             post?.image = self.imageView.image
             post?.title = self.titleTextField.text
             post?.content = self.storyTextView.text
+            let vc = segue.destinationViewController as! ChooseFriendsViewController
+            vc.post = post
         }
     }
 

@@ -17,6 +17,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     var groups: [Group] = []
     var selectedFriends: [User] = []
     var selectedGroups: [Group] = []
+    var post:Post? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,6 +142,16 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         
     }
 
+    @IBAction func finishPressed(sender: AnyObject) {
+        if let post = self.post {
+            
+            ServerRequest.sharedManager.createPost(post)
+        }
+        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
     //MARK: - SegmentControl Delegate
     

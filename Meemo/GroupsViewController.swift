@@ -36,6 +36,10 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
+        self.addButton.layer.shadowColor = UIColor.blackColor().CGColor
+        self.addButton.layer.shadowOpacity = 0.8
+        self.addButton.layer.shadowRadius = 4
+        self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.segmentControl.delegate = self
         
         let nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
@@ -53,6 +57,13 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             self.presentViewController(phoneSearchController, animated: true, completion: nil)*/
         }
 
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        animateOutShadeView()
+        self.addButton.selected = false
+        setRotation()
     }
     
     
