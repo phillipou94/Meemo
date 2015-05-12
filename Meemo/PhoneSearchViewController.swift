@@ -45,7 +45,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
         setUpButtons()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
         
-        /*[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];*/
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -156,11 +155,11 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
                 phoneNumber += "-"
             }
             phoneTextField.text = phoneNumber
-
+            if phoneNumber.length == 14 {
+                self.skipButton.setTitle("done", forState: .Normal)
+            }
             
-        } else {
-            self.skipButton.setTitle("done", forState: .Normal)
-        }
+        } 
         
         
     }
@@ -185,7 +184,6 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func donePressed(sender: AnyObject) {
-        
         
         launchApplication()
     }

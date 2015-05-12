@@ -9,8 +9,9 @@
 import UIKit
 import Spring
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
+    @IBOutlet var facebookButton: UIButton!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -28,9 +29,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        setUpFacebookButton()
+    }
+    
+    func setUpFacebookButton() {
+        let loginView : FBSDKLoginButton = FBSDKLoginButton()
+        loginView.frame = self.facebookButton.frame
+        self.view.addSubview(loginView)
+        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.delegate = self
     }
     
     func setUpTextFields() {
@@ -70,43 +79,52 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             animateWarningWithMessage("Password Must Be At Least 6 Characters Long")
         }
         else {
-            ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
-                if wasSuccessful {
+           /* ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
+                if wasSuccessful {*/
                     let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
                     self.presentViewController(phoneSearchController, animated: true, completion: nil)
-    
+    /*
                 } else {
                     self.animateWarningWithMessage("This Email Has Already Been Taken")
                 }
-            })
+            })*/
         }
 
         
     }
     
-    @IBAction func facebookLoginPressed(sender: AnyObject) {
-        
-        let permissions = ["public_profile", "email" , "user_friends"]
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
-            
-            if let user = user {
-                let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
-                self.presentViewController(phoneSearchController, animated: true, completion: nil)
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if error == nil {
+            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                let userName : NSString = result.valueForKey("name") as! NSString
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let facebook_id: NSString = result.valueForKey("id") as! NSString
+                
+                var user = User()
+                user.name = userName as String
+                user.email = userEmail as String
+                user.facebook_id = facebook_id as String
                 ServerRequest.sharedManager.signInWithFacebook(user, success: { (successful) -> Void in
                     if successful {
-                        
+                        let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
+                        self.presentViewController(phoneSearchController, animated: true, completion: nil)
+
                     }
                 })
                 
-            } else {
-                println("Uh oh. The user cancelled the Facebook login.")
-            }
+            })
             
-        })
-        
+        }
         
     }
-
+    
+    
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User Logged Out")
+    }
+    
     
     func animateWarningWithMessage(message:String) {
         self.errorMessage.text = message

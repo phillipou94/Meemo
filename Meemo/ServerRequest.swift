@@ -12,7 +12,7 @@ import Parse
 import SwiftyJSON
 
 private let _sharedInstance = ServerRequest()
-private let baseURLString = "http://localhost:3000/api/" /*"https://shrouded-tor-7022.herokuapp.com/api/"*/
+private let baseURLString = "https://shrouded-tor-7022.herokuapp.com/api/"
 
 class ServerRequest: NSObject {
 
@@ -303,11 +303,10 @@ class ServerRequest: NSObject {
     
     //MARK: - Facebook
     
-    func signInWithFacebook(user:PFUser,success:(wasSuccessful:Bool) -> Void) {
+    func signInWithFacebook(user:User,success:(wasSuccessful:Bool) -> Void) {
         
-        let name = user.username! as String
-        let facebook_id = user.objectId! as String
-        let parameter = ["user":["name":name, "facebook_id":facebook_id]]
+        var payload:NSDictionary = ["name":user.name!, "facebook_id":user.facebook_id!, "email":user.email!]
+        let parameter = ["user":payload]
     
         post("login/fb", parameters: parameter, token:nil, success: { (json) -> Void in
             println(json)
@@ -414,5 +413,15 @@ class ServerRequest: NSObject {
             return stringTerm.stringByReplacingOccurrencesOfString("\\", withString: "")
         }
         return nil
+    }
+    
+    func wakeUp(completion:(awake:Bool)-> Void) {
+        self.get("wake_up", parameters: nil, token: nil, success: { (json) -> Void in
+            completion(awake:true)
+            }, failure: { (error) -> Void in
+                println("Error: \(error)")
+        })
+        
+        
     }
 }

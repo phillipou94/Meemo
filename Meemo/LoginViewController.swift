@@ -10,8 +10,9 @@ import UIKit
 import Parse
 import Spring
 
-class LoginViewController: UIViewController, UITextFieldDelegate{
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate{
 
+    @IBOutlet var facebookFrame: UIButton!
     @IBOutlet weak var meemoLabel: SpringLabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,8 +24,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         setUpTextFields()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
+        
+
     
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        setUpFacebookButton()
+    }
+    
+    func setUpFacebookButton() {
+        let loginView : FBSDKLoginButton = FBSDKLoginButton()
+        loginView.frame = self.facebookFrame.frame
+        self.view.addSubview(loginView)
+        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +71,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if error == nil {
+            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                let userName : NSString = result.valueForKey("name") as! NSString
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let facebook_id: NSString = result.valueForKey("id") as! NSString
+                
+                var user = User()
+                user.name = userName as String
+                user.email = userEmail as String
+                user.facebook_id = facebook_id as String
+                ServerRequest.sharedManager.signInWithFacebook(user, success: { (successful) -> Void in
+                    if successful {
+                        self.launchApplication()
+                    }
+                })
+                
+            })
+
+        }
+        
+    }
+    
+    
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User Logged Out")
+    }
    
     @IBAction func facebookLoginPressed(sender: AnyObject) {
         
@@ -62,12 +108,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
             if let user = user {
                 
-                ServerRequest.sharedManager.signInWithFacebook(user, success: { (successful) -> Void in
-                    if successful {
-                        
-                        self.launchApplication()
-                    }
-                })
+                
                 
             } else {
                 println("Uh oh. The user cancelled the Facebook login.")

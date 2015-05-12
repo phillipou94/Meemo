@@ -21,14 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("mleAKmRLYRxbWOzOXWK4J2C7Bdqv7C6fCEhKJLiQ",
             clientKey: "RpLYK77Zvz4jSpzCpRUGh0jqZ0tdu1imhuDZOmtE")
+        
+        ServerRequest.sharedManager.wakeUp { (awake) -> Void in
+        }
             
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         if !userLoggedIn() {
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         }
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     func userLoggedIn() -> Bool {
