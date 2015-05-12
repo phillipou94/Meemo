@@ -17,6 +17,8 @@ class Post: NSObject {
     var group_id: NSNumber? = nil
     var user_id: NSNumber? = nil
     var object_id: NSNumber? = nil
+    var user_name: String? = nil
+    var created_at: String? = nil
     
    
 }

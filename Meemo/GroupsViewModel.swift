@@ -17,6 +17,20 @@ class GroupsViewModel: NSObject {
         }
     }
     
+    func getPosts(completion:(posts:[Post]) -> Void) {
+        ServerRequest.sharedManager.getPosts { (result) -> Void in
+            completion(posts:result)
+        }
+    }
+    
+    func getPostsFromGroup(group:Group,completion:(result:[Post]) -> Void) {
+        ServerRequest.sharedManager.getPostsFromGroup(group, completion: { (result) -> Void in
+            completion(result:result)
+        })
+        
+
+    }
+    
     func getAllFriends(completion:(friends:[String:[User]]) -> Void) {
         ServerRequest.sharedManager.getAllFriends { (friendsDict) -> Void in
             completion(friends:friendsDict)

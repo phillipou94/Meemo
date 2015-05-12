@@ -29,14 +29,15 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.textView.alignToCenter()
+        //self.textView.alignToCenter()
+        self.textView.textContainerInset = UIEdgeInsetsMake(40, 33, 40, 33)
         self.textView.delegate = self
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+   /* override func viewWillDisappear(animated: Bool) {
         self.textView.disableAlignment()
-    }
+    } */
     
     override func viewDidAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
@@ -52,13 +53,11 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
         diamond.transform = rotation;
         diamond.backgroundColor = UIColor.whiteColor()
         self.view.insertSubview(diamond, belowSubview: self.textView)
-      
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
         if textView.text == "Write Your Story" {
             textView.text = ""
-            
         }
         textView.becomeFirstResponder()
     }
@@ -66,7 +65,6 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         let length = textView.text.length
         self.textLimitLabel.text = "\(characterLimit-length)"
-        
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

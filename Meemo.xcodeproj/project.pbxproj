@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D1166141B006418001A0847 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166131B006418001A0847 /* Post.swift */; };
 		4D1166161B0078CF001A0847 /* ChooseFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */; };
+		4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */; };
 		4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */; };
 		4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */; };
 		4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */; };
@@ -28,6 +29,8 @@
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
 		4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */; };
 		4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */; };
+		4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */; };
+		4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */; };
 		4DA848CB1B01618100995031 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA848CA1B01618100995031 /* AlertView.xib */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
@@ -36,6 +39,8 @@
 		4DB9BD581AEA9EBF00555793 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */; };
 		4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */; };
 		4DBBC71F1AE94B9A00DB03B4 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */; };
+		4DC019811B02A17600865DF9 /* PhotoPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0197F1B02A17600865DF9 /* PhotoPostCell.swift */; };
+		4DC019821B02A17600865DF9 /* PhotoPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC019801B02A17600865DF9 /* PhotoPostCell.xib */; };
 		4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */; };
 		4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */; };
 		4DD918761AE6C82B00C9E5DE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD918701AE6C82B00C9E5DE /* Bolts.framework */; };
@@ -87,6 +92,7 @@
 		228D95CCABE7B024B3BD98EC /* Pods-Meemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.debug.xcconfig"; sourceTree = "<group>"; };
 		4D1166131B006418001A0847 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFriendsViewController.swift; sourceTree = "<group>"; };
+		4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullGroupsViewController.swift; sourceTree = "<group>"; };
 		4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSearchViewController.swift; sourceTree = "<group>"; };
 		4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneSearchViewController.xib; sourceTree = "<group>"; };
+		4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
+		4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
 		4DA848CA1B01618100995031 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 		4DB9BD561AEA9EBF00555793 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		4DC0197F1B02A17600865DF9 /* PhotoPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPostCell.swift; sourceTree = "<group>"; };
+		4DC019801B02A17600865DF9 /* PhotoPostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoPostCell.xib; sourceTree = "<group>"; };
 		4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactsManager.swift; sourceTree = "<group>"; };
 		4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeView.swift; sourceTree = "<group>"; };
 		4DD918701AE6C82B00C9E5DE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -205,6 +215,10 @@
 			children = (
 				4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */,
 				4D1166131B006418001A0847 /* Post.swift */,
+				4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */,
+				4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */,
+				4DC0197F1B02A17600865DF9 /* PhotoPostCell.swift */,
+				4DC019801B02A17600865DF9 /* PhotoPostCell.xib */,
 				4D80BF891AFBCA34002C5541 /* CaptureMemoryViewController.swift */,
 				4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */,
 			);
@@ -215,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
+				4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */,
 				4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */,
 				4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */,
 				4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */,
@@ -510,6 +525,8 @@
 			files = (
 				4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */,
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
+				4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */,
+				4DC019821B02A17600865DF9 /* PhotoPostCell.xib in Resources */,
 				4D85957E1AE5A1CC008F96E7 /* Main.storyboard in Resources */,
 				4DFB6B721AF690EA00909860 /* FriendsPreviewCell.xib in Resources */,
 				4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */,
@@ -591,10 +608,13 @@
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
 				4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */,
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
+				4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */,
 				4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
+				4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */,
 				4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
+				4DC019811B02A17600865DF9 /* PhotoPostCell.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
 				4D1166141B006418001A0847 /* Post.swift in Sources */,
 				4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */,

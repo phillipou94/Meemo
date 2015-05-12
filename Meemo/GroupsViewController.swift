@@ -12,6 +12,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     
     let viewModel = GroupsViewModel()
     var groups:[Group] = []
+    var posts:[Post] = []
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
@@ -41,11 +42,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         self.addButton.layer.shadowRadius = 4
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.segmentControl.delegate = self
-        
-        let nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "GroupTableViewCell")
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        setUpTableView()
         
         self.viewModel.getGroups { (groups) -> Void in
             self.groups = groups
@@ -57,6 +54,18 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             self.presentViewController(phoneSearchController, animated: true, completion: nil)*/
         }
 
+    }
+    
+    func setUpTableView() {
+        let nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
+        let textNib = UINib(nibName: "TextPostCell", bundle: nil)
+        let photoNib = UINib(nibName: "PhotoPostCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "GroupTableViewCell")
+        self.tableView.registerNib(textNib, forCellReuseIdentifier: "TextPostCell")
+        self.tableView.registerNib(photoNib, forCellReuseIdentifier: "PhotoPostCell")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -110,21 +119,45 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.groups.count
+        if (self.segmentControl.selectedIndex == 0) {
+            return self.groups.count
+        } else {
+            return self.posts.count
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90;
+        if (self.segmentControl.selectedIndex == 0) {
+             return 90;
+        } else {
+            return self.view.frame.size.width
+        }
+       
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let group = self.groups[indexPath.row]
+        if (self.segmentControl.selectedIndex == 0) {
+            let group = self.groups[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
-        cell.group = group
-        cell.configureCell()
-        cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
-        return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
+            cell.group = group
+            cell.configureCell()
+            cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
+            return cell
+        } else {
+            let post = self.posts[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
+            cell.post = post
+            cell.configureCell()
+            return cell
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (self.segmentControl.selectedIndex == 0) {
+            self.performSegueWithIdentifier("showGroup", sender: self)
+            
+        }
     }
     
     //MARK: - Buttons
@@ -202,12 +235,29 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     //MARK: - SegmentControl Delegate
     
     func segmentControlDidChange() {
-       
+        if (self.segmentControl.selectedIndex == 0 ) {
+            self.viewModel.getGroups { (groups) -> Void in
+                self.groups = groups
+                self.tableView.reloadData()
+            }
+        } else {
+            self.viewModel.getPosts { (posts) -> Void in
+                self.posts = posts
+                self.tableView.reloadData()
+            }
+        }
     }
     
+    //MARK: - Navigation
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        if (segue.identifier == "showGroup") {
+            let group = self.groups[indexPath!.row]
+            let vc = segue.destinationViewController as! FullGroupsViewController
+            vc.group = group
+        }
+    }
 
-    
-    
 
 }

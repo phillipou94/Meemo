@@ -254,7 +254,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tHv-aS-w2e">
                                 <rect key="frame" x="0.0" y="85" width="600" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1J-wI-cnS" customClass="SpringButton" customModule="Spring">
@@ -651,13 +651,14 @@
                                     <constraint firstAttribute="height" constant="50" id="wDa-eH-13z"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write Your Story" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-nD-Nue">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write Your Story" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-nD-Nue">
                                 <rect key="frame" x="0.0" y="87" width="600" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="258" id="CMC-tD-DzM"/>
                                     <constraint firstAttribute="height" constant="250" id="gLB-Xy-j8x"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="33" minY="0.0" maxX="33" maxY="0.0"/>
                                 <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -704,10 +705,10 @@
             </objects>
             <point key="canvasLocation" x="841" y="2447"/>
         </scene>
-        <!--View Controller-->
+        <!--Full Groups View Controller-->
         <scene sceneID="Krz-dI-Wh7">
             <objects>
-                <viewController id="OxR-sn-hN5" sceneMemberID="viewController">
+                <viewController id="OxR-sn-hN5" customClass="FullGroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rRn-eQ-cyS"/>
                         <viewControllerLayoutGuide type="bottom" id="xhP-GN-fRS"/>
@@ -730,6 +731,7 @@
                                         </state>
                                         <connections>
                                             <action selector="backPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="xVk-ge-pNu"/>
+                                            <segue destination="oZL-b6-O30" kind="unwind" unwindAction="unwindToViewController:" id="EYW-UK-wmf"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXs-gS-PDq">
@@ -775,22 +777,33 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="iL2-W5-7Bk"/>
-                                </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-rZ-yKZ">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VAt-rZ-yKZ" firstAttribute="leading" secondItem="JdO-nW-zGg" secondAttribute="leading" id="6wr-Jk-s6Q"/>
+                            <constraint firstItem="xhP-GN-fRS" firstAttribute="top" secondItem="VAt-rZ-yKZ" secondAttribute="bottom" id="Bvc-ry-AaO"/>
                             <constraint firstAttribute="trailing" secondItem="vyJ-Gv-FMO" secondAttribute="trailing" id="Ga5-0J-k7b"/>
                             <constraint firstItem="vyJ-Gv-FMO" firstAttribute="leading" secondItem="JdO-nW-zGg" secondAttribute="leading" id="HYH-AI-wUr"/>
                             <constraint firstAttribute="trailing" secondItem="JPT-WJ-pZZ" secondAttribute="trailing" constant="16" id="Pk4-yU-h15"/>
+                            <constraint firstItem="VAt-rZ-yKZ" firstAttribute="top" secondItem="vyJ-Gv-FMO" secondAttribute="bottom" id="TrG-0K-bRc"/>
+                            <constraint firstAttribute="trailing" secondItem="VAt-rZ-yKZ" secondAttribute="trailing" id="aVf-qp-mRK"/>
                             <constraint firstItem="vyJ-Gv-FMO" firstAttribute="top" secondItem="JdO-nW-zGg" secondAttribute="top" id="eqf-io-CVo"/>
                             <constraint firstItem="xhP-GN-fRS" firstAttribute="top" secondItem="JPT-WJ-pZZ" secondAttribute="bottom" constant="20" id="guT-pT-yda"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="JPT-WJ-pZZ" id="ftV-YO-ZfZ"/>
+                        <outlet property="groupNameLabel" destination="zXs-gS-PDq" id="gYl-Lz-Ses"/>
+                        <outlet property="tableView" destination="VAt-rZ-yKZ" id="QfD-z4-n6X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmt-Yv-MYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oZL-b6-O30" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="841" y="3106"/>
         </scene>
@@ -1463,7 +1476,7 @@
                                 <rect key="frame" x="0.0" y="85" width="600" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.18823529410000001" green="0.1764705882" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" red="0.77254877645502651" green="0.77254877645502651" blue="0.77254877645502651" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCd-22-9FL" customClass="CustomSegmentControl" customModule="Meemo" customModuleProvider="target">

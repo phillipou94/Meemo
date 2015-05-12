@@ -176,12 +176,7 @@ class ServerRequest: NSObject {
         self.get("groups", parameters: nil, token: token, success: { (json) -> Void in
             
             for dict in json["response"].arrayValue {
-                var group = Group()
-                group.last_updated = dict["updated_at"].string
-                group.name =  dict["name"].string
-                group.object_id = dict["id"].number!
-                group.lastPostType = dict["last_post_type"].string
-                group.imageURL = self.removeBackSlashes(dict["file_url"].string)
+                let group = self.groupModel(dict)
                 result.append(group)
                 
             }
@@ -299,6 +294,36 @@ class ServerRequest: NSObject {
                 println("Error:\(error)")
         })
 
+    }
+    
+    func getPostsFromGroup(group:Group,completion:(result:[Post]) -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        let path = "groups/\(group.object_id)/posts"
+        self.get(path, parameters: nil, token: token, success: { (json) -> Void in
+            var result:[Post] = []
+            for dict in json["response"].arrayValue {
+                let post = self.postModel(dict)
+                result.append(post)
+            }
+            completion(result:result)
+            }, failure: { (error) -> Void in
+                println("Error:\(error)")
+        })
+    }
+    
+    func getPosts(completion:(result:[Post]) -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.get("posts", parameters: nil, token: token, success: { (json) -> Void in
+            println(json)
+            var result:[Post] = []
+            for dict in json["response"].arrayValue {
+                let post = self.postModel(dict)
+                result.append(post)
+            }
+            completion(result:result)
+            },failure: { (error) -> Void in
+            println("Error:\(error)")
+        })
     }
     
     //MARK: - Facebook
@@ -422,6 +447,32 @@ class ServerRequest: NSObject {
                 println("Error: \(error)")
         })
         
-        
     }
+    
+    func groupModel(dict:JSON) -> Group {
+        var group = Group()
+        group.last_updated = dict["updated_at"].string
+        group.name =  dict["name"].string
+        group.object_id = dict["id"].number!
+        group.lastPostType = dict["last_post_type"].string
+        group.imageURL = self.removeBackSlashes(dict["file_url"].string)
+        return group
+    }
+    
+    func postModel(dict:JSON) -> Post {
+        let post = Post()
+        post.post_type = dict["post_type"].string
+        post.content = dict["content"].string
+        post.title = dict["title"].string
+        post.file_url = dict["file_url"].string
+        post.object_id = dict["id"].number
+        post.group_id = dict["group_id"].number
+        post.user_id = dict["user_id"].number
+        post.user_name = dict["user_name"].string
+        post.created_at = dict["created_at"].string
+        return post
+    }
+    
+    
+    
 }
