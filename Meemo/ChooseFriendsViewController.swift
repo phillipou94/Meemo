@@ -202,12 +202,14 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                     showAlertView()
                 } else {
                     ServerRequest.sharedManager.createPost(post)
+                    dismissBackToRoot()
                 }
                
             } else {
                 for group:Group in selectedGroups {
                     post.group_id = group.object_id
                     ServerRequest.sharedManager.createPost(post)
+                    dismissBackToRoot()
                 }
                 
             }

@@ -88,6 +88,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let permissions = ["public_profile", "email" , "user_friends"]
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
+            
             if let user = user {
                 let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
                 self.presentViewController(phoneSearchController, animated: true, completion: nil)

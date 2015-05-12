@@ -308,7 +308,7 @@ class ServerRequest: NSObject {
         let name = user.username! as String
         let facebook_id = user.objectId! as String
         let parameter = ["user":["name":name, "facebook_id":facebook_id]]
-        
+    
         post("login/fb", parameters: parameter, token:nil, success: { (json) -> Void in
             println(json)
             
@@ -316,6 +316,7 @@ class ServerRequest: NSObject {
             user.email = json["response"]["email"].string
             if let name = json["response"]["name"].string {
                 user.name = name
+                
             }
             if let api_token = json["response"]["authentication_token"].string {
                 user.api_token = api_token

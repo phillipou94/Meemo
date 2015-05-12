@@ -64,6 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 
                 ServerRequest.sharedManager.signInWithFacebook(user, success: { (successful) -> Void in
                     if successful {
+                        
                         self.launchApplication()
                     }
                 })

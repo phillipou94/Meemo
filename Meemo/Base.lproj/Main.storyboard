@@ -506,8 +506,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdE-Ky-Zdj">
-                                <rect key="frame" x="0.0" y="49" width="600" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mdE-Ky-Zdj">
+                                <rect key="frame" x="0.0" y="49" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mdE-Ky-Zdj" secondAttribute="height" multiplier="1:1" id="Ijm-2M-Yvd"/>
                                 </constraints>
@@ -516,11 +516,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsn-BO-zKF" customClass="SpringButton" customModule="Spring">
-                                        <rect key="frame" x="0.0" y="4" width="45" height="42"/>
+                                        <rect key="frame" x="0.0" y="4" width="32" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="Pde-JI-aBc"/>
+                                            <constraint firstAttribute="width" constant="32" id="Pde-JI-aBc"/>
                                         </constraints>
-                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="20" maxY="10"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Back">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -548,14 +548,14 @@
                                     <constraint firstItem="dsn-BO-zKF" firstAttribute="leading" secondItem="cuw-Eo-QXk" secondAttribute="leading" id="47m-ZX-x8K"/>
                                     <constraint firstItem="dsn-BO-zKF" firstAttribute="top" secondItem="cuw-Eo-QXk" secondAttribute="top" constant="4" id="AWX-T6-zA5"/>
                                     <constraint firstAttribute="height" constant="50" id="KuM-9r-EHA"/>
-                                    <constraint firstItem="WMz-ZC-V0c" firstAttribute="centerY" secondItem="dsn-BO-zKF" secondAttribute="centerY" id="L2f-im-Swa"/>
+                                    <constraint firstItem="WMz-ZC-V0c" firstAttribute="centerY" secondItem="dsn-BO-zKF" secondAttribute="centerY" constant="1" id="L2f-im-Swa"/>
                                     <constraint firstItem="WMz-ZC-V0c" firstAttribute="top" secondItem="cuw-Eo-QXk" secondAttribute="top" constant="7" id="Pma-oz-ccM"/>
-                                    <constraint firstItem="dsn-BO-zKF" firstAttribute="centerY" secondItem="cuw-Eo-QXk" secondAttribute="centerY" id="lzy-Oa-pBv"/>
+                                    <constraint firstItem="dsn-BO-zKF" firstAttribute="centerY" secondItem="cuw-Eo-QXk" secondAttribute="centerY" constant="-1" id="lzy-Oa-pBv"/>
                                     <constraint firstItem="WMz-ZC-V0c" firstAttribute="trailing" secondItem="cuw-Eo-QXk" secondAttribute="trailingMargin" id="o2h-BR-8hH"/>
                                 </constraints>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lfc-RU-QVr">
-                                <rect key="frame" x="259" y="346" width="82" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lfc-RU-QVr">
+                                <rect key="frame" x="259" y="649" width="82" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="7x4-8u-uFc"/>
                                     <constraint firstAttribute="height" constant="37" id="yVT-iC-Knq"/>
@@ -615,11 +615,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSV-5X-iel" customClass="SpringButton" customModule="Spring">
-                                        <rect key="frame" x="0.0" y="4" width="45" height="42"/>
+                                        <rect key="frame" x="0.0" y="4" width="32" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="xF8-6J-lAo"/>
+                                            <constraint firstAttribute="width" constant="32" id="xF8-6J-lAo"/>
                                         </constraints>
-                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="20" maxY="10"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Back">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -632,10 +632,10 @@
                                 <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="7pb-9b-4o0" firstAttribute="top" secondItem="loJ-ME-CYC" secondAttribute="top" constant="7" id="5Cg-t2-ckK"/>
-                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="loJ-ME-CYC" secondAttribute="centerY" id="Fhp-hm-0KE"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="loJ-ME-CYC" secondAttribute="centerY" constant="-1" id="Fhp-hm-0KE"/>
                                     <constraint firstItem="HSV-5X-iel" firstAttribute="leading" secondItem="loJ-ME-CYC" secondAttribute="leading" id="RTy-vM-BBW"/>
                                     <constraint firstItem="7pb-9b-4o0" firstAttribute="trailing" secondItem="loJ-ME-CYC" secondAttribute="trailingMargin" id="pdU-jT-Q5A"/>
-                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="7pb-9b-4o0" secondAttribute="centerY" id="rb6-VL-MBT"/>
+                                    <constraint firstItem="HSV-5X-iel" firstAttribute="centerY" secondItem="7pb-9b-4o0" secondAttribute="centerY" constant="-1" id="rb6-VL-MBT"/>
                                     <constraint firstItem="HSV-5X-iel" firstAttribute="top" secondItem="loJ-ME-CYC" secondAttribute="top" constant="4" id="w0i-wi-WVS"/>
                                     <constraint firstAttribute="height" constant="50" id="wDa-eH-13z"/>
                                 </constraints>
@@ -1315,7 +1315,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-xr-slp" customClass="SpringButton" customModule="Spring">
-                                        <rect key="frame" x="0.0" y="6" width="32" height="39"/>
+                                        <rect key="frame" x="0.0" y="6" width="32" height="40"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Back">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1408,6 +1408,6 @@
         <image name="plus_L" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BNp-XI-XA1"/>
+        <segue reference="bPg-PJ-uId"/>
     </inferredMetricsTieBreakers>
 </document>
