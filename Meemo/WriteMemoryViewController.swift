@@ -10,10 +10,19 @@ import UIKit
 
 class WriteMemoryViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var textLimitLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var textView: UITextView!
+    var characterLimit = 450
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
+        let date = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        self.dateLabel.text = "\(dateFormatter.stringFromDate(date))"
+        self.textLimitLabel.text = "\(characterLimit)"
        
 
         // Do any additional setup after loading the view.
@@ -52,6 +61,16 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
             
         }
         textView.becomeFirstResponder()
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        let length = textView.text.length
+        self.textLimitLabel.text = "\(characterLimit-length)"
+        
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        return textView.text.length + (text.length - range.length) <= characterLimit
     }
     
     @IBAction func nextPressed(sender: AnyObject) {
