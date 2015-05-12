@@ -34,7 +34,7 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     }
 
     func keyboardWasShown(notification:NSNotification) {
-        let width = CGFloat(40)
+        let width = CGFloat(30)
         let originX = self.textView.frame.size.width * 0.125
         let originY = self.textView.frame.origin.y+self.textView.frame.size.height - width/2
         
