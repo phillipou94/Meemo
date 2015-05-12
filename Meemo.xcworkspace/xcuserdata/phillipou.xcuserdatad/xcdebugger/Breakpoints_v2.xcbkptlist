@@ -82,11 +82,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/CaptureMemoryViewController.swift"
-            timestampString = "453015294.341708"
+            timestampString = "453160144.038941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "setUpStoryEditView()"
             landmarkType = "5">
          </BreakpointContent>

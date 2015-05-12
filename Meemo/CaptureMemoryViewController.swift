@@ -24,6 +24,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     var storyTextView = UITextView()
     
     var post:Post? = nil
+    var group:Group? = nil
 
     @IBOutlet var pageControl: UIPageControl!
     override func viewDidLoad() {
@@ -229,7 +230,10 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     // MARK: - Buttons
 
     @IBAction func checkPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("showFriends", sender: self)
+        if group == nil {
+            self.performSegueWithIdentifier("showFriends", sender: self)
+        }
+        
     }
     @IBAction func backPressed(sender: AnyObject) {
         showCamera()

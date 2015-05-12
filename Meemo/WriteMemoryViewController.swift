@@ -15,6 +15,8 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var textView: UITextView!
     var characterLimit = 450
     
+    var group:Group? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
@@ -72,7 +74,9 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func nextPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("tagFriends", sender: self)
+        if group == nil {
+            self.performSegueWithIdentifier("tagFriends", sender: self)
+        }
     }
 
     
