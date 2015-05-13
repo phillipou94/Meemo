@@ -16,8 +16,10 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
+    @IBOutlet var customNavBar: UIView!
     @IBOutlet var addGroupButtonContainer: SpringView!
     @IBOutlet var addGroupButton: SpringButton!
+    var previousScrollViewYOffset = 0.0;
     
     @IBOutlet var writeMemoryButton: SpringButton!
     @IBOutlet var writeMemoryContainer: SpringView!
@@ -30,22 +32,29 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     @IBOutlet var tableView: UITableView!
     
     var page: Int = 1
+    var photoCache = NSCache()
+    var onLastPage:Bool = false
     
     //MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
         self.addButton.layer.shadowColor = UIColor.blackColor().CGColor
         self.addButton.layer.shadowOpacity = 0.8
         self.addButton.layer.shadowRadius = 4
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.segmentControl.delegate = self
+        page = 1
         setUpTableView()
         
         self.viewModel.getGroups { (groups) -> Void in
             self.groups = groups
             self.tableView.reloadData()
+            self.loadPosts(self.page, completion: { () -> Void in
+                
+            })
         }
         
         PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts) -> Void in
@@ -72,6 +81,22 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         animateOutShadeView()
         self.addButton.selected = false
         setRotation()
+    }
+    
+    func loadPosts(cursor:Int, completion:() -> Void) {
+        self.viewModel.getPosts(cursor, completion: { (posts) -> Void in
+            if self.posts.count == 0 && cursor == 1 {
+                self.posts = posts
+            } else {
+                self.posts += posts
+            }
+            if  posts.count == 0 {
+                self.onLastPage = true
+            }
+            completion()
+        })
+        
+
     }
     
     
@@ -114,10 +139,13 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     //MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 0
+        }
         if (self.segmentControl.selectedIndex == 0) {
             return self.groups.count
         } else {
@@ -144,21 +172,43 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
             return cell
         } else {
+            if !onLastPage {
+               willPaginate(indexPath.row)
+            }
             let post = self.posts[indexPath.row]
             if post.post_type == "text" {
+                
                 let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
                 cell.post = post
                 cell.configureCell()
                 return cell
+                
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
                 cell.post = post
-                cell.configureCell({ (image) -> Void in
-                    
-                })
+                if let file_url = post.file_url {
+                    if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
+                        cell.postImageView.image = cachedImage
+                    } else {
+                        cell.configureCell({ (image) -> Void in
+                            self.photoCache.setObject(image, forKey: file_url)
+                        })
+                    }
+                }
+                
                 return cell
             }
 
+        }
+    }
+    
+    func willPaginate(row:Int) {
+        if row == self.posts.count - 1 {
+            page += 1
+            println("LOAD MORE!\(page)")
+            loadPosts(page, completion: { () -> Void in
+                self.tableView.reloadData()
+            })
         }
     }
     
@@ -168,6 +218,50 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             
         }
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return self.customNavBar.frame.size.height + self.segmentControl.frame.size.height
+        }else {
+            return 0
+        }
+        
+    }
+    
+    //MARK: - Disappearing NavBar
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var frame = self.customNavBar.frame;
+        var segmentFrame = self.segmentControl.frame
+        let size = frame.size.height;
+        let segmentSize = segmentFrame.size.height
+        var scrollOffset = CGFloat(scrollView.contentOffset.y)
+        var scrollDiff = CGFloat(Double(scrollOffset) - self.previousScrollViewYOffset)
+        
+        if (scrollOffset <= -scrollView.contentInset.top) {
+            if (self.customNavBar.hidden) {
+                self.customNavBar.hidden = false
+                self.segmentControl.hidden = false
+            }
+            frame.origin.y = 0;
+            
+        } else {
+            if (self.customNavBar.hidden) {
+                frame.origin.y = -self.customNavBar.frame.size.height;
+                segmentFrame.origin.y = -self.segmentControl.frame.size.height
+                self.customNavBar.hidden = false
+                self.segmentControl.hidden = false
+            }
+            frame.origin.y = min(0, max(-size,frame.origin.y-scrollDiff))
+            segmentFrame.origin.y = min(self.customNavBar.frame.size.height, max(-segmentSize, segmentFrame.origin.y - scrollDiff))
+            
+        }
+        
+        self.customNavBar.frame = frame
+        self.segmentControl.frame = segmentFrame
+        self.previousScrollViewYOffset = Double(scrollOffset)
+    }
+    
     
     //MARK: - Buttons
     
@@ -244,17 +338,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     //MARK: - SegmentControl Delegate
     
     func segmentControlDidChange() {
-        if (self.segmentControl.selectedIndex == 0 ) {
-            self.viewModel.getGroups { (groups) -> Void in
-                self.groups = groups
-                self.tableView.reloadData()
-            }
-        } else {
-            self.viewModel.getPosts(page, completion: { (posts) -> Void in
-                self.posts = posts
-                self.tableView.reloadData()
-            })
-        }
+        self.tableView.reloadData()
     }
     
     //MARK: - Navigation

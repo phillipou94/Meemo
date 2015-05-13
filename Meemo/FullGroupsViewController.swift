@@ -17,6 +17,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     var shadeView: ShadeView = ShadeView()
     var photoCache = NSCache()
     
+    var previousScrollViewYOffset = 0.0;
+    @IBOutlet var customNavBar: UIView!
     
     @IBOutlet var addFriendButtonContainer: SpringView!
     @IBOutlet var addFriendButton: SpringButton!
@@ -30,6 +32,7 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     let viewModel = GroupsViewModel()
     var group:Group? = nil
     var posts:[Post] = []
+    var onLastPage:Bool = false
     var page:Int = 1
     
     override func viewDidLoad() {
@@ -46,10 +49,10 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.view.bringSubviewToFront(self.addButton)
         setUpTableView()
-        self.viewModel.getPostsFromGroup(page,group:self.group!, completion: { (result) -> Void in
-            self.posts = result
-            self.tableView.reloadData()
+        page = 1
+        loadPosts(page, completion: { () -> Void in
         })
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,6 +65,23 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         animateOutShadeView()
         self.addButton.selected = false
         setRotation()
+    }
+    
+    func loadPosts(cursor:Int, completion:() -> Void) {
+        self.viewModel.getPostsFromGroup(cursor,group:self.group!, completion: { (result) -> Void in
+            if self.posts.count == 0 && cursor == 1 {
+               self.posts = result
+            } else {
+                self.posts += result
+            }
+            self.tableView.reloadData()
+            if result.count == 0 {
+                self.onLastPage = true
+            }
+            completion()
+            
+        })
+        
     }
     
     // MARK: - TableView
@@ -78,11 +98,16 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
+        if section == 0 {
+            return 0
+        } else {
+            return self.posts.count
+        }
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -90,6 +115,9 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if !onLastPage {
+            willPaginate(indexPath.row)
+        }
         let post = self.posts[indexPath.row]
         if post.post_type == "text" {
         
@@ -114,6 +142,58 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             return cell
         }
 
+    }
+    
+    func willPaginate(row:Int) {
+        if row == self.posts.count - 1 {
+            page += 1
+            loadPosts(page, completion: { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+    }
+
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return self.customNavBar.frame.size.height
+        }else {
+            return 0
+        }
+        
+    }
+    
+    //MARK: - Disappearing NavBar
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var frame = self.customNavBar.frame;
+
+        let size = frame.size.height;
+        var scrollOffset = CGFloat(scrollView.contentOffset.y)
+        var scrollDiff = CGFloat(Double(scrollOffset) - self.previousScrollViewYOffset)
+        
+        if (scrollOffset <= -scrollView.contentInset.top) {
+            if (self.customNavBar.hidden) {
+                self.customNavBar.hidden = false
+                
+            }
+            frame.origin.y = 0;
+            
+        } else {
+            if (self.customNavBar.hidden) {
+                frame.origin.y = -self.customNavBar.frame.size.height;
+               
+                self.customNavBar.hidden = false
+                
+            }
+            frame.origin.y = min(0, max(-size,frame.origin.y-scrollDiff))
+            
+            
+        }
+        
+        self.customNavBar.frame = frame
+        
+        self.previousScrollViewYOffset = Double(scrollOffset)
     }
     
     func animateInShadeView() {

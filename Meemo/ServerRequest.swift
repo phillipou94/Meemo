@@ -60,16 +60,18 @@ class ServerRequest: NSObject {
                 "Accept":"application/json"]
         }
         
-        Alamofire.request(.GET, baseURLString+path, parameters: parameters) .responseJSON { (request, response, data, error) in
-            let json = JSON(data!)
-            let status = json["status"]
-            if (status == 200) {
-                success(json: json)
-            } else {
-                println("Error: \(json)")
-                failure(error:json)
+        Alamofire.request(.GET, baseURLString+path, parameters: parameters) .responseJSON { (request, response, dataResponse, error) in
+            if let data: AnyObject = dataResponse as AnyObject?{
+                let json = JSON(data)
+                let status = json["status"]
+                if (status == 200) {
+                    success(json: json)
+                } else {
+                    println("Error: \(json)")
+                    failure(error:json)
+                }
+
             }
-            
         }
     }
     
