@@ -13,6 +13,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     let viewModel = GroupsViewModel()
     var groups:[Group] = []
     var posts:[Post] = []
+    var userID = CoreDataRequest.sharedManager.getUserCredentials()?.object_id
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
@@ -180,12 +181,14 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
                 cell.post = post
+                cell.user_id = userID
                 cell.configureCell()
                 return cell
                 
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
                 cell.post = post
+                cell.user_id = userID
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                         cell.postImageView.image = cachedImage
@@ -338,6 +341,9 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     //MARK: - SegmentControl Delegate
     
     func segmentControlDidChange() {
+        if (self.segmentControl.selectedIndex == 0 ) {
+            self.segmentControl.frame = CGRectMake(0, self.customNavBar.frame.size.height, self.segmentControl.frame.size.width, self.segmentControl.frame.size.height)
+        }
         self.tableView.reloadData()
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import Spring
 
 class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
+    var userID = CoreDataRequest.sharedManager.getUserCredentials()?.object_id
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var addButton: SpringButton!
     @IBOutlet weak var tableView: UITableView!
@@ -167,7 +167,6 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var frame = self.customNavBar.frame;
-
         let size = frame.size.height;
         var scrollOffset = CGFloat(scrollView.contentOffset.y)
         var scrollDiff = CGFloat(Double(scrollOffset) - self.previousScrollViewYOffset)
@@ -188,12 +187,13 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             }
             frame.origin.y = min(0, max(-size,frame.origin.y-scrollDiff))
             
-            
         }
         
         self.customNavBar.frame = frame
         
         self.previousScrollViewYOffset = Double(scrollOffset)
+        
+        
     }
     
     func animateInShadeView() {

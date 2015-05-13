@@ -12,6 +12,7 @@ class TextPostCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    var user_id:NSNumber? = nil
     var post:Post? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +28,6 @@ class TextPostCell: UITableViewCell {
     func configureCell() {
         if let post = self.post {
             contentLabel.text = post.content
-            let user_id = CoreDataRequest.sharedManager.getUserCredentials()?.object_id
             if user_id == post.user_id {
                 nameLabel.text = "Me"
             } else {
