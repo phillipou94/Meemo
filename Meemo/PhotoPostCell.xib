@@ -19,11 +19,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdd-lH-FpT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS IS A SUPER LONG POST. LETS SEE HOW IT GOES. BOOOM BANGG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0M-4D-nzC">
-                                <rect key="frame" x="8" y="100" width="304" height="119"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-I4-Aoz">
+                                <rect key="frame" x="8" y="178" width="304" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="I0a-4I-Fdw"/>
+                                    <constraint firstAttribute="height" constant="30" id="bzh-aD-KYK"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS IS A SUPER LONG POST. LETS SEE HOW IT GOES. BOOOM BANGG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0M-4D-nzC">
+                                <rect key="frame" x="8" y="105" width="304" height="60"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -31,8 +37,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Opy-I4-Aoz" firstAttribute="width" secondItem="t0M-4D-nzC" secondAttribute="width" id="0Ue-ww-wCa"/>
+                            <constraint firstAttribute="centerX" secondItem="Opy-I4-Aoz" secondAttribute="centerX" id="BIR-bH-QJW"/>
                             <constraint firstAttribute="centerX" secondItem="t0M-4D-nzC" secondAttribute="centerX" id="S0B-PN-OST"/>
-                            <constraint firstAttribute="centerY" secondItem="t0M-4D-nzC" secondAttribute="centerY" id="cgG-Ht-GOq"/>
+                            <constraint firstAttribute="centerY" secondItem="t0M-4D-nzC" secondAttribute="centerY" constant="25" id="cgG-Ht-GOq"/>
+                            <constraint firstItem="Opy-I4-Aoz" firstAttribute="top" secondItem="t0M-4D-nzC" secondAttribute="bottom" constant="13" id="dOY-yp-hde"/>
                             <constraint firstAttribute="trailing" secondItem="t0M-4D-nzC" secondAttribute="trailing" constant="8" id="fDk-nq-wBE"/>
                             <constraint firstItem="t0M-4D-nzC" firstAttribute="leading" secondItem="Mdd-lH-FpT" secondAttribute="leading" constant="8" id="zJt-CP-3I6"/>
                         </constraints>
