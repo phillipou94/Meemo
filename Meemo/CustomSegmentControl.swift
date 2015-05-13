@@ -113,12 +113,13 @@ protocol CustomSegmentControlDelegate{
     }
     
     func displayNewSelectedIndex() {
+        self.delegate.segmentControlDidChange()
         var label = labels[selectedIndex]
         let thumbViewHeight = CGFloat(3)
         UIView.animateWithDuration(0.5, delay: 0, options: nil, animations: { () -> Void in
             self.thumbView.frame = CGRectMake(label.frame.origin.x, label.frame.size.height - thumbViewHeight,label.frame.size.width,thumbViewHeight)
         }, completion: nil)
-        self.delegate.segmentControlDidChange()
+        
         
     }
     

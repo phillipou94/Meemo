@@ -8,13 +8,8 @@
 
 import UIKit
 
-protocol WriteMemoryControllerDelegate {
-    func loadStandbyPost(post:Post)
-}
 
 class WriteMemoryViewController: UIViewController, UITextViewDelegate {
-    
-    var delegate:WriteMemoryControllerDelegate? = nil
     @IBOutlet weak var textLimitLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var textView: UITextView!
@@ -87,20 +82,17 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
             post.content = self.textView.text
             post.post_type = "text"
             post.group_id = group.object_id
-            ServerRequest.sharedManager.createPost(post)
-            self.delegate?.loadStandbyPost(post)
+            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                
+            })
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("postStandByPost", object: post)
             self.dismissViewControllerAnimated(true, completion: nil)
             
         }
         else {
             self.performSegueWithIdentifier("tagFriends", sender: self)
         }
-    }
-    
-    // MARK: - ServerRequest Delegate
-    
-    func loadStandbyPost(post: Post) {
-        
     }
     
     // MARK: - Navigation

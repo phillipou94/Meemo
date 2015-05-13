@@ -9,12 +9,14 @@
 import UIKit
 import Spring
 
-class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, WriteMemoryControllerDelegate {
+class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var addButton: SpringButton!
     @IBOutlet weak var tableView: UITableView!
     var shadeView: ShadeView = ShadeView()
+    var photoCache = NSCache()
+    
     
     @IBOutlet var addFriendButtonContainer: SpringView!
     @IBOutlet var addFriendButton: SpringButton!
@@ -44,13 +46,14 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.view.bringSubviewToFront(self.addButton)
         setUpTableView()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
         self.viewModel.getPostsFromGroup(page,group:self.group!, completion: { (result) -> Void in
             self.posts = result
             self.tableView.reloadData()
         })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPost", object: nil)
         super.viewWillAppear(animated)
     }
     
@@ -87,9 +90,9 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let post = self.posts[indexPath.row]
         if post.post_type == "text" {
+        
             let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
             cell.post = post
             cell.configureCell()
@@ -98,9 +101,17 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
             cell.post = post
-            cell.configureCell()
+            if let file_url = post.file_url {
+                if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
+                    cell.postImageView.image = cachedImage
+                } else {
+                    cell.configureCell({ (image) -> Void in
+                        self.photoCache.setObject(image, forKey: file_url)
+                    })
+                }
+            }
+           
             return cell
-            
         }
 
     }
@@ -186,17 +197,34 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         self.performSegueWithIdentifier("writeMemory", sender: self)
     }
     
+    @IBAction func captureMemoryPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("captureMemory",sender:self)
+    }
     // MARK: - WriteViewController Delegate
     
-    func loadStandbyPost(post: Post) {
+    func loadStandbyPost(notification:NSNotification) {
+        let post = notification.object as! Post
         posts.insert(post, atIndex: 0)
         self.tableView.reloadData()
         self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in
+        if post.post_type == "photo" {
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                    NSLog("PHOTOS ARE DONE!!!!")
+                    println("PHOTOS ARE DONE!!!!")
+                })
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
+            
+        }
+       /* self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in
             self.posts = result
             self.tableView.reloadData()
             self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        })
+        }) */
     }
 
     
@@ -206,7 +234,10 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "writeMemory" {
             let vc = segue.destinationViewController as! WriteMemoryViewController
-            vc.delegate = self
+            vc.group = self.group
+        }else if segue.identifier == "captureMemory" {
+            let vc = segue.destinationViewController as! CaptureMemoryViewController
+
             vc.group = self.group
         }
     }

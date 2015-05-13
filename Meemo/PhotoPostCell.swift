@@ -22,10 +22,21 @@ class PhotoPostCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell() {
-        if let url = NSURL(string: post!.file_url!) {
-            self.postImageView.setImageWithUrl(url, placeHolderImage: nil)
+    func configureCell(completion:(image:UIImage) -> Void) {
+        if post?.image != nil {
+            self.postImageView.image = post?.image
+        } else {
+            if let url = NSURL(string: post!.file_url!) {
+                let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                request.addValue("image/*", forHTTPHeaderField: "Accept")
+                self.postImageView.image = nil
+                self.postImageView.setImageWithUrlRequest(request, placeHolderImage: nil, success: { (request, response, image) -> Void in
+                    self.postImageView.image = image
+                    completion(image:image)
+                    }, failure: nil)
+            }
         }
+        
     }
     
 }

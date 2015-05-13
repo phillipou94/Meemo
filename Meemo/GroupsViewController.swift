@@ -145,10 +145,20 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             return cell
         } else {
             let post = self.posts[indexPath.row]
-            let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
-            cell.post = post
-            cell.configureCell()
-            return cell
+            if post.post_type == "text" {
+                let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
+                cell.post = post
+                cell.configureCell()
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
+                cell.post = post
+                cell.configureCell({ (image) -> Void in
+                    
+                })
+                return cell
+            }
+
         }
     }
     

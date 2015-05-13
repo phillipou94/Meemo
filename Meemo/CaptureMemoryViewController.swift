@@ -20,7 +20,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     var currentFrame = CGRectMake(0,0,0,0)
     var rightFrame = CGRectMake(0,0,0,0)
     
-    var titleTextField = UITextField()
+    var titleTextView = UITextView()
     var storyTextView = UITextView()
     
     var post:Post? = nil
@@ -67,16 +67,16 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         self.view.addGestureRecognizer(pan)
         titleEditView = UIView(frame: rightFrame)
         titleEditView.backgroundColor = UIColor(red: 62/255.0, green: 61/255.0, blue: 84/255.0, alpha: 0.40)
-        titleTextField = UITextField(frame: CGRectMake(0, titleEditView.frame.size.height/2-30,self.view.frame.size.width, 50))
-        titleTextField.attributedPlaceholder = NSAttributedString(string: "Write Your Title", attributes: [NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.6)])
-        titleTextField.textAlignment = .Center
-        titleTextField.keyboardAppearance = .Dark
-        titleTextField.textColor = UIColor.whiteColor()
-        titleTextField.font = UIFont(name: "STHeitiSC-Medium", size: 30)
-        titleTextField.delegate = self
-        titleTextField.autocorrectionType = .No
+        titleTextView = UITextView(frame: CGRectMake(15, titleEditView.frame.size.height/2-45,self.view.frame.size.width-30, 100))
+        titleTextView.text = "Write Your Title"
+        titleTextView.textColor = UIColor(white: 1.0, alpha: 0.6)
+        titleTextView.textAlignment = .Center
+        titleTextView.backgroundColor = UIColor.clearColor()
+        titleTextView.font = UIFont(name: "STHeitiSC-Medium", size: 30)
+        titleTextView.delegate = self
+        titleTextView.autocorrectionType = .No
         self.view.addSubview(titleEditView)
-        titleEditView.addSubview(titleTextField)
+        titleEditView.addSubview(titleTextView)
     }
     
     func setUpStoryEditView() {
@@ -102,7 +102,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        if textView.text == "Write Your Story" {
+        if (textView == storyTextView && textView.text == "Write Your Story") || textView == titleTextView && textView.text == "Write Your Title" {
             textView.text = ""
             textView.textColor = UIColor.whiteColor()
             
@@ -232,6 +232,24 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     @IBAction func checkPressed(sender: AnyObject) {
         if group == nil {
             self.performSegueWithIdentifier("showFriends", sender: self)
+        } else {
+            post = Post()
+            post?.post_type = "photo"
+            post?.image = self.imageView.image
+            post?.title = self.titleTextView.text
+            post?.content = self.storyTextView.text
+            post?.group_id = self.group?.object_id
+            post?.file_url = "standby"
+            NSNotificationCenter.defaultCenter().postNotificationName("postStandByPost", object: post)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            println("start")
+            NSLog("start!")
+            /*ServerRequest.sharedManager.createPost(post!, completion: { (finished) -> Void in
+                NSLog("PHOTOS ARE DONE!!!!")
+                println("PHOTOS ARE DONE!!!!")
+            })*/
+           
+            
         }
         
     }
@@ -246,7 +264,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         if (segue.identifier == "showFriends") {
             post = Post()
             post?.image = self.imageView.image
-            post?.title = self.titleTextField.text
+            post?.title = self.titleTextView.text
             post?.content = self.storyTextView.text
             let vc = segue.destinationViewController as! ChooseFriendsViewController
             vc.post = post

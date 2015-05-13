@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1569,6 +1569,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="captureMemoryPressed:" destination="sFa-Mm-KCU" eventType="touchUpInside" id="W0F-Sa-0v4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1665,7 +1668,7 @@
                         <outlet property="tableView" destination="5sP-ua-EU9" id="Tut-dp-xJm"/>
                         <outlet property="writeMemoryButton" destination="z6W-YF-nOb" id="MNw-px-HZk"/>
                         <outlet property="writeMemoryContainer" destination="Sdk-Sv-U4x" id="YkK-Cp-VJP"/>
-                        <segue destination="vmZ-Wt-67O" kind="show" id="bdk-ZQ-acD"/>
+                        <segue destination="vmZ-Wt-67O" kind="show" identifier="captureMemory" id="bdk-ZQ-acD"/>
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="6JX-jh-805"/>
                     </connections>
                 </viewController>

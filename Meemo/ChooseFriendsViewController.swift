@@ -196,14 +196,18 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                 if selectedFriends.count != 0 {
                     showAlertView()
                 } else {
-                    ServerRequest.sharedManager.createPost(post)
+                    ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                        
+                    })
                     dismissBackToRoot()
                 }
                
             } else {
                 for group:Group in selectedGroups {
                     post.group_id = group.object_id
-                    ServerRequest.sharedManager.createPost(post)
+                    ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                        
+                    })
                     dismissBackToRoot()
                 }
                 
@@ -222,7 +226,9 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         ServerRequest.sharedManager.createGroup(group, completion: { (json) -> Void in
             if let post = self.post {
                 post.group_id = json["response"]["id"].number!
-                ServerRequest.sharedManager.createPost(post)
+                ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                    
+                })
             }
             self.dismissBackToRoot()
             

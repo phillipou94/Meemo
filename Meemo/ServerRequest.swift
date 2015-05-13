@@ -274,30 +274,39 @@ class ServerRequest: NSObject {
     
     //MARK: - Posts
     
-    func createPost(post:Post) {
+    func createPost(post:Post, completion:(finished:Bool) -> Void) {
         var payload:NSMutableDictionary = [:]
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+
         if post.post_type == "text" {
-            payload = ["post_type":"text", "content":post.content!]
+            payload = ["post_type":"text", "content":post.content!, "group_id":post.group_id!]
+            let parameter = ["post":payload]
+            self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
+                    completion(finished: true)
+                }, failure: { (error) -> Void in
+                    println("Error:\(error)")
+            })
+            
             
         } else {
-            
+            uploadPhoto(post.image!, completion: { (url) -> Void in
+                payload = ["post_type":"photo", "content":post.content!, "title":post.title!, "file_url":url,"group_id":post.group_id!]
+                let parameter = ["post":payload]
+                self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
+                    
+                    }, failure: { (error) -> Void in
+                        println("Error:\(error)")
+                })
+            })
         }
-        if let group_id = post.group_id {
-            payload.setValue(group_id, forKey: "group_id")
-        }
-        let parameter = ["post":payload]
-        let token = CoreDataRequest.sharedManager.getAPIToken()
-        self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
-            
-            }, failure: { (error) -> Void in
-                println("Error:\(error)")
-        })
+        
+
 
     }
     
     func getPostsFromGroup(page:Int,group:Group,completion:(result:[Post]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
-        let path = "groups/\(group.object_id)/posts"
+        let path = "groups/\(group.object_id)/posts?page=\(page)"
         self.get(path, parameters: nil, token: token, success: { (json) -> Void in
             var result:[Post] = []
             for dict in json["response"].arrayValue {
@@ -312,7 +321,8 @@ class ServerRequest: NSObject {
     
     func getPosts(page:Int,completion:(result:[Post]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
-        self.get("posts", parameters: nil, token: token, success: { (json) -> Void in
+        let path = "posts?page=\(page)"
+        self.get(path, parameters: nil, token: token, success: { (json) -> Void in
             println(json)
             var result:[Post] = []
             for dict in json["response"].arrayValue {
@@ -463,7 +473,7 @@ class ServerRequest: NSObject {
         post.post_type = dict["post_type"].string
         post.content = dict["content"].string
         post.title = dict["title"].string
-        post.file_url = dict["file_url"].string
+        post.file_url = self.removeBackSlashes(dict["file_url"].string)
         post.object_id = dict["id"].number
         post.group_id = dict["group_id"].number
         post.user_id = dict["user_id"].number
