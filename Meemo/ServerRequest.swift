@@ -15,7 +15,6 @@ private let _sharedInstance = ServerRequest()
 private let baseURLString = "https://shrouded-tor-7022.herokuapp.com/api/"
 
 class ServerRequest: NSObject {
-
     class var sharedManager: ServerRequest {
         return _sharedInstance
     }
@@ -296,7 +295,7 @@ class ServerRequest: NSObject {
 
     }
     
-    func getPostsFromGroup(group:Group,completion:(result:[Post]) -> Void) {
+    func getPostsFromGroup(page:Int,group:Group,completion:(result:[Post]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         let path = "groups/\(group.object_id)/posts"
         self.get(path, parameters: nil, token: token, success: { (json) -> Void in
@@ -311,7 +310,7 @@ class ServerRequest: NSObject {
         })
     }
     
-    func getPosts(completion:(result:[Post]) -> Void) {
+    func getPosts(page:Int,completion:(result:[Post]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         self.get("posts", parameters: nil, token: token, success: { (json) -> Void in
             println(json)

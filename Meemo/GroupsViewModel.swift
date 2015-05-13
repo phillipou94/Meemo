@@ -17,14 +17,14 @@ class GroupsViewModel: NSObject {
         }
     }
     
-    func getPosts(completion:(posts:[Post]) -> Void) {
-        ServerRequest.sharedManager.getPosts { (result) -> Void in
+    func getPosts(page:Int,completion:(posts:[Post]) -> Void) {
+        ServerRequest.sharedManager.getPosts(page, completion: { (result) -> Void in
             completion(posts:result)
-        }
+        })
     }
     
-    func getPostsFromGroup(group:Group,completion:(result:[Post]) -> Void) {
-        ServerRequest.sharedManager.getPostsFromGroup(group, completion: { (result) -> Void in
+    func getPostsFromGroup(page:Int,group:Group,completion:(result:[Post]) -> Void) {
+        ServerRequest.sharedManager.getPostsFromGroup(page,group: group, completion: { (result) -> Void in
             completion(result:result)
         })
         

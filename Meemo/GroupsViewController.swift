@@ -29,8 +29,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     
     @IBOutlet var tableView: UITableView!
     
-   
-    
+    var page: Int = 1
     
     //MARK: - Initialization
     
@@ -241,10 +240,10 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 self.tableView.reloadData()
             }
         } else {
-            self.viewModel.getPosts { (posts) -> Void in
+            self.viewModel.getPosts(page, completion: { (posts) -> Void in
                 self.posts = posts
                 self.tableView.reloadData()
-            }
+            })
         }
     }
     

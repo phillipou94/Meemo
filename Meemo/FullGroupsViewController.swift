@@ -9,7 +9,7 @@
 import UIKit
 import Spring
 
-class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, WriteMemoryControllerDelegate {
 
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var addButton: SpringButton!
@@ -28,6 +28,7 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     let viewModel = GroupsViewModel()
     var group:Group? = nil
     var posts:[Post] = []
+    var page:Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +44,21 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
         self.view.bringSubviewToFront(self.addButton)
         setUpTableView()
-        self.viewModel.getPostsFromGroup(self.group!, completion: { (result) -> Void in
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.viewModel.getPostsFromGroup(page,group:self.group!, completion: { (result) -> Void in
             self.posts = result
             self.tableView.reloadData()
         })
-        
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        animateOutShadeView()
+        self.addButton.selected = false
+        setRotation()
     }
     
     // MARK: - TableView
@@ -171,15 +182,34 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "setRotation", userInfo: nil, repeats: false)
     }
     
+    @IBAction func writeMemoryPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("writeMemory", sender: self)
+    }
+    
+    // MARK: - WriteViewController Delegate
+    
+    func loadStandbyPost(post: Post) {
+        posts.insert(post, atIndex: 0)
+        self.tableView.reloadData()
+        self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
+        self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in
+            self.posts = result
+            self.tableView.reloadData()
+            self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
+        })
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "writeMemory" {
+            let vc = segue.destinationViewController as! WriteMemoryViewController
+            vc.delegate = self
+            vc.group = self.group
+        }
     }
-    */
+    
 
 }

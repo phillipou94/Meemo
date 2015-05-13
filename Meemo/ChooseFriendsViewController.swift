@@ -46,9 +46,9 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     //MARK: - TableView
     
     func setUpTableView() {
-        let groupNib = UINib(nibName: "GroupTableViewCell", bundle: nil)
+        let groupNib = UINib(nibName: "GroupPreviewCell", bundle: nil)
         let friendNib = UINib(nibName: "FriendsCell", bundle: nil)
-        self.tableView.registerNib(groupNib, forCellReuseIdentifier: "GroupTableViewCell")
+        self.tableView.registerNib(groupNib, forCellReuseIdentifier: "GroupPreviewCell")
         self.tableView.registerNib(friendNib, forCellReuseIdentifier: "FriendsCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -76,20 +76,15 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if self.segmentController.selectedIndex == 0 {
-            return 90
-        } else {
             return 60
-        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if self.segmentController.selectedIndex == 0 {
             let group = self.groups[indexPath.row]
-            let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupPreviewCell") as! GroupPreviewCell
             cell.group = group
             cell.configureCell()
-            cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
             return cell
         } else {
             let letter = self.viewModel.alphabet[indexPath.section]

@@ -703,7 +703,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2i-Ak-mlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ji4-gK-nUd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="993" y="3583"/>
+            <point key="canvasLocation" x="925" y="3441"/>
         </scene>
         <!--Create Groups View Controller-->
         <scene sceneID="NUW-Jl-kFU">
@@ -942,7 +942,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL4-Y4-l0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="arq-Oe-0C9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="944" y="2025"/>
+            <point key="canvasLocation" x="-79" y="1929"/>
         </scene>
         <!--Pick Friends View Controller-->
         <scene sceneID="05N-dV-hB1">
@@ -1029,7 +1029,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tre-8l-PRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="2056"/>
+            <point key="canvasLocation" x="944" y="1966"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="huY-q6-mYr">
@@ -1524,6 +1524,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="writeMemoryPressed:" destination="sFa-Mm-KCU" eventType="touchUpInside" id="d86-et-DCe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1663,7 +1666,7 @@
                         <outlet property="writeMemoryButton" destination="z6W-YF-nOb" id="MNw-px-HZk"/>
                         <outlet property="writeMemoryContainer" destination="Sdk-Sv-U4x" id="YkK-Cp-VJP"/>
                         <segue destination="vmZ-Wt-67O" kind="show" id="bdk-ZQ-acD"/>
-                        <segue destination="pFR-ky-Zug" kind="show" id="6JX-jh-805"/>
+                        <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="6JX-jh-805"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2F-s8-cBs" userLabel="First Responder" sceneMemberID="firstResponder"/>

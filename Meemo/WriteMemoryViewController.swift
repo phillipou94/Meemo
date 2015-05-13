@@ -8,11 +8,17 @@
 
 import UIKit
 
-class WriteMemoryViewController: UIViewController, UITextViewDelegate {
+protocol WriteMemoryControllerDelegate {
+    func loadStandbyPost(post:Post)
+}
 
+class WriteMemoryViewController: UIViewController, UITextViewDelegate {
+    
+    var delegate:WriteMemoryControllerDelegate? = nil
     @IBOutlet weak var textLimitLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var textView: UITextView!
+    var viewModel = GroupsViewModel()
     var characterLimit = 450
     
     var group:Group? = nil
@@ -31,9 +37,11 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //self.textView.alignToCenter()
+        
         self.textView.textContainerInset = UIEdgeInsetsMake(40, 33, 40, 33)
         self.textView.delegate = self
+        //self.textView.alignToCenter()
+        //self.textView.textContainerInset = UIEdgeInsetsMake(0, 33, 40, 0)
         super.viewWillAppear(animated)
     }
     
@@ -74,11 +82,26 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func nextPressed(sender: AnyObject) {
-        if group == nil {
+        if let group = self.group {
+            var post = Post()
+            post.content = self.textView.text
+            post.post_type = "text"
+            post.group_id = group.object_id
+            ServerRequest.sharedManager.createPost(post)
+            self.delegate?.loadStandbyPost(post)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
+        else {
             self.performSegueWithIdentifier("tagFriends", sender: self)
         }
     }
-
+    
+    // MARK: - ServerRequest Delegate
+    
+    func loadStandbyPost(post: Post) {
+        
+    }
     
     // MARK: - Navigation
 
