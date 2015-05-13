@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-I4-Aoz">
-                                <rect key="frame" x="8" y="178" width="304" height="30"/>
+                                <rect key="frame" x="8" y="182" width="304" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bzh-aD-KYK"/>
                                 </constraints>
@@ -29,8 +29,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS IS A SUPER LONG POST. LETS SEE HOW IT GOES. BOOOM BANGG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0M-4D-nzC">
-                                <rect key="frame" x="8" y="105" width="304" height="60"/>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
+                                <rect key="frame" x="8" y="100" width="304" height="69"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -59,6 +59,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="Opy-I4-Aoz" id="e23-PF-ay1"/>
                 <outlet property="postImageView" destination="Xi4-Fc-nuP" id="Vjg-3Q-e0U"/>
                 <outlet property="shadeView" destination="Mdd-lH-FpT" id="0le-pN-IXc"/>
                 <outlet property="titleLabel" destination="t0M-4D-nzC" id="2kG-XA-Pia"/>

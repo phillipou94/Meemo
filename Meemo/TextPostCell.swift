@@ -14,6 +14,8 @@ class TextPostCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     var user_id:NSNumber? = nil
     var post:Post? = nil
+    
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

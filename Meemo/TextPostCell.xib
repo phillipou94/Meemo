@@ -56,6 +56,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="O5e-gW-pvw" id="ACS-hf-WC3"/>
+                <outlet property="dateLabel" destination="iuV-82-no2" id="PiF-YO-xH2"/>
                 <outlet property="nameLabel" destination="BgY-f1-yUg" id="0dz-ps-rni"/>
             </connections>
             <point key="canvasLocation" x="449" y="503"/>

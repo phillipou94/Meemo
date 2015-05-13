@@ -123,12 +123,14 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
             cell.post = post
+            cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
             cell.configureCell()
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
             cell.post = post
+            cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
             if let file_url = post.file_url {
                 if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                     cell.postImageView.image = cachedImage

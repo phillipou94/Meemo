@@ -170,7 +170,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
             cell.group = group
             cell.configureCell()
-            cell.dateLabel.text = self.viewModel.formatDate(group.last_updated)
+            cell.dateLabel.text = self.viewModel.conventionalDate(group.last_updated)
             return cell
         } else {
             if !onLastPage {
@@ -182,6 +182,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
                 cell.post = post
                 cell.user_id = userID
+                cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
                 cell.configureCell()
                 return cell
                 
@@ -189,6 +190,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
                 cell.post = post
                 cell.user_id = userID
+                cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                         cell.postImageView.image = cachedImage
