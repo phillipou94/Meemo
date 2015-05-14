@@ -170,7 +170,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
             cell.group = group
             cell.configureCell()
-            cell.dateLabel.text = self.viewModel.conventionalDate(group.last_updated)
+            cell.dateLabel.text = group.last_updated?.conventionalDate()
             return cell
         } else {
             if !onLastPage {
@@ -182,7 +182,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
                 cell.post = post
                 cell.user_id = userID
-                cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
+                cell.dateLabel.text = post.created_at?.formatDate()
                 cell.configureCell()
                 return cell
                 
@@ -190,7 +190,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
                 cell.post = post
                 cell.user_id = userID
-                cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
+                cell.dateLabel.text = post.created_at?.formatDate()
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                         cell.postImageView.image = cachedImage
@@ -220,7 +220,13 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (self.segmentControl.selectedIndex == 0) {
             self.performSegueWithIdentifier("showGroup", sender: self)
-            
+        } else {
+            let post = self.posts[indexPath.row]
+            if post.post_type == "photo" {
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.performSegueWithIdentifier("showFullPost", sender: self)
+                })
+            }
         }
     }
     
@@ -357,6 +363,12 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             let group = self.groups[indexPath!.row]
             let vc = segue.destinationViewController as! FullGroupsViewController
             vc.group = group
+        } else if (segue.identifier == "showFullPost") {
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PhotoPostCell
+            let post = self.posts[indexPath!.row]
+            post.image = cell.postImageView.image
+            let vc = segue.destinationViewController as! PhotoPostViewController
+            vc.post = post
         }
     }
 

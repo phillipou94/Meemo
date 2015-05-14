@@ -123,14 +123,14 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
             cell.post = post
-            cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
+            cell.dateLabel.text = post.created_at?.formatDate()
             cell.configureCell()
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
             cell.post = post
-            cell.dateLabel.text = self.viewModel.formatDate(post.created_at)
+            cell.dateLabel.text = post.created_at?.formatDate()
             if let file_url = post.file_url {
                 if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                     cell.postImageView.image = cachedImage
@@ -144,6 +144,17 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             return cell
         }
 
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let post = self.posts[indexPath.row]
+        if post.post_type == "photo" {
+            dispatch_async(dispatch_get_main_queue(),{
+                self.performSegueWithIdentifier("showFullPost", sender: self)
+            })
+        }
+        
+        
     }
     
     func willPaginate(row:Int) {
@@ -319,9 +330,16 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             vc.group = self.group
         }else if segue.identifier == "captureMemory" {
             let vc = segue.destinationViewController as! CaptureMemoryViewController
-
             vc.group = self.group
+        } else if (segue.identifier == "showFullPost") {
+            let indexPath = tableView.indexPathForSelectedRow()
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PhotoPostCell
+            let post = self.posts[indexPath!.row]
+            post.image = cell.postImageView.image
+            let vc = segue.destinationViewController as! PhotoPostViewController
+            vc.post = post
         }
+
     }
     
 

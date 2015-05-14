@@ -38,7 +38,7 @@ class GroupsViewModel: NSObject {
 
     }
     
-    func formatDate(dateString:String?) -> String? {
+    /*func formatDate(dateString:String?) -> String? {
         
         if let string = dateString {
             let dateFormatter = NSDateFormatter()
@@ -112,7 +112,7 @@ class GroupsViewModel: NSObject {
         }
         
         return nil
-    }
+    }*/
     
    
 }

@@ -81,7 +81,6 @@ class ServerRequest: NSObject {
         let parameter = ["session":["email":email, "password":password]]
         
         post("login", parameters: parameter, token:nil, success: { (json) -> Void in
-            println(json)
             var user = User()
             user.email = json["response"]["email"].string
             user.name = json["response"]["name"].string!
@@ -325,7 +324,6 @@ class ServerRequest: NSObject {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         let path = "posts?page=\(page)"
         self.get(path, parameters: nil, token: token, success: { (json) -> Void in
-            println(json)
             var result:[Post] = []
             for dict in json["response"].arrayValue {
                 let post = self.postModel(dict)
@@ -345,7 +343,6 @@ class ServerRequest: NSObject {
         let parameter = ["user":payload]
     
         post("login/fb", parameters: parameter, token:nil, success: { (json) -> Void in
-            println(json)
             
             var user = User()
             user.email = json["response"]["email"].string

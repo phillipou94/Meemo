@@ -27,6 +27,8 @@
 		4D8595831AE5A1CC008F96E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8595811AE5A1CC008F96E7 /* LaunchScreen.xib */; };
 		4D85958F1AE5A1CC008F96E7 /* MeemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */; };
 		4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8595981AE5AB47008F96E7 /* LoginViewController.swift */; };
+		4D978DC51B04478E00CC3DB9 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D978DC41B04478E00CC3DB9 /* PhotoPostViewController.swift */; };
+		4D978DC71B04639F00CC3DB9 /* String+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D978DC61B04639F00CC3DB9 /* String+DateFormatter.swift */; };
 		4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */; };
 		4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */; };
 		4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */; };
@@ -118,6 +120,8 @@
 		4D85958D1AE5A1CC008F96E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D85958E1AE5A1CC008F96E7 /* MeemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeemoTests.swift; sourceTree = "<group>"; };
 		4D8595981AE5AB47008F96E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4D978DC41B04478E00CC3DB9 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
+		4D978DC61B04639F00CC3DB9 /* String+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DateFormatter.swift"; sourceTree = "<group>"; };
 		4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSearchViewController.swift; sourceTree = "<group>"; };
 		4DA1F5D01AF3EEB00049512C /* PhoneSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneSearchViewController.xib; sourceTree = "<group>"; };
 		4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */,
+				4D978DC41B04478E00CC3DB9 /* PhotoPostViewController.swift */,
 				4D1166131B006418001A0847 /* Post.swift */,
 				4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */,
 				4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */,
@@ -406,6 +411,7 @@
 			children = (
 				4D695B341AF5FA14000BCB3A /* UIImageView+Asynchronous.swift */,
 				4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */,
+				4D978DC61B04639F00CC3DB9 /* String+DateFormatter.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -617,11 +623,13 @@
 				4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */,
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
 				4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */,
+				4D978DC71B04639F00CC3DB9 /* String+DateFormatter.swift in Sources */,
 				4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
 				4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */,
 				4DA1F5D11AF3EEB00049512C /* PhoneSearchViewController.swift in Sources */,
 				4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */,
+				4D978DC51B04478E00CC3DB9 /* PhotoPostViewController.swift in Sources */,
 				4DC019811B02A17600865DF9 /* PhotoPostCell.swift in Sources */,
 				4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */,
 				4D1166141B006418001A0847 /* Post.swift in Sources */,
