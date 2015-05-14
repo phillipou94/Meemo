@@ -12,7 +12,9 @@ class PhotoPostCell: UITableViewCell {
     var post:Post? = nil
     var user_id:NSNumber? = nil
     @IBOutlet weak var postImageView: UIImageView!
+
     
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var shadeView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -30,20 +32,30 @@ class PhotoPostCell: UITableViewCell {
 
     
     func configureCell(completion:(image:UIImage) -> Void) {
-        if let title = post?.title {
-            self.titleLabel.text = title
-            self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        } else {
-            self.titleLabel.hidden = true
-            self.shadeView.hidden = true
-        }
         
-        if post?.image != nil {
-            self.postImageView.image = post?.image
-        } else {
-            loadImage({ (image) -> Void in
-                completion(image:image)
-            })
+        if let post = self.post {
+            if let title = post.title {
+                self.titleLabel.text = title
+                self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            } else {
+                self.titleLabel.hidden = true
+                self.shadeView.hidden = true
+            }
+            
+            if user_id == post.user_id {
+                nameLabel.text = "Me"
+            } else {
+                nameLabel.text = post.user_name
+            }
+            
+            if post.image != nil {
+                self.postImageView.image = post.image
+            } else {
+                loadImage({ (image) -> Void in
+                    completion(image:image)
+                })
+            }
+
         }
         
     }

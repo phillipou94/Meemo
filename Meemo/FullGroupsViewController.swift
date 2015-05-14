@@ -123,6 +123,7 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
             cell.post = post
+            cell.user_id = userID
             cell.dateLabel.text = post.created_at?.formatDate()
             cell.configureCell()
             return cell
@@ -130,6 +131,7 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
             cell.post = post
+            cell.user_id = userID
             cell.dateLabel.text = post.created_at?.formatDate()
             if let file_url = post.file_url {
                 if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
