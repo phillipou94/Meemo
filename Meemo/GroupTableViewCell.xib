@@ -70,6 +70,7 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="colorBar" destination="d0z-yo-w3n" id="jbf-Dh-Oq8"/>
                 <outlet property="dateLabel" destination="0JM-qW-LAI" id="87i-bE-mCO"/>
                 <outlet property="nameLabel" destination="aDp-L1-wFN" id="F3t-SO-2VZ"/>
                 <outlet property="statusLabel" destination="y1Q-le-e6s" id="R5L-ob-ozK"/>

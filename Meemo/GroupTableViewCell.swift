@@ -10,6 +10,7 @@ import UIKit
 
 class GroupTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var colorBar: UIView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var thumbnail: UIImageView!
@@ -27,16 +28,21 @@ class GroupTableViewCell: UITableViewCell {
     }
     
     func configureCell() {
-        
-        if let imageURL = self.group!.imageURL {
-            if let url = NSURL(string: imageURL){
-                self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
-                
+        if let group = self.group {
+            if let imageURL = group.imageURL {
+                if let url = NSURL(string: imageURL){
+                    self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
+                    
+                }
             }
+            if group.needs_viewing {
+                self.colorBar.hidden = false
+            } else {
+                self.colorBar.hidden = true
+            }
+            
+            self.nameLabel.text = group.name
         }
-        
-        self.nameLabel.text = group!.name
-
         
     }
     

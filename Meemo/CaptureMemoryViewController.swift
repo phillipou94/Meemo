@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, CameraViewControllerDelegate {
+class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, CameraViewControllerDelegate, CLLocationManagerDelegate {
     @IBOutlet var imageView: UIImageView!
     var firstTime:Bool = true
     @IBOutlet var navBar: UIView!
@@ -25,6 +26,11 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     
     var post:Post? = nil
     var group:Group? = nil
+    
+    var locManager = CLLocationManager()
+    var currentLocation = CLLocation()
+    
+    
 
     @IBOutlet var pageControl: UIPageControl!
     override func viewDidLoad() {
@@ -194,6 +200,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         
         setUpTitleEditView()
         setUpStoryEditView()
+        getLocation()
     }
     
     func cropImage(image:UIImage, rect:CGRect) -> UIImage {
@@ -255,6 +262,29 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     }
     @IBAction func backPressed(sender: AnyObject) {
         showCamera()
+    }
+    
+    //MARK: - Location
+    func getLocation() {
+        locManager.delegate = self
+        locManager.requestWhenInUseAuthorization()
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locManager.distanceFilter = kCLDistanceFilterNone;
+        locManager.startUpdatingLocation()
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        
+        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
+                
+                currentLocation = locManager.location
+                println("LOCATION:\(currentLocation.coordinate.longitude)")
+                locManager.stopUpdatingLocation()
+        }
+        
     }
     
     // MARK: - Navigation

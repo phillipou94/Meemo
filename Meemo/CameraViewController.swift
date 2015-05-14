@@ -12,7 +12,7 @@ protocol CameraViewControllerDelegate {
     func exitCamera()
 }
 
-class CameraViewController: UIImagePickerController {
+class CameraViewController: UIImagePickerController{
     
     var menuBar = UIView()
     var bottomView = UIView()
@@ -22,7 +22,6 @@ class CameraViewController: UIImagePickerController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.modalPresentationStyle = .CurrentContext
         self.sourceType = .Camera
         self.showsCameraControls = false
@@ -83,5 +82,9 @@ class CameraViewController: UIImagePickerController {
         let viewController = PhotoAlbumViewController(nibName: "PhotoAlbumViewController", bundle: nil)
         self.presentViewController(viewController, animated: true, completion: nil)
     }
+    
+    //MARK: - Location 
+
+
     
 }

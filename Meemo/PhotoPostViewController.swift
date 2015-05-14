@@ -13,20 +13,30 @@ import UIKit
 class PhotoPostViewController: UIViewController {
     
     @IBOutlet var firstShadeView: UIView!
+    
     var secondShadeView:UIView? = nil
     var storyLabel:UILabel? = nil
     var post:Post? = nil
     var lastPage:Int = 1
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var imageView: UIImageView!
+    
+    
     var page:Int = 0
     var leftFrame = CGRectMake(0, 0, 0, 0)
+    var leftMostFrame = CGRectMake(0,0,0,0)
     var rightFrame = CGRectMake(0, 0, 0, 0)
     var currentFrame = CGRectMake(0, 0, 0, 0)
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let pan = UIPanGestureRecognizer(target: self, action: "draggedView:")
         self.view.addGestureRecognizer(pan)
         if let post = self.post {
@@ -34,6 +44,11 @@ class PhotoPostViewController: UIViewController {
             self.titleLabel.text = post.title
             if let date = post.created_at?.formatDate() {
                 self.descriptionLabel.text = "\(post.user_name!) posted this \(date)"
+            }
+            if let content = post.content {
+                self.pageControl.numberOfPages = 3
+            } else {
+                self.pageControl.numberOfPages = 2
             }
             
         }
@@ -50,6 +65,7 @@ class PhotoPostViewController: UIViewController {
     func setUpFrames() {
         let imageSize = self.imageView.frame.size
         leftFrame = CGRectMake(-imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
+        leftMostFrame = CGRectMake(-2*imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
         rightFrame = CGRectMake(imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
         currentFrame = self.imageView.frame
         if let content = post?.content {
@@ -63,6 +79,7 @@ class PhotoPostViewController: UIViewController {
 
             lastPage = 2
         }
+       
     }
     
     func setUpStoryLabel() {
@@ -93,19 +110,16 @@ class PhotoPostViewController: UIViewController {
         let velocity = recognizer.velocityInView(self.view)
         if (!(self.pageControl.currentPage == 0 && velocity.x > 0) && !(self.pageControl.currentPage == lastPage && velocity.x < 0)) {
             let translation = recognizer.translationInView(self.view)
-            if self.pageControl.currentPage < lastPage {
-                self.firstShadeView.center = CGPoint(x:self.firstShadeView.center.x+translation.x,
+            
+            self.firstShadeView.center = CGPoint(x:self.firstShadeView.center.x+translation.x,
                     y:self.firstShadeView.center.y)
-            }
-            if self.pageControl.currentPage > 0  {
-                if let secondShadeView = self.secondShadeView {
-                    secondShadeView.center = CGPoint(x:secondShadeView.center.x+translation.x,
-                        y:secondShadeView.center.y)
-                    if let storyLabel = self.storyLabel {
-                        storyLabel.center = CGPoint(x:storyLabel.center.x + translation.x,
-                            y:storyLabel.center.y)
-                    }
-                    
+            
+            if let secondShadeView = self.secondShadeView {
+                secondShadeView.center = CGPoint(x:secondShadeView.center.x+translation.x,
+                    y:secondShadeView.center.y)
+                if let storyLabel = self.storyLabel {
+                    storyLabel.center = CGPoint(x:storyLabel.center.x + translation.x,
+                        y:storyLabel.center.y)
                 }
                 
             }
@@ -114,21 +128,18 @@ class PhotoPostViewController: UIViewController {
             if recognizer.state == UIGestureRecognizerState.Ended {
                 if velocity.x < 0 { //swiped left
                     if self.pageControl.currentPage == 0 {
-                        animateView(self.firstShadeView, frame: leftFrame)
-                    } else if self.secondShadeView != nil{
-                        
-                        animateView(self.secondShadeView!, frame:currentFrame)
-                        
-
+                        animateView(leftFrame,secondFrame:currentFrame)
+                    } else if self.pageControl.currentPage == 1 && self.secondShadeView != nil {
+                        animateView(leftMostFrame,secondFrame:leftFrame )
                     }
                     page += 1
                     
                     
                 } else { //right
-                    if self.pageControl.currentPage == 2 && self.secondShadeView != nil {
-                        animateView(self.secondShadeView!, frame:rightFrame)
+                    if self.pageControl.currentPage == 2 {
+                        animateView(leftFrame, secondFrame:currentFrame)
                     } else if (self.pageControl.currentPage == 1) {
-                        animateView(self.firstShadeView,frame:currentFrame)
+                       animateView(currentFrame,secondFrame:rightFrame)
     
                     }
                     page -= 1
@@ -144,16 +155,21 @@ class PhotoPostViewController: UIViewController {
     }
 
     
-    func animateView(view:UIView,frame:CGRect) {
+    func animateView(frame:CGRect, secondFrame:CGRect?) {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            view.center = CGPointMake(frame.origin.x + (frame.size.width / 2), view.frame.origin.y + (view.frame.size.height / 2))
-            if view == self.secondShadeView {
-                self.storyLabel?.center = CGPointMake(frame.origin.x + (frame.size.width / 2), view.frame.origin.y + (view.frame.size.height / 2))
+            self.firstShadeView.center = CGPointMake(frame.origin.x + (frame.size.width / 2), self.firstShadeView.frame.origin.y + (self.firstShadeView.frame.size.height / 2))
+            if let view2 = self.secondShadeView {
+                if let frame2 = secondFrame {
+                    view2.center = CGPointMake(frame2.origin.x + (frame2.size.width / 2), view2.frame.origin.y + (view2.frame.size.height / 2))
+                    self.storyLabel?.center = CGPointMake(frame2.origin.x + (frame2.size.width / 2), view2.frame.origin.y + (view2.frame.size.height / 2))
+                }
+
             }
             
-            }, completion: { (completed) -> Void in
-                
-        })
+        
+            
+            
+        }, completion: { (completed) -> Void in })
     }
     
 

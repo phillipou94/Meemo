@@ -241,6 +241,7 @@
 		4D51AE911AFB1807007DBD13 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
 				4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */,
 				4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */,
@@ -248,7 +249,6 @@
 				4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */,
 				4DC019831B02AF4A00865DF9 /* GroupPreviewCell.swift */,
 				4DC019841B02AF4A00865DF9 /* GroupPreviewCell.xib */,
-				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
 				4DFB6B6D1AF68E5D00909860 /* Create Groups */,
 			);
 			name = Group;

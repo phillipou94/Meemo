@@ -17,6 +17,8 @@ class Group: NSObject {
     var object_id:NSNumber = -1
     var lastPostType:String? = nil
     var last_updated:String? = nil
+    var visited_at:String? = nil
+    var needs_viewing:Bool = true
     
    
 }

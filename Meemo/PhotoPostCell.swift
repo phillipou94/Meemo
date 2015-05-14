@@ -32,7 +32,6 @@ class PhotoPostCell: UITableViewCell {
 
     
     func configureCell(completion:(image:UIImage) -> Void) {
-        
         if let post = self.post {
             if let title = post.title {
                 self.titleLabel.text = title

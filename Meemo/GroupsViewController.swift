@@ -8,6 +8,7 @@
 
 import Foundation
 import Spring
+import CoreLocation
 class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let viewModel = GroupsViewModel()
@@ -191,6 +192,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 cell.post = post
                 cell.user_id = userID
                 cell.dateLabel.text = post.created_at?.formatDate()
+                cell.titleLabel.text = post.title
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                         cell.postImageView.image = cachedImage
@@ -371,6 +373,8 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
             vc.post = post
         }
     }
-
+    
+    
+    
 
 }
