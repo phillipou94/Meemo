@@ -77,6 +77,8 @@
 		4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A2E1AE6F22C00C9E5DE /* User.swift */; };
 		4DD91A351AE709CE00C9E5DE /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */; };
 		4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE279DF1AEF49E600340D0F /* CameraViewController.swift */; };
+		4DF2A0901B04FE1000CA9035 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2A08E1B04FE1000CA9035 /* PhotoAlbumViewController.swift */; };
+		4DF2A0911B04FE1000CA9035 /* PhotoAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2A08F1B04FE1000CA9035 /* PhotoAlbumViewController.xib */; };
 		4DFB6B711AF690EA00909860 /* FriendsPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB6B6F1AF690EA00909860 /* FriendsPreviewCell.swift */; };
 		4DFB6B721AF690EA00909860 /* FriendsPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DFB6B701AF690EA00909860 /* FriendsPreviewCell.xib */; };
 		770A4C7825AEED83977A6477 /* Pods_Meemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64D225448F2C4988480B31 /* Pods_Meemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -171,6 +173,8 @@
 		4DD91A2E1AE6F22C00C9E5DE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		4DE279DF1AEF49E600340D0F /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		4DF2A08E1B04FE1000CA9035 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		4DF2A08F1B04FE1000CA9035 /* PhotoAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoAlbumViewController.xib; sourceTree = "<group>"; };
 		4DFB6B6F1AF690EA00909860 /* FriendsPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsPreviewCell.swift; sourceTree = "<group>"; };
 		4DFB6B701AF690EA00909860 /* FriendsPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsPreviewCell.xib; sourceTree = "<group>"; };
 		9690D006BA3FE3BD4EBD2D4E /* Pods-Meemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meemo/Pods-Meemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,9 +225,9 @@
 		4D1166121B0063EA001A0847 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				4D1166131B006418001A0847 /* Post.swift */,
 				4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */,
 				4D978DC41B04478E00CC3DB9 /* PhotoPostViewController.swift */,
-				4D1166131B006418001A0847 /* Post.swift */,
 				4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */,
 				4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */,
 				4DC0197F1B02A17600865DF9 /* PhotoPostCell.swift */,
@@ -336,6 +340,8 @@
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
 				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
 				4DA848CA1B01618100995031 /* AlertView.xib */,
+				4DF2A08E1B04FE1000CA9035 /* PhotoAlbumViewController.swift */,
+				4DF2A08F1B04FE1000CA9035 /* PhotoAlbumViewController.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 			files = (
 				4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */,
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
+				4DF2A0911B04FE1000CA9035 /* PhotoAlbumViewController.xib in Resources */,
 				4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */,
 				4DC019821B02A17600865DF9 /* PhotoPostCell.xib in Resources */,
 				4DC019861B02AF4A00865DF9 /* GroupPreviewCell.xib in Resources */,
@@ -624,6 +631,7 @@
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
 				4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */,
 				4D978DC71B04639F00CC3DB9 /* String+DateFormatter.swift in Sources */,
+				4DF2A0901B04FE1000CA9035 /* PhotoAlbumViewController.swift in Sources */,
 				4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */,
 				4D8595761AE5A1CC008F96E7 /* AppDelegate.swift in Sources */,
 				4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */,

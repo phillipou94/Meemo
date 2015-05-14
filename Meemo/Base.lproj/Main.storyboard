@@ -1514,7 +1514,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZW-5G-rWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zEL-wk-bGv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="2954"/>
+            <point key="canvasLocation" x="1962" y="3240"/>
         </scene>
         <!--Full Groups View Controller-->
         <scene sceneID="aB4-HH-c8T">

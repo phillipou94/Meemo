@@ -56,9 +56,13 @@ class CameraViewController: UIImagePickerController {
         cameraButton.setBackgroundImage(UIImage(named: "CameraButton"), forState: .Normal)
         cameraButton.addTarget(self, action: "takePhoto", forControlEvents: .TouchUpInside)
         
+        let albumButton = UIButton(frame:CGRectMake(50, self.view.frame.size.height-125, 50, 50))
+        albumButton.backgroundColor = UIColor.whiteColor()
+        albumButton.addTarget(self, action: "showAlbum", forControlEvents: .TouchUpInside)
         topBar.addSubview(exitButton)
         self.cameraOverlayView!.addSubview(cameraButton)
         self.cameraOverlayView!.bringSubviewToFront(cameraButton)
+        self.cameraOverlayView!.addSubview(albumButton)
         
     }
     
@@ -73,6 +77,11 @@ class CameraViewController: UIImagePickerController {
         
         self.viewDelegate?.exitCamera()
         //self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showAlbum() {
+        let viewController = PhotoAlbumViewController(nibName: "PhotoAlbumViewController", bundle: nil)
+        self.presentViewController(viewController, animated: true, completion: nil)
     }
     
 }
