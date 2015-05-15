@@ -173,7 +173,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         if let group = self.group {
             
             if  let currentUser = CoreDataRequest.sharedManager.getUserCredentials() {
-                group.user_ids = [currentUser.object_id]
+                group.user_ids = []
                 group.members = self.selectedFriends
                 ServerRequest.sharedManager.createGroup(group, completion: { (success) -> Void in
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in

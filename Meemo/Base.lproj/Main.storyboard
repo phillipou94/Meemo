@@ -1666,6 +1666,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="captureMemoryPressed:" destination="sFa-Mm-KCU" eventType="touchUpInside" id="FL3-X6-qeA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1766,6 +1769,7 @@
                         <segue destination="vmZ-Wt-67O" kind="show" id="bdk-ZQ-acD"/>
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="6JX-jh-805"/>
                         <segue destination="pJJ-rh-ypq" kind="presentation" identifier="showFullPost" id="Vam-Nm-oWU"/>
+                        <segue destination="1xt-h4-eDW" kind="show" identifier="showFriends" id="Rha-k0-myQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2F-s8-cBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1789,9 +1793,10 @@
         <image name="plus_L" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bdk-ZQ-acD"/>
+        <segue reference="Vam-Nm-oWU"/>
+        <segue reference="6JX-jh-805"/>
+        <segue reference="Rha-k0-myQ"/>
         <segue reference="bPg-PJ-uId"/>
-        <segue reference="97p-C8-Pxy"/>
-        <segue reference="Dau-4f-rIk"/>
-        <segue reference="3qW-cx-UrU"/>
     </inferredMetricsTieBreakers>
 </document>
