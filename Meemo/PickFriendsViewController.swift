@@ -15,6 +15,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     var allFriends:[String:[User]] = [:]
     var selectedFriends: [User] = []
     var group:Group? = nil
+    var newGroup:Bool = true
     let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "#"]
     var viewModel = GroupsViewModel()
     
@@ -24,17 +25,13 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         self.tableView.dataSource = self
         let nib = UINib(nibName:"FriendsCell",bundle:nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "FriendsCell")
-        loadFriends()
-        setUpCollectionView()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func loadFriends() {
         self.viewModel.getAllFriends { (friends) -> Void in
             self.allFriends = friends
             self.tableView.reloadData()
         }
+        setUpCollectionView()
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,17 +168,21 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     @IBAction func checkPressed(sender: AnyObject) {
         
         if let group = self.group {
-            
-            if  let currentUser = CoreDataRequest.sharedManager.getUserCredentials() {
-                group.user_ids = []
-                group.members = self.selectedFriends
-                ServerRequest.sharedManager.createGroup(group, completion: { (success) -> Void in
+            if newGroup {
+                self.viewModel.createGroup(group, users: self.selectedFriends, completion: { () -> Void in
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                         let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
                         self.modalPresentationStyle = .Custom
                         self.modalTransitionStyle = .CrossDissolve
                         self.presentViewController(vc, animated: true, completion: nil)
                     })
+
+                })
+                                
+            } else {
+                
+                self.viewModel.inviteUsersToGroup(group, users: self.selectedFriends, completion: { () -> Void in
+                    
                 })
                 
             }

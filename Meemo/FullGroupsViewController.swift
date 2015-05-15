@@ -289,6 +289,9 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "setRotation", userInfo: nil, repeats: false)
     }
     
+    @IBAction func addMembersPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("pickFriends", sender: self)
+    }
     @IBAction func writeMemoryPressed(sender: AnyObject) {
         self.performSegueWithIdentifier("writeMemory", sender: self)
     }
@@ -334,6 +337,10 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         }else if segue.identifier == "captureMemory" {
             let vc = segue.destinationViewController as! CaptureMemoryViewController
             vc.group = self.group
+        }else if (segue.identifier == "pickFriends") {
+            let vc = segue.destinationViewController as! PickFriendsViewController
+            vc.group = self.group
+            vc.newGroup = false
         } else if (segue.identifier == "showFullPost") {
             let indexPath = tableView.indexPathForSelectedRow()
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PhotoPostCell

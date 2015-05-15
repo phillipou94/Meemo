@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1070,6 +1070,7 @@
                                         </state>
                                         <connections>
                                             <action selector="backPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="rcw-vD-Rif"/>
+                                            <segue destination="wTb-BH-KdZ" kind="unwind" unwindAction="unwindToViewController:" id="4hx-Qf-hqC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ner-zk-QZs" customClass="SpringButton" customModule="Spring">
@@ -1125,6 +1126,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tre-8l-PRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wTb-BH-KdZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="944" y="1966"/>
         </scene>
@@ -1579,6 +1581,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addMembersPressed:" destination="sFa-Mm-KCU" eventType="touchUpInside" id="z6E-Mv-605"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1769,7 +1774,7 @@
                         <segue destination="vmZ-Wt-67O" kind="show" identifier="captureMemory" id="bdk-ZQ-acD"/>
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="6JX-jh-805"/>
                         <segue destination="pJJ-rh-ypq" kind="presentation" identifier="showFullPost" id="Vam-Nm-oWU"/>
-                        <segue destination="1xt-h4-eDW" kind="show" identifier="showFriends" id="Rha-k0-myQ"/>
+                        <segue destination="1xt-h4-eDW" kind="show" identifier="pickFriends" id="Rha-k0-myQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2F-s8-cBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1793,10 +1798,10 @@
         <image name="plus_L" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6JX-jh-805"/>
-        <segue reference="exK-0w-rYB"/>
-        <segue reference="bdk-ZQ-acD"/>
         <segue reference="Vam-Nm-oWU"/>
+        <segue reference="6JX-jh-805"/>
+        <segue reference="bdk-ZQ-acD"/>
+        <segue reference="Rha-k0-myQ"/>
         <segue reference="bPg-PJ-uId"/>
     </inferredMetricsTieBreakers>
 </document>

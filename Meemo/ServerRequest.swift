@@ -227,6 +227,7 @@ class ServerRequest: NSObject {
                 self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
                     let groupID = json["response"]["id"].number!
                     self.inviteWithPhoneNumbers(groupID, invited_users: invited_users)
+                    
                     completion(json: json)
                     
                     }, failure: { (error) -> Void in
@@ -242,6 +243,7 @@ class ServerRequest: NSObject {
             self.post("groups", parameters: parameters, token: token, success: { (json) -> Void in
                 let groupID = json["response"]["id"].number!
                  self.inviteWithPhoneNumbers(groupID, invited_users: invited_users)
+                
                 completion(json:json)
                 
                 }, failure: { (error) -> Void in
@@ -255,22 +257,53 @@ class ServerRequest: NSObject {
         
     }
     
+    func inviteUsers(users:[User], group:Group, completion:() -> Void) {
+        
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        for user in users {
+            var parameter:[String:AnyObject] = [:]
+            
+            if user.object_id != -1 || user.facebook_id != nil {
+                if user.object_id != -1 {
+                    parameter = ["invitation":["group_id":group.object_id,"user_id":("\(user.object_id)") ]]
+                } else if let facebook_id = user.facebook_id {
+                    parameter = ["invitation":["group_id":group.object_id,"facebook_id":facebook_id]]
+                }
+                
+                self.post("groups/invite", parameters: parameter, token: token, success: { (json) -> Void in
+                
+                    }, failure: { (error) -> Void in
+                    println("Invite User Error: \(error)")
+                })
+            }
+        }
+        inviteWithPhoneNumbers(group.object_id, invited_users: users)
+        completion()
+        
+    }
+    
     func inviteWithPhoneNumbers(group_id:NSNumber,invited_users:[User]) {
         var people:[ [String: String] ] = []
         for user:User in invited_users {
             var dict:[String:String] = [:]
-            dict["name"] = user.name!
-            dict["phone"] = user.phoneNumber!
-            people.append(dict)
+            if user.object_id == -1 && user.facebook_id == nil {
+                dict["name"] = user.name!
+                if let phoneNumber = user.phoneNumber {
+                    dict["phone"] = phoneNumber
+                    people.append(dict)
+                }
+                
+            
+                let payload:NSDictionary = ["group_id":group_id, "people":people]
+                let parameters = ["invite":payload]
+                let token = CoreDataRequest.sharedManager.getAPIToken()
+                self.post("phone_invite", parameters: parameters, token: token, success: { (json) -> Void in
+                    
+                }, failure: { (error) -> Void in
+                    println("Phone Invite Error:\(error)")
+                })
+            }
         }
-        let payload:NSDictionary = ["group_id":group_id, "people":people]
-        let parameters = ["invite":payload]
-        let token = CoreDataRequest.sharedManager.getAPIToken()
-        self.post("phone_invite", parameters: parameters, token: token, success: { (json) -> Void in
-            
-        }, failure: { (error) -> Void in
-            
-        })
     }
     
     //MARK: - Posts

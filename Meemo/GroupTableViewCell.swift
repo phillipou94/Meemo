@@ -29,12 +29,6 @@ class GroupTableViewCell: UITableViewCell {
     
     func configureCell() {
         if let group = self.group {
-            if let imageURL = group.imageURL {
-                if let url = NSURL(string: imageURL){
-                    self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
-                    
-                }
-            }
             if group.has_seen {
                 self.colorBar.hidden = true
             } else {
