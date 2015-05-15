@@ -15,6 +15,14 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
     @IBOutlet var scrollView: UIScrollView!
     var images:PHFetchResult = PHFetchResult()
     var collectionViewContainer =  UIView()
+    var selectedIndex = -1
+    
+    var bottomState:CGFloat = CGFloat()
+    var middleState:CGFloat = CGFloat()
+    var topState:CGFloat = CGFloat()
+    var currentState:CGFloat = CGFloat()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,25 +45,29 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
     //MARK: - CollectionView
     
     func setUpCollectionView() {
-       
-
         
         self.collectionViewContainer.frame = CGRectMake(0,self.scrollView.frame.origin.y+self.scrollView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height - 40)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        let frame = CGRectMake(0, 40, self.view.frame.size.width, self.collectionViewContainer.frame.size.height - 40)
+        let frame = CGRectMake(0, 40, self.view.frame.size.width, self.collectionViewContainer.frame.size.height - 90)
         var collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerNib(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
 
         self.collectionViewContainer.addSubview(collectionView)
+        self.collectionViewContainer.backgroundColor = UIColor(white: 0, alpha: 0.6)
         let pan = UIPanGestureRecognizer(target: self, action: "draggedCollectionView:")
-        //self.collectionViewContainer.addGestureRecognizer(pan)
+        self.collectionViewContainer.addGestureRecognizer(pan)
         collectionView.alwaysBounceVertical = true
         
         self.view.addSubview(self.collectionViewContainer)
         self.collectionViewContainer.bringSubviewToFront(collectionView)
+        
+        bottomState = self.view.frame.height - 40
+        topState = 90
+        middleState = CGRectGetMaxY(self.scrollView.frame)
+        currentState = middleState
     }
     
     
@@ -93,18 +105,72 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
                 cell.imageView.hidden = false
                 cell.accessoryView.hidden = true
             })
-            /*let checkmark = UIImage(named:"Checkmark")
+            let checkmark = UIImage(named:"Checkmark")
             cell.accessoryView.image = checkmark
             if indexPath.row != selectedIndex {
                 cell.accessoryView.hidden = true
             } else {
                 cell.accessoryView.hidden = false
-            }*/
+            }
         }
         
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row != 0 {
+            self.selectedIndex = indexPath.row
+            let asset = self.images[indexPath.row-1] as! PHAsset
+            loadImageFrom(asset, completionHandler: { (image) -> Void in
+                self.imageView.image = image
+                self.scrollView.zoomScale = 1.0
+                collectionView.reloadData()
+            })
+        }
+        
+    }
+    
+    //MARK: - Animate CollectionView
+    
+    func draggedCollectionView(recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translationInView(self.view)
+        self.collectionViewContainer.center = CGPoint(x:self.collectionViewContainer.center.x,
+                y:self.collectionViewContainer.center.y + translation.y)
+        
+        recognizer.setTranslation(CGPointZero, inView: self.view)
+        
+        if recognizer.state == UIGestureRecognizerState.Ended {
+            let closestPosition = roundToNearestState(self.collectionViewContainer.frame.origin.y)
+            animateCollectionView(closestPosition, delay: 0.0)
+        }
+        
+    }
+    
+    func animateCollectionView(state:CGFloat, delay: NSTimeInterval) {
+        
+        UIView.animateWithDuration(0.6, delay: delay, options: nil, animations: { () -> Void in
+            self.collectionViewContainer.frame = CGRectMake(0,state,self.view.frame.size.width, self.view.frame.size.height)
+            }) { (completed) -> Void in
+                
+        }
+        
+        
+    }
+    
+    func roundToNearestState(y:CGFloat) -> CGFloat {
+        
+        if y > self.view.frame.size.height*0.6 {
+            currentState = bottomState
+        } else if y < self.view.frame.size.height*0.25 {
+            currentState = topState
+        } else {
+            currentState = middleState
+        }
+        
+        return currentState
+    }
+    
 
     
     
