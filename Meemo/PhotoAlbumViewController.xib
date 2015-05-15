@@ -50,57 +50,17 @@
                         <action selector="exitPressed:" destination="-1" eventType="touchUpInside" id="J2O-tL-X3z"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-MI-qgE">
-                    <rect key="frame" x="-8" y="349" width="608" height="251"/>
-                    <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="z98-e4-JwF">
-                            <rect key="frame" x="0.0" y="44" width="608" height="221"/>
-                            <color key="backgroundColor" red="0.79215686269999996" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gV0-64-rJf">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="z98-e4-JwF" firstAttribute="leading" secondItem="HZB-MI-qgE" secondAttribute="leading" id="Fid-Ek-gYv"/>
-                        <constraint firstAttribute="trailing" secondItem="z98-e4-JwF" secondAttribute="trailing" id="KrI-Ay-dgw"/>
-                        <constraint firstAttribute="bottom" secondItem="z98-e4-JwF" secondAttribute="bottom" id="Qcl-jp-obF"/>
-                        <constraint firstItem="z98-e4-JwF" firstAttribute="top" secondItem="HZB-MI-qgE" secondAttribute="top" constant="40" id="dhH-Gs-4N6"/>
-                        <constraint firstItem="z98-e4-JwF" firstAttribute="leading" secondItem="HZB-MI-qgE" secondAttribute="leading" id="f9x-sm-1UR"/>
-                        <constraint firstAttribute="trailing" secondItem="z98-e4-JwF" secondAttribute="trailing" id="gMl-1J-eKd"/>
-                        <constraint firstAttribute="bottom" secondItem="z98-e4-JwF" secondAttribute="bottom" id="piV-B6-xFp"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="HZB-MI-qgE" firstAttribute="width" secondItem="a8a-5c-WZ2" secondAttribute="width" id="2Ez-kd-uf7"/>
-                <constraint firstItem="HZB-MI-qgE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Id-En-dBl"/>
                 <constraint firstItem="rqF-cp-iTD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dnz-Lz-CRP"/>
                 <constraint firstItem="rqF-cp-iTD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="JQ1-2m-Cpn"/>
                 <constraint firstAttribute="centerX" secondItem="rqF-cp-iTD" secondAttribute="centerX" id="PdG-is-pjy"/>
-                <constraint firstItem="HZB-MI-qgE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="560" id="VPi-H5-BNn"/>
-                <constraint firstItem="rqF-cp-iTD" firstAttribute="leading" secondItem="HZB-MI-qgE" secondAttribute="leading" id="VXt-re-Iev"/>
-                <constraint firstAttribute="bottom" secondItem="HZB-MI-qgE" secondAttribute="bottom" id="c2W-Kb-RLO"/>
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cI8-qe-OEQ"/>
-                <constraint firstItem="rqF-cp-iTD" firstAttribute="trailing" secondItem="HZB-MI-qgE" secondAttribute="trailing" id="hbH-Xh-ip9"/>
-                <constraint firstItem="HZB-MI-qgE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lJV-Rf-Jh1"/>
-                <constraint firstAttribute="bottom" secondItem="HZB-MI-qgE" secondAttribute="bottom" id="mEQ-O3-kJq"/>
                 <constraint firstAttribute="trailing" secondItem="rqF-cp-iTD" secondAttribute="trailing" id="oPo-qI-pJB"/>
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="opU-fi-oww"/>
-                <constraint firstItem="HZB-MI-qgE" firstAttribute="top" secondItem="a8a-5c-WZ2" secondAttribute="bottom" constant="-90" id="p7X-js-Nr6"/>
-                <constraint firstAttribute="trailing" secondItem="HZB-MI-qgE" secondAttribute="trailing" id="vzM-TM-53p"/>
-                <constraint firstAttribute="trailing" secondItem="HZB-MI-qgE" secondAttribute="trailing" id="y7E-Zl-53O"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="VPi-H5-BNn"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="211" y="344"/>
         </view>
     </objects>
     <resources>
