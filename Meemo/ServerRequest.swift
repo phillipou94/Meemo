@@ -464,6 +464,13 @@ class ServerRequest: NSObject {
         group.object_id = dict["id"].number!
         group.lastPostType = dict["last_post_type"].string
         group.imageURL = self.removeBackSlashes(dict["file_url"].string)
+        if let has_seen = dict["seen_last_post"].bool {
+            group.has_seen = has_seen
+        } else {
+            group.has_seen = false
+        }
+        
+        
         return group
     }
     

@@ -35,10 +35,10 @@ class GroupTableViewCell: UITableViewCell {
                     
                 }
             }
-            if group.needs_viewing {
-                self.colorBar.hidden = false
-            } else {
+            if group.has_seen {
                 self.colorBar.hidden = true
+            } else {
+                self.colorBar.hidden = false
             }
             
             self.nameLabel.text = group.name
