@@ -1798,10 +1798,10 @@
         <image name="plus_L" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vam-Nm-oWU"/>
-        <segue reference="6JX-jh-805"/>
-        <segue reference="bdk-ZQ-acD"/>
-        <segue reference="Rha-k0-myQ"/>
+        <segue reference="3qW-cx-UrU"/>
+        <segue reference="97p-C8-Pxy"/>
         <segue reference="bPg-PJ-uId"/>
+        <segue reference="exK-0w-rYB"/>
+        <segue reference="Vam-Nm-oWU"/>
     </inferredMetricsTieBreakers>
 </document>

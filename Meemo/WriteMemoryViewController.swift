@@ -10,6 +10,7 @@ import UIKit
 
 
 class WriteMemoryViewController: UIViewController, UITextViewDelegate {
+    let transitionManager = TransitionManager()
     @IBOutlet weak var textLimitLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var textView: UITextView!
@@ -104,6 +105,7 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
             post.content = self.textView.text
             post.post_type = "text"
             let vc = segue.destinationViewController as! ChooseFriendsViewController
+            vc.transitioningDelegate = self.transitionManager
             vc.post = post
         }
     }

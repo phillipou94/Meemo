@@ -28,6 +28,10 @@ class GroupsViewModel: NSObject {
 
     }
     
+    func leaveGroup(group:Group) {
+        ServerRequest.sharedManager.leaveGroup(group)
+    }
+    
     func inviteUsersToGroup(group:Group, users:[User], completion:() -> Void) {
         
         ServerRequest.sharedManager.inviteUsers(users, group: group, completion: { () -> Void in

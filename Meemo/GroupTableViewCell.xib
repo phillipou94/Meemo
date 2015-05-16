@@ -17,7 +17,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0z-yo-w3n">
                         <rect key="frame" x="389" y="0.0" width="8" height="98"/>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.71764705880000002" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.81960784313725488" green="0.29019607843137257" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="yZW-DS-76C"/>
                         </constraints>

@@ -37,6 +37,8 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     var photoCache = NSCache()
     var onLastPage:Bool = false
     
+    let transitionManager = TransitionManager()
+    
     //MARK: - Initialization
     
     override func viewDidLoad() {
@@ -209,6 +211,30 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         }
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .Default, title: "Leave") { (action, actionIndexPath) -> Void in
+            self.viewModel.leaveGroup(self.groups[actionIndexPath.row])
+            self.tableView.beginUpdates()
+            self.groups.removeAtIndex(actionIndexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([actionIndexPath], withRowAnimation: .Fade)
+ 
+            self.tableView.endUpdates()
+        }
+        deleteButton.backgroundColor = UIColor(red: 202/255.0, green: 77/255.0, blue: 82/255.0, alpha: 1.0)
+        deleteButton.title = "Leave Group"
+        return [deleteButton]
+
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+       
+    }
+    
     func willPaginate(row:Int) {
         if row == self.posts.count - 1 {
             page += 1
@@ -257,6 +283,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
                 self.segmentControl.hidden = false
             }
             frame.origin.y = 0;
+            segmentFrame.origin.y = frame.size.height
             
         } else {
             if (self.customNavBar.hidden) {
@@ -300,17 +327,7 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
     }
     
     @IBAction func createGroupPressed(sender: AnyObject) {
-        //self.performSegueWithIdentifier("createGroup", sender: self)
-        let vc: CreateGroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreateGroupsViewController") as! CreateGroupsViewController
-        let transition = CATransition()
-        transition.duration = 0.8
-        transition.timingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromRight
-        self.view.window!.layer.addAnimation(transition, forKey: nil)
-        self.presentViewController(vc, animated: false, completion: nil)
-        
-        
+        self.performSegueWithIdentifier("createGroup", sender: self)
     }
     
     @IBAction func writeMemoryPressed(sender: AnyObject) {
@@ -364,13 +381,24 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         if (segue.identifier == "showGroup") {
             let group = self.groups[indexPath!.row]
             let vc = segue.destinationViewController as! FullGroupsViewController
+            vc.transitioningDelegate = self.transitionManager
             vc.group = group
         } else if (segue.identifier == "showFullPost") {
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PhotoPostCell
             let post = self.posts[indexPath!.row]
             post.image = cell.postImageView.image
             let vc = segue.destinationViewController as! PhotoPostViewController
+            vc.transitioningDelegate = self.transitionManager
             vc.post = post
+        } else if (segue.identifier == "writeMemory") {
+            let vc = segue.destinationViewController as! WriteMemoryViewController
+            vc.transitioningDelegate = self.transitionManager
+        } else if (segue.identifier == "showCaptureMemory") {
+            let vc = segue.destinationViewController as! CaptureMemoryViewController
+            vc.transitioningDelegate = self.transitionManager
+        } else if (segue.identifier == "createGroup") {
+            let vc = segue.destinationViewController as! CreateGroupsViewController
+            vc.transitioningDelegate = self.transitionManager
         }
     }
     

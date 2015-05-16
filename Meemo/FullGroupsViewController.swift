@@ -157,8 +157,9 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             })
         }
         
-        
     }
+    
+   
     
     func willPaginate(row:Int) {
         if row == self.posts.count - 1 {

@@ -32,11 +32,19 @@ class GroupTableViewCell: UITableViewCell {
             if let imageURL = group.imageURL {
                 if let url = NSURL(string: imageURL){
                     self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
-                    
                 }
             } else {
                 self.thumbnail.image = nil
             }
+            
+            if group.lastPostType == "text" {
+                self.colorBar.backgroundColor = UIColor(hex: "3CB79E")
+            } else if group.lastPostType == "photo" {
+                self.colorBar.backgroundColor = UIColor(hex:"1E73B0")
+            } else {
+                self.colorBar.backgroundColor = UIColor(hex:"D14A5C")
+            }
+            
             if group.has_seen {
                 self.colorBar.hidden = true
             } else {

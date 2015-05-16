@@ -176,6 +176,7 @@ class ServerRequest: NSObject {
         self.get("groups", parameters: nil, token: token, success: { (json) -> Void in
             
             for dict in json["response"].arrayValue {
+                
                 let group = self.groupModel(dict)
                 result.append(group)
                 
@@ -254,6 +255,17 @@ class ServerRequest: NSObject {
         }
         
        
+        
+    }
+    
+    func leaveGroup(group:Group) {
+        let parameter:[String:AnyObject] = ["group":["group_id":group.object_id]]
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.post("groups/leave", parameters: parameter, token: token, success: { (json) -> Void in
+            
+            }, failure: { (error) -> Void in
+                println("Invite User Error: \(error)")
+        })
         
     }
     
