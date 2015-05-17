@@ -206,8 +206,6 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                 
             }
             
-        } else {
-            println("here we are!")
         }
     }
     

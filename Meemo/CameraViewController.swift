@@ -10,6 +10,7 @@ import UIKit
 
 protocol CameraViewControllerDelegate {
     func exitCamera()
+    func showAlbum()
 }
 
 class CameraViewController: UIImagePickerController{
@@ -79,8 +80,7 @@ class CameraViewController: UIImagePickerController{
     }
     
     func showAlbum() {
-        let viewController = PhotoAlbumViewController(nibName: "PhotoAlbumViewController", bundle: nil)
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.viewDelegate?.showAlbum()
     }
     
     //MARK: - Location 

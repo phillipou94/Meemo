@@ -9,11 +9,12 @@
 import UIKit
 import CoreLocation
 
-class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, CameraViewControllerDelegate, CLLocationManagerDelegate {
+class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, CameraViewControllerDelegate, AlbumViewDelegate,CLLocationManagerDelegate {
     @IBOutlet var imageView: UIImageView!
     var firstTime:Bool = true
     @IBOutlet var navBar: UIView!
     var cameraViewController = CameraViewController()
+    var albumViewController = PhotoAlbumViewController()
     var titleEditView = UIView()
     var storyEditView = UIView()
     
@@ -26,6 +27,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     
     var post:Post? = nil
     var group:Group? = nil
+    var selectedImage: UIImage? = nil
     
     var locManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -57,6 +59,13 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         } else {
             self.navBar.hidden = false
             self.pageControl.hidden = false
+            self.view.backgroundColor = UIColor(red: 63/255.0, green: 61/255.0, blue: 82/255.0, alpha: 1.0)
+            if selectedImage != nil {
+                self.imageView.image = selectedImage
+                setUpTitleEditView()
+                setUpStoryEditView()
+                getLocation()
+            }
         }
         
     }
@@ -184,7 +193,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        self.view.backgroundColor = UIColor(red: 63/255.0, green: 61/255.0, blue: 82/255.0, alpha: 1.0)
+
         self.navBar.hidden = false
         self.pageControl.hidden = false
         cameraViewController.dismissViewControllerAnimated(true, completion: nil)
@@ -195,12 +204,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         
         let rect = CGRectMake(0, 40, width, width);
         var newImage = cropImage(image, rect: rect)
-        
-        self.imageView.image = newImage
-        
-        setUpTitleEditView()
-        setUpStoryEditView()
-        getLocation()
+        self.selectedImage = newImage
     }
     
     func cropImage(image:UIImage, rect:CGRect) -> UIImage {
@@ -232,6 +236,22 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
            self.dismissViewControllerAnimated(true, completion: nil)
         })
        
+    }
+    
+    func exitAlbum() {
+        self.albumViewController.dismissViewControllerAnimated(false, completion: { () -> Void in
+            self.showCamera()
+        })
+        
+    }
+    
+    func showAlbum()  {
+        cameraViewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.albumViewController = PhotoAlbumViewController(nibName: "PhotoAlbumViewController", bundle: nil)
+            self.albumViewController.sourceViewController = self
+            self.albumViewController.delegate = self
+            self.presentViewController(self.albumViewController, animated: false, completion: nil)
+        })
     }
     
     // MARK: - Buttons

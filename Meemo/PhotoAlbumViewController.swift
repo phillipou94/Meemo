@@ -9,10 +9,16 @@
 import UIKit
 import Photos
 
+protocol AlbumViewDelegate {
+    func exitAlbum()
+}
+
+
 class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var scrollView: UIScrollView!
+    var sourceViewController: UIViewController? = nil
     var images:PHFetchResult = PHFetchResult()
     var collectionViewContainer =  UIView()
     var selectedIndex = -1
@@ -21,6 +27,7 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
     var middleState:CGFloat = CGFloat()
     var topState:CGFloat = CGFloat()
     var currentState:CGFloat = CGFloat()
+    var delegate: AlbumViewDelegate? = nil
     
     
     
@@ -39,7 +46,7 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
     }
     
     @IBAction func exitPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.delegate?.exitAlbum()
     }
     
     //MARK: - CollectionView
@@ -254,12 +261,38 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
     
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    func croppedImageOfView(view:UIView, rect:CGRect) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -rect.origin.x, -rect.origin.y)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let visibleScrollViewImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return visibleScrollViewImage
     }
     
+    @IBAction func nextPressed(sender: AnyObject) {
+        var visibleRect = CGRect()
+        visibleRect.origin = self.scrollView.contentOffset;
+        visibleRect.size = self.scrollView.bounds.size;
+        
+        var theScale = 1.0 / self.scrollView.zoomScale;
+        visibleRect.origin.x *= theScale;
+        visibleRect.origin.y *= theScale;
+        visibleRect.size.width *= theScale;
+        visibleRect.size.height *= theScale;
+        let image = self.croppedImageOfView(self.imageView, rect: visibleRect)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = self.sourceViewController as? CaptureMemoryViewController {
+            vc.firstTime = false
+            vc.selectedImage = image
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+    }
 
     /*
     // MARK: - Navigation

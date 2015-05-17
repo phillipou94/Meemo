@@ -17,11 +17,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqF-cp-iTD">
-                    <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqF-cp-iTD">
+                    <rect key="frame" x="0.0" y="50" width="600" height="600"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8a-5c-WZ2">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8a-5c-WZ2">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="a8a-5c-WZ2" secondAttribute="height" multiplier="1:1" id="C6K-oS-Yhx"/>
                             </constraints>
@@ -50,20 +50,36 @@
                         <action selector="exitPressed:" destination="-1" eventType="touchUpInside" id="J2O-tL-X3z"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-mj-2wf">
+                    <rect key="frame" x="557" y="12" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="W43-gr-ldh"/>
+                        <constraint firstAttribute="height" constant="35" id="rp1-Dr-bHs"/>
+                    </constraints>
+                    <state key="normal" image="Checkmark">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="ru0-Kh-jAR"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zak-mj-2wf" secondAttribute="trailing" constant="8" id="3L5-6a-CaZ"/>
                 <constraint firstItem="rqF-cp-iTD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dnz-Lz-CRP"/>
                 <constraint firstItem="rqF-cp-iTD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="JQ1-2m-Cpn"/>
                 <constraint firstAttribute="centerX" secondItem="rqF-cp-iTD" secondAttribute="centerX" id="PdG-is-pjy"/>
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cI8-qe-OEQ"/>
                 <constraint firstAttribute="trailing" secondItem="rqF-cp-iTD" secondAttribute="trailing" id="oPo-qI-pJB"/>
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="opU-fi-oww"/>
+                <constraint firstItem="Zak-mj-2wf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="xnT-8d-jep"/>
             </constraints>
             <point key="canvasLocation" x="211" y="344"/>
         </view>
     </objects>
     <resources>
+        <image name="Checkmark" width="54" height="64"/>
         <image name="X-Button@1x" width="52" height="42"/>
     </resources>
 </document>
