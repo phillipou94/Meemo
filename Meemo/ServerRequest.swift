@@ -325,7 +325,11 @@ class ServerRequest: NSObject {
         let token = CoreDataRequest.sharedManager.getAPIToken()
 
         if post.post_type == "text" {
-            payload = ["post_type":"text", "content":post.content!, "group_id":post.group_id!]
+            if let group_id = post.group_id {
+                payload = ["post_type":"text", "content":post.content!, "group_id":group_id]
+            } else {
+                payload = ["post_type":"text", "content":post.content!]
+            }
             let parameter = ["post":payload]
             self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
                     completion(finished: true)

@@ -19,7 +19,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     var allFriends : [String:[User]] = [:]
     var groups: [Group] = []
     var selectedFriends: [User] = []
-    var selectedGroups: [Group] = []
+    var selectedGroup: Group? = nil
     var post:Post? = nil
     
     override func viewDidLoad() {
@@ -84,6 +84,11 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             let group = self.groups[indexPath.row]
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupPreviewCell") as! GroupPreviewCell
             cell.group = group
+            if group == self.selectedGroup {
+                cell.accessoryType = .Checkmark
+            } else {
+                cell.accessoryType = .None
+            }
             cell.configureCell()
             return cell
         } else {
@@ -104,19 +109,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         let cell = tableView.cellForRowAtIndexPath(indexPath)
 
         if self.segmentController.selectedIndex == 0 {
-            let group = self.groups[indexPath.row]
-            if contains(selectedGroups, group) {
-                if let index = find(selectedGroups, group) {
-                    selectedGroups.removeAtIndex(index)
-                    cell?.accessoryType = .None
-                }
-                
-            } else {
-                selectedGroups.append(group)
-                cell?.accessoryType = .Checkmark
-            }
-
-            
+            self.selectedGroup = self.groups[indexPath.row]
         } else {
             let letter = self.viewModel.alphabet[indexPath.section]
             let array = self.allFriends[letter]! as [User]
@@ -192,7 +185,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     @IBAction func finishPressed(sender: AnyObject) {
         if let post = self.post {
             
-            if selectedGroups.count == 0 {
+            if self.selectedGroup == nil {
                 if selectedFriends.count != 0 {
                     showAlertView()
                 } else {
@@ -203,7 +196,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                 }
                
             } else {
-                for group:Group in selectedGroups {
+                if let group =  self.selectedGroup {
                     post.group_id = group.object_id
                     ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
                         
