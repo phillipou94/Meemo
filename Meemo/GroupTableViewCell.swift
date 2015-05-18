@@ -34,7 +34,7 @@ class GroupTableViewCell: UITableViewCell {
                     self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
                 }
             } else {
-                self.thumbnail.image = nil
+                self.thumbnail.image = UIImage(named: "Default")
             }
             
             if group.lastPostType == "text" {

@@ -29,6 +29,8 @@ class GroupPreviewCell: UITableViewCell {
             if let url = NSURL(string: imageURL){
                 self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
                 
+            } else {
+                self.thumbnail.image = UIImage(named: "Default")
             }
         }
         

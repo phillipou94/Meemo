@@ -429,7 +429,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.23921568627450981" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="eOB-vI-gKy" firstAttribute="top" secondItem="MfB-jp-Aei" secondAttribute="top" constant="15" id="9nW-Q4-J2Y"/>
                                     <constraint firstItem="eOB-vI-gKy" firstAttribute="centerY" secondItem="MfB-jp-Aei" secondAttribute="centerY" id="HY7-dL-t0d"/>
@@ -1798,10 +1798,10 @@
         <image name="plus_L" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3qW-cx-UrU"/>
+        <segue reference="Dau-4f-rIk"/>
         <segue reference="97p-C8-Pxy"/>
+        <segue reference="3qW-cx-UrU"/>
         <segue reference="bPg-PJ-uId"/>
         <segue reference="exK-0w-rYB"/>
-        <segue reference="Vam-Nm-oWU"/>
     </inferredMetricsTieBreakers>
 </document>
