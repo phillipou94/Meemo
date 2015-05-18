@@ -12,9 +12,9 @@ import CoreData
 class UserCredentials: NSManagedObject {
 
     @NSManaged var name: String
-    @NSManaged var email: String
-    @NSManaged var facebook_id: String
-    @NSManaged var api_token: String
+    @NSManaged var email: String?
+    @NSManaged var facebook_id: String?
+    @NSManaged var api_token: String?
     @NSManaged var object_id: NSNumber
 
 }

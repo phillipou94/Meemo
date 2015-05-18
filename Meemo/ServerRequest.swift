@@ -122,6 +122,7 @@ class ServerRequest: NSObject {
             
             success(wasSuccessful:true)
             }, failure: { (error) -> Void in
+                
                 println("Error: \(error)")
                 success(wasSuccessful:false)
         })
@@ -135,34 +136,21 @@ class ServerRequest: NSObject {
                 userArray += contacts[key]!
             }
             var friends = contacts as [String:[User]]
-            self.getFacebookFriends({ (friends) -> Void in
-                userArray += friends
-                
-                userArray.sort({ $0.name < $1.name })
-                
-                let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-                var dictionary: [ String:[User] ]  = [:]
-                for person in userArray {
-                    if let name = person.name where count(name)>0{
-                        var letter = String(name[name.startIndex]).uppercaseString
-                        if !contains(alphabet, letter) {
-                            letter = "#"
-                        }
-                        if dictionary[letter] != nil{
-                            var array = dictionary[letter]! as [User]
-                            array.append(person)
-                            dictionary[String(letter).uppercaseString] = array
-                            
-                        } else {
-                            dictionary[letter] = [person]
-                        }
-                        
-                    }
+            if let facebook_id = CoreDataRequest.sharedManager.getUserCredentials()?.facebook_id {
+                self.getFacebookFriends({ (friends) -> Void in
+                    userArray += friends
                     
-                }
-                
-                completion(friendsDict:dictionary)
-            })
+                    userArray.sort({ $0.name < $1.name })
+                    
+                    let dictionary = self.userArrayToDictionary(userArray)
+                    
+                    completion(friendsDict:dictionary)
+                })
+            } else {
+                let dictionary = self.userArrayToDictionary(userArray)
+                completion(friendsDict: dictionary)
+            }
+           
             
         }
         
@@ -429,7 +417,6 @@ class ServerRequest: NSObject {
                     println("Error: \(error)")
                 }
                 else {
-                    //get Facebook ID
                     var users: [User] = []
                     let friendsList = result.objectForKey("data") as! NSArray
                     for object in friendsList {
@@ -447,6 +434,10 @@ class ServerRequest: NSObject {
             }
 
         }
+    }
+    
+    func linkFacebookAccount() {
+        
     }
     
     //MARK: - FILE UPLOADS
@@ -503,6 +494,32 @@ class ServerRequest: NSObject {
             }, failure: { (error) -> Void in
                 println("Error: \(error)")
         })
+        
+    }
+    
+    func userArrayToDictionary(userArray:[User]) -> [String:[User]]{
+        let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        var dictionary: [ String:[User] ]  = [:]
+        for person in userArray {
+            if let name = person.name where count(name)>0{
+                var letter = String(name[name.startIndex]).uppercaseString
+                if !contains(alphabet, letter) {
+                    letter = "#"
+                }
+                if dictionary[letter] != nil{
+                    var array = dictionary[letter]! as [User]
+                    array.append(person)
+                    dictionary[String(letter).uppercaseString] = array
+                    
+                } else {
+                    dictionary[letter] = [person]
+                }
+                
+            }
+            
+        }
+        return dictionary
+
         
     }
     

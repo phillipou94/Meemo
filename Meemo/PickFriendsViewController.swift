@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Spring
 
-class PickFriendsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class PickFriendsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
 
     @IBOutlet var tableView: UITableView!
     var collectionView: UICollectionView? = nil
@@ -18,6 +19,7 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     var newGroup:Bool = true
     let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "#"]
     var viewModel = GroupsViewModel()
+    var shadeView = ShadeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +27,23 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         self.tableView.dataSource = self
         let nib = UINib(nibName:"FriendsCell",bundle:nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "FriendsCell")
+        setUpCollectionView()
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.viewModel.getAllFriends { (friends) -> Void in
             self.allFriends = friends
             self.tableView.reloadData()
         }
-        setUpCollectionView()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if self.isBeingPresented() || self.isMovingToParentViewController() {
+            self.checkFacebookConnection()
+        }
+        
     }
     
     //MARK: - TableView
@@ -188,12 +195,20 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
             }
 
         }
+    }
+    
+    func checkFacebookConnection() {
+        let facebook_id = CoreDataRequest.sharedManager.getUserCredentials()?.facebook_id
         
-        
-        
+        if facebook_id == nil {
+            let vc = LinkFacebookViewController(nibName: "LinkFacebookViewController", bundle: nil)
+            self.presentViewController(vc, animated: false, completion: nil)
+
+
+        }
         
     }
-    /*
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

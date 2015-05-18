@@ -70,6 +70,17 @@ class CoreDataRequest: NSObject {
         
     }
     
+    func updateFacebookID(facebook_id:String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let context = appDelegate.managedObjectContext!
+        if let credentials = getUserCredentials() {
+            credentials.setValue(facebook_id, forKey: "facebook_id")
+            context.save(nil)
+        }
+        
+    }
+    
     func getAPIToken() -> String? {
         return getUserCredentials()?.api_token
     }

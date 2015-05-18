@@ -10,6 +10,8 @@
 		4D1166141B006418001A0847 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166131B006418001A0847 /* Post.swift */; };
 		4D1166161B0078CF001A0847 /* ChooseFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */; };
 		4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */; };
+		4D3B6CCA1B0A990A00205E06 /* LinkFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6CC81B0A990A00205E06 /* LinkFacebookViewController.swift */; };
+		4D3B6CCB1B0A990A00205E06 /* LinkFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3B6CC91B0A990A00205E06 /* LinkFacebookViewController.xib */; };
 		4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */; };
 		4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */; };
 		4D51AE971AFB19A5007DBD13 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */; };
@@ -100,6 +102,8 @@
 		4D1166131B006418001A0847 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D1166151B0078CF001A0847 /* ChooseFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFriendsViewController.swift; sourceTree = "<group>"; };
 		4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullGroupsViewController.swift; sourceTree = "<group>"; };
+		4D3B6CC81B0A990A00205E06 /* LinkFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkFacebookViewController.swift; sourceTree = "<group>"; };
+		4D3B6CC91B0A990A00205E06 /* LinkFacebookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkFacebookViewController.xib; sourceTree = "<group>"; };
 		4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				4DB9BD571AEA9EBF00555793 /* PhotoCell.xib */,
 				4DE279DF1AEF49E600340D0F /* CameraViewController.swift */,
 				4DA848CA1B01618100995031 /* AlertView.xib */,
+				4D3B6CC81B0A990A00205E06 /* LinkFacebookViewController.swift */,
+				4D3B6CC91B0A990A00205E06 /* LinkFacebookViewController.xib */,
 				4DF2A08E1B04FE1000CA9035 /* PhotoAlbumViewController.swift */,
 				4DF2A08F1B04FE1000CA9035 /* PhotoAlbumViewController.xib */,
 			);
@@ -554,6 +560,7 @@
 			files = (
 				4DB9BD591AEA9EBF00555793 /* PhotoCell.xib in Resources */,
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
+				4D3B6CCB1B0A990A00205E06 /* LinkFacebookViewController.xib in Resources */,
 				4DF2A0911B04FE1000CA9035 /* PhotoAlbumViewController.xib in Resources */,
 				4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */,
 				4DC019821B02A17600865DF9 /* PhotoPostCell.xib in Resources */,
@@ -664,6 +671,7 @@
 				4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */,
 				4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */,
 				4DD91A2B1AE6D99000C9E5DE /* UserCredentials.swift in Sources */,
+				4D3B6CCA1B0A990A00205E06 /* LinkFacebookViewController.swift in Sources */,
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
 				4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */,

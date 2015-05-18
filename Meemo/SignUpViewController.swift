@@ -79,15 +79,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
             animateWarningWithMessage("Password Must Be At Least 6 Characters Long")
         }
         else {
-           /* ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
-                if wasSuccessful {*/
+            ServerRequest.sharedManager.signupUser(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, success: { (wasSuccessful) -> Void in
+                if wasSuccessful {
                     let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
                     self.presentViewController(phoneSearchController, animated: true, completion: nil)
-    /*
+    
                 } else {
                     self.animateWarningWithMessage("This Email Has Already Been Taken")
                 }
-            })*/
+            })
         }
 
         
