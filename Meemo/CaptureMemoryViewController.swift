@@ -267,15 +267,11 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
             post?.content = self.storyTextView.text
             post?.group_id = self.group?.object_id
             post?.file_url = "standby"
+            UIImageWriteToSavedPhotosAlbum(self.selectedImage, nil, nil, nil)
             NSNotificationCenter.defaultCenter().postNotificationName("postStandByPost", object: post)
             self.dismissViewControllerAnimated(true, completion: nil)
             println("start")
             NSLog("start!")
-            /*ServerRequest.sharedManager.createPost(post!, completion: { (finished) -> Void in
-                NSLog("PHOTOS ARE DONE!!!!")
-                println("PHOTOS ARE DONE!!!!")
-            })*/
-           
             
         }
         
