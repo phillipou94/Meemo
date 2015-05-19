@@ -59,11 +59,10 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             })
         })
         
-        PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts) -> Void in
-            /*let phoneSearchController = PhoneSearchViewController(nibName: "PhoneSearchViewController", bundle: nil) as PhoneSearchViewController
-            self.presentViewController(phoneSearchController, animated: true, completion: nil)*/
-        }
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func setUpTableView() {

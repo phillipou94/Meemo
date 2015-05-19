@@ -518,19 +518,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuw-Eo-QXk">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsn-BO-zKF" customClass="SpringButton" customModule="Spring">
-                                        <rect key="frame" x="0.0" y="4" width="32" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="Pde-JI-aBc"/>
-                                        </constraints>
-                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                        <state key="normal" image="Back">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="MHc-1s-riN"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMz-ZC-V0c" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="556" y="7" width="36" height="36"/>
                                         <constraints>
@@ -543,6 +530,19 @@
                                         <connections>
                                             <action selector="checkPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="VZC-Nz-dop"/>
                                             <action selector="checkPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="oRU-Bd-e5W"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsn-BO-zKF" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="5" width="32" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="Pde-JI-aBc"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="vmZ-Wt-67O" eventType="touchUpInside" id="MHc-1s-riN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1062,17 +1062,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3n-bb-Jrs" customClass="SpringButton" customModule="Spring">
-                                        <rect key="frame" x="14" y="6" width="32" height="39"/>
-                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                        <state key="normal" image="Back">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="rcw-vD-Rif"/>
-                                            <segue destination="wTb-BH-KdZ" kind="unwind" unwindAction="unwindToViewController:" id="4hx-Qf-hqC"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ner-zk-QZs" customClass="SpringButton" customModule="Spring">
                                         <rect key="frame" x="556" y="7" width="36" height="36"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
@@ -1083,10 +1072,21 @@
                                             <action selector="checkPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="PAk-JE-che"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3n-bb-Jrs" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="6" width="32" height="40"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="1xt-h4-eDW" eventType="touchUpInside" id="rcw-vD-Rif"/>
+                                            <segue destination="wTb-BH-KdZ" kind="unwind" unwindAction="unwindToViewController:" id="4hx-Qf-hqC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18823529411764706" green="0.17647058823529413" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="C3n-bb-Jrs" firstAttribute="leading" secondItem="KHH-BR-f3W" secondAttribute="leading" constant="14" id="1LD-1f-D6I"/>
+                                    <constraint firstItem="C3n-bb-Jrs" firstAttribute="leading" secondItem="KHH-BR-f3W" secondAttribute="leading" id="1LD-1f-D6I"/>
                                     <constraint firstItem="Ner-zk-QZs" firstAttribute="top" secondItem="KHH-BR-f3W" secondAttribute="top" constant="7" id="3x8-w0-bvV"/>
                                     <constraint firstAttribute="centerY" secondItem="vAm-oe-Gxf" secondAttribute="centerY" id="6fH-M7-iPo"/>
                                     <constraint firstAttribute="trailing" secondItem="vAm-oe-Gxf" secondAttribute="trailing" constant="80" id="9aS-Hx-oci"/>
@@ -1099,7 +1099,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ZWX-uq-ZL0"/>
                                     <constraint firstItem="vAm-oe-Gxf" firstAttribute="leading" secondItem="KHH-BR-f3W" secondAttribute="leading" constant="81" id="iNQ-ZY-m49"/>
                                     <constraint firstItem="Ner-zk-QZs" firstAttribute="trailing" secondItem="KHH-BR-f3W" secondAttribute="trailingMargin" id="ifo-DQ-48z"/>
-                                    <constraint firstItem="vAm-oe-Gxf" firstAttribute="leading" secondItem="C3n-bb-Jrs" secondAttribute="trailing" constant="35" id="pJq-ob-3dX"/>
+                                    <constraint firstItem="vAm-oe-Gxf" firstAttribute="leading" secondItem="C3n-bb-Jrs" secondAttribute="trailing" constant="49" id="pJq-ob-3dX"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6oa-lq-SqU">

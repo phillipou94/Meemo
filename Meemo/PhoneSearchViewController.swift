@@ -191,7 +191,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     
     func launchApplication() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: GroupsViewController = storyboard.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        let vc: MainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         self.modalPresentationStyle = .Custom
         self.modalTransitionStyle = .CrossDissolve
         self.presentViewController(vc, animated: true, completion:nil)

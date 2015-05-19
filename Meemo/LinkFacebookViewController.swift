@@ -24,10 +24,21 @@ class LinkFacebookViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func setUpFacebookButton() {
         let loginView : FBSDKLoginButton = FBSDKLoginButton()
-        loginView.frame = self.linkFacebookButton.frame
+
         self.view.addSubview(loginView)
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.sizeToFit()
+        loginView.frame = self.linkFacebookButton.frame
         loginView.delegate = self
+        
+        for loginObject in loginView.subviews {
+            
+            if loginObject.isKindOfClass(UILabel) {
+                var label = loginObject as! UILabel
+                label.font = UIFont(name: "STHeitiSC-Medium", size: 20)
+                label.text = "Yes"
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
