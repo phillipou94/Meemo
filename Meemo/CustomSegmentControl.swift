@@ -26,7 +26,7 @@ protocol CustomSegmentControlDelegate{
         }
     }
     
-    var items:[String] = ["Groups", "Memories"] {
+    var items:[String] = ["Memories", "Groups"] {
         didSet {
             setUpLabels()
         }

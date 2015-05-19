@@ -18,6 +18,7 @@
 		4D529B001B07CB3300DBE170 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529AFF1B07CB3300DBE170 /* TransitionManager.swift */; };
 		4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */; };
 		4D586D201B0110B900B72CCD /* WriteMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */; };
+		4D599E5F1B0BE33B00EBDF51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */; };
 		4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */; };
 		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
 		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
@@ -110,6 +111,7 @@
 		4D529AFF1B07CB3300DBE170 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+CenterAlign.swift"; sourceTree = "<group>"; };
 		4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMemoryViewController.swift; sourceTree = "<group>"; };
+		4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4D694AE11AE5C42C005BA3D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Bolts.framework"; sourceTree = "<group>"; };
 		4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Facebook_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Facebook_iOS_SDK.framework"; sourceTree = "<group>"; };
 		4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				4DB4EF931AF6C0AD00BD909C /* Group.swift */,
 				4DD91A341AE709CE00C9E5DE /* GroupsViewController.swift */,
+				4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */,
 				4D28C3B91B02898700EB7057 /* FullGroupsViewController.swift */,
 				4D51AE961AFB19A5007DBD13 /* GroupsViewModel.swift */,
 				4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */,
@@ -646,6 +649,7 @@
 				4DB4EF941AF6C0AD00BD909C /* Group.swift in Sources */,
 				4D8595991AE5AB47008F96E7 /* LoginViewController.swift in Sources */,
 				4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */,
+				4D599E5F1B0BE33B00EBDF51 /* MainViewController.swift in Sources */,
 				4D695B351AF5FA14000BCB3A /* UIImageView+Asynchronous.swift in Sources */,
 				4D28C3BA1B02898700EB7057 /* FullGroupsViewController.swift in Sources */,
 				4D978DC71B04639F00CC3DB9 /* String+DateFormatter.swift in Sources */,

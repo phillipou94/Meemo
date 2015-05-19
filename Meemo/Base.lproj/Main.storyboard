@@ -239,10 +239,10 @@
             </objects>
             <point key="canvasLocation" x="-143" y="1255"/>
         </scene>
-        <!--Groups View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="4oB-4o-ciP">
             <objects>
-                <viewController storyboardIdentifier="GroupsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WbN-s2-M1G" customClass="GroupsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WbN-s2-M1G" customClass="MainViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rYL-Xl-jSM"/>
                         <viewControllerLayoutGuide type="bottom" id="ZX2-YE-AIE"/>
@@ -273,7 +273,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addButtonPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="6uc-iC-llA"/>
+                                    <action selector="addButtonPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="LVf-aZ-KSK"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNY-Fh-uzV" customClass="SpringView" customModule="Spring">
@@ -303,7 +303,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createGroupPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="czQ-11-KC2"/>
+                                            <action selector="createGroupPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="aFd-4V-rki"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -348,7 +348,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="writeMemoryPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="Yp8-eS-eDn"/>
+                                            <action selector="writeMemoryPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="tyf-58-Zph"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -393,7 +393,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="captureMemoryPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="tKD-4X-uvT"/>
+                                            <action selector="captureMemoryPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="iBm-6a-eYi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -476,16 +476,16 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="addButton" destination="H1J-wI-cnS" id="Kda-zE-0w3"/>
-                        <outlet property="addGroupButton" destination="vSc-lZ-ksp" id="rvJ-No-msM"/>
-                        <outlet property="addGroupButtonContainer" destination="aNY-Fh-uzV" id="Q98-UN-lLb"/>
-                        <outlet property="captureMemoryButton" destination="rqM-1h-24g" id="cj0-iC-KfV"/>
-                        <outlet property="captureMemoryContainer" destination="bar-EZ-T2q" id="OyQ-pa-N1t"/>
-                        <outlet property="customNavBar" destination="MfB-jp-Aei" id="L4y-aq-dOI"/>
-                        <outlet property="segmentControl" destination="WGs-bn-eFR" id="kRw-iP-ceY"/>
-                        <outlet property="tableView" destination="tHv-aS-w2e" id="MUt-ZU-xH9"/>
-                        <outlet property="writeMemoryButton" destination="ZBy-ol-pOx" id="mJw-3D-fBX"/>
-                        <outlet property="writeMemoryContainer" destination="S0i-3f-zAr" id="kSK-YX-p7c"/>
+                        <outlet property="addButton" destination="H1J-wI-cnS" id="5FR-fL-wJl"/>
+                        <outlet property="addGroupButton" destination="vSc-lZ-ksp" id="WcD-jW-dit"/>
+                        <outlet property="addGroupButtonContainer" destination="aNY-Fh-uzV" id="gf1-T7-keG"/>
+                        <outlet property="captureMemoryButton" destination="rqM-1h-24g" id="BG3-vV-vqs"/>
+                        <outlet property="captureMemoryContainer" destination="bar-EZ-T2q" id="hOo-JZ-HuM"/>
+                        <outlet property="customNavBar" destination="MfB-jp-Aei" id="YuX-tW-0Gd"/>
+                        <outlet property="segmentControl" destination="WGs-bn-eFR" id="NCw-Wp-uc4"/>
+                        <outlet property="tableView" destination="tHv-aS-w2e" id="o2G-be-tcF"/>
+                        <outlet property="writeMemoryButton" destination="ZBy-ol-pOx" id="6c8-ki-MPq"/>
+                        <outlet property="writeMemoryContainer" destination="S0i-3f-zAr" id="POJ-Hp-fRo"/>
                         <segue destination="ipb-df-dus" kind="show" identifier="createGroup" id="2B9-ir-H6Q"/>
                         <segue destination="vmZ-Wt-67O" kind="show" identifier="showCaptureMemory" id="97p-C8-Pxy"/>
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="3qW-cx-UrU"/>

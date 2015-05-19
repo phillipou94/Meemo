@@ -201,7 +201,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     
     // MARK: - Navigation
     func dismissBackToRoot() {
-        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        let vc: MainViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         self.modalPresentationStyle = .Custom
         self.modalTransitionStyle = .CrossDissolve
         self.presentViewController(vc, animated: true, completion: nil)
