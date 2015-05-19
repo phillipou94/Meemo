@@ -311,12 +311,24 @@ class ServerRequest: NSObject {
     func createPost(post:Post, completion:(finished:Bool) -> Void) {
         var payload:NSMutableDictionary = [:]
         let token = CoreDataRequest.sharedManager.getAPIToken()
+        var facebook_ids: [String] = []
+        var phone_numbers: [[String:String]] = []
+        for user in post.tagged_users {
+            if let facebook_id = user.facebook_id {
+                facebook_ids.append(facebook_id)
+            }else if let phone_number = user.phoneNumber {
+                if let name = user.name {
+                    phone_numbers.append(["name":name, "phone":phone_number])
+                }
+                
+            }
+        }
 
         if post.post_type == "text" {
             if let group_id = post.group_id {
                 payload = ["post_type":"text", "content":post.content!, "group_id":group_id]
             } else {
-                payload = ["post_type":"text", "content":post.content!]
+                payload = ["post_type":"text", "content":post.content!, "facebook_ids":facebook_ids]
             }
             let parameter = ["post":payload]
             self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
@@ -328,7 +340,12 @@ class ServerRequest: NSObject {
             
         } else {
             uploadPhoto(post.image!, completion: { (url) -> Void in
-                payload = ["post_type":"photo", "content":post.content!, "title":post.title!, "file_url":url,"group_id":post.group_id!]
+                if let group_id = post.group_id {
+                    payload = ["post_type":"photo", "content":post.content!, "title":post.title!, "file_url":url,"group_id":group_id]
+                } else {
+                    payload = ["post_type":"text", "content":post.content!,"title":post.title!, "file_url":url, "facebook_ids":facebook_ids]
+                }
+                
                 let parameter = ["post":payload]
                 self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
                     

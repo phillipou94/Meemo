@@ -10,7 +10,6 @@ import UIKit
 
 class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CustomSegmentControlDelegate {
     
-    @IBOutlet var alertView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentController: CustomSegmentControl!
     @IBOutlet weak var alertViewTextField: UITextField!
@@ -33,9 +32,10 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             self.viewModel.getAllFriends { (friends) -> Void in
                 self.allFriends = friends
                 
+                self.tableView.reloadData()
             }
             
-            self.tableView.reloadData()
+            
         }
         
 
@@ -58,7 +58,8 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         if self.segmentController.selectedIndex == 0 {
             return 1
         } else {
-            return self.allFriends.count
+            
+            return self.viewModel.alphabet.count
         }
     }
     
@@ -76,7 +77,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-            return 60
+        return 60
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -135,97 +136,58 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     
     //MARK: - Alert View
     
-    func showAlertView() {
-        let width = self.view.frame.size.width * 0.75
-        let marginX = self.view.frame.size.width * 0.125
-        let marginY = self.view.frame.size.height * 0.1
-        self.alertView = NSBundle.mainBundle().loadNibNamed("AlertView", owner: self, options: nil).first as! UIView
-        self.alertView.frame = CGRectMake(self.view.frame.size.width+50, marginY, width,width)
-        self.alertView.layer.shadowColor = UIColor.blackColor().CGColor
-        self.alertView.layer.shadowOpacity = 0.8
-        self.alertView.layer.shadowOffset = CGSizeMake(4.0, 4.0);
-        self.alertView.layer.borderColor = UIColor.blackColor().CGColor
-        self.alertView.layer.borderWidth = CGFloat(1.0)
-        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
-        let inframe = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
-        self.alertViewTextField.attributedPlaceholder = NSAttributedString(string: "Enter New Group Name", attributes: [NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.6)])
-        
-        self.shadeView = ShadeView(frame: outframe)
-        self.view.addSubview(self.shadeView)
-        self.view.addSubview(self.alertView)
-        
-        UIView .animateWithDuration(0.4, animations: { () -> Void in
-            self.shadeView.frame = inframe
-            self.alertView.frame = CGRectMake(marginX,marginY,width,width)
-        })
-    }
-    
-    func dismissAlertView() {
-        let width = self.view.frame.size.width * 0.75
-        let marginX = self.view.frame.size.width * 0.125
-        let marginY = self.view.frame.size.height * 0.1
-        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
-            self.alertView.frame = CGRectMake(self.view.frame.size.width+50,marginY,width,width)
-            self.shadeView.frame = outframe
-            },completion: { (completed) -> Void in
-                self.alertView.removeFromSuperview()
-                self.shadeView.removeFromSuperview()
-        })
-    }
-    @IBAction func alertViewCancelled(sender: AnyObject) {
-        dismissAlertView()
-    }
-    
-    @IBAction func alertViewApproved(sender: AnyObject) {
-        postToNewGroup()
-    }
-
+//    func showAlertView() {
+//        let width = self.view.frame.size.width * 0.75
+//        let marginX = self.view.frame.size.width * 0.125
+//        let marginY = self.view.frame.size.height * 0.1
+//        self.alertView = NSBundle.mainBundle().loadNibNamed("AlertView", owner: self, options: nil).first as! UIView
+//        self.alertView.frame = CGRectMake(self.view.frame.size.width+50, marginY, width,width)
+//        self.alertView.layer.shadowColor = UIColor.blackColor().CGColor
+//        self.alertView.layer.shadowOpacity = 0.8
+//        self.alertView.layer.shadowOffset = CGSizeMake(4.0, 4.0);
+//        self.alertView.layer.borderColor = UIColor.blackColor().CGColor
+//        self.alertView.layer.borderWidth = CGFloat(1.0)
+//        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
+//        let inframe = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
+//        self.alertViewTextField.attributedPlaceholder = NSAttributedString(string: "Enter New Group Name", attributes: [NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.6)])
+//        
+//        self.shadeView = ShadeView(frame: outframe)
+//        self.view.addSubview(self.shadeView)
+//        self.view.addSubview(self.alertView)
+//        
+//        UIView .animateWithDuration(0.4, animations: { () -> Void in
+//            self.shadeView.frame = inframe
+//            self.alertView.frame = CGRectMake(marginX,marginY,width,width)
+//        })
+//    }
+//    
+//    func dismissAlertView() {
+//        let width = self.view.frame.size.width * 0.75
+//        let marginX = self.view.frame.size.width * 0.125
+//        let marginY = self.view.frame.size.height * 0.1
+//        let outframe = CGRectMake(self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)
+//        UIView.animateWithDuration(0.4, animations: { () -> Void in
+//            self.alertView.frame = CGRectMake(self.view.frame.size.width+50,marginY,width,width)
+//            self.shadeView.frame = outframe
+//            },completion: { (completed) -> Void in
+//                self.alertView.removeFromSuperview()
+//                self.shadeView.removeFromSuperview()
+//        })
+//    }
     // MARK: - Creating Post
     @IBAction func finishPressed(sender: AnyObject) {
         if let post = self.post {
-            
-            if self.selectedGroup == nil {
-                if selectedFriends.count != 0 {
-                    showAlertView()
-                } else {
-                    ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                        
-                    })
-                    dismissBackToRoot()
-                }
-               
-            } else {
-                if let group =  self.selectedGroup {
-                    post.group_id = group.object_id
-                    ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                        
-                    })
-                    dismissBackToRoot()
-                }
                 
+            if let group =  self.selectedGroup {
+                post.group_id = group.object_id
             }
-            
+            post.tagged_users = self.selectedFriends
+            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                
+            })
+            dismissBackToRoot()
+  
         }
-    }
-    
-    
-    
-    func postToNewGroup() {
-        let group = Group()
-        group.name = self.alertViewTextField.text
-        group.members = selectedFriends
-        
-        ServerRequest.sharedManager.createGroup(group, completion: { (json) -> Void in
-            if let post = self.post {
-                post.group_id = json["response"]["id"].number!
-                ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                    
-                })
-            }
-            self.dismissBackToRoot()
-            
-        })
     }
     
     //MARK: - SegmentControl Delegate

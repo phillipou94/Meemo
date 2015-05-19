@@ -19,6 +19,7 @@ class Post: NSObject {
     var object_id: NSNumber? = nil
     var user_name: String? = nil
     var created_at: String? = nil
+    var tagged_users: [User] = []
     
    
 }

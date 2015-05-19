@@ -50,11 +50,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/CoreDataRequest.swift"
-            timestampString = "453680853.174041"
+            timestampString = "451342852.912767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "getAPIToken()"
             landmarkType = "5">
          </BreakpointContent>
@@ -66,11 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ServerRequest.swift"
-            timestampString = "453676822.342135"
+            timestampString = "453264121.76833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "getGroups(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -82,12 +82,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/CaptureMemoryViewController.swift"
-            timestampString = "453593400.768233"
+            timestampString = "453594878.808712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "setUpStoryEditView()"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "textViewDidBeginEditing(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -98,28 +98,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ChooseFriendsViewController.swift"
-            timestampString = "453586448.345885"
+            timestampString = "453703327.957549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Meemo/FacebookAlertview.swift"
-            timestampString = "453675443.540107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "noPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
