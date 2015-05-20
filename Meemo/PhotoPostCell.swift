@@ -38,7 +38,6 @@ class PhotoPostCell: UITableViewCell {
                 self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
             } else {
                 self.titleLabel.hidden = true
-                self.shadeView.hidden = true
             }
             
             if user_id == post.user_id {

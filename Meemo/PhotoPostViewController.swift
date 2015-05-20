@@ -17,7 +17,7 @@ class PhotoPostViewController: UIViewController {
     var secondShadeView:UIView? = nil
     var storyLabel:UILabel? = nil
     var post:Post? = nil
-    var lastPage:Int = 1
+    var lastPage:Int = 0
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -42,21 +42,19 @@ class PhotoPostViewController: UIViewController {
         if let post = self.post {
             self.imageView.image = post.image
             self.titleLabel.text = post.title
+            
             if let date = post.created_at?.formatDate() {
                 self.descriptionLabel.text = "\(post.user_name!) posted this \(date.lowercaseString)"
             } else {
                  self.descriptionLabel.text = "You posted this just now"
             }
-            if let content = post.content {
-                self.pageControl.numberOfPages = 3
-            } else {
-                self.pageControl.numberOfPages = 2
+            
+            if post.title == nil {
+                self.firstShadeView.hidden = true
             }
             
         }
-        
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -70,6 +68,14 @@ class PhotoPostViewController: UIViewController {
         leftMostFrame = CGRectMake(-2*imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
         rightFrame = CGRectMake(imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
         currentFrame = self.imageView.frame
+        
+        if let title = post?.title {
+            lastPage = 1
+            self.pageControl.numberOfPages = 2
+        } else {
+            lastPage = 0
+            self.pageControl.numberOfPages = 1
+        }
         if let content = post?.content {
             
             self.secondShadeView = UIView(frame: rightFrame)
@@ -77,9 +83,9 @@ class PhotoPostViewController: UIViewController {
             
             self.view.addSubview(self.secondShadeView!)
             setUpStoryLabel()
-            
 
             lastPage = 2
+            self.pageControl.numberOfPages = 3
         }
        
     }

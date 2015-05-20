@@ -84,5 +84,20 @@ class CoreDataRequest: NSObject {
     func getAPIToken() -> String? {
         return getUserCredentials()?.api_token
     }
+    
+    func eraseUserCredentials() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let context = appDelegate.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "UserCredentials")
+        if let credentials = context.executeFetchRequest(request, error: nil) as? [UserCredentials] {
+            for credential in credentials {
+                context.deleteObject(credential)
+                context.save(nil)
+            }
+        }
+        
+    }
 
 }

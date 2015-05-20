@@ -129,6 +129,20 @@ class ServerRequest: NSObject {
     
     }
     
+    func logout(completion:() -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.get("logout", parameters: [:], token: token, success: { (json) -> Void in
+            
+            CoreDataRequest.sharedManager.eraseUserCredentials()
+            completion()
+            }, failure: { (error) -> Void in
+                println("Error:\(error)")
+        })
+        
+    }
+    
+    //MARK: - FRIENDS
+    
     func getAllFriends(completion:(friendsDict:[String:[User]]) -> Void) {
         PhoneContactsManager.sharedManager.getPhoneContactsWithCompletion { (contacts:[String:[User]]) -> Void in
             var userArray: [User] = []
@@ -505,6 +519,20 @@ class ServerRequest: NSObject {
             
             
         }
+    }
+    
+    //MARK: - CURRENTUSER
+    
+    func getCurrentUser(completion:(user:User) -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        self.get("current_user", parameters: [:], token: token, success: { (json) -> Void in
+            let user = User()
+            user.email = json["response"]["email"].string
+            
+            completion(user:user)
+            }, failure: { (error) -> Void in
+            println("Error:\(error)")
+        })
     }
     
     

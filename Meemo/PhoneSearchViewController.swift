@@ -12,7 +12,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var skipButton: UIButton!
     @IBOutlet var numberContainer: UIView!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var accessCodeTextField: UITextField!
     @IBOutlet weak var backSpaceButton: UIButton!
     var phoneNumber = ""
 
@@ -28,7 +28,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
         if phoneNumber.length > 0 {
             let lastIndex = phoneNumber.length - 1
             phoneNumber = phoneNumber.substringToIndex(advance(phoneNumber.startIndex, lastIndex))
-            phoneTextField.text = phoneNumber
+            accessCodeTextField.text = phoneNumber
         }
         self.skipButton.setTitle("skip", forState: .Normal)
         
@@ -36,7 +36,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.phoneTextField.delegate = self;
+        self.accessCodeTextField.delegate = self;
         
     }
     
@@ -143,19 +143,10 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     func formatPhoneString(number:String) {
-        if phoneNumber.length < 14 {
-            if phoneNumber.length == 0 {
-                phoneNumber += "("
-            }
+        if phoneNumber.length < 6 {
             phoneNumber += number
-            if phoneNumber.length == 4 {
-                phoneNumber += ") "
-            }
-            if phoneNumber.length == 9 {
-                phoneNumber += "-"
-            }
-            phoneTextField.text = phoneNumber
-            if phoneNumber.length == 14 {
+            accessCodeTextField.text = phoneNumber
+            if phoneNumber.length == 6 {
                 self.skipButton.setTitle("done", forState: .Normal)
             }
             
@@ -168,12 +159,7 @@ class PhoneSearchViewController: UIViewController, UITextFieldDelegate {
         
         if self.skipButton.titleLabel!.text == "done" {
             
-            var number = self.phoneTextField.text
-            number = number.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil)
-            number = number.stringByReplacingOccurrencesOfString("-", withString: "", options: nil)
-            number = number.stringByReplacingOccurrencesOfString("(", withString: "", options: nil)
-            number = number.stringByReplacingOccurrencesOfString(")", withString: "", options: nil)
-            
+            var number = self.accessCodeTextField.text
             ServerRequest.sharedManager.getGroupsWithPhoneNumber(number, success: { (wasSuccessful) -> Void in
                 //
             })

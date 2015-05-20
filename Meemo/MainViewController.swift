@@ -45,30 +45,30 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
+        
         self.addButton.layer.cornerRadius = self.addButton.frame.size.width/2
         self.addButton.layer.shadowColor = UIColor.blackColor().CGColor
         self.addButton.layer.shadowOpacity = 0.8
         self.addButton.layer.shadowRadius = 4
         self.addButton.layer.shadowOffset = CGSizeMake(4.0, 4.0);
+        
         self.segmentControl.delegate = self
         page = 1
         setUpTableView()
-        
 
-            self.loadPosts(self.page, completion: { () -> Void in
-                if let post = self.standbyPost {
-                    
-                    self.posts.insert(post, atIndex: 0)
-                    
-                }
-                self.viewModel.getGroups({ (groups) -> Void in
-                    self.groups = groups
-                    self.tableView.reloadData()
-                })
+        self.loadPosts(self.page, completion: { () -> Void in
+            if let post = self.standbyPost {
+                
+                self.posts.insert(post, atIndex: 0)
+                
+            }
+            self.viewModel.getGroups({ (groups) -> Void in
+                self.groups = groups
+                self.tableView.reloadData()
             })
-
-        
+        })
         
     }
     
@@ -112,10 +112,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         
         
     }
-    
-    
-    
-    
     
     // MARK: - ShadeView
     
@@ -401,7 +397,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         
     }
     
-    
     func setRotation() {
         if self.addButton.selected {
             self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI/4))
@@ -410,8 +405,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         }
         
     }
-    
-    
     
     //MARK: - SegmentControl Delegate
     

@@ -19,6 +19,7 @@
 		4D586D1C1B010DDD00B72CCD /* UITextView+CenterAlign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */; };
 		4D586D201B0110B900B72CCD /* WriteMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */; };
 		4D599E5F1B0BE33B00EBDF51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */; };
+		4D5B83021B0D39DC00D0834F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B83011B0D39DC00D0834F /* SettingsController.swift */; };
 		4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */; };
 		4D695B321AF5E6DE000BCB3A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D695B301AF5E6DE000BCB3A /* FriendsCell.swift */; };
 		4D695B331AF5E6DE000BCB3A /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */; };
@@ -112,6 +113,7 @@
 		4D586D1B1B010DDD00B72CCD /* UITextView+CenterAlign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+CenterAlign.swift"; sourceTree = "<group>"; };
 		4D586D1F1B0110B900B72CCD /* WriteMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMemoryViewController.swift; sourceTree = "<group>"; };
 		4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4D5B83011B0D39DC00D0834F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		4D694AE11AE5C42C005BA3D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Bolts.framework"; sourceTree = "<group>"; };
 		4D694AE21AE5C42C005BA3D4 /* Facebook_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Facebook_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-Meemo/Facebook_iOS_SDK.framework"; sourceTree = "<group>"; };
 		4D695B2E1AF5E017000BCB3A /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				4D8595751AE5A1CC008F96E7 /* AppDelegate.swift */,
 				4D599E5E1B0BE33B00EBDF51 /* MainViewController.swift */,
+				4D5B83011B0D39DC00D0834F /* SettingsController.swift */,
 				4D85957C1AE5A1CC008F96E7 /* Main.storyboard */,
 				4D529B011B07D3DD00DBE170 /* TransitionManager */,
 				4DD91A311AE6FB8500C9E5DE /* User */,
@@ -729,6 +732,7 @@
 				4D1166161B0078CF001A0847 /* ChooseFriendsViewController.swift in Sources */,
 				4D529B001B07CB3300DBE170 /* TransitionManager.swift in Sources */,
 				4DD91A2F1AE6F22C00C9E5DE /* User.swift in Sources */,
+				4D5B83021B0D39DC00D0834F /* SettingsController.swift in Sources */,
 				4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */,
 				4D695B2F1AF5E017000BCB3A /* PickFriendsViewController.swift in Sources */,
 				4D51AE941AFB184D007DBD13 /* GroupTableViewCell.swift in Sources */,

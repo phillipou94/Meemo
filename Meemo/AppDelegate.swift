@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userLoggedIn() -> Bool {
+        
         return CoreDataRequest.sharedManager.getAPIToken() != nil
     }
     
