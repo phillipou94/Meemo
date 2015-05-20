@@ -405,6 +405,9 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         }
         
     }
+    @IBAction func settingsPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("showSettings", sender: self)
+    }
     
     //MARK: - SegmentControl Delegate
     
@@ -437,6 +440,9 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             vc.transitioningDelegate = self.transitionManager
         } else if (segue.identifier == "createGroup") {
             let vc = segue.destinationViewController as! CreateGroupsViewController
+            vc.transitioningDelegate = self.transitionManager
+        } else if (segue.identifier == "showSettings") {
+            let vc = segue.destinationViewController as! SettingsController
             vc.transitioningDelegate = self.transitionManager
         }
     }

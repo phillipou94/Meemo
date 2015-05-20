@@ -496,10 +496,42 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Acount Actions" id="C3g-t6-2be">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fSE-g4-auS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fSE-g4-auS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fSE-g4-auS" id="Lay-To-nsJ">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link With Your Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcy-gP-FUY">
+                                                    <rect key="frame" x="8" y="11" width="200" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="142" id="1aa-eW-LIe"/>
+                                                        <constraint firstAttribute="width" constant="142" id="6P8-CV-NrW"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="EwK-zf-YWg"/>
+                                                        <constraint firstAttribute="height" constant="21" id="QoW-b0-aie"/>
+                                                        <constraint firstAttribute="width" constant="200" id="aSB-Tu-D3I"/>
+                                                        <constraint firstAttribute="height" constant="21" id="dym-fX-ocE"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="fWF-Eo-faP"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="142" id="ztz-Kv-dxW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1aa-eW-LIe"/>
+                                                            <exclude reference="6P8-CV-NrW"/>
+                                                            <exclude reference="EwK-zf-YWg"/>
+                                                            <exclude reference="fWF-Eo-faP"/>
+                                                            <exclude reference="ztz-Kv-dxW"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mcy-gP-FUY" firstAttribute="leading" secondItem="Lay-To-nsJ" secondAttribute="leadingMargin" id="Ggm-Oe-kB6"/>
+                                                <constraint firstItem="mcy-gP-FUY" firstAttribute="top" secondItem="Lay-To-nsJ" secondAttribute="topMargin" constant="3" id="neD-on-DuR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mcy-gP-FUY" secondAttribute="bottom" constant="3" id="uUR-eo-8fh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="br4-U7-hh6">
@@ -772,7 +804,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="KBS-WZ-M2R" kind="show" id="6lg-IV-F7U"/>
+                                            <action selector="settingsPressed:" destination="WbN-s2-M1G" eventType="touchUpInside" id="1Qe-4k-SqF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -841,11 +873,12 @@
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="3qW-cx-UrU"/>
                         <segue destination="sFa-Mm-KCU" kind="show" identifier="showGroup" id="gmC-b9-k5g"/>
                         <segue destination="pJJ-rh-ypq" kind="presentation" identifier="showFullPost" id="Dau-4f-rIk"/>
+                        <segue destination="KBS-WZ-M2R" kind="show" identifier="showSettings" id="V5O-ok-ULd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1104" y="2590"/>
+            <point key="canvasLocation" x="-1265" y="2342"/>
         </scene>
         <!--Capture Memory View Controller-->
         <scene sceneID="4e9-gQ-LAt">

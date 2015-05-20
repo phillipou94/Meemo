@@ -32,11 +32,23 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
         super.viewDidAppear(animated)
         setUpFacebookButtons()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let section = indexPath.section
+        let row = indexPath.row
+        if section == 2 {
+            if row == 0 {
+                let vc = LinkFacebookViewController(nibName: "LinkFacebookViewController", bundle: nil)
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            if row == 1 {
+                logout()
+            }
+        }
     }
+    
+    //MARK:- FACEBOOK BUTTON DELEGATE
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if error == nil {
@@ -59,8 +71,12 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
     }
     
     
-    
+    //logs out of facebook and then calls app logout method
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+       logout()
+    }
+    
+    func logout() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         self.presentViewController(vc, animated: true) { () -> Void in
@@ -73,20 +89,15 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
     
     func setUpFacebookButtons() {
         if CoreDataRequest.sharedManager.getUserCredentials()?.facebook_id != nil {
-            
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            
-            self.view.addSubview(loginView)
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.sizeToFit()
             loginView.frame = self.logoutCell.frame
             loginView.delegate = self
+            self.view.addSubview(loginView)
         }
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-    }
+
 
     
 }
