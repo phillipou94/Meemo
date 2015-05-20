@@ -550,6 +550,7 @@ class ServerRequest: NSObject {
         group.object_id = dict["id"].number!
         group.lastPostType = dict["last_post_type"].string
         group.imageURL = self.removeBackSlashes(dict["file_url"].string)
+        group.last_posted_name = dict["last_post_user_name"].string
         if let has_seen = dict["seen_last_post"].bool {
             group.has_seen = has_seen
         } else {

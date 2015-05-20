@@ -37,11 +37,19 @@ class GroupTableViewCell: UITableViewCell {
                 self.thumbnail.image = UIImage(named: "Default")
             }
             
+            var username = "Somebody"
+            if let name = group.last_posted_name {
+                username = name
+            }
+            
             if group.lastPostType == "text" {
+                self.statusLabel.text = "\(username) posted a memory"
                 self.colorBar.backgroundColor = UIColor(hex: "3CB79E")
             } else if group.lastPostType == "photo" {
+                self.statusLabel.text = "\(username) posted a photo"
                 self.colorBar.backgroundColor = UIColor(hex:"1E73B0")
             } else {
+                self.statusLabel.text = "\(username) created this group"
                 self.colorBar.backgroundColor = UIColor(hex:"D14A5C")
             }
             
@@ -50,7 +58,7 @@ class GroupTableViewCell: UITableViewCell {
             } else {
                 self.colorBar.hidden = false
             }
-            
+
             self.nameLabel.text = group.name
         }
         
