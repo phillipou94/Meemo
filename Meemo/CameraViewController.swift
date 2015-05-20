@@ -65,6 +65,11 @@ class CameraViewController: UIImagePickerController{
         albumButton.addTarget(self, action: "showAlbum", forControlEvents: .TouchUpInside)
         self.cameraOverlayView!.addSubview(albumButton)
         
+        let selfieButton = UIButton(frame:CGRectMake(self.menuBar.frame.size.width/2 - 20, self.menuBar.frame.size.height/2 - 15,40,30))
+        selfieButton.setBackgroundImage(UIImage(named: "Selfie"), forState: .Normal)
+        selfieButton.addTarget(self, action: "toggleSelfie", forControlEvents: .TouchUpInside)
+        menuBar.addSubview(selfieButton)
+        
         flashButton = UIButton(frame:CGRectMake(self.topBar.frame.size.width-25,self.topBar.frame.size.height/2 - 10,20,20))
         flashButton.backgroundColor = UIColor.redColor()
         flashButton.addTarget(self, action: "toggleFlash", forControlEvents: .TouchUpInside)
@@ -87,6 +92,14 @@ class CameraViewController: UIImagePickerController{
     
     func showAlbum() {
         self.viewDelegate?.showAlbum()
+    }
+    
+    func toggleSelfie() {
+        if self.cameraDevice == .Front {
+            self.cameraDevice = .Rear
+        } else {
+            self.cameraDevice = .Front
+        }
     }
     
     func toggleFlash() {

@@ -176,16 +176,20 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
 //    }
     // MARK: - Creating Post
     @IBAction func finishPressed(sender: AnyObject) {
+        
         if let post = self.post {
                 
             if let group =  self.selectedGroup {
                 post.group_id = group.object_id
             }
             post.tagged_users = self.selectedFriends
-            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                
-            })
-            dismissBackToRoot()
+            if let image = post.image {
+                post.post_type = "photo"
+            } else {
+                post.post_type = "text"
+            }
+            post.file_url = "standby"
+            postAndDismissBackToRoot()
   
         }
     }
@@ -200,11 +204,37 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
 
     
     // MARK: - Navigation
-    func dismissBackToRoot() {
+    func postAndDismissBackToRoot() {
         let vc: MainViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-        self.modalPresentationStyle = .Custom
-        self.modalTransitionStyle = .CrossDissolve
-        self.presentViewController(vc, animated: true, completion: nil)
+        if let post = self.post {
+            
+            if let group =  self.selectedGroup {
+                post.group_id = group.object_id
+            }
+            post.tagged_users = self.selectedFriends
+            if let image = post.image {
+                post.post_type = "photo"
+            } else {
+                post.post_type = "text"
+            }
+            post.file_url = "standby"
+            post.user_name = "Me"
+            vc.standbyPost = post
+            self.modalPresentationStyle = .Custom
+            self.modalTransitionStyle = .CrossDissolve
+            self.presentViewController(vc, animated: true) { () -> Void in
+                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                    
+                    ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                    })
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                        // self.canLoadPosts = true
+                    }
+                }
+            }
+        }
     }
     
 

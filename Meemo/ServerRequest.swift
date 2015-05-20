@@ -325,6 +325,7 @@ class ServerRequest: NSObject {
         }
 
         if post.post_type == "text" {
+            
             if let group_id = post.group_id {
                 payload = ["post_type":"text", "content":post.content!, "group_id":group_id]
             } else {
@@ -339,11 +340,13 @@ class ServerRequest: NSObject {
             
             
         } else {
+            
             uploadPhoto(post.image!, completion: { (url) -> Void in
+                
                 if let group_id = post.group_id {
                     payload = ["post_type":"photo", "content":post.content!, "title":post.title!, "file_url":url,"group_id":group_id]
                 } else {
-                    payload = ["post_type":"text", "content":post.content!,"title":post.title!, "file_url":url, "facebook_ids":facebook_ids]
+                    payload = ["post_type":"photo", "content":post.content!,"title":post.title!, "file_url":url, "facebook_ids":facebook_ids]
                 }
                 
                 let parameter = ["post":payload]

@@ -173,23 +173,24 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
     @IBAction func backPressed(sender: AnyObject) {
     }
     @IBAction func checkPressed(sender: AnyObject) {
-        
+        let vc: MainViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
         if let group = self.group {
             if newGroup {
-                self.viewModel.createGroup(group, users: self.selectedFriends, completion: { () -> Void in
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        let vc: GroupsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
-                        self.modalPresentationStyle = .Custom
-                        self.modalTransitionStyle = .CrossDissolve
-                        self.presentViewController(vc, animated: true, completion: nil)
-                    })
 
+                self.presentViewController(vc, animated: true, completion: { () -> Void in
+                    self.viewModel.createGroup(group, users: self.selectedFriends, completion: { () -> Void in
+                    })
                 })
+                
+               
                                 
             } else {
-                
-                self.viewModel.inviteUsersToGroup(group, users: self.selectedFriends, completion: { () -> Void in
-                    
+                self.presentViewController(vc, animated: true, completion: { () -> Void in
+                    self.viewModel.inviteUsersToGroup(group, users: self.selectedFriends, completion: { () -> Void in
+                        
+                    })
                 })
                 
             }

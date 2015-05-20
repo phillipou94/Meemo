@@ -307,17 +307,17 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         posts.insert(post, atIndex: 0)
         self.tableView.reloadData()
         self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        if post.post_type == "photo" {
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                    NSLog("PHOTOS ARE DONE!!!!")
-                    println("PHOTOS ARE DONE!!!!")
-                })
-                dispatch_async(dispatch_get_main_queue()) {
-                    // update some UI
-                }
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
+                NSLog("PHOTOS ARE DONE!!!!")
+                println("PHOTOS ARE DONE!!!!")
+            })
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
             }
+        
             
         }
        /* self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in

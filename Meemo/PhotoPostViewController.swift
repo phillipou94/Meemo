@@ -43,7 +43,9 @@ class PhotoPostViewController: UIViewController {
             self.imageView.image = post.image
             self.titleLabel.text = post.title
             if let date = post.created_at?.formatDate() {
-                self.descriptionLabel.text = "\(post.user_name!) posted this \(date)"
+                self.descriptionLabel.text = "\(post.user_name!) posted this \(date.lowercaseString)"
+            } else {
+                 self.descriptionLabel.text = "You posted this just now"
             }
             if let content = post.content {
                 self.pageControl.numberOfPages = 3
