@@ -124,7 +124,12 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
             cell.post = post
             cell.user_id = userID
-            cell.dateLabel.text = post.created_at?.formatDate()
+            if let date = post.created_at?.formatDate() {
+                cell.dateLabel.text = date
+            } else {
+                cell.dateLabel.text = "Just Now"
+            }
+            
             cell.configureCell()
             return cell
             
@@ -133,7 +138,11 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             cell.post = post
             cell.user_id = userID
             cell.titleLabel.text = post.title
-            cell.dateLabel.text = post.created_at?.formatDate()
+            if let date = post.created_at?.formatDate() {
+                cell.dateLabel.text = date
+            } else {
+                cell.dateLabel.text = "Just Now"
+            }
             if let file_url = post.file_url {
                 if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                     cell.postImageView.image = cachedImage

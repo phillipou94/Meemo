@@ -130,11 +130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/MainViewController.swift"
-            timestampString = "453787867.605067"
+            timestampString = "453789830.30226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "loadStandbyPost(_:)"
             landmarkType = "5">
          </BreakpointContent>

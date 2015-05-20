@@ -189,7 +189,11 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                 let cell = tableView.dequeueReusableCellWithIdentifier("TextPostCell") as! TextPostCell
                 cell.post = post
                 cell.user_id = userID
-                cell.dateLabel.text = post.created_at?.formatDate()
+                if let date = post.created_at?.formatDate() {
+                    cell.dateLabel.text = date
+                } else {
+                    cell.dateLabel.text = "Just Now"
+                }
                 cell.configureCell()
                 return cell
                 
@@ -197,7 +201,11 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                 let cell = tableView.dequeueReusableCellWithIdentifier("PhotoPostCell") as! PhotoPostCell
                 cell.post = post
                 cell.user_id = userID
-                cell.dateLabel.text = post.created_at?.formatDate()
+                if let date = post.created_at?.formatDate() {
+                    cell.dateLabel.text = date
+                } else {
+                    cell.dateLabel.text = "Just Now"
+                }
                 cell.titleLabel.text = post.title
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
