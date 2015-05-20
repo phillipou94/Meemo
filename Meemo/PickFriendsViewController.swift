@@ -178,13 +178,10 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         self.modalTransitionStyle = .CrossDissolve
         if let group = self.group {
             if newGroup {
-
                 self.presentViewController(vc, animated: true, completion: { () -> Void in
                     self.viewModel.createGroup(group, users: self.selectedFriends, completion: { () -> Void in
                     })
                 })
-                
-               
                                 
             } else {
                 self.presentViewController(vc, animated: true, completion: { () -> Void in

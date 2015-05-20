@@ -310,7 +310,13 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         if (segue.identifier == "showFriends") {
             post = Post()
             post?.image = self.imageView.image
-            post?.title = self.titleTextView.text
+            if self.titleTextView.text != "Write Your Title" {
+                 post?.title = self.titleTextView.text
+            }
+            if self.storyTextView.text != "Write Your Story" {
+                post?.content = self.storyTextView.text
+            }
+           
             post?.content = self.storyTextView.text
             let vc = segue.destinationViewController as! ChooseFriendsViewController
             vc.post = post

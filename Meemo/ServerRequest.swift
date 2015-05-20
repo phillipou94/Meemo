@@ -344,12 +344,21 @@ class ServerRequest: NSObject {
             uploadPhoto(post.image!, completion: { (url) -> Void in
                 
                 if let group_id = post.group_id {
-                    payload = ["post_type":"photo", "content":post.content!, "title":post.title!, "file_url":url,"group_id":group_id]
+                    payload = ["post_type":"photo", "file_url":url,"group_id":group_id]
                 } else {
-                    payload = ["post_type":"photo", "content":post.content!,"title":post.title!, "file_url":url, "facebook_ids":facebook_ids]
+                    payload = ["post_type":"photo", "file_url":url, "facebook_ids":facebook_ids]
+                }
+                
+                if let content = post.content {
+                    payload["content"] = content
+                }
+                
+                if let title = post.title {
+                    payload["title"] = title
                 }
                 
                 let parameter = ["post":payload]
+                
                 self.post("posts", parameters: parameter, token: token, success: { (json) -> Void in
                     
                     }, failure: { (error) -> Void in
