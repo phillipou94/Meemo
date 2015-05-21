@@ -165,7 +165,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             cell.imageView.backgroundColor = UIColor.redColor()
         } else{
             let asset = self.images[indexPath.row-1] as! PHAsset
-            loadImageFrom(asset, completionHandler: { (image) -> Void in
+            loadThumbnailFrom(asset, completionHandler: { (image) -> Void in
                 let thumbnail: UIImage = image as UIImage
                 cell.imageView.image = thumbnail
                 cell.imageView.hidden = false
@@ -186,9 +186,13 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row != 0 {
             selectedIndex = indexPath.row
+            let asset = self.images[indexPath.row-1] as! PHAsset
             let cell:PhotoCell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCell
             self.groupImageView.image = cell.imageView.image
             let checkmark = UIImage(named:"Checkmark")
+            loadImageFrom(asset, completionHandler: { (image) -> Void in
+                self.groupImageView.image = image
+            })
             cell.accessoryView.image = checkmark
             cell.accessoryView.hidden = false
             cell.imageView.backgroundColor = UIColor.blackColor()
@@ -259,7 +263,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     }
     
     
-    func loadImageFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
+    func loadThumbnailFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
         let imgManager = PHImageManager.defaultManager()
         var requestOptions = PHImageRequestOptions()
         requestOptions.synchronous = true
@@ -270,6 +274,21 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
             options: requestOptions,
             resultHandler: { (image, _) in
             
+                completionHandler(image:image)
+        })
+    }
+    
+    func loadImageFrom(asset:PHAsset,completionHandler:(image:UIImage) -> Void) {
+        let imgManager = PHImageManager.defaultManager()
+        var requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        
+        imgManager.requestImageForAsset(asset,
+            targetSize: CGSizeMake(CGFloat(asset.pixelHeight),CGFloat(asset.pixelWidth)),
+            contentMode: PHImageContentMode.AspectFit,
+            options: requestOptions,
+            resultHandler: { (image, _) in
+                
                 completionHandler(image:image)
         })
     }

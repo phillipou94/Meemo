@@ -172,7 +172,16 @@ class GroupsViewController: UIViewController, CustomSegmentControlDelegate, UITa
         
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
             cell.group = group
-            cell.configureCell()
+            if let file_url = group.imageURL {
+                if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
+                    cell.thumbnail.image = cachedImage
+                } else {
+                    cell.configureCell({ (image) -> Void in
+                        self.photoCache.setObject(image, forKey:file_url)
+                    })
+
+                }
+            }
             cell.dateLabel.text = group.last_updated?.conventionalDate()
             return cell
         } else {

@@ -54,6 +54,30 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var headerTitle = ""
+        if section == 0 {
+            headerTitle = "My Account"
+        } else if section == 1 {
+            headerTitle = "More Information"
+        } else {
+            headerTitle = "Account Actions"
+        }
+        
+        let header = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 40))
+        header.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        let label = UILabel(frame: CGRectMake(18, 0, self.view.frame.size.width-18, 40))
+        label.font = UIFont(name: "STHeitiSC-Medium", size: 13)
+        label.textColor = UIColor(hex: "3F3D52")
+        label.text = headerTitle
+        header.addSubview(label)
+        return header
+    }
+    
     //MARK:- FACEBOOK BUTTON DELEGATE
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {

@@ -10,7 +10,7 @@ import UIKit
 
 class GroupTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var colorBar: UIView!
+    //@IBOutlet weak var colorBar: UIView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var thumbnail: UIImageView!
@@ -27,16 +27,8 @@ class GroupTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell() {
+    func configureCell(completion:(image:UIImage) -> Void) {
         if let group = self.group {
-            if let imageURL = group.imageURL {
-                if let url = NSURL(string: imageURL){
-                    self.thumbnail.setImageWithUrl(url, placeHolderImage: nil)
-                }
-            } else {
-                self.thumbnail.image = UIImage(named: "Default")
-            }
-            
             var username = "Somebody"
             if let name = group.last_posted_name {
                 username = name
@@ -44,24 +36,39 @@ class GroupTableViewCell: UITableViewCell {
             
             if group.lastPostType == "text" {
                 self.statusLabel.text = "\(username) posted a memory"
-                self.colorBar.backgroundColor = UIColor(hex: "3CB79E")
+                //self.colorBar.backgroundColor = UIColor(hex: "3CB79E")
             } else if group.lastPostType == "photo" {
                 self.statusLabel.text = "\(username) posted a photo"
-                self.colorBar.backgroundColor = UIColor(hex:"1E73B0")
+                //self.colorBar.backgroundColor = UIColor(hex:"1E73B0")
             } else {
                 self.statusLabel.text = "\(username) created this group"
-                self.colorBar.backgroundColor = UIColor(hex:"D14A5C")
+                //self.colorBar.backgroundColor = UIColor(hex:"D14A5C")
             }
             
-            if group.has_seen {
-                self.colorBar.hidden = true
-            } else {
-                self.colorBar.hidden = false
-            }
+            loadImage({ (image) -> Void in
+                completion(image:image)
+            })
 
             self.nameLabel.text = group.name
         }
         
     }
+    
+    func loadImage(completion:(image:UIImage) -> Void) {
+        if let urlString = group?.imageURL {
+            if let url = NSURL(string: urlString) {
+                let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                request.addValue("image/*", forHTTPHeaderField: "Accept")
+                self.thumbnail.image = nil
+                self.thumbnail.setImageWithUrlRequest(request, placeHolderImage: nil, success: { (request, response, image) -> Void in
+                    self.thumbnail.image = image
+                    completion(image:image)
+                }, failure: nil)
+            }
+        }
+        
+        
+    }
+
     
 }

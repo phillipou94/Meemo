@@ -77,7 +77,12 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+        if self.segmentController.selectedIndex == 0 {
+            return 90
+        } else {
+            return 60
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

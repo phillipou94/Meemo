@@ -35,6 +35,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     
     var page: Int = 1
     var photoCache = NSCache()
+    var groupsCache = NSCache()
     var onLastPage:Bool = false
     
     let transitionManager = TransitionManager()
@@ -169,7 +170,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             return self.view.frame.size.width
         } else {
             
-            return 90;
+            return 180;
         }
         
     }
@@ -222,7 +223,17 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
             cell.group = group
-            cell.configureCell()
+            if let file_url = group.imageURL {
+                if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
+                    cell.thumbnail.image = cachedImage
+                } else {
+                    cell.configureCell({ (image) -> Void in
+                        self.photoCache.setObject(image, forKey:file_url)
+                    })
+                    
+                }
+            }
+
             cell.dateLabel.text = group.last_updated?.conventionalDate()
             return cell
         }
@@ -273,7 +284,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             }
         } else {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! GroupTableViewCell
-            cell.colorBar.hidden = true
+            //cell.colorBar.hidden = true
             self.performSegueWithIdentifier("showGroup", sender: self)
         }
     }
