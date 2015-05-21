@@ -16,6 +16,8 @@ class User: NSObject {
     var api_token: String? = nil
     var object_id: NSNumber? = -1
     var isUsingApp: Bool = true
+    var number_of_groups: NSNumber? = 0
+    var number_of_posts: NSNumber? = 0
 
     
     func getInitials() -> String {

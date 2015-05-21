@@ -528,6 +528,9 @@ class ServerRequest: NSObject {
         self.get("current_user", parameters: [:], token: token, success: { (json) -> Void in
             let user = User()
             user.email = json["response"]["email"].string
+            user.number_of_groups = json["response"]["groups_count"].number
+            user.number_of_posts = json["response"]["posts_count"].number
+            
             
             completion(user:user)
             }, failure: { (error) -> Void in

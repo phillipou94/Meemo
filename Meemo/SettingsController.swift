@@ -23,6 +23,12 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
             if let email = user.email {
                 self.emailLabel.text = email
             }
+            if let posts = user.number_of_posts {
+                self.numberOfMemoriesLabel.text = "\(posts)"
+            }
+            if let groups = user.number_of_groups {
+                self.numberOfGroupsLabel.text = "\(groups)"
+            }
             
             
         }

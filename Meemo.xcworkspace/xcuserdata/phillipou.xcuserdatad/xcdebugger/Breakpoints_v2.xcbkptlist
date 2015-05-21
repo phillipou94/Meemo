@@ -55,7 +55,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "updateFacebookID(_:)"
+            landmarkName = "getAPIToken()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -66,11 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ServerRequest.swift"
-            timestampString = "453856379.006128"
+            timestampString = "453264121.76833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "getGroups(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ServerRequest.swift"
-            timestampString = "453856379.006128"
+            timestampString = "453781041.608459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "createPost(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -130,11 +130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/MainViewController.swift"
-            timestampString = "453840359.008096"
+            timestampString = "453789830.30226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "loadStandbyPost(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -145,13 +145,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Meemo/ServerRequest.swift"
-            timestampString = "453856379.006128"
+            filePath = "Meemo/MainViewController.swift"
+            timestampString = "453787324.601327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
-            landmarkName = "groupModel(_:)"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meemo/ServerRequest.swift"
+            timestampString = "453877063.322057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
+            landmarkName = "userArrayToDictionary(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
