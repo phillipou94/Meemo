@@ -27,7 +27,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     @IBOutlet var collectionViewContainer: UIView!
     
     
-    var bottomState:CGFloat = CGFloat()
     var middleState:CGFloat = CGFloat()
     var topState:CGFloat = CGFloat()
     var currentState:CGFloat = CGFloat()
@@ -130,7 +129,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         self.view.addSubview(self.collectionViewContainer)
         self.collectionViewContainer.bringSubviewToFront(self.collectionView)
         
-        bottomState = self.view.frame.height - 40
         topState = self.headerView.frame.height + 50
         middleState = CGRectGetMaxY(self.photoContainer.frame)
         currentState = middleState
@@ -221,24 +219,6 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        var currentOffset = scrollView.contentOffset
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var timeDiff = currentTime - lastOffsetCapture
-        if timeDiff > 0.1 {
-            let scrollSpeed = currentOffset.y - lastOffset.y
-            if scrollSpeed > 5.0 {
-                animateCollectionView(topState, delay: 0)
-            }
-            println("\(scrollSpeed)")
-        }
-        
-        lastOffset = currentOffset
-        lastOffsetCapture = currentTime
-
-    }
-    
     //MARK: - ALAssets
     
     func fetchPhotos () {
@@ -327,7 +307,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func roundToNearestState(y:CGFloat) -> CGFloat {
         
         if y > self.view.frame.size.height*0.6 {
-            currentState = bottomState
+            currentState = middleState
         } else if y < self.view.frame.size.height*0.25 {
             currentState = topState
         } else {

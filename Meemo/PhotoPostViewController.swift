@@ -36,7 +36,7 @@ class PhotoPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.pageControl.hidden = true
         let pan = UIPanGestureRecognizer(target: self, action: "draggedView:")
         self.view.addGestureRecognizer(pan)
         if let post = self.post {
@@ -60,6 +60,7 @@ class PhotoPostViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         setUpFrames()
+        setUpPageControl()
     }
     
     func setUpFrames() {
@@ -69,12 +70,12 @@ class PhotoPostViewController: UIViewController {
         rightFrame = CGRectMake(imageSize.width, self.imageView.frame.origin.y, imageSize.width, imageSize.height)
         currentFrame = self.imageView.frame
         
+    }
+    
+    func setUpPageControl() {
+        
         if let title = post?.title {
-            lastPage = 1
-            self.pageControl.numberOfPages = 2
-        } else {
-            lastPage = 0
-            self.pageControl.numberOfPages = 1
+            lastPage += 1
         }
         if let content = post?.content {
             
@@ -83,11 +84,19 @@ class PhotoPostViewController: UIViewController {
             
             self.view.addSubview(self.secondShadeView!)
             setUpStoryLabel()
-
-            lastPage = 2
-            self.pageControl.numberOfPages = 3
+            
+            lastPage += 1
+            
         }
-       
+        
+        self.pageControl.numberOfPages = lastPage + 1
+        if self.pageControl.numberOfPages == 1 {
+            self.pageControl.hidden = true
+        } else {
+            self.pageControl.hidden = false
+        }
+
+        
     }
     
     func setUpStoryLabel() {

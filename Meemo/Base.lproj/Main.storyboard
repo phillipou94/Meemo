@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WbN-s2-M1G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1139,13 +1139,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bg-f3-7ll" customClass="SpringButton" customModule="Spring">
-                                <rect key="frame" x="0.0" y="0.0" width="52" height="42"/>
+                                <rect key="frame" x="0.0" y="0.0" width="32" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="YHb-cF-8Jo"/>
-                                    <constraint firstAttribute="height" constant="42" id="fG5-gz-F3f"/>
+                                    <constraint firstAttribute="width" constant="32" id="YHb-cF-8Jo"/>
+                                    <constraint firstAttribute="height" constant="40" id="fG5-gz-F3f"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
-                                <state key="normal" image="X-Button@1x">
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2252,10 +2252,10 @@
         <image name="purple_gradient" width="360" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bPg-PJ-uId"/>
-        <segue reference="bdk-ZQ-acD"/>
-        <segue reference="exK-0w-rYB"/>
         <segue reference="6JX-jh-805"/>
+        <segue reference="bdk-ZQ-acD"/>
         <segue reference="Vam-Nm-oWU"/>
+        <segue reference="BNp-XI-XA1"/>
+        <segue reference="exK-0w-rYB"/>
     </inferredMetricsTieBreakers>
 </document>

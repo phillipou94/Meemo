@@ -15,6 +15,9 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var thumbnail: UIImageView!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var memoryCountTextField: UITextField!
+    
+    
     var group: Group? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,6 +53,11 @@ class GroupTableViewCell: UITableViewCell {
             })
 
             self.nameLabel.text = group.name
+            if group.has_seen {
+                
+            } else {
+                self.memoryCountTextField.text = "New Memory"
+            }
         }
         
     }

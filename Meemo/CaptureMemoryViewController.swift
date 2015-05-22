@@ -263,8 +263,14 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
             post = Post()
             post?.post_type = "photo"
             post?.image = self.imageView.image
-            post?.title = self.titleTextView.text
-            post?.content = self.storyTextView.text
+            if self.titleTextView.text != "Write Your Title" {
+                post?.title = self.titleTextView.text
+            }
+            if self.storyTextView.text != "Write Your Story" {
+                
+                post?.content = self.storyTextView.text
+            }
+
             post?.group_id = self.group?.object_id
             post?.file_url = "standby"
             UIImageWriteToSavedPhotosAlbum(self.selectedImage, nil, nil, nil)
@@ -316,8 +322,6 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
             if self.storyTextView.text != "Write Your Story" {
                 post?.content = self.storyTextView.text
             }
-           
-            post?.content = self.storyTextView.text
             let vc = segue.destinationViewController as! ChooseFriendsViewController
             vc.post = post
         }
