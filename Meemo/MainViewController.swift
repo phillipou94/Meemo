@@ -231,6 +231,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     cell.thumbnail.image = cachedImage
                 } else {
                     cell.configureCell({ (image) -> Void in
+                        group.image = image
                         self.photoCache.setObject(image, forKey:file_url)
                     })
                     

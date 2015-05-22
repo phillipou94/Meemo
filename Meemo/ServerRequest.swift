@@ -238,6 +238,17 @@ class ServerRequest: NSObject {
         })
     }
     
+    func getGroupMembers(group:Group, completion:(members:[User]) -> Void) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        let path = "groups/\(group.object_id)/users"
+        
+        self.get(path, parameters: nil, token: token, success: { (json) -> Void in
+        
+            }, failure: { (json) -> Void in
+            
+        })
+    }
+    
     func createGroup(group:Group, completion:(json:JSON) -> Void) {
         var facebook_ids:[String] = []
         var invited_users: [User] = []

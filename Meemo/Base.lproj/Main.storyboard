@@ -2164,6 +2164,9 @@
                                                 <exclude reference="fYf-nC-TpP"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="settingsPressed:" destination="sFa-Mm-KCU" eventType="touchUpInside" id="uHs-e1-GbY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -2227,12 +2230,88 @@
                         <segue destination="pFR-ky-Zug" kind="show" identifier="writeMemory" id="6JX-jh-805"/>
                         <segue destination="pJJ-rh-ypq" kind="presentation" identifier="showFullPost" id="Vam-Nm-oWU"/>
                         <segue destination="1xt-h4-eDW" kind="show" identifier="pickFriends" id="Rha-k0-myQ"/>
+                        <segue destination="Mtm-QV-tl5" kind="show" identifier="showGroupSettings" id="Cma-bg-9cL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2F-s8-cBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4Tl-3s-10f" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="3756"/>
+            <point key="canvasLocation" x="-1299" y="3293"/>
+        </scene>
+        <!--Group Settings View Controller-->
+        <scene sceneID="smy-Va-ZZM">
+            <objects>
+                <viewController id="Mtm-QV-tl5" customClass="GroupSettingsViewController" customModule="Meemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XPj-tM-gJR"/>
+                        <viewControllerLayoutGuide type="bottom" id="K8x-XP-UrM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fEn-hq-9P4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2w-gC-C6a">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meemo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W49-hi-PcN">
+                                        <rect key="frame" x="63" y="14" width="475" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="nLi-a1-jrx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-0K-Av9" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="5" width="32" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="Pm5-JT-lmu"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="3LK-p4-90b" kind="unwind" unwindAction="unwindToViewController:" id="L6U-7B-lGn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="W49-hi-PcN" firstAttribute="leading" secondItem="M2w-gC-C6a" secondAttribute="leading" constant="63" id="1D5-h8-bgI"/>
+                                    <constraint firstItem="W49-hi-PcN" firstAttribute="top" secondItem="M2w-gC-C6a" secondAttribute="top" constant="14" id="EDQ-qJ-u0r"/>
+                                    <constraint firstItem="W49-hi-PcN" firstAttribute="centerX" secondItem="M2w-gC-C6a" secondAttribute="centerX" id="I9X-fx-bss"/>
+                                    <constraint firstItem="dp8-0K-Av9" firstAttribute="leading" secondItem="M2w-gC-C6a" secondAttribute="leading" id="JF7-7I-4gN"/>
+                                    <constraint firstItem="dp8-0K-Av9" firstAttribute="centerY" secondItem="M2w-gC-C6a" secondAttribute="centerY" id="M2H-vb-tod"/>
+                                    <constraint firstAttribute="bottom" secondItem="W49-hi-PcN" secondAttribute="bottom" constant="15" id="TRl-Di-s7o"/>
+                                    <constraint firstItem="dp8-0K-Av9" firstAttribute="top" secondItem="M2w-gC-C6a" secondAttribute="top" constant="5" id="feW-rJ-rTS"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="m7n-2O-F2M">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M2w-gC-C6a" firstAttribute="leading" secondItem="fEn-hq-9P4" secondAttribute="leading" id="6Zh-dQ-siL"/>
+                            <constraint firstItem="m7n-2O-F2M" firstAttribute="leading" secondItem="fEn-hq-9P4" secondAttribute="leading" id="NHd-ck-YEj"/>
+                            <constraint firstAttribute="trailing" secondItem="M2w-gC-C6a" secondAttribute="trailing" id="O1P-ta-sd2"/>
+                            <constraint firstAttribute="bottom" secondItem="m7n-2O-F2M" secondAttribute="bottom" id="PZT-bF-Ry8"/>
+                            <constraint firstItem="m7n-2O-F2M" firstAttribute="top" secondItem="M2w-gC-C6a" secondAttribute="bottom" id="W8r-3l-Vww"/>
+                            <constraint firstItem="M2w-gC-C6a" firstAttribute="top" secondItem="XPj-tM-gJR" secondAttribute="bottom" id="ZRb-mK-FTe"/>
+                            <constraint firstAttribute="trailing" secondItem="m7n-2O-F2M" secondAttribute="trailing" id="ggQ-Pa-sJD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="groupNameLabel" destination="W49-hi-PcN" id="OoP-mD-csR"/>
+                        <outlet property="tableView" destination="m7n-2O-F2M" id="Q0M-rQ-G1X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8K-jw-vXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3LK-p4-90b" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1222" y="4157"/>
         </scene>
     </scenes>
     <resources>
@@ -2252,10 +2331,10 @@
         <image name="purple_gradient" width="360" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Rha-k0-myQ"/>
+        <segue reference="Vam-Nm-oWU"/>
         <segue reference="6JX-jh-805"/>
         <segue reference="bdk-ZQ-acD"/>
-        <segue reference="Vam-Nm-oWU"/>
         <segue reference="BNp-XI-XA1"/>
-        <segue reference="exK-0w-rYB"/>
     </inferredMetricsTieBreakers>
 </document>

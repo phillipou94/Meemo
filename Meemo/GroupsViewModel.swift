@@ -17,6 +17,12 @@ class GroupsViewModel: NSObject {
         }
     }
     
+    func getMembers(group:Group,completion:(members:[User])->Void) {
+        ServerRequest.sharedManager.getGroupMembers(group, completion: { (members) -> Void in
+            completion(members: members)
+        })
+    }
+    
     func createGroup(group:Group,users:[User], completion:() -> Void) {
         let currentUser = CoreDataRequest.sharedManager.getUserCredentials()
         group.user_ids = []

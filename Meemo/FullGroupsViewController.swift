@@ -29,6 +29,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     @IBOutlet var captureMemoryButton: SpringButton!
     @IBOutlet var captureMemoryContainer: SpringView!
     
+    let transitionManager = TransitionManager()
+    
     let viewModel = GroupsViewModel()
     var group:Group? = nil
     var posts:[Post] = []
@@ -370,7 +372,12 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             
         }
     }
+    
+    //MARK: - Settings
 
+    @IBAction func settingsPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("showGroupSettings", sender: self)
+    }
     
     // MARK: - Navigation
 
@@ -379,13 +386,16 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         if segue.identifier == "writeMemory" {
             let vc = segue.destinationViewController as! WriteMemoryViewController
             vc.group = self.group
+            vc.transitioningDelegate = self.transitionManager
         }else if segue.identifier == "captureMemory" {
             let vc = segue.destinationViewController as! CaptureMemoryViewController
             vc.group = self.group
+            vc.transitioningDelegate = self.transitionManager
         }else if (segue.identifier == "pickFriends") {
             let vc = segue.destinationViewController as! PickFriendsViewController
             vc.group = self.group
             vc.newGroup = false
+            vc.transitioningDelegate = self.transitionManager
         } else if (segue.identifier == "showFullPost") {
             let indexPath = tableView.indexPathForSelectedRow()
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PhotoPostCell
@@ -393,6 +403,11 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             post.image = cell.postImageView.image
             let vc = segue.destinationViewController as! PhotoPostViewController
             vc.post = post
+            vc.transitioningDelegate = self.transitionManager
+        } else if (segue.identifier == "showGroupSettings") {
+            let vc = segue.destinationViewController as! GroupSettingsViewController
+            vc.group = self.group
+            vc.transitioningDelegate = self.transitionManager
         }
 
     }
