@@ -54,7 +54,14 @@ class GroupTableViewCell: UITableViewCell {
             if self.group?.number_of_memories == 0 {
                 self.memoryCountTextField.text = "New Group"
             } else {
-                self.memoryCountTextField.text = "\(self.group?.number_of_memories)"
+                if let number = self.group?.number_of_memories {
+                    if number == 1 {
+                        self.memoryCountTextField.text = "1 Memory"
+                    } else {
+                        self.memoryCountTextField.text = "\(number) Memories"
+                    }
+                    
+                }
             }
             
             self.nameLabel.text = group.name

@@ -83,11 +83,8 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
             post.content = self.textView.text
             post.post_type = "text"
             post.group_id = group.object_id
-            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                
-            })
             
-            NSNotificationCenter.defaultCenter().postNotificationName("postStandByPost", object: post)
+            NSNotificationCenter.defaultCenter().postNotificationName("postStandByPostGroup", object: post)
             self.dismissViewControllerAnimated(true, completion: nil)
             
         }

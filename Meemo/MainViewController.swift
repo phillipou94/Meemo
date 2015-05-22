@@ -75,7 +75,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPost", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheet", object: nil)
         super.viewWillAppear(animated)
         
@@ -300,30 +299,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             return 0
         }
         
-    }
-    
-    func loadStandbyPost(notification:NSNotification) {
-        let post = notification.object as! Post
-        self.standbyPost = post
-        self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            
-            ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-            })
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-               // self.canLoadPosts = true
-            }
-            
-            
-        }
-        /* self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in
-        self.posts = result
-        self.tableView.reloadData()
-        self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        }) */
     }
     
     //MARK: - Disappearing NavBar

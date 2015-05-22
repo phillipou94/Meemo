@@ -9,7 +9,7 @@
 import UIKit
 import Spring
 
-class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
     var userID = CoreDataRequest.sharedManager.getUserCredentials()?.object_id
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var addButton: SpringButton!
@@ -35,6 +35,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     var onLastPage:Bool = false
     var page:Int = 1
     
+    var postToDelete:Post? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +58,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPost", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPostGroup", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheet", object: nil)
         super.viewWillAppear(animated)
     }
     
@@ -189,6 +192,45 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         
     }
     
+    //MARK: - Actionsheet
+    func showActionSheet(notification:NSNotification) {
+        if let info = notification.userInfo as? [String:AnyObject] {
+            self.postToDelete = info["postToDelete"] as? Post
+        }
+        
+        let actionSheet = UIActionSheet()
+        actionSheet.delegate = self
+        actionSheet.actionSheetStyle = .BlackTranslucent
+        if self.postToDelete?.user_id == userID {
+            actionSheet.addButtonWithTitle("Delete")
+        } else {
+            actionSheet.addButtonWithTitle("Flag As Inappropriate")
+        }
+        
+        actionSheet.addButtonWithTitle("Close")
+        actionSheet.cancelButtonIndex = 1
+        actionSheet.destructiveButtonIndex = 0
+        actionSheet.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        if buttonIndex == 0 {
+            if let post = self.postToDelete {
+                if let row = find(self.posts, post) {
+                    let indexPath = NSIndexPath(forRow: row, inSection: 1)
+                    self.posts.removeAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    if post.user_id == userID {
+                        ServerRequest.sharedManager.deletePost(post)
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    
     //MARK: - Disappearing NavBar
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -320,8 +362,6 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             ServerRequest.sharedManager.createPost(post, completion: { (finished) -> Void in
-                NSLog("PHOTOS ARE DONE!!!!")
-                println("PHOTOS ARE DONE!!!!")
             })
             dispatch_async(dispatch_get_main_queue()) {
                 // update some UI
@@ -329,11 +369,6 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         
             
         }
-       /* self.viewModel.getPostsFromGroup(1,group: self.group!, completion: { (result) -> Void in
-            self.posts = result
-            self.tableView.reloadData()
-            self.tableView.setContentOffset(CGPointMake(0,0), animated: false)
-        }) */
     }
 
     
