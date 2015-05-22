@@ -14,6 +14,7 @@ class TextPostCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     var user_id:NSNumber? = nil
     var post:Post? = nil
+    var row: Int? = nil
     
     @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
@@ -36,6 +37,12 @@ class TextPostCell: UITableViewCell {
                 nameLabel.text = post.user_name
             }
         }
+    }
+    @IBAction func optionPressed(sender: AnyObject) {
+        if let post = self.post {
+            NSNotificationCenter.defaultCenter().postNotificationName("ShowActionSheet", object: nil, userInfo: ["postToDelete":post])
+        }
+        
     }
     
 }

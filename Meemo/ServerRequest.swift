@@ -75,6 +75,36 @@ class ServerRequest: NSObject {
         }
     }
     
+    func delete(path:String, parameters: [String:AnyObject]?, token:String?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
+        var manager = Manager.sharedInstance
+        
+        if let api_token = token {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json", "API-TOKEN": api_token]
+            
+        } else {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json"]
+        }
+        
+        Alamofire.request(.DELETE, baseURLString+path, parameters: parameters) .responseJSON { (request, response, dataResponse, error) in
+            if let data: AnyObject = dataResponse as AnyObject?{
+                let json = JSON(data)
+                let status = json["status"]
+                if (status == 200) {
+                    success(json: json)
+                } else {
+                    println("Error: \(json)")
+                    failure(error:json)
+                }
+                
+            }
+        }
+
+        
+
+    }
+    
     // MARK: - User Authentication
     
     func loginUser(email:String, password:String, success:(wasSuccessful:Bool) -> Void) {
@@ -415,6 +445,22 @@ class ServerRequest: NSObject {
         })
     }
     
+    func deletePost(post:Post) {
+        
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        if let post_id = post.object_id {
+            let path = "posts/\(post_id)"
+            
+            self.delete(path, parameters: nil, token: token, success: { (json) -> Void in
+                
+                },failure: { (error) -> Void in
+                    println("Error:\(error)")
+            })
+        }
+        
+        
+    }
+    
     //MARK: - Facebook
     
     func signInWithFacebook(user:User,success:(wasSuccessful:Bool) -> Void) {
@@ -580,7 +626,6 @@ class ServerRequest: NSObject {
         }
         return dictionary
 
-        
     }
     
     func groupModel(dict:JSON) -> Group {
@@ -591,6 +636,7 @@ class ServerRequest: NSObject {
         group.lastPostType = dict["last_post_type"].string
         group.imageURL = self.removeBackSlashes(dict["file_url"].string)
         group.last_posted_name = dict["last_post_user_name"].string
+        group.number_of_memories = dict["number_of_memories"].number!
         if let has_seen = dict["seen_last_post"].bool {
             group.has_seen = has_seen
         } else {

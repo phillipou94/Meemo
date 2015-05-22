@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 2, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuV-82-no2">
-                        <rect key="frame" x="8" y="271" width="304" height="21"/>
+                        <rect key="frame" x="8" y="252" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="qbs-Qp-uJ0"/>
                         </constraints>
@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5e-gW-pvw">
-                        <rect key="frame" x="33" y="66" width="255" height="187"/>
+                        <rect key="frame" x="33" y="47" width="255" height="187"/>
                         <string key="text">CATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCAATCATCATCATCATCATCATCATCAATCATCATCATCATCATCATCATCAATCATCATCATCATCATCATCATCA</string>
                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
                         <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,12 +40,28 @@
                         <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-MJ-9qY" customClass="SpringButton" customModule="Spring">
+                        <rect key="frame" x="233" y="297" width="87" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="87" id="nKV-aG-cvU"/>
+                            <constraint firstAttribute="height" constant="22" id="zkF-c3-c6H"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" image="options-color">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="optionPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hAU-9c-NEy"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="BgY-f1-yUg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1cc-2e-I3e"/>
                     <constraint firstItem="iuV-82-no2" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2An-Ja-Jab"/>
-                    <constraint firstAttribute="centerY" secondItem="O5e-gW-pvw" secondAttribute="centerY" id="LyR-Cv-Rq5"/>
+                    <constraint firstAttribute="centerY" secondItem="O5e-gW-pvw" secondAttribute="centerY" constant="19" id="LyR-Cv-Rq5"/>
                     <constraint firstItem="BgY-f1-yUg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="MfP-nt-t8t"/>
+                    <constraint firstAttribute="trailing" secondItem="Cdc-MJ-9qY" secondAttribute="trailing" id="PGs-ga-kDo"/>
+                    <constraint firstAttribute="bottom" secondItem="Cdc-MJ-9qY" secondAttribute="bottom" id="Ykb-YY-0b5"/>
                     <constraint firstItem="O5e-gW-pvw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="33" id="amC-YW-OUt"/>
                     <constraint firstItem="BgY-f1-yUg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bAi-40-zhN"/>
                     <constraint firstItem="iuV-82-no2" firstAttribute="top" secondItem="O5e-gW-pvw" secondAttribute="bottom" constant="18" id="bWb-5U-0Hl"/>
@@ -62,4 +78,7 @@
             <point key="canvasLocation" x="449" y="503"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="options-color" width="32" height="8"/>
+    </resources>
 </document>

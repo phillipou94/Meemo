@@ -9,7 +9,7 @@
 import UIKit
 import Spring
 
-class MainViewController: UIViewController, CustomSegmentControlDelegate, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, CustomSegmentControlDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate {
     
     let viewModel = GroupsViewModel()
     var groups:[Group] = []
@@ -41,6 +41,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     let transitionManager = TransitionManager()
     
     var standbyPost:Post? = nil
+    var postToDelete: Post? = nil
     
     //MARK: - Initialization
     
@@ -75,6 +76,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPost", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheet", object: nil)
         super.viewWillAppear(animated)
         
     }
@@ -192,6 +194,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     cell.dateLabel.text = "Just Now"
                 }
                 cell.configureCell()
+                cell.row = indexPath.row
                 return cell
                 
             } else {
@@ -213,6 +216,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                         })
                     }
                 }
+                cell.row = indexPath.row
                 
                 return cell
             }
@@ -425,6 +429,44 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     func segmentControlDidChange() {
         self.segmentControl.frame = CGRectMake(0, self.customNavBar.frame.size.height, self.segmentControl.frame.size.width, self.segmentControl.frame.size.height)
         self.tableView.reloadData()
+    }
+    
+    //MARK: - Actionsheet
+    func showActionSheet(notification:NSNotification) {
+        if let info = notification.userInfo as? [String:AnyObject] {
+            self.postToDelete = info["postToDelete"] as? Post
+        }
+        
+        let actionSheet = UIActionSheet()
+        actionSheet.delegate = self
+        actionSheet.actionSheetStyle = .BlackTranslucent
+        if self.postToDelete?.user_id == userID {
+            actionSheet.addButtonWithTitle("Delete")
+        } else {
+            actionSheet.addButtonWithTitle("Flag As Inappropriate")
+        }
+        
+        actionSheet.addButtonWithTitle("Close")
+        actionSheet.cancelButtonIndex = 1
+        actionSheet.destructiveButtonIndex = 0
+        actionSheet.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+      
+        if buttonIndex == 0 {
+            if let post = self.postToDelete {
+                if let row = find(self.posts, post) {
+                    let indexPath = NSIndexPath(forRow: row, inSection: 1)
+                    self.posts.removeAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    if post.user_id == userID {
+                        ServerRequest.sharedManager.deletePost(post)
+                    }
+                    
+                }
+            }
+        }
     }
     
     //MARK: - Navigation

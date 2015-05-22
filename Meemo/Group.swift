@@ -20,6 +20,7 @@ class Group: NSObject {
     var visited_at:String? = nil
     var has_seen:Bool = false
     var last_posted_name:String? = nil
+    var number_of_memories: NSNumber = 0
     
    
 }

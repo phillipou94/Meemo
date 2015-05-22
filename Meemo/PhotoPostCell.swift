@@ -11,6 +11,7 @@ import UIKit
 class PhotoPostCell: UITableViewCell {
     var post:Post? = nil
     var user_id:NSNumber? = nil
+    var row:Int? = nil
     @IBOutlet weak var postImageView: UIImageView!
 
     
@@ -71,6 +72,15 @@ class PhotoPostCell: UITableViewCell {
 
         
     }
+    
+    @IBAction func optionPressed(sender: AnyObject) {
+        if let post = self.post {
+            NSNotificationCenter.defaultCenter().postNotificationName("ShowActionSheet", object: nil, userInfo: ["postToDelete":post])
+        }
+        
+        
+    }
+
     
     
 }

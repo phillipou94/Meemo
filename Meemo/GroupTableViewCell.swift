@@ -51,7 +51,12 @@ class GroupTableViewCell: UITableViewCell {
             loadImage({ (image) -> Void in
                 completion(image:image)
             })
-
+            if self.group?.number_of_memories == 0 {
+                self.memoryCountTextField.text = "New Group"
+            } else {
+                self.memoryCountTextField.text = "\(self.group?.number_of_memories)"
+            }
+            
             self.nameLabel.text = group.name
             if group.has_seen {
                 
