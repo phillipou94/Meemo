@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="groupImageView" destination="TJx-qa-EKa" id="csB-ox-c3p"/>
                 <outlet property="headerView" destination="iN0-l3-epB" id="vq1-0g-nOi"/>
+                <outlet property="membersCountLabel" destination="OVD-Bm-0kY" id="v1q-ha-Pnj"/>
+                <outlet property="memoriesCountLabel" destination="O44-4v-qZl" id="ZdU-nr-eIH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

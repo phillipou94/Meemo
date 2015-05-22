@@ -15,6 +15,8 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupImageView: UIImageView!
     
+    @IBOutlet weak var membersCountLabel: UILabel!
+    @IBOutlet weak var memoriesCountLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var headerView: UIView!
     override func viewDidLoad() {
@@ -56,6 +58,10 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         if let image = self.group?.image {
             self.groupImageView.image = image
         }
+        if let memories = self.group?.number_of_memories {
+            self.memoriesCountLabel.text = "\(memories)"
+        }
+        self.membersCountLabel.text = "\(members.count)"
         return self.headerView
     }
     
