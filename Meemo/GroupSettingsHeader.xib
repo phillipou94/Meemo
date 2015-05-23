@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJx-qa-EKa">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJx-qa-EKa">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="zb2-8K-nWo"/>
@@ -86,17 +86,32 @@
                         <constraint firstAttribute="trailing" secondItem="OVD-Bm-0kY" secondAttribute="trailing" constant="8" id="tzN-Lu-7cv"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5F-eG-CiF">
+                    <rect key="frame" x="559" y="148" width="33" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="33" id="ahX-vi-BCW"/>
+                        <constraint firstAttribute="height" constant="24" id="e70-XV-Guu"/>
+                    </constraints>
+                    <state key="normal" image="camera_L">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cameraPressed:" destination="-1" eventType="touchUpInside" id="NDw-3W-Csn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="KsF-5c-CRx" secondAttribute="trailing" id="JaJ-YO-SII"/>
                 <constraint firstAttribute="trailing" secondItem="Wji-fQ-BiH" secondAttribute="trailing" id="PkV-zK-y7a"/>
+                <constraint firstItem="KsF-5c-CRx" firstAttribute="top" secondItem="z5F-eG-CiF" secondAttribute="bottom" constant="8" id="TaU-rR-oAo"/>
                 <constraint firstItem="KsF-5c-CRx" firstAttribute="top" secondItem="TJx-qa-EKa" secondAttribute="bottom" id="a4j-3M-Sa1"/>
                 <constraint firstItem="TJx-qa-EKa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aic-mK-Rdf"/>
                 <constraint firstAttribute="trailing" secondItem="TJx-qa-EKa" secondAttribute="trailing" id="fWx-nl-5qE"/>
                 <constraint firstItem="Wji-fQ-BiH" firstAttribute="top" secondItem="KsF-5c-CRx" secondAttribute="bottom" constant="-1" id="fo3-aR-UFn"/>
                 <constraint firstItem="Wji-fQ-BiH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hw3-Qx-Ohi"/>
                 <constraint firstItem="KsF-5c-CRx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nbc-In-8gG"/>
+                <constraint firstAttribute="trailing" secondItem="z5F-eG-CiF" secondAttribute="trailing" constant="8" id="o7W-GI-AZF"/>
                 <constraint firstItem="TJx-qa-EKa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rOk-bo-os6"/>
                 <constraint firstItem="Wji-fQ-BiH" firstAttribute="top" secondItem="KsF-5c-CRx" secondAttribute="bottom" constant="-1" id="vaz-jM-YnS"/>
                 <constraint firstAttribute="bottom" secondItem="Wji-fQ-BiH" secondAttribute="bottom" id="x1n-1d-hkH"/>
@@ -105,4 +120,7 @@
             <point key="canvasLocation" x="357" y="355"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera_L" width="100" height="77"/>
+    </resources>
 </document>

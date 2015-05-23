@@ -75,7 +75,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheetMain", object: nil)
         super.viewWillAppear(animated)
         
     }
@@ -193,6 +192,8 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     cell.dateLabel.text = "Just Now"
                 }
                 cell.configureCell()
+                cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
+                cell.optionButton.tag = indexPath.row
                 cell.row = indexPath.row
                 return cell
                 
@@ -215,6 +216,8 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                         })
                     }
                 }
+                cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
+                cell.optionButton.tag = indexPath.row
                 cell.row = indexPath.row
                 
                 return cell
@@ -408,10 +411,9 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     }
     
     //MARK: - Actionsheet
-    func showActionSheet(notification:NSNotification) {
-        if let info = notification.userInfo as? [String:AnyObject] {
-            self.postToDelete = info["postToDelete"] as? Post
-        }
+    func showActionSheet(sender: AnyObject) {
+        let button = sender as! UIButton
+        self.postToDelete = self.posts[button.tag]
         
         let actionSheet = UIActionSheet()
         actionSheet.delegate = self

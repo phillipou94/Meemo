@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Spring
 
 class PhotoPostCell: UITableViewCell {
     var post:Post? = nil
@@ -14,6 +15,7 @@ class PhotoPostCell: UITableViewCell {
     var row:Int? = nil
     @IBOutlet weak var postImageView: UIImageView!
 
+    @IBOutlet var optionButton: SpringButton!
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

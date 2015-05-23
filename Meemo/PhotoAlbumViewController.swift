@@ -134,6 +134,8 @@ class PhotoAlbumViewController: UIViewController, UIScrollViewDelegate, UICollec
                 self.scrollView.zoomScale = 1.0
                 collectionView.reloadData()
             })
+        } else {
+            self.delegate?.exitAlbum()
         }
         
     }

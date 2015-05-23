@@ -134,6 +134,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
             } else {
                 cell.dateLabel.text = "Just Now"
             }
+            cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
+            cell.optionButton.tag = indexPath.row
             
             cell.configureCell()
             return cell
@@ -157,6 +159,8 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
                     })
                 }
             }
+            cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
+            cell.optionButton.tag = indexPath.row
            
             return cell
         }
@@ -195,7 +199,10 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     //MARK: - Actionsheet
-    func showActionSheet(notification:NSNotification) {
+    func showActionSheet(sender: AnyObject) {
+        let button = sender as! UIButton
+        self.postToDelete = self.posts[button.tag]
+        
         let actionSheet = UIActionSheet()
         actionSheet.delegate = self
         actionSheet.actionSheetStyle = .BlackTranslucent

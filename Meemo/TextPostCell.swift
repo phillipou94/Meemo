@@ -7,10 +7,11 @@
 //
 
 import UIKit
-
+import Spring 
 class TextPostCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var optionButton: SpringButton!
     @IBOutlet weak var contentLabel: UILabel!
     var user_id:NSNumber? = nil
     var post:Post? = nil

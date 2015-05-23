@@ -25,7 +25,6 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         super.viewDidLoad()
         self.segmentController.items = ["Groups","Friends"]
         self.segmentController.delegate = self
-        
         setUpTableView()
         self.viewModel.getGroups { (groups) -> Void in
             self.groups = groups

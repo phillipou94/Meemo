@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -55,9 +55,6 @@
                                 <state key="normal" image="options">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="optionPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dYX-C9-tqT"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
@@ -91,6 +88,7 @@
             <connections>
                 <outlet property="dateLabel" destination="Opy-I4-Aoz" id="e23-PF-ay1"/>
                 <outlet property="nameLabel" destination="EFr-vZ-nXT" id="a1x-w3-fAo"/>
+                <outlet property="optionButton" destination="qfy-hK-wxq" id="ATF-dw-yih"/>
                 <outlet property="postImageView" destination="Xi4-Fc-nuP" id="Vjg-3Q-e0U"/>
                 <outlet property="shadeView" destination="Mdd-lH-FpT" id="0le-pN-IXc"/>
                 <outlet property="titleLabel" destination="t0M-4D-nzC" id="2kG-XA-Pia"/>
