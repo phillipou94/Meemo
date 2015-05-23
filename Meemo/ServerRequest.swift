@@ -469,7 +469,20 @@ class ServerRequest: NSObject {
             })
         }
         
-        
+    }
+    
+    func hidePost(post:Post) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        if let post_id = post.object_id {
+            let path = "posts/\(post_id)/hide"
+            
+            self.post(path, parameters: nil, token: token, success: { (json) -> Void in
+                
+                },failure: { (error) -> Void in
+                    println("Error:\(error)")
+            })
+        }
+
     }
     
     //MARK: - Facebook

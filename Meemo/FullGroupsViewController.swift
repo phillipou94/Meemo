@@ -196,21 +196,20 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     
     //MARK: - Actionsheet
     func showActionSheet(notification:NSNotification) {
-        if let info = notification.userInfo as? [String:AnyObject] {
-            self.postToDelete = info["postToDelete"] as? Post
-        }
-        
         let actionSheet = UIActionSheet()
         actionSheet.delegate = self
         actionSheet.actionSheetStyle = .BlackTranslucent
         if self.postToDelete?.user_id == userID {
             actionSheet.addButtonWithTitle("Delete")
+            actionSheet.addButtonWithTitle("Close")
+            actionSheet.cancelButtonIndex = 1
         } else {
             actionSheet.addButtonWithTitle("Flag As Inappropriate")
+            actionSheet.addButtonWithTitle("Hide Post")
+            actionSheet.addButtonWithTitle("Close")
+            actionSheet.cancelButtonIndex = 2
         }
         
-        actionSheet.addButtonWithTitle("Close")
-        actionSheet.cancelButtonIndex = 1
         actionSheet.destructiveButtonIndex = 0
         actionSheet.showInView(self.view)
     }

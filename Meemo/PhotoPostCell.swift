@@ -75,7 +75,7 @@ class PhotoPostCell: UITableViewCell {
     
     @IBAction func optionPressed(sender: AnyObject) {
         if let post = self.post {
-            NSNotificationCenter.defaultCenter().postNotificationName("ShowActionSheet", object: nil, userInfo: ["postToDelete":post])
+            NSNotificationCenter.defaultCenter().postNotificationName("ShowActionSheetMain", object: nil, userInfo: ["postToDelete":post])
         }
         
         

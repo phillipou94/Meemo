@@ -75,7 +75,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheetMain", object: nil)
         super.viewWillAppear(animated)
         
     }
@@ -418,12 +418,15 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         actionSheet.actionSheetStyle = .BlackTranslucent
         if self.postToDelete?.user_id == userID {
             actionSheet.addButtonWithTitle("Delete")
+            actionSheet.addButtonWithTitle("Close")
+            actionSheet.cancelButtonIndex = 1
         } else {
             actionSheet.addButtonWithTitle("Flag As Inappropriate")
+            actionSheet.addButtonWithTitle("Hide Post")
+            actionSheet.addButtonWithTitle("Close")
+            actionSheet.cancelButtonIndex = 2
         }
         
-        actionSheet.addButtonWithTitle("Close")
-        actionSheet.cancelButtonIndex = 1
         actionSheet.destructiveButtonIndex = 0
         actionSheet.showInView(self.view)
     }
@@ -438,8 +441,19 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
                     if post.user_id == userID {
                         ServerRequest.sharedManager.deletePost(post)
+                    } else {
+                        ServerRequest.sharedManager.hidePost(post)
                     }
                     
+                }
+            }
+        } else if buttonIndex == 1 && actionSheet.cancelButtonIndex != 1 {
+            if let post = self.postToDelete {
+                if let row = find(self.posts, post) {
+                    let indexPath = NSIndexPath(forRow: row, inSection: 1)
+                    self.posts.removeAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    ServerRequest.sharedManager.hidePost(post)
                 }
             }
         }
