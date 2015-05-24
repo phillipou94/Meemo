@@ -34,7 +34,6 @@ class CameraViewController: UIImagePickerController{
         topBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         bottomView = UIView(frame:CGRectMake(0,self.view.frame.size.width+80,self.view.frame.size.width,self.view.frame.size.width-80))
         bottomView.backgroundColor = UIColor.blackColor()
-        
         menuBar = UIView(frame:CGRectMake(0,40+self.view.frame.size.width,self.view.frame.size.width,40))
         menuBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         self.cameraOverlayView?.addSubview(topBar)
@@ -65,12 +64,14 @@ class CameraViewController: UIImagePickerController{
         albumButton.addTarget(self, action: "showAlbum", forControlEvents: .TouchUpInside)
         self.cameraOverlayView!.addSubview(albumButton)
         
-        let selfieButton = UIButton(frame:CGRectMake(self.menuBar.frame.size.width/2 - 20, self.menuBar.frame.size.height/2 - 15,40,30))
+        let selfieButton = UIButton(frame:CGRectMake(self.view.frame.size.width - 100,self.view.frame.size.height-125,68,50))
         selfieButton.setBackgroundImage(UIImage(named: "Selfie"), forState: .Normal)
         selfieButton.addTarget(self, action: "toggleSelfie", forControlEvents: .TouchUpInside)
-        menuBar.addSubview(selfieButton)
-        
-        flashButton = UIButton(frame:CGRectMake(self.topBar.frame.size.width-25,self.topBar.frame.size.height/2 - 10,20,20))
+        self.cameraOverlayView!.addSubview(selfieButton)
+        self.cameraOverlayView!.bringSubviewToFront(selfieButton)
+
+    
+        flashButton = UIButton(frame:CGRectMake(self.topBar.frame.size.width-45,self.topBar.frame.size.height/2 - 15,30,30))
         flashButton.backgroundColor = UIColor.redColor()
         flashButton.addTarget(self, action: "toggleFlash", forControlEvents: .TouchUpInside)
         topBar.addSubview(flashButton)

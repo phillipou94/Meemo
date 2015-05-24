@@ -51,6 +51,8 @@
 		4DC019851B02AF4A00865DF9 /* GroupPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC019831B02AF4A00865DF9 /* GroupPreviewCell.swift */; };
 		4DC019861B02AF4A00865DF9 /* GroupPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC019841B02AF4A00865DF9 /* GroupPreviewCell.xib */; };
 		4DC2F9EC1AF56F580001683B /* PhoneContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */; };
+		4DCFE0B51B1230EF009175A0 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE0B31B1230EF009175A0 /* GroupMemberCell.swift */; };
+		4DCFE0B61B1230EF009175A0 /* GroupMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE0B41B1230EF009175A0 /* GroupMemberCell.xib */; };
 		4DD2F9991B0FD51C000406EC /* GroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2F9981B0FD51C000406EC /* GroupSettingsViewController.swift */; };
 		4DD2F99B1B0FECDE000406EC /* GroupSettingsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD2F99A1B0FECDE000406EC /* GroupSettingsHeader.xib */; };
 		4DD82CFE1AE81B0A00C9C615 /* ShadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */; };
@@ -152,6 +154,8 @@
 		4DC019831B02AF4A00865DF9 /* GroupPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPreviewCell.swift; sourceTree = "<group>"; };
 		4DC019841B02AF4A00865DF9 /* GroupPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupPreviewCell.xib; sourceTree = "<group>"; };
 		4DC2F9EB1AF56F580001683B /* PhoneContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactsManager.swift; sourceTree = "<group>"; };
+		4DCFE0B31B1230EF009175A0 /* GroupMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberCell.swift; sourceTree = "<group>"; };
+		4DCFE0B41B1230EF009175A0 /* GroupMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMemberCell.xib; sourceTree = "<group>"; };
 		4DD2F9981B0FD51C000406EC /* GroupSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewController.swift; sourceTree = "<group>"; };
 		4DD2F99A1B0FECDE000406EC /* GroupSettingsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupSettingsHeader.xib; sourceTree = "<group>"; };
 		4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeView.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				4D695B311AF5E6DE000BCB3A /* FriendsCell.xib */,
 				4DFB6B6F1AF690EA00909860 /* FriendsPreviewCell.swift */,
 				4DFB6B701AF690EA00909860 /* FriendsPreviewCell.xib */,
+				4DCFE0B31B1230EF009175A0 /* GroupMemberCell.swift */,
+				4DCFE0B41B1230EF009175A0 /* GroupMemberCell.xib */,
 				4D51AE921AFB184D007DBD13 /* GroupTableViewCell.swift */,
 				4D51AE931AFB184D007DBD13 /* GroupTableViewCell.xib */,
 				4DC019831B02AF4A00865DF9 /* GroupPreviewCell.swift */,
@@ -642,6 +648,7 @@
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
 				4DA848CB1B01618100995031 /* AlertView.xib in Resources */,
 				4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */,
+				4DCFE0B61B1230EF009175A0 /* GroupMemberCell.xib in Resources */,
 				4DD919871AE6CA4800C9E5DE /* FacebookSDK.strings in Resources */,
 				4DA1F5D21AF3EEB00049512C /* PhoneSearchViewController.xib in Resources */,
 			);
@@ -746,6 +753,7 @@
 				4DB603DE1AE9A10A003BBC1B /* CreateGroupsViewController.swift in Sources */,
 				4D8595791AE5A1CC008F96E7 /* Meemo.xcdatamodeld in Sources */,
 				4DE279E01AEF49E600340D0F /* CameraViewController.swift in Sources */,
+				4DCFE0B51B1230EF009175A0 /* GroupMemberCell.swift in Sources */,
 				4D586D201B0110B900B72CCD /* WriteMemoryViewController.swift in Sources */,
 				4DD91A2D1AE6D9B700C9E5DE /* CoreDataRequest.swift in Sources */,
 			);

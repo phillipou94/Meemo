@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ServerRequest.swift"
-            timestampString = "454132904.150873"
+            timestampString = "454177901.410974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "createPost(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -146,11 +146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meemo/ServerRequest.swift"
-            timestampString = "454132904.150873"
+            timestampString = "454177901.410974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "690"
-            endingLineNumber = "690"
+            startingLineNumber = "697"
+            endingLineNumber = "697"
             landmarkName = "userArrayToDictionary(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,6 +169,54 @@
             endingLineNumber = "444"
             landmarkName = "showActionSheet(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meemo/ServerRequest.swift"
+            timestampString = "454177901.410974"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "getGroupMembers(_:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Meemo.ServerRequest.(getGroupMembers (Meemo.ServerRequest) -&gt; (Meemo.Group, completion : (members : Swift.Array&lt;Meemo.User&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Meemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/phillipou/Desktop/Meemo/Meemo/ServerRequest.swift"
+                  timestampString = "454177694.966273"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Meemo.ServerRequest.(getGroupMembers (Meemo.ServerRequest) -&gt; (Meemo.Group, completion : (members : Swift.Array&lt;Meemo.User&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Meemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/phillipou/Desktop/Meemo/Meemo/ServerRequest.swift"
+                  timestampString = "454177694.966426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "278"
+                  endingLineNumber = "278"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

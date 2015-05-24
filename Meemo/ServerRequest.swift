@@ -270,11 +270,18 @@ class ServerRequest: NSObject {
     func getGroupMembers(group:Group, completion:(members:[User]) -> Void) {
         let token = CoreDataRequest.sharedManager.getAPIToken()
         let path = "groups/\(group.object_id)/users"
-        
+        var users:[User]=[]
         self.get(path, parameters: nil, token: token, success: { (json) -> Void in
-        
-            }, failure: { (json) -> Void in
-            
+            for dict in json["response"]["members"].arrayValue {
+                let user = User()
+                user.name = dict["name"].string
+                user.object_id = dict["id"].number!
+                user.facebook_id = dict["facebook_id"].string
+                users.append(user)
+            }
+            completion(members: users)
+            }, failure: { (error) -> Void in
+                println("Error:\(error)")
         })
     }
     
