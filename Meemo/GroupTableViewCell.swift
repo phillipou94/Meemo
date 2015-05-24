@@ -64,10 +64,7 @@ class GroupTableViewCell: UITableViewCell {
                 }
             }
             
-            self.nameLabel.text = group.name
-            if group.has_seen {
-                
-            } else {
+            if !group.has_seen {
                 self.memoryCountTextField.text = "New Memory"
             }
         }
