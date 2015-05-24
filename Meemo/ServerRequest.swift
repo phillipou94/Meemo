@@ -75,6 +75,35 @@ class ServerRequest: NSObject {
         }
     }
     
+    func update(path:String, parameters: [String:AnyObject]?, token:String?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
+        
+        var manager = Manager.sharedInstance
+        
+        if let api_token = token {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json", "API-TOKEN": api_token]
+            
+        } else {
+            manager.session.configuration.HTTPAdditionalHeaders = ["Content-Type": "application/json",
+                "Accept":"application/json"]
+        }
+        
+        Alamofire.request(.PUT, baseURLString+path, parameters: parameters) .responseJSON { (request, response, dataResponse, error) in
+            if let data: AnyObject = dataResponse as AnyObject?{
+                let json = JSON(data)
+                let status = json["status"]
+                if (status == 200) {
+                    success(json: json)
+                } else {
+                    println("Error: \(json)")
+                    failure(error:json)
+                }
+                
+            }
+        }
+    }
+
+    
     func delete(path:String, parameters: [String:AnyObject]?, token:String?, success:(json:JSON) -> Void, failure:(error:JSON) -> Void) {
         var manager = Manager.sharedInstance
         
@@ -296,9 +325,6 @@ class ServerRequest: NSObject {
 
             
         }
-        
-       
-        
     }
     
     func leaveGroup(group:Group) {
@@ -309,6 +335,35 @@ class ServerRequest: NSObject {
             }, failure: { (error) -> Void in
                 println("Invite User Error: \(error)")
         })
+        
+    }
+    
+    func updateGroup(group:Group, newImage:UIImage?) {
+        let token = CoreDataRequest.sharedManager.getAPIToken()
+        let path = "groups/\(group.object_id)/edit"
+        if let name = group.name {
+            var parameter: [String:AnyObject] = ["name":name]
+            
+            if let image = newImage {
+                self.uploadPhoto(image, completion: { (url) -> Void in
+                    parameter["file_url"] = url
+                    self.update(path, parameters: parameter, token: token, success: { (json) -> Void in
+                        
+                        }, failure: { (error) -> Void in
+                            println("Unable To Update Group: \(error)")
+                    })
+
+                })
+            } else {
+                self.update(path, parameters: parameter, token: token, success: { (json) -> Void in
+                    
+                    }, failure: { (error) -> Void in
+                        println("Unable To Update Group: \(error)")
+                })
+            }
+            
+        }
+        
         
     }
     

@@ -61,15 +61,23 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadStandbyPost:", name: "postStandByPostGroup", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showActionSheet:", name: "ShowActionSheet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateGroup:", name: "UpdateGroups", object: nil)
+        
         super.viewWillAppear(animated)
     }
+    
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         animateOutShadeView()
         self.addButton.selected = false
         setRotation()
+    }
+    
+    func updateGroup(notification:NSNotification) {
+        if let updatedGroup = notification.object as? Group {
+            self.groupNameLabel.text = updatedGroup.name
+        }
     }
     
     func loadPosts(cursor:Int, completion:() -> Void) {

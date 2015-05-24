@@ -37,6 +37,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     var photoCache = NSCache()
     var groupsCache = NSCache()
     var onLastPage:Bool = false
+    var needsToReload:Bool = false
     
     let transitionManager = TransitionManager()
     
@@ -76,7 +77,34 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateGroup:", name: "UpdateGroups", object: nil)
+        if needsToReload {
+            self.tableView.reloadData()
+            
+        }
         
+    }
+    
+    func updateGroup(notification:NSNotification) {
+        
+        if let newGroup = notification.object as? Group {
+            for (index,group) in enumerate(self.groups) {
+                if group.object_id == newGroup.object_id {
+                    if let url = group.imageURL {
+                        self.photoCache.removeObjectForKey(url)
+                    }
+                    if let image = newGroup.image {
+                        self.photoCache.setObject(image, forKey: newGroup.imageURL!)
+                    }
+                    
+                    self.groups[index] = newGroup
+                    needsToReload = true
+                    
+                    return
+
+                }
+            }
+        }
     }
     
     func setUpTableView() {
@@ -229,6 +257,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupTableViewCell") as! GroupTableViewCell
             cell.group = group
+            
             if let file_url = group.imageURL {
                 if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                     cell.thumbnail.image = cachedImage
@@ -240,7 +269,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     
                 }
             }
-
+            cell.nameLabel.text = group.name
             cell.dateLabel.text = group.last_updated?.conventionalDate()
             return cell
         }

@@ -9,7 +9,16 @@
 import UIKit
 import Photos
 
-class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UICollectionViewDelegate, UICollectionViewDataSource {
+class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UICollectionViewDelegate, UICollectionViewDataSource, CameraViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate {
+    
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var groupImageView: UIImageView!
+    @IBOutlet weak var membersCountLabel: UILabel!
+    @IBOutlet weak var memoriesCountLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var headerView: UIView!
+    
+    var cameraViewController = CameraViewController()
     var group:Group? = nil
     let viewModel = GroupsViewModel()
     var members: [User] = []
@@ -17,18 +26,13 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     var images:PHFetchResult = PHFetchResult()
     var collectionViewContainer =  UIView()
     var selectedIndex = -1
+    var newImage:UIImage? = nil
     
     var bottomState:CGFloat = CGFloat()
     var middleState:CGFloat = CGFloat()
     var topState:CGFloat = CGFloat()
     var currentState:CGFloat = CGFloat()
-    @IBOutlet weak var groupNameLabel: UILabel!
-    @IBOutlet weak var groupImageView: UIImageView!
     
-    @IBOutlet weak var membersCountLabel: UILabel!
-    @IBOutlet weak var memoriesCountLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var headerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -37,7 +41,6 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.registerNib(nib, forCellReuseIdentifier: "FriendsCell")
         fetchPhotos()
         if let group = self.group {
-            self.groupNameLabel.text = group.name
             self.viewModel.getMembers(group, completion: { (members) -> Void in
                 self.tableView.reloadData()
             })
@@ -77,7 +80,15 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         if let memories = self.group?.number_of_memories {
             self.memoriesCountLabel.text = "\(memories)"
         }
+        if let name = self.group?.name {
+            self.groupNameTextField.text = name
+        }
+        self.groupNameTextField.userInteractionEnabled = false
+        self.groupNameTextField.delegate = self
         self.membersCountLabel.text = "\(members.count)"
+        let tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.headerView.addGestureRecognizer(tap)
+        
         return self.headerView
     }
     
@@ -178,13 +189,15 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
             let asset = self.images[indexPath.row-1] as! PHAsset
             loadImageFrom(asset, completionHandler: { (image) -> Void in
                 self.groupImageView.image = image
+                self.newImage = image
                 collectionView.reloadData()
             })
         } else {
-            
+            showCamera()
         }
         
     }
+
     
     //MARK: - Animate CollectionView
     
@@ -227,6 +240,51 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
+    //MARK: - TextField
+    
+    @IBAction func editPressed(sender: AnyObject) {
+        self.groupNameTextField.text = ""
+        self.groupNameTextField.userInteractionEnabled = true
+        self.groupNameTextField.becomeFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text == "" {
+            if let name = group?.name {
+                textField.text = name
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        textField.userInteractionEnabled = false
+        return true
+    }
+    
+    func dismissKeyboard() {
+        self.groupNameTextField.resignFirstResponder()
+        self.groupNameTextField.userInteractionEnabled = false
+    }
+    
+    @IBAction func savePressed(sender: AnyObject) {
+        if let group = self.group {
+            group.name = self.groupNameTextField.text
+            if let newImage = self.newImage {
+                group.image = newImage
+                group.imageURL = "GroupStandby"
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateGroups", object: group)
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            if let group = self.group {
+                
+                ServerRequest.sharedManager.updateGroup(group, newImage: self.newImage)
+            }
+
+        })
+    }
     
     
     //MARK: - ALAssets
@@ -278,6 +336,73 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                 completionHandler(image:image)
         })
     }
+    
+    //MARK: - Camera
+    
+    //MARK: - CAMERA
+    
+    func showCamera() {
+        cameraViewController.sourceViewController = self
+        cameraViewController.delegate = self
+        cameraViewController.viewDelegate = self
+        self.modalPresentationStyle = .Custom
+        self.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(cameraViewController, animated: false, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        cameraViewController.dismissViewControllerAnimated(true, completion: nil)
+        
+        let width = min(image.size.width,image.size.height)
+        
+        let translation = (40/self.view.frame.size.height) * image.size.height  //40 = height of top menu in camera
+        
+        let rect = CGRectMake(0, 40, width, width);
+        newImage = cropImage(image, rect: rect)
+        self.groupImageView.image = newImage
+        
+    }
+    
+    func cropImage(image:UIImage, rect:CGRect) -> UIImage {
+        var rectTransform = CGAffineTransform()
+        let translation = (40/self.view.frame.size.height) * image.size.height
+        
+        switch (image.imageOrientation) {
+        case .Left:
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0.5*M_PI)), 0.0, -image.size.height-translation)
+            break
+        case .Right:
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-0.5*M_PI)), -image.size.width, translation)
+            break
+        case .Down:
+            rectTransform =  CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(-M_PI)), -image.size.width, -image.size.height-translation)
+            break
+        default:
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(CGFloat(0)),translation,0)
+        }
+        rectTransform = CGAffineTransformScale(rectTransform, image.scale, image.scale)
+        var imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectApplyAffineTransform(rect, rectTransform))
+        let result = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        return result!
+        
+    }
+    
+    func exitCamera() {
+        cameraViewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
+    }
+    
+    func showAlbum() {
+        exitCamera()
+        UIView.animateWithDuration(0.4, animations: { () -> Void in
+            self.currentState = self.middleState
+            self.collectionViewContainer.frame = CGRectMake(0,self.middleState,self.view.frame.size.width,self.view.frame.size.height - 40)
+        })
+    }
+
     /*
     // MARK: - Navigation
 

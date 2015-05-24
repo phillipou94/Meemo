@@ -2253,8 +2253,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2w-gC-C6a">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meemo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W49-hi-PcN">
-                                        <rect key="frame" x="63" y="14" width="475" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W49-hi-PcN">
+                                        <rect key="frame" x="87" y="14" width="427" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="nLi-a1-jrx"/>
                                         </constraints>
@@ -2275,16 +2275,33 @@
                                             <segue destination="3LK-p4-90b" kind="unwind" unwindAction="unwindToViewController:" id="L6U-7B-lGn"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mN-IU-Vh2">
+                                        <rect key="frame" x="550" y="10" width="42" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="iUL-HG-gwZ"/>
+                                            <constraint firstAttribute="width" constant="42" id="vtL-di-paQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="savePressed:" destination="Mtm-QV-tl5" eventType="touchUpInside" id="CTa-Gy-hqV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="W49-hi-PcN" firstAttribute="leading" secondItem="M2w-gC-C6a" secondAttribute="leading" constant="63" id="1D5-h8-bgI"/>
+                                    <constraint firstItem="W49-hi-PcN" firstAttribute="leading" secondItem="M2w-gC-C6a" secondAttribute="leading" constant="87" id="1D5-h8-bgI"/>
                                     <constraint firstItem="W49-hi-PcN" firstAttribute="top" secondItem="M2w-gC-C6a" secondAttribute="top" constant="14" id="EDQ-qJ-u0r"/>
                                     <constraint firstItem="W49-hi-PcN" firstAttribute="centerX" secondItem="M2w-gC-C6a" secondAttribute="centerX" id="I9X-fx-bss"/>
                                     <constraint firstItem="dp8-0K-Av9" firstAttribute="leading" secondItem="M2w-gC-C6a" secondAttribute="leading" id="JF7-7I-4gN"/>
                                     <constraint firstItem="dp8-0K-Av9" firstAttribute="centerY" secondItem="M2w-gC-C6a" secondAttribute="centerY" id="M2H-vb-tod"/>
                                     <constraint firstAttribute="bottom" secondItem="W49-hi-PcN" secondAttribute="bottom" constant="15" id="TRl-Di-s7o"/>
+                                    <constraint firstAttribute="trailing" secondItem="5mN-IU-Vh2" secondAttribute="trailing" constant="8" id="Zia-5D-iXe"/>
                                     <constraint firstItem="dp8-0K-Av9" firstAttribute="top" secondItem="M2w-gC-C6a" secondAttribute="top" constant="5" id="feW-rJ-rTS"/>
+                                    <constraint firstAttribute="centerY" secondItem="5mN-IU-Vh2" secondAttribute="centerY" id="ges-TI-h1x"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="m7n-2O-F2M">
@@ -2304,7 +2321,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="groupNameLabel" destination="W49-hi-PcN" id="OoP-mD-csR"/>
                         <outlet property="tableView" destination="m7n-2O-F2M" id="Q0M-rQ-G1X"/>
                     </connections>
                 </viewController>

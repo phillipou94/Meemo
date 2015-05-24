@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupSettingsViewController" customModule="Meemo" customModuleProvider="target">
             <connections>
                 <outlet property="groupImageView" destination="TJx-qa-EKa" id="csB-ox-c3p"/>
+                <outlet property="groupNameTextField" destination="2J7-Jz-hMm" id="g7c-Sd-FLV"/>
                 <outlet property="headerView" destination="iN0-l3-epB" id="vq1-0g-nOi"/>
                 <outlet property="membersCountLabel" destination="OVD-Bm-0kY" id="v1q-ha-Pnj"/>
                 <outlet property="memoriesCountLabel" destination="O44-4v-qZl" id="ZdU-nr-eIH"/>
@@ -99,14 +100,43 @@
                         <action selector="cameraPressed:" destination="-1" eventType="touchUpInside" id="NDw-3W-Csn"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Group Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2J7-Jz-hMm">
+                    <rect key="frame" x="19" y="39" width="562" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="owd-uv-czv"/>
+                    </constraints>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LP9-4t-sRM">
+                    <rect key="frame" x="0.0" y="148" width="62" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8Z7-ao-5HT"/>
+                        <constraint firstAttribute="width" constant="62" id="y4T-JE-g2Q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
+                    <state key="normal" title="Edit">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="editPressed:" destination="-1" eventType="touchUpInside" id="Nou-75-HD8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="2J7-Jz-hMm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="1OE-0z-jEQ"/>
+                <constraint firstItem="KsF-5c-CRx" firstAttribute="top" secondItem="LP9-4t-sRM" secondAttribute="bottom" constant="2" id="3rk-mS-2BG"/>
+                <constraint firstItem="2J7-Jz-hMm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="68y-F1-pF4"/>
                 <constraint firstAttribute="trailing" secondItem="KsF-5c-CRx" secondAttribute="trailing" id="JaJ-YO-SII"/>
                 <constraint firstAttribute="trailing" secondItem="Wji-fQ-BiH" secondAttribute="trailing" id="PkV-zK-y7a"/>
                 <constraint firstItem="KsF-5c-CRx" firstAttribute="top" secondItem="z5F-eG-CiF" secondAttribute="bottom" constant="8" id="TaU-rR-oAo"/>
+                <constraint firstItem="LP9-4t-sRM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YvF-6N-Pr2"/>
                 <constraint firstItem="KsF-5c-CRx" firstAttribute="top" secondItem="TJx-qa-EKa" secondAttribute="bottom" id="a4j-3M-Sa1"/>
                 <constraint firstItem="TJx-qa-EKa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aic-mK-Rdf"/>
+                <constraint firstAttribute="trailing" secondItem="2J7-Jz-hMm" secondAttribute="trailing" constant="19" id="bTz-Mj-Wzp"/>
                 <constraint firstAttribute="trailing" secondItem="TJx-qa-EKa" secondAttribute="trailing" id="fWx-nl-5qE"/>
                 <constraint firstItem="Wji-fQ-BiH" firstAttribute="top" secondItem="KsF-5c-CRx" secondAttribute="bottom" constant="-1" id="fo3-aR-UFn"/>
                 <constraint firstItem="Wji-fQ-BiH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hw3-Qx-Ohi"/>
