@@ -833,12 +833,20 @@
                                     <constraint firstItem="eOB-vI-gKy" firstAttribute="centerX" secondItem="MfB-jp-Aei" secondAttribute="centerX" id="r82-DE-jDS"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-p0-A0N">
+                                <rect key="frame" x="278" y="278" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="04h-X1-CJc"/>
+                                    <constraint firstAttribute="width" constant="45" id="8sN-sb-l5n"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="S0i-3f-zAr" secondAttribute="centerX" constant="49" id="0XN-hw-WAv"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="height" secondItem="WGs-bn-eFR" secondAttribute="height" constant="15" id="0lQ-ee-D1y"/>
                             <constraint firstAttribute="width" secondItem="MfB-jp-Aei" secondAttribute="width" id="7P0-me-A7o"/>
+                            <constraint firstAttribute="centerY" secondItem="0kj-p0-A0N" secondAttribute="centerY" id="BDB-XD-zRY"/>
                             <constraint firstItem="bar-EZ-T2q" firstAttribute="top" secondItem="aNY-Fh-uzV" secondAttribute="bottom" constant="13" id="BpZ-Rb-gmR"/>
                             <constraint firstItem="tHv-aS-w2e" firstAttribute="top" secondItem="rYL-Xl-jSM" secondAttribute="bottom" id="Cc4-dh-K9z"/>
                             <constraint firstItem="H1J-wI-cnS" firstAttribute="trailing" secondItem="fre-Za-tsO" secondAttribute="trailingMargin" id="DUE-Sn-zFz"/>
@@ -858,6 +866,7 @@
                             <constraint firstItem="tHv-aS-w2e" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="kpa-4R-9nc"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="centerX" secondItem="aNY-Fh-uzV" secondAttribute="centerX" id="w3Y-Pz-lBR"/>
                             <constraint firstItem="MfB-jp-Aei" firstAttribute="leading" secondItem="fre-Za-tsO" secondAttribute="leading" id="wMN-Kq-pnA"/>
+                            <constraint firstAttribute="centerX" secondItem="0kj-p0-A0N" secondAttribute="centerX" id="x5G-QC-W8W"/>
                             <constraint firstAttribute="centerX" secondItem="WGs-bn-eFR" secondAttribute="centerX" id="yhT-pO-Yue"/>
                         </constraints>
                         <variation key="default">
@@ -876,6 +885,7 @@
                         <outlet property="captureMemoryButton" destination="rqM-1h-24g" id="BG3-vV-vqs"/>
                         <outlet property="captureMemoryContainer" destination="bar-EZ-T2q" id="hOo-JZ-HuM"/>
                         <outlet property="customNavBar" destination="MfB-jp-Aei" id="YuX-tW-0Gd"/>
+                        <outlet property="loadingImageView" destination="0kj-p0-A0N" id="Vg2-2O-jJD"/>
                         <outlet property="segmentControl" destination="WGs-bn-eFR" id="NCw-Wp-uc4"/>
                         <outlet property="tableView" destination="tHv-aS-w2e" id="o2G-be-tcF"/>
                         <outlet property="writeMemoryButton" destination="ZBy-ol-pOx" id="6c8-ki-MPq"/>

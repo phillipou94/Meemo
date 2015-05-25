@@ -32,6 +32,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     @IBOutlet var segmentControl: CustomSegmentControl!
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var loadingImageView: UIImageView!
     
     var page: Int = 1
     var photoCache = NSCache()
@@ -60,15 +61,19 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         self.segmentControl.delegate = self
         page = 1
         setUpTableView()
+        
+        self.loadingImageView.animationImages = [UIImage(named: "loading_cloud_1")!,UIImage(named: "loading_cloud_2")!,UIImage(named: "loading_cloud_3")!]
+        self.loadingImageView.animationDuration = 1.0
+        self.loadingImageView.startAnimating()
 
         self.loadPosts(self.page, completion: { () -> Void in
             if let post = self.standbyPost {
-                
                 self.posts.insert(post, atIndex: 0)
                 
             }
             self.viewModel.getGroups({ (groups) -> Void in
                 self.groups = groups
+                self.loadingImageView.stopAnimating()
                 self.tableView.reloadData()
             })
         })
