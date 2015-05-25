@@ -60,7 +60,7 @@ class CameraViewController: UIImagePickerController{
         self.cameraOverlayView!.bringSubviewToFront(cameraButton)
         
         let albumButton = UIButton(frame:CGRectMake(50, self.view.frame.size.height-125, 50, 50))
-        albumButton.setBackgroundImage(UIImage(named: "PhotoIcon"), forState: .Normal)
+        albumButton.setBackgroundImage(UIImage(named: "Album2"), forState: .Normal) /*PhotoIcon*/
         albumButton.addTarget(self, action: "showAlbum", forControlEvents: .TouchUpInside)
         self.cameraOverlayView!.addSubview(albumButton)
         
@@ -72,7 +72,7 @@ class CameraViewController: UIImagePickerController{
 
     
         flashButton = UIButton(frame:CGRectMake(self.topBar.frame.size.width-45,self.topBar.frame.size.height/2 - 15,30,30))
-        flashButton.backgroundColor = UIColor.redColor()
+        flashButton.setBackgroundImage(UIImage(named: "AutoFlash"), forState: .Normal)
         flashButton.addTarget(self, action: "toggleFlash", forControlEvents: .TouchUpInside)
         topBar.addSubview(flashButton)
 
@@ -106,10 +106,16 @@ class CameraViewController: UIImagePickerController{
     func toggleFlash() {
         if self.cameraFlashMode == .Auto {
             self.cameraFlashMode = .Off
+            flashButton.setBackgroundImage(UIImage(named: "NoFlash"), forState: .Normal)
+            println("here 1")
         } else if self.cameraFlashMode == .Off {
             self.cameraFlashMode = .On
+            flashButton.setBackgroundImage(UIImage(named: "Flash"), forState: .Normal)
+            println("here 2")
         } else {
             self.cameraFlashMode = .Auto
+            flashButton.setBackgroundImage(UIImage(named: "AutoFlash"), forState: .Normal)
+            println("here 3")
         }
         
     }

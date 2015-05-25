@@ -34,6 +34,20 @@ class ServerRequest: NSObject {
                 "Accept":"application/json"]
         }
         
+        let memoryCapacity = 500 * 1024 * 1024; // 500 MB
+        let diskCapacity = 500 * 1024 * 1024; // 500 MB
+        let cache = NSURLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "shared_cache")
+        
+        // Create a custom configuration
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders
+        configuration.HTTPAdditionalHeaders = defaultHeaders
+        configuration.requestCachePolicy = .UseProtocolCachePolicy // this is the default
+        configuration.URLCache = cache
+        
+        // Create your own manager instance that uses your custom configuration
+        let newManager = Alamofire.Manager(configuration: configuration)
+        
         Alamofire.request(.POST, baseURLString+path, parameters: parameters) .responseJSON { (request, response, dataObject, error) in
             if let data: AnyObject = dataObject {
                 let json = JSON(data)
@@ -512,6 +526,7 @@ class ServerRequest: NSObject {
                 let post = self.postModel(dict)
                 result.append(post)
             }
+
             completion(result:result)
             },failure: { (error) -> Void in
             println("Error:\(error)")

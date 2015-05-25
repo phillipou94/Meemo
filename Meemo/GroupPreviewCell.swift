@@ -11,6 +11,8 @@ import UIKit
 class GroupPreviewCell: UITableViewCell {
     var group:Group? = nil
     @IBOutlet weak var thumbnail: UIImageView!
+    
+    @IBOutlet var shadeView: UIView!
     @IBOutlet weak var groupNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

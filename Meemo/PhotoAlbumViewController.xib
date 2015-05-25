@@ -51,7 +51,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-mj-2wf">
-                    <rect key="frame" x="557" y="12" width="35" height="35"/>
+                    <rect key="frame" x="557" y="3" width="35" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="W43-gr-ldh"/>
                         <constraint firstAttribute="height" constant="35" id="rp1-Dr-bHs"/>
@@ -73,7 +73,7 @@
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cI8-qe-OEQ"/>
                 <constraint firstAttribute="trailing" secondItem="rqF-cp-iTD" secondAttribute="trailing" id="oPo-qI-pJB"/>
                 <constraint firstItem="y15-rJ-fqi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="opU-fi-oww"/>
-                <constraint firstItem="Zak-mj-2wf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="xnT-8d-jep"/>
+                <constraint firstItem="Zak-mj-2wf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="3" id="xnT-8d-jep"/>
             </constraints>
             <point key="canvasLocation" x="211" y="344"/>
         </view>

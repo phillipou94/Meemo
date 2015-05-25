@@ -113,6 +113,15 @@ class PickFriendsViewController: UIViewController, UITableViewDataSource,UITable
         
     }
     
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        return index
+    }
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        
+        return self.viewModel.alphabet
+    }
+    
     //MARK: - Collectionview
     
     func setUpCollectionView() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -16,6 +16,10 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-39-DJZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huG-Rd-Tdm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                        <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-Hh-f5v">
                         <rect key="frame" x="16" y="30" width="296" height="30"/>
                         <constraints>
@@ -27,17 +31,22 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="huG-Rd-Tdm" secondAttribute="trailing" id="7io-fc-YO6"/>
+                    <constraint firstItem="huG-Rd-Tdm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DWU-Ir-Pi2"/>
                     <constraint firstItem="A3p-39-DJZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="H1q-9Z-v1U"/>
+                    <constraint firstAttribute="bottom" secondItem="huG-Rd-Tdm" secondAttribute="bottom" id="Sum-SQ-TzU"/>
                     <constraint firstItem="Ix3-Hh-f5v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VcR-xc-txZ"/>
                     <constraint firstAttribute="bottom" secondItem="A3p-39-DJZ" secondAttribute="bottom" id="Y6L-ee-l2g"/>
                     <constraint firstAttribute="centerY" secondItem="Ix3-Hh-f5v" secondAttribute="centerY" id="ZiQ-52-OCB"/>
                     <constraint firstAttribute="trailing" secondItem="Ix3-Hh-f5v" secondAttribute="trailing" constant="8" id="hl5-Z8-7hy"/>
                     <constraint firstAttribute="trailing" secondItem="A3p-39-DJZ" secondAttribute="trailing" id="iDj-n8-7MC"/>
                     <constraint firstItem="A3p-39-DJZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xGO-UH-ZsR"/>
+                    <constraint firstItem="huG-Rd-Tdm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yHK-8H-2Gf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="groupNameLabel" destination="Ix3-Hh-f5v" id="bME-2j-uwC"/>
+                <outlet property="shadeView" destination="huG-Rd-Tdm" id="M4X-na-msX"/>
                 <outlet property="thumbnail" destination="A3p-39-DJZ" id="BI8-5j-5Kf"/>
             </connections>
             <point key="canvasLocation" x="449" y="388"/>

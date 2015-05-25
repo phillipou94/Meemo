@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CustomSegmentControlDelegate {
+class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CustomSegmentControlDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentController: CustomSegmentControl!
     @IBOutlet weak var alertViewTextField: UITextField!
+    var collectionView: UICollectionView? = nil
     var shadeView = ShadeView()
     var viewModel = GroupsViewModel()
     var allFriends : [String:[User]] = [:]
@@ -26,6 +27,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
         self.segmentController.items = ["Groups","Friends"]
         self.segmentController.delegate = self
         setUpTableView()
+        setUpCollectionView()
         self.viewModel.getGroups { (groups) -> Void in
             self.groups = groups
             self.viewModel.getAllFriends { (friends) -> Void in
@@ -33,12 +35,7 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
                 
                 self.tableView.reloadData()
             }
-            
-            
         }
-        
-
-        // Do any additional setup after loading the view.
     }
 
 
@@ -90,9 +87,9 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupPreviewCell") as! GroupPreviewCell
             cell.group = group
             if group == self.selectedGroup {
-                cell.accessoryType = .Checkmark
+                cell.shadeView.hidden = false
             } else {
-                cell.accessoryType = .None
+                cell.shadeView.hidden = true
             }
             cell.configureCell()
             return cell
@@ -134,7 +131,26 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
             
             
         }
+        if selectedFriends.count == 1 {
+            animateCollectionView(true)
+        } else if selectedFriends.count == 0 {
+            animateCollectionView(false)
+        }
         self.tableView.reloadData()
+        self.collectionView?.reloadData()
+        
+    }
+    
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        return index
+    }
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        if self.segmentController.selectedIndex == 0 {
+            return []
+        } else {
+            return self.viewModel.alphabet
+        }
         
     }
     
@@ -201,9 +217,75 @@ class ChooseFriendsViewController: UIViewController,UITableViewDataSource, UITab
     //MARK: - SegmentControl Delegate
     
     func segmentControlDidChange() {
+        if segmentController.selectedIndex == 0 {
+            self.selectedFriends = []
+            animateCollectionView(false)
+        } else {
+            self.selectedGroup = nil
+        }
         self.tableView.reloadData()
         
     }
+    
+    //MARK: - Collectionview
+    
+    func setUpCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Horizontal
+        layout.itemSize = CGSizeMake(40, 40)
+        layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        
+        self.collectionView = UICollectionView(frame: CGRectMake(0,self.view.frame.size.height,self.view.bounds.size.width,60), collectionViewLayout: layout)
+        if let collectionView = self.collectionView {
+            collectionView.backgroundColor = UIColor(red: 62/255.0, green: 61/255.0, blue: 83/255.0, alpha: 1.0)
+            self.view.addSubview(collectionView)
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            
+            let nib = UINib(nibName: "FriendsPreviewCell", bundle: nil)
+            collectionView.registerNib(nib, forCellWithReuseIdentifier: "FriendsPreviewCell")
+            collectionView.bounces = true
+            collectionView.alwaysBounceHorizontal = true
+        }
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
+        return 1
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.selectedFriends.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let user = self.selectedFriends[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsPreviewCell", forIndexPath: indexPath) as! FriendsPreviewCell
+        cell.user = user
+        cell.configureCell()
+        return cell
+        
+    }
+    
+    func animateCollectionView(show:Bool) {
+        if let collectionView = self.collectionView {
+            if show {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    collectionView.frame.origin = CGPointMake(0,self.view.frame.size.height - 60)
+                    
+                })
+            } else {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    collectionView.frame.origin = CGPointMake(0,self.view.frame.size.height)
+                })
+            }
+            
+        }
+    }
+
     
 
     
