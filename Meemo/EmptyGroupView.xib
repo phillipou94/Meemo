@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="srl-8j-Ht5">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moD-4u-1a5">
+                    <rect key="frame" x="275" y="195" width="50" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Connection" translatesAutoresizingMaskIntoConstraints="NO" id="4fS-7q-4dQ" customClass="SpringImageView" customModule="Spring">
+                            <rect key="frame" x="7" y="8" width="35" height="35"/>
+                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="892-GJ-9dd"/>
+                                <constraint firstAttribute="width" constant="35" id="ajB-We-SFk"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="4fS-7q-4dQ" firstAttribute="top" secondItem="moD-4u-1a5" secondAttribute="top" constant="8" id="Aux-13-on0"/>
+                        <constraint firstAttribute="bottom" secondItem="4fS-7q-4dQ" secondAttribute="bottom" constant="7" id="dKU-yR-7fF"/>
+                        <constraint firstAttribute="width" constant="50" id="fip-2T-H59"/>
+                        <constraint firstAttribute="trailing" secondItem="4fS-7q-4dQ" secondAttribute="trailing" constant="8" id="mMg-cW-oT4"/>
+                        <constraint firstItem="4fS-7q-4dQ" firstAttribute="leading" secondItem="moD-4u-1a5" secondAttribute="leading" constant="7" id="tKQ-U6-Qle"/>
+                        <constraint firstAttribute="height" constant="50" id="zM0-5a-pAs"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're Not Part of Any Groups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIg-cj-xwO">
+                    <rect key="frame" x="88" y="263" width="424" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="FEq-xk-Pk6"/>
+                        <constraint firstAttribute="width" constant="424" id="RwI-8E-f89"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.1764705882" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create One With Your Friends :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNl-Gb-ddx">
+                    <rect key="frame" x="88" y="292" width="424" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="424" id="bo6-14-4bc"/>
+                        <constraint firstAttribute="height" constant="21" id="nSz-Ef-4dV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                    <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="moD-4u-1a5" secondAttribute="centerY" constant="80" id="E5V-OG-leZ"/>
+                <constraint firstItem="pNl-Gb-ddx" firstAttribute="top" secondItem="PIg-cj-xwO" secondAttribute="bottom" constant="8" id="WBl-N1-Rib"/>
+                <constraint firstAttribute="centerX" secondItem="pNl-Gb-ddx" secondAttribute="centerX" id="ac8-Du-ZLa"/>
+                <constraint firstAttribute="centerX" secondItem="PIg-cj-xwO" secondAttribute="centerX" id="eJ5-bW-LgK"/>
+                <constraint firstItem="PIg-cj-xwO" firstAttribute="top" secondItem="moD-4u-1a5" secondAttribute="bottom" constant="18" id="jTa-s1-zjV"/>
+                <constraint firstAttribute="centerX" secondItem="moD-4u-1a5" secondAttribute="centerX" id="utO-sa-jSR"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Connection" width="24" height="26"/>
+    </resources>
+</document>

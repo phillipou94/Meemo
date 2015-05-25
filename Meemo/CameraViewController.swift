@@ -73,15 +73,14 @@ class CameraViewController: UIImagePickerController{
     
         flashButton = UIButton(frame:CGRectMake(self.topBar.frame.size.width-45,self.topBar.frame.size.height/2 - 15,30,30))
         flashButton.setBackgroundImage(UIImage(named: "AutoFlash"), forState: .Normal)
+        flashButton.imageView?.contentMode = .ScaleAspectFill
         flashButton.addTarget(self, action: "toggleFlash", forControlEvents: .TouchUpInside)
         topBar.addSubview(flashButton)
 
     }
     
     func takePhoto() {
-        
         self.takePicture()
-       // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

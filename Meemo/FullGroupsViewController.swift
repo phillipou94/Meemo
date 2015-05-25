@@ -118,9 +118,20 @@ class FullGroupsViewController: UIViewController,UITableViewDelegate, UITableVie
         if section == 0 {
             return 0
         } else {
+            if self.posts.count == 0 {
+                showEmptyViewNamed("EmptyPostView")
+            }
             return self.posts.count
         }
         
+    }
+    
+    func showEmptyViewNamed(name:String) {
+        if let messageView = NSBundle.mainBundle().loadNibNamed(name, owner: self, options: nil).first as? UIView {
+            messageView.frame = CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85)
+            self.view.addSubview(messageView)
+            self.view.bringSubviewToFront(self.addButton)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

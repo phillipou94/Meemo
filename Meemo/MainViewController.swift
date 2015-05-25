@@ -144,7 +144,6 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             completion()
         })
         
-        
     }
     
     // MARK: - ShadeView
@@ -191,10 +190,24 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             return 0
         }
         if (self.segmentControl.selectedIndex == 0) {
+            if self.posts.count == 0 {
+                showEmptyViewNamed("EmptyPostView")
+            }
             
             return self.posts.count
         } else {
+            if self.posts.count == 0 {
+                showEmptyViewNamed("EmptyGroupView")
+            }
             return self.groups.count
+        }
+    }
+    
+    func showEmptyViewNamed(name:String) {
+        if let messageView = NSBundle.mainBundle().loadNibNamed(name, owner: self, options: nil).first as? UIView {
+            messageView.frame = CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85)
+            self.view.addSubview(messageView)
+            self.view.bringSubviewToFront(self.addButton)
         }
     }
     
