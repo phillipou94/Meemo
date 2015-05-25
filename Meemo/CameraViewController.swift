@@ -50,7 +50,7 @@ class CameraViewController: UIImagePickerController{
         let exitButton = UIButton(frame: CGRectMake(5,5,20,20))
         exitButton.setBackgroundImage(UIImage(named: "X-Button@1x"), forState: .Normal)
         exitButton.addTarget(self, action: "exitPressed", forControlEvents: .TouchUpInside)
-        topBar.addSubview(exitButton)
+        topBar.addSubview(exitButton) 
         
         let cameraButton = UIButton(frame:CGRectMake(bottomView.frame.size.width/2-50,self.view.frame.size.height-150,100,100))
         cameraButton.backgroundColor = UIColor.blackColor()
