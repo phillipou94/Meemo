@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Meemo" customModuleProvider="target">
+            <connections>
+                <outlet property="messageView" destination="bwt-0O-y7E" id="YNw-bg-8XM"/>
+                <outlet property="messageViewIcon" destination="dyC-np-dE3" id="gEh-p2-g5U"/>
+                <outlet property="primaryMessageLabel" destination="bE7-Wq-wtW" id="09g-P0-Qg8"/>
+                <outlet property="secondaryMessageLabel" destination="Oc4-5i-Vb7" id="3uW-tY-eK4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2dp-Gd-iKR">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-0O-y7E">
+                    <rect key="frame" x="275" y="195" width="50" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="dyC-np-dE3" customClass="SpringImageView" customModule="Spring">
+                            <rect key="frame" x="2" y="9" width="45" height="32"/>
+                            <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="0bY-rx-x8p"/>
+                                <constraint firstAttribute="width" constant="45" id="OmS-za-ayf"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dyC-np-dE3" secondAttribute="trailing" constant="3" id="B87-0N-OkI"/>
+                        <constraint firstItem="dyC-np-dE3" firstAttribute="leading" secondItem="bwt-0O-y7E" secondAttribute="leading" constant="2" id="BL4-68-g91"/>
+                        <constraint firstAttribute="width" constant="50" id="Gfi-bK-7Rc"/>
+                        <constraint firstAttribute="bottom" secondItem="dyC-np-dE3" secondAttribute="bottom" constant="9" id="OxD-1A-Siy"/>
+                        <constraint firstItem="dyC-np-dE3" firstAttribute="top" secondItem="bwt-0O-y7E" secondAttribute="top" constant="9" id="pvg-p9-PDC"/>
+                        <constraint firstAttribute="height" constant="50" id="zyU-64-1jX"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Memories Yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bE7-Wq-wtW">
+                    <rect key="frame" x="20" y="263" width="560" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="W9z-rZ-JWt"/>
+                        <constraint firstAttribute="width" constant="182" id="l1f-1S-lUI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.1764705882" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="l1f-1S-lUI"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Add Icon to Create Some :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-5i-Vb7">
+                    <rect key="frame" x="105" y="292" width="390" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="8rm-E3-tVI"/>
+                        <constraint firstAttribute="width" constant="390" id="9i6-z5-KoN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                    <color key="textColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="bE7-Wq-wtW" secondAttribute="centerX" id="QOH-IW-c3j"/>
+                <constraint firstItem="bE7-Wq-wtW" firstAttribute="leading" secondItem="2dp-Gd-iKR" secondAttribute="leading" constant="20" id="S8j-Pm-tbr"/>
+                <constraint firstAttribute="centerY" secondItem="bwt-0O-y7E" secondAttribute="centerY" constant="80" id="Uyd-Px-a8H"/>
+                <constraint firstItem="bE7-Wq-wtW" firstAttribute="top" secondItem="bwt-0O-y7E" secondAttribute="bottom" constant="18" id="cLU-IH-ZJL"/>
+                <constraint firstAttribute="trailing" secondItem="bE7-Wq-wtW" secondAttribute="trailing" constant="20" id="gc8-2k-sKi"/>
+                <constraint firstAttribute="centerX" secondItem="Oc4-5i-Vb7" secondAttribute="centerX" id="hVw-rR-N4q"/>
+                <constraint firstItem="Oc4-5i-Vb7" firstAttribute="top" secondItem="bE7-Wq-wtW" secondAttribute="bottom" constant="8" id="kfb-vY-5hy"/>
+                <constraint firstAttribute="centerX" secondItem="bwt-0O-y7E" secondAttribute="centerX" id="xJ2-tW-XWn"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Cloud" width="32" height="24"/>
+    </resources>
+</document>

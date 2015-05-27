@@ -310,7 +310,8 @@ class ServerRequest: NSObject {
                 invited_users.append(user)
             }
         }
-        
+        group.imageURL = "NewGroupImageURL"
+        NSNotificationCenter.defaultCenter().postNotificationName("AddNewGroup", object: group)
         if let image = group.image {
            
             uploadPhoto(image, completion: { (url) -> Void in

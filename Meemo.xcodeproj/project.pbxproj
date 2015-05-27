@@ -39,9 +39,8 @@
 		4DA7BF471B027EA400CFCE08 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */; };
 		4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */; };
 		4DA848CB1B01618100995031 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA848CA1B01618100995031 /* AlertView.xib */; };
-		4DAF5AED1B13C38500203298 /* EmptyPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF5AEC1B13C38500203298 /* EmptyPostView.xib */; };
-		4DAF5AEF1B13C8A600203298 /* EmptyGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF5AEE1B13C8A600203298 /* EmptyGroupView.xib */; };
 		4DAF5AF11B13D56800203298 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF5AF01B13D56800203298 /* Media.xcassets */; };
+		4DAF5AF31B13E8B700203298 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF5AF21B13E8B700203298 /* EmptyView.xib */; };
 		4DB14C461AE6002E00804656 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C451AE6002E00804656 /* SignUpViewController.swift */; };
 		4DB14C491AE6095100804656 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB14C481AE6095100804656 /* ServerRequest.swift */; };
 		4DB4EF941AF6C0AD00BD909C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4EF931AF6C0AD00BD909C /* Group.swift */; };
@@ -145,9 +144,8 @@
 		4DA7BF451B027EA400CFCE08 /* TextPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
 		4DA7BF461B027EA400CFCE08 /* TextPostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
 		4DA848CA1B01618100995031 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
-		4DAF5AEC1B13C38500203298 /* EmptyPostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyPostView.xib; sourceTree = "<group>"; };
-		4DAF5AEE1B13C8A600203298 /* EmptyGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyGroupView.xib; sourceTree = "<group>"; };
 		4DAF5AF01B13D56800203298 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Assets/Media.xcassets; sourceTree = "<group>"; };
+		4DAF5AF21B13E8B700203298 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		4DB14C451AE6002E00804656 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB14C481AE6095100804656 /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
 		4DB4EF931AF6C0AD00BD909C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -429,8 +427,7 @@
 		4DBBC71D1AE94B7200DB03B4 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				4DAF5AEC1B13C38500203298 /* EmptyPostView.xib */,
-				4DAF5AEE1B13C8A600203298 /* EmptyGroupView.xib */,
+				4DAF5AF21B13E8B700203298 /* EmptyView.xib */,
 				4DD82CFD1AE81B0A00C9C615 /* ShadeView.swift */,
 				4DBBC71E1AE94B9A00DB03B4 /* CustomSegmentControl.swift */,
 				4DA1F5CF1AF3EEB00049512C /* PhoneSearchViewController.swift */,
@@ -644,7 +641,6 @@
 				4DD9198E1AE6CA4800C9E5DE /* LICENSE in Resources */,
 				4D3B6CCB1B0A990A00205E06 /* LinkFacebookViewController.xib in Resources */,
 				4DF2A0911B04FE1000CA9035 /* PhotoAlbumViewController.xib in Resources */,
-				4DAF5AEF1B13C8A600203298 /* EmptyGroupView.xib in Resources */,
 				4DA7BF481B027EA400CFCE08 /* TextPostCell.xib in Resources */,
 				4DC019821B02A17600865DF9 /* PhotoPostCell.xib in Resources */,
 				4DC019861B02AF4A00865DF9 /* GroupPreviewCell.xib in Resources */,
@@ -656,8 +652,8 @@
 				4D8595801AE5A1CC008F96E7 /* Images.xcassets in Resources */,
 				4DD2F99B1B0FECDE000406EC /* GroupSettingsHeader.xib in Resources */,
 				4D51AE951AFB184D007DBD13 /* GroupTableViewCell.xib in Resources */,
+				4DAF5AF31B13E8B700203298 /* EmptyView.xib in Resources */,
 				4DD919891AE6CA4800C9E5DE /* FBAudienceNetwork.README.txt in Resources */,
-				4DAF5AED1B13C38500203298 /* EmptyPostView.xib in Resources */,
 				4DA848CB1B01618100995031 /* AlertView.xib in Resources */,
 				4DD9198F1AE6CA4800C9E5DE /* README.txt in Resources */,
 				4DCFE0B61B1230EF009175A0 /* GroupMemberCell.xib in Resources */,

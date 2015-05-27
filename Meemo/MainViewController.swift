@@ -18,6 +18,11 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     @IBOutlet weak var addButton: SpringButton!
     var shadeView: ShadeView = ShadeView()
     
+    @IBOutlet var messageView: UIView!
+    
+    @IBOutlet var secondaryMessageLabel: UILabel!
+    @IBOutlet var primaryMessageLabel: UILabel!
+    @IBOutlet var messageViewIcon: SpringImageView!
     @IBOutlet var customNavBar: UIView!
     @IBOutlet var addGroupButtonContainer: SpringView!
     @IBOutlet var addGroupButton: SpringButton!
@@ -39,6 +44,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     var groupsCache = NSCache()
     var onLastPage:Bool = false
     var needsToReload:Bool = false
+    var newGroup:Group? = nil
     
     let transitionManager = TransitionManager()
     
@@ -62,6 +68,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         page = 1
         setUpTableView()
         
+        self.view.bringSubviewToFront(self.loadingImageView)
         self.loadingImageView.animationImages = [UIImage(named: "loading_cloud_1")!,UIImage(named: "loading_cloud_2")!,UIImage(named: "loading_cloud_3")!]
         self.loadingImageView.animationDuration = 1.0
         self.loadingImageView.startAnimating()
@@ -69,20 +76,26 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
         self.loadPosts(self.page, completion: { () -> Void in
             if let post = self.standbyPost {
                 self.posts.insert(post, atIndex: 0)
-                
             }
             self.viewModel.getGroups({ (groups) -> Void in
                 self.groups = groups
                 self.loadingImageView.stopAnimating()
+                self.setUpEmptyView()
+                if let group = self.newGroup {
+                    self.groups.insert(group, atIndex: 0)
+                }
                 self.tableView.reloadData()
             })
         })
+        
+        
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateGroup:", name: "UpdateGroups", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addNewGroup:", name: "AddNewGroup", object: nil)
         if needsToReload {
             self.tableView.reloadData()
             
@@ -109,6 +122,17 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
 
                 }
             }
+        }
+    }
+    
+    func addNewGroup(notification:NSNotification) {
+        
+        if let newGroup = notification.object as? Group {
+            self.newGroup = newGroup
+            if let image = newGroup.image {
+                self.photoCache.setObject(image, forKey:newGroup.imageURL!)
+            }
+            needsToReload = true
         }
     }
     
@@ -190,24 +214,47 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
             return 0
         }
         if (self.segmentControl.selectedIndex == 0) {
-            if self.posts.count == 0 {
-                showEmptyViewNamed("EmptyPostView")
-            }
-            
+            configureMessageView("Post")
             return self.posts.count
         } else {
-            if self.posts.count == 0 {
-                showEmptyViewNamed("EmptyGroupView")
-            }
+            configureMessageView("Group")
             return self.groups.count
         }
     }
     
-    func showEmptyViewNamed(name:String) {
-        if let messageView = NSBundle.mainBundle().loadNibNamed(name, owner: self, options: nil).first as? UIView {
-            messageView.frame = CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85)
-            self.view.addSubview(messageView)
-            self.view.bringSubviewToFront(self.addButton)
+    func setUpEmptyView() {
+        messageView = NSBundle.mainBundle().loadNibNamed("EmptyView", owner: self, options: nil).first as! UIView
+        messageView.frame = CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85)
+        messageView.hidden = true
+        self.view.insertSubview(messageView, aboveSubview: self.tableView)
+        
+    }
+    
+    func configureMessageView(type:String) {
+        if messageView != nil {
+            if type == "Post" {
+                messageViewIcon.image = UIImage(named: "Cloud")
+                primaryMessageLabel.text = "No Memories Yet"
+                secondaryMessageLabel.text = "Tap the Add Icon to Create Some :)"
+                if self.posts.count > 0 {
+                    messageView.hidden = true
+                } else {
+                    messageView.hidden = false
+                }
+                
+            } else {
+                messageViewIcon.image = UIImage(named: "Connection")
+                primaryMessageLabel.text = "You're Not Part of Any Groups"
+                secondaryMessageLabel.text = "Create One with Your Friends :)"
+                if self.groups.count > 0 {
+                    messageView.hidden = true
+                } else {
+                    messageView.hidden = false
+                }
+            }
+            
+            self.view.bringSubviewToFront(messageView)
+            self.view.bringSubviewToFront(addButton)
         }
     }
     

@@ -108,8 +108,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
             if let user = user {
                 
-                
-                
             } else {
                 println("Uh oh. The user cancelled the Facebook login.")
             }
