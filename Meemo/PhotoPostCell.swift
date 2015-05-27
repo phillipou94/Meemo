@@ -36,19 +36,11 @@ class PhotoPostCell: UITableViewCell {
     
     func configureCell(completion:(image:UIImage) -> Void) {
         if let post = self.post {
-            if let title = post.title {
-                self.titleLabel.text = title
-                self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-            } else {
-                self.titleLabel.hidden = true
-            }
-            
             if user_id == post.user_id {
                 nameLabel.text = "Me"
             } else {
                 nameLabel.text = post.user_name
             }
-            
             if post.image != nil {
                 self.postImageView.image = post.image
             } else {

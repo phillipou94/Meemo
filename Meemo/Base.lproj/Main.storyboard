@@ -479,6 +479,9 @@
                                                 <constraint firstItem="2Tp-zS-qlz" firstAttribute="leading" secondItem="gM1-qU-Yfg" secondAttribute="leadingMargin" id="Dci-OQ-HMa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4yr-T2-717" kind="show" id="wGS-hL-2nX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y0p-ft-Kj9">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -503,6 +506,9 @@
                                                 <constraint firstItem="rr0-0O-FX8" firstAttribute="leading" secondItem="wir-fb-DDU" secondAttribute="leadingMargin" id="ozd-fA-oha"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="MSY-Tn-Iif" kind="show" id="aiV-dN-RRq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -614,7 +620,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4f-EH-CKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="oac-Wy-I8d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="1730"/>
+            <point key="canvasLocation" x="-2268" y="2087"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LXq-75-uOC">
+            <objects>
+                <viewController id="4yr-T2-717" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KDg-WF-mnB"/>
+                        <viewControllerLayoutGuide type="bottom" id="q2e-BV-uoL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FCZ-4m-G2t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m71-ly-pOu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeN-qu-env" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="5" width="32" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="FzK-ji-UVL"/>
+                                            <constraint firstAttribute="width" constant="32" id="NRK-Uw-jMn"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="LA7-cq-zWc" kind="unwind" unwindAction="unwindToViewController:" id="pkx-BN-kDf"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUw-Wu-pQY">
+                                        <rect key="frame" x="157" y="14" width="287" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="287" id="ojc-Bd-a8M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NeN-qu-env" firstAttribute="leading" secondItem="m71-ly-pOu" secondAttribute="leading" id="6ul-pa-FIf"/>
+                                    <constraint firstItem="NeN-qu-env" firstAttribute="top" secondItem="m71-ly-pOu" secondAttribute="top" constant="5" id="7dV-sh-9NY"/>
+                                    <constraint firstItem="cUw-Wu-pQY" firstAttribute="top" secondItem="m71-ly-pOu" secondAttribute="top" constant="14" id="IHl-sx-5bE"/>
+                                    <constraint firstItem="cUw-Wu-pQY" firstAttribute="centerX" secondItem="m71-ly-pOu" secondAttribute="centerX" id="QgO-xH-W5x"/>
+                                    <constraint firstAttribute="bottom" secondItem="NeN-qu-env" secondAttribute="bottom" constant="6" id="Tw9-dV-nDj"/>
+                                    <constraint firstItem="cUw-Wu-pQY" firstAttribute="centerY" secondItem="NeN-qu-env" secondAttribute="centerY" id="US9-Xx-Pkp"/>
+                                    <constraint firstAttribute="height" constant="50" id="j6P-fv-yTP"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWF-EM-4pa">
+                                <rect key="frame" x="0.0" y="49" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">INTRODUCTION
+Meemo seeks to respect your privacy. This policy describes the information we collect during your use of the Service, how we use it, and how it may be shared.
+
+COLLECTED INFORMATION PROVIDED BY USER
+Meemo requires several pieces of personal information in order to operate as designed. Name and active phone number are required to use any Meemo Service. We may, however, request other information, which may be required for certain Services. If you choose to use the Meemo Services and make a purchase, we will ask for additional information, such as your credit card number and billing address.
+
+ADDITIONAL COLLECTED INFORMATION
+Meemo may also use cookies or web beacons to track a user's interactions with the Service. This information will be used for internal purposes only to optimize the Meemo Service. Users can opt-out of cookies by utilizing the settings provided in their browsers.
+
+Additionally, Meemo collects information from its mobile phone users (who have installed the Meemo application) in a similar manner to optimize the mobile experience. Beyond mobile phone numbers, we collect mobile screen resolution, device make and manufacturer, as well as the device's unique identifier (in the iPhone's case, a UDID).
+
+USE AND DISCLOSURE OF COLLECTED INFORMATION
+Except as set forth in this policy, Meemo uses provided and collected information only for internal purposes and does not disclose data to third parties. Meemo may occasionally inform users of new releases and features via any communication methods you have provided to the Service.
+
+Third Parties: Meemo occasionally hires other companies (vendors) to provide limited services on its behalf, such as handling the processing and delivery of mailings, hosting websites, processing transactions, or performing statistical analysis of our services. Those service providers will be permitted to obtain only the personal information they need to deliver the service. They are required to maintain the confidentiality of the information and are prohibited from using it for any other purpose than for delivering the service to Meemo, in accordance with Meemo's instructions and policies. However, our vendors may use aggregate data for fraud detection to help improve their services. This helps them to more accurately detect fraudulent transactions.
+
+YOUR RESPONSIBILITY ONLINE
+
+You should remain aware that any information you share online or via text message can be accessed by others. Meemo is not responsible for the actions of those who obtain your content in this manner. Meemo cannot guarantee your safety and security and you should be aware that submitting any information and using the Meemo Service is done at your own risk.
+
+CHANGES TO THE PRIVACY POLICY
+
+Although most changes are likely to be minor, Meemo may change its Privacy Policy from time to time, and in Meemo sole discretion. Meemo encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
+
+Updated May 2015.
+
+© 2015 Meemo </mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uWF-EM-4pa" firstAttribute="top" secondItem="m71-ly-pOu" secondAttribute="bottom" constant="-1" id="EZd-QI-xgc"/>
+                            <constraint firstAttribute="trailing" secondItem="m71-ly-pOu" secondAttribute="trailing" id="FAT-Aw-9if"/>
+                            <constraint firstItem="uWF-EM-4pa" firstAttribute="leading" secondItem="FCZ-4m-G2t" secondAttribute="leadingMargin" constant="-16" id="GZQ-QN-EFG"/>
+                            <constraint firstItem="m71-ly-pOu" firstAttribute="top" secondItem="FCZ-4m-G2t" secondAttribute="top" id="jdm-d1-K3e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uWF-EM-4pa" secondAttribute="trailing" constant="-16" id="lKN-2M-iwk"/>
+                            <constraint firstItem="q2e-BV-uoL" firstAttribute="top" secondItem="uWF-EM-4pa" secondAttribute="bottom" id="o9L-pb-EIj"/>
+                            <constraint firstItem="m71-ly-pOu" firstAttribute="leading" secondItem="FCZ-4m-G2t" secondAttribute="leading" id="yww-Rv-Hb4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkP-Kl-ovS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LA7-cq-zWc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1491" y="2163"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="4oB-4o-ciP">
@@ -900,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1265" y="2342"/>
+            <point key="canvasLocation" x="-1423" y="2843"/>
         </scene>
         <!--Capture Memory View Controller-->
         <scene sceneID="4e9-gQ-LAt">
@@ -2337,7 +2444,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8K-jw-vXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3LK-p4-90b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="4157"/>
+            <point key="canvasLocation" x="-1265" y="4251"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yhK-0M-jM1">
+            <objects>
+                <viewController id="MSY-Tn-Iif" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ffw-ag-6py"/>
+                        <viewControllerLayoutGuide type="bottom" id="q99-pf-Eys"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="70h-O8-72r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7D-3R-7of">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agd-XA-FWm">
+                                        <rect key="frame" x="87" y="14" width="427" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="2XV-Jn-Wr2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiG-sU-lTt" customClass="SpringButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="5" width="32" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="fkM-Zf-DJM"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="pGr-8r-N6H" kind="unwind" unwindAction="unwindToViewController:" id="SWy-jP-5U2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="agd-XA-FWm" firstAttribute="top" secondItem="A7D-3R-7of" secondAttribute="top" constant="14" id="4R6-0R-uv1"/>
+                                    <constraint firstItem="wiG-sU-lTt" firstAttribute="leading" secondItem="A7D-3R-7of" secondAttribute="leading" id="N2H-nB-SN7"/>
+                                    <constraint firstAttribute="height" constant="50" id="Nj0-IK-u8f"/>
+                                    <constraint firstItem="agd-XA-FWm" firstAttribute="centerX" secondItem="A7D-3R-7of" secondAttribute="centerX" id="VhT-3H-RuQ"/>
+                                    <constraint firstItem="wiG-sU-lTt" firstAttribute="centerY" secondItem="A7D-3R-7of" secondAttribute="centerY" id="WVJ-Yv-whP"/>
+                                    <constraint firstItem="agd-XA-FWm" firstAttribute="leading" secondItem="A7D-3R-7of" secondAttribute="leading" constant="87" id="Xzd-XO-nmq"/>
+                                    <constraint firstAttribute="bottom" secondItem="agd-XA-FWm" secondAttribute="bottom" constant="15" id="hPh-H5-zh5"/>
+                                    <constraint firstItem="wiG-sU-lTt" firstAttribute="top" secondItem="A7D-3R-7of" secondAttribute="top" constant="5" id="yvR-P2-uaA"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-Jk-rTx">
+                                <rect key="frame" x="0.0" y="50" width="600" height="634"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">AGREEMENT TO BE BOUND
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Please read the Terms carefully before accessing or using the Service. By accessing or using any part of the Service, you agree to be bound by the Terms. If you do not agree to the Terms, then you may not access or use the Service. Meemo may amend the Terms from time to time and will provide notice of any substantive changes on this website. Continued usage of the Service constitutes acceptance of the amended Terms. 
+MEEMO SERVICE
+The Service enables you to create unique groups with friends, coworkers, and other individuals and then allows you to share memories with individuals you or others add to the group. Each unique group is given a ten digit telephone number.  
+MEEMO MESSAGES AND CONSENT
+Consent to add group members. Meemo makes it easy for you to add group members to your groups so that you can exchange messages with each other. YOU REPRESENT AND WARRANT TO US THAT EACH PERSON YOU ADD TO A GROUP HAS CONSENTED TO BE ADDED TO THE GROUP AND TO RECEIVE ADMINISTRATIVE MESSAGES FROM Meemo AND TEXT MESSAGES FROM YOU AND ANYONE ELSE IN THE GROUP. 
+Consent to receive periodic messages from Meemo. As part of the Service, Meemo sometimes causes administrative messages to be sent to members of the group. For example, upon adding a new member to a group, such new member will receive a welcome message, instructions on how to stop receiving messages, and information on how to avoid certain charges by downloading the Meemo app. Meemo also may inform group members who have not replied that they automatically will be removed from the group if they do not participate. Meemo may send other administrative messages as well. BY SIGNING UP FOR THE SERVICE, YOU AGREE TO RECEIVE TEXT MESSAGES FROM Meemo, AND YOU REPRESENT AND WARRANT THAT EACH PERSON YOU ADD TO A GROUP HAS CONSENTED TO RECEIVE TEXT MESSAGES FROM Meemo.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TGc-Jk-rTx" firstAttribute="leading" secondItem="70h-O8-72r" secondAttribute="leadingMargin" constant="-16" id="1gl-7b-bfj"/>
+                            <constraint firstItem="A7D-3R-7of" firstAttribute="leading" secondItem="70h-O8-72r" secondAttribute="leading" id="JKr-mu-mwV"/>
+                            <constraint firstItem="q99-pf-Eys" firstAttribute="top" secondItem="TGc-Jk-rTx" secondAttribute="bottom" id="SVQ-d6-aUR"/>
+                            <constraint firstItem="A7D-3R-7of" firstAttribute="top" secondItem="Ffw-ag-6py" secondAttribute="bottom" id="gTe-cY-dkA"/>
+                            <constraint firstAttribute="trailing" secondItem="A7D-3R-7of" secondAttribute="trailing" id="jzt-sU-FBK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TGc-Jk-rTx" secondAttribute="trailing" constant="-16" id="qha-7I-GId"/>
+                            <constraint firstItem="TGc-Jk-rTx" firstAttribute="top" secondItem="A7D-3R-7of" secondAttribute="bottom" id="r8u-pW-JH6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oIs-jQ-hBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pGr-8r-N6H" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1394" y="1320"/>
         </scene>
     </scenes>
     <resources>
@@ -2357,10 +2561,10 @@
         <image name="purple_gradient" width="360" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rha-k0-myQ"/>
-        <segue reference="Vam-Nm-oWU"/>
-        <segue reference="6JX-jh-805"/>
-        <segue reference="bdk-ZQ-acD"/>
+        <segue reference="Dau-4f-rIk"/>
+        <segue reference="3qW-cx-UrU"/>
+        <segue reference="97p-C8-Pxy"/>
         <segue reference="BNp-XI-XA1"/>
+        <segue reference="Rha-k0-myQ"/>
     </inferredMetricsTieBreakers>
 </document>

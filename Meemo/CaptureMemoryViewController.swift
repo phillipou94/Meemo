@@ -70,6 +70,18 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        selectedImage = nil
+        self.imageView.image = nil
+        leftFrame = CGRectMake(-self.imageView.frame.size.width,self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)
+        rightFrame = CGRectMake(self.imageView.frame.size.width,self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)
+        currentFrame = CGRectMake(0,self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)
+        storyTextView.text = nil
+        storyTextView.text = nil
+        
+    }
+    
     //force portrait
     override func supportedInterfaceOrientations() -> Int {
          return Int(UIInterfaceOrientationMask.Portrait.rawValue)
@@ -90,6 +102,7 @@ class CaptureMemoryViewController: UIViewController,UIImagePickerControllerDeleg
         titleTextView.font = UIFont(name: "STHeitiSC-Medium", size: 30)
         titleTextView.delegate = self
         titleTextView.autocorrectionType = .No
+        titleTextView.keyboardAppearance = .Dark
         self.view.addSubview(titleEditView)
         titleEditView.addSubview(titleTextView)
     }

@@ -36,6 +36,7 @@ class WriteMemoryViewController: UIViewController, UITextViewDelegate {
         
         self.textView.textContainerInset = UIEdgeInsetsMake(40, 33, 40, 33)
         self.textView.delegate = self
+        self.textView.keyboardAppearance = .Dark
         //self.textView.alignToCenter()
         //self.textView.textContainerInset = UIEdgeInsetsMake(0, 33, 40, 0)
         super.viewWillAppear(animated)

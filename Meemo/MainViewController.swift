@@ -284,6 +284,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                 } else {
                     cell.dateLabel.text = "Just Now"
                 }
+                
                 cell.configureCell()
                 cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
                 cell.optionButton.tag = indexPath.row
@@ -298,8 +299,7 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                     cell.dateLabel.text = date
                 } else {
                     cell.dateLabel.text = "Just Now"
-                }
-                cell.titleLabel.text = post.title
+                }                
                 if let file_url = post.file_url {
                     if let cachedImage = self.photoCache.objectForKey(file_url) as? UIImage {
                         cell.postImageView.image = cachedImage
@@ -309,6 +309,16 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
                         })
                     }
                 }
+                if let title = post.title {
+                    cell.titleLabel.text = title
+                    cell.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.titleLabel.hidden = false
+                } else {
+                    cell.titleLabel.hidden = true
+                }
+                
+                
+
                 cell.optionButton.addTarget(self, action: "showActionSheet:", forControlEvents: .TouchUpInside)
                 cell.optionButton.tag = indexPath.row
                 cell.row = indexPath.row
@@ -342,8 +352,11 @@ class MainViewController: UIViewController, CustomSegmentControlDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        return true
+        if self.segmentControl.selectedIndex == 0 {
+            return false
+        } else {
+            return true
+        }
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
