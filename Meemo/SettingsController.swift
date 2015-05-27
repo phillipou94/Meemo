@@ -15,6 +15,9 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var numberOfGroupsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    let transitionManager = TransitionManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabel.text = CoreDataRequest.sharedManager.getUserCredentials()?.name
@@ -125,6 +128,13 @@ class SettingsController: UITableViewController, FBSDKLoginButtonDelegate {
             loginView.frame = self.logoutCell.frame
             loginView.delegate = self
             self.view.addSubview(loginView)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showTerms" || segue.identifier == "showPrivacy" {
+            let vc = segue.destinationViewController as! UIViewController
+            vc.transitioningDelegate = self.transitionManager
         }
     }
 
