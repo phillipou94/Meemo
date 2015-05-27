@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="1255"/>
+            <point key="canvasLocation" x="-131" y="571"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="SFK-KR-VkY">
@@ -620,7 +620,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4f-EH-CKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="oac-Wy-I8d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2268" y="2087"/>
+            <point key="canvasLocation" x="-2437" y="999"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LXq-75-uOC">
@@ -728,7 +728,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LkP-Kl-ovS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="LA7-cq-zWc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1491" y="2163"/>
+            <point key="canvasLocation" x="-1415" y="1299"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="4oB-4o-ciP">
@@ -1014,7 +1014,7 @@ Updated May 2015.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-KC-Tj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="2843"/>
+            <point key="canvasLocation" x="-2427" y="2475"/>
         </scene>
         <!--Capture Memory View Controller-->
         <scene sceneID="4e9-gQ-LAt">
@@ -1106,7 +1106,7 @@ Updated May 2015.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6k-xR-aHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944" y="2731"/>
+            <point key="canvasLocation" x="-944" y="2731"/>
         </scene>
         <!--Write Memory View Controller-->
         <scene sceneID="rgo-ox-lei">
@@ -1224,7 +1224,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2i-Ak-mlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ji4-gK-nUd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="925" y="3441"/>
+            <point key="canvasLocation" x="-935" y="3457"/>
         </scene>
         <!--Photo Post View Controller-->
         <scene sceneID="ngx-CV-d8V">
@@ -1319,7 +1319,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJp-AM-D47" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="F8i-0K-2cZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="903" y="4169"/>
+            <point key="canvasLocation" x="-921" y="4263"/>
         </scene>
         <!--Create Groups View Controller-->
         <scene sceneID="NUW-Jl-kFU">
@@ -1513,7 +1513,7 @@ Updated May 2015.
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-KG-O04">
                                         <rect key="frame" x="0.0" y="35" width="600" height="309"/>
-                                        <color key="backgroundColor" red="0.2470588235" green="0.23921568630000001" blue="0.32156862749999998" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.058823529409999999" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5L7-md-vFY">
                                             <size key="itemSize" width="150" height="151"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1593,7 +1593,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL4-Y4-l0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="arq-Oe-0C9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="941" y="1953"/>
+            <point key="canvasLocation" x="-935" y="2021"/>
         </scene>
         <!--Pick Friends View Controller-->
         <scene sceneID="05N-dV-hB1">
@@ -1682,7 +1682,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tre-8l-PRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wTb-BH-KdZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="1966"/>
+            <point key="canvasLocation" x="136" y="2190"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="huY-q6-mYr">
@@ -1961,7 +1961,7 @@ Updated May 2015.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEx-UV-POM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="1235"/>
+            <point key="canvasLocation" x="677" y="559"/>
         </scene>
         <!--Choose Friends View Controller-->
         <scene sceneID="Ll7-Co-fc6">
@@ -2070,7 +2070,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZW-5G-rWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zEL-wk-bGv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="3240"/>
+            <point key="canvasLocation" x="114" y="3112"/>
         </scene>
         <!--Full Groups View Controller-->
         <scene sceneID="aB4-HH-c8T">
@@ -2360,7 +2360,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2F-s8-cBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4Tl-3s-10f" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1299" y="3293"/>
+            <point key="canvasLocation" x="-2419" y="3297"/>
         </scene>
         <!--Group Settings View Controller-->
         <scene sceneID="smy-Va-ZZM">
@@ -2451,7 +2451,7 @@ Updated May 2015.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8K-jw-vXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3LK-p4-90b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1265" y="4251"/>
+            <point key="canvasLocation" x="-2437" y="4263"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yhK-0M-jM1">
@@ -2548,7 +2548,7 @@ Consent to receive periodic messages from Meemo. As part of the Service, Meemo s
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIs-jQ-hBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pGr-8r-N6H" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1394" y="1320"/>
+            <point key="canvasLocation" x="-1410" y="596"/>
         </scene>
     </scenes>
     <resources>
@@ -2568,10 +2568,10 @@ Consent to receive periodic messages from Meemo. As part of the Service, Meemo s
         <image name="purple_gradient" width="360" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dau-4f-rIk"/>
-        <segue reference="3qW-cx-UrU"/>
-        <segue reference="97p-C8-Pxy"/>
+        <segue reference="exK-0w-rYB"/>
+        <segue reference="6JX-jh-805"/>
+        <segue reference="bdk-ZQ-acD"/>
+        <segue reference="Vam-Nm-oWU"/>
         <segue reference="BNp-XI-XA1"/>
-        <segue reference="Rha-k0-myQ"/>
     </inferredMetricsTieBreakers>
 </document>

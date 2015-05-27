@@ -11,7 +11,7 @@ import Spring
 import Photos
 import UIKit
 
-class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CameraViewControllerDelegate {
     @IBOutlet var headerView: UIView!
     @IBOutlet var groupTextField: UITextField!
     @IBOutlet var photoContainer: SpringView!
@@ -322,6 +322,7 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
     func showCamera() {
         
         cameraViewController.delegate = self
+        cameraViewController.viewDelegate = self
         self.modalPresentationStyle = .Custom
         self.modalTransitionStyle = .CrossDissolve
         self.presentViewController(cameraViewController, animated: true, completion: nil)
@@ -380,8 +381,19 @@ class CreateGroupsViewController: UIViewController, UITextFieldDelegate, UIColle
         return newImage
     }
     
+    func exitCamera() {
+        
+        cameraViewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
+    }
     
-
+    func showAlbum() {
+        cameraViewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+    }
 
 
 }
